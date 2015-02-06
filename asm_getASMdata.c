@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   asm_getASMdata.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 15:38:50 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 15:38:51 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/06 15:42:14 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/06 15:42:14 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+# include "corewar.h"
 
-# include "libft/includes/libft.h"
-
-typedef struct s_asm
+t_asm	*getASMdata( void )
 {
-	char	*name;
+	static t_asm 	*d = NULL;
 
-}t_asm
-
-t_asm	*getASMdata( void );
-int		sti(void)
-
-#endif
+	if (d == NULL)
+	{
+		d = (t_asm *)malloc(sizeof(t_asm));
+		if (d == NULL)
+			return (NULL);
+	}
+	return (d);
+}

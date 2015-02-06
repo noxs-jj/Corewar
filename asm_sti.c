@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   asm_sti.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 15:38:50 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 15:38:51 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/06 16:08:14 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/06 16:08:15 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "corewar.h"
 
-# include "libft/includes/libft.h"
-
-typedef struct s_asm
+int	sti(void)
 {
-	char	*name;
+	t_asm	*d;
 
-}t_asm
+	d + getASMdata();
 
-t_asm	*getASMdata( void );
-int		sti(void)
-
-#endif
+	return (0);
+}

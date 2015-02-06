@@ -14,7 +14,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -w -pedantic
 
-HEADER =
+HEADER = corewar.h
 
 
 COREWAR = corewar
@@ -24,7 +24,9 @@ CORE-SRC =
 
 COMPILATEUR = asm
 ASM-OBJ = $(SRC:.c=.o)
-ASM-SRC = 
+ASM-SRC = 	asm_main.c \
+			asm_getASMdata.c \
+			asm_sti.c
 
 
 %.c.o: %.c $(HEAD)
