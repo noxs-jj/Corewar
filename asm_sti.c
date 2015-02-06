@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-int	sti(void)
+int	s_sti(void)
 {
 	t_asm	*d;
 

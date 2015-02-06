@@ -15,6 +15,12 @@
 
 # include "libft/includes/libft.h"
 
+typedef struct s_cmd
+{
+	char	*line;
+	t_cmd	*next;
+}t_cmd
+
 typedef struct s_asm
 {
 	char	*name;
@@ -22,6 +28,12 @@ typedef struct s_asm
 }t_asm
 
 t_asm	*getASMdata( void );
-int		sti(void)
+
+t_cmp	*s_lstCreate(char *string);
+void	s_lstFreeLink(t_cmd *toDel);
+void	s_lstAddEnd(t_cmd **lst, t_cmd *new);
+void	s_lstDelAll(t_cmd **lst, );
+
+int		s_sti(void);
 
 #endif
