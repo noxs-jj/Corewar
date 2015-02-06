@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_main.c                                         :+:      :+:    :+:   */
+/*   init_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 15:37:29 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 15:37:30 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/06 17:26:48 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/06 17:26:49 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	main(int ac, char *av)
+int 	init_start(t_asm *d)
 {
-	t_asm	*d;
-
-	if (ac != 2)
+	d = getASMdata();
+	if (d == NULL)
 	{
-		fd_putstr_fd("asm-: Need 1 arguments: './asm file.s'\n", 2);
+		fd_putstr_fd("asm-:init_start Memory initialisation error.\n", 2);
 		return (-1);
 	}
-	if (init_start() < 0)
+	d->fdSource = open(av[1], O_RDONLY);
+	if (d->fdSource < 0)
 	{
-		fd_putstr_fd("Initialiation Failed'\n", 2);
+		fd_putstr_fd("asm-:init_start File open error.\n", 2);
 		return (-1);
 	}
 	return (0);

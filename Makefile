@@ -18,28 +18,31 @@ HEADER = corewar.h
 
 
 COREWAR = corewar
-CORE-OBJ = $(SRC:.c=.o)
+CORE-OBJ = $(CORE-SRC:.c=.o)
 CORE-SRC = 
 
 
 COMPILATEUR = asm
-ASM-OBJ = $(SRC:.c=.o)
+ASM-OBJ = $(ASM-SRC:.c=.o)
 ASM-SRC = 	asm_main.c \
 			asm_getASMdata.c \
-			asm_sti.c
+			asm_sti.c \
+			init_start.c
 
-
-%.c.o: %.c $(HEAD)
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ) asm corewar
+	@echo "asm & corewar compiled"
 	
 
 asm: $(ASM-OBJ)
+	$(CC) $(CFLAGS) $(ASM-OBJ) -o $(COMPILATEUR)
 
 corewar: $(CORE-OBJ)
+	$(CC) $(CFLAGS) $(ASM-OBJ) -o $(COMPILATEUR)
 
 clean:
 	rm -rf $(ASM-OBJ)

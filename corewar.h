@@ -23,6 +23,7 @@ typedef struct s_cmd
 
 typedef struct s_asm
 {
+	int		fdSource;
 	char	*name;
 
 }t_asm
@@ -35,5 +36,6 @@ void	s_lstAddEnd(t_cmd **lst, t_cmd *new);
 void	s_lstDelAll(t_cmd **lst, );
 
 int		s_sti(void);
+int 	init_start(t_asm *d);
 
 #endif
