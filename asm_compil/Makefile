@@ -17,7 +17,7 @@ NAME = asm
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 PATH_LIB = ../libft
-LIBFT = libft.a
+LIBNAME = ft
 
 HEAD = asm_compil.h
 
@@ -34,12 +34,12 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) -L$(PATH_LIB) -l$(LIBNAME) $(OBJ)
 
 alone: $(OBJ)
 	make -C ../libft
 	cp ../libft/libft.a .
-	$()
+	$(CC) $(CFLAGS) -o $(NAME) libft.a
 
 clean:
 	rm -rf $(OBJ)

@@ -27,17 +27,14 @@ all:
 	make -C asm_compil
 	cp $(BIN_COREWAR) .
 	cp $(BIN_ASM) .
-	mkdir -m 777 -p log
 
 corewar:
 	make -C libft
 	make -C corewar
-	mkdir -m 777 -p log
 
 asm:
 	make -C libft
 	make clean -C asm_compil
-	mkdir -m 777 -p log
 
 clean:
 	make clean -C libft
@@ -50,7 +47,6 @@ fclean:
 	make fclean -C asm_compil
 	rm $(BIN_ASM) .
 	rm $(BIN_COREWAR) .
-	rm -rf log
 
 re: fclean all
 

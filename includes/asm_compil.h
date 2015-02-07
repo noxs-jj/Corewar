@@ -13,7 +13,7 @@
 #ifndef COREWAR_H
 # define COREWAR_H
 
-# include "libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
 # define LOGS true
 

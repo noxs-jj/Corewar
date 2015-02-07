@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "../includes/asm_compil.h"
 
 int	s_or(void)
 {

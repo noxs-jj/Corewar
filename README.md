@@ -1,12 +1,12 @@
 # Corewar @ 42 Born2code
-C, ASM, Ncurse
+C, Ncurse
 
-####JAQUIER Vincent @ 42 Born2code
+######JAQUIER Vincent @ 42 Born2code
 vin.jacquier@gmail.com 
 
-####DEAGE Felix @ 42 Born2code
+######DEAGE Felix @ 42 Born2code
 
-####CIRCIU Stefan-ciprian @ 42 Born2code
+######CIRCIU Stefan-ciprian @ 42 Born2code
 
-####MOIROUX Jean-Jacques @ 42 Born2code
+######MOIROUX Jean-Jacques @ 42 Born2code
 jjmoiroux@gmail.com

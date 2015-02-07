@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "../includes/asm_compil.h"
 
 t_cmp	*s_lstCreate(char *string)
 {
