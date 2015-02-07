@@ -1,1 +1,15 @@
 log/*.log
+corewar_src/*.o
+corewar_src/*~
+corewar_src/#*
+corewar_src/corewar
+corewar
+asm_compil/*.o
+asm_compil/*~
+asm_compil/#*
+asm_compil/asm
+asm
+libft/*.o
+libft/*~
+libft/#*
+libft/libft.a
