@@ -25,8 +25,17 @@ int 	init_start(char **av)
 	d->fdSource = open(av[1], O_RDONLY);
 	if (d->fdSource < 0)
 	{
-		ft_putendl_fd(ERR_FILE_OPEN, 2);
+		ft_putendl_fd(ERR_FILE_S, 2);
 		return (-1);
+	}
+	if (1 == LOG)
+	{
+		d->debugg = open(PATH_DEBUGG, O_WRONLY || O_CREAT || O_APPEND);
+		if (d->debugg < 0 )
+		{
+			ft_putendl_fd(ERR_FILE_DEBUGG, 2);
+			return (-1);
+		}
 	}
 	return (0);
 }

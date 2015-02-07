@@ -15,12 +15,14 @@
 
 # include "../libft/includes/libft.h"
 
-# define LOGS true
+# define LOG				1
+# define PATH_DEBUGG		"../log/asm.log"
 
 # define ERR_NBR_ARGS 		"asm::main Need 1 arguments: './asm file.s'"
 # define ERR_INIT_FAILED 	"asm::main Initialiation Failed'"
 # define ERR_INIT_MEM 		"asm::init_start Memory initialisation error."
-# define ERR_FILE_OPEN 		"asm::init_start File open error."
+# define ERR_FILE_S 		"asm::init_start file.s open error."
+# define ERR_FILE_DEBUGG	"asm::init_start asm.log open error."
 
 typedef struct s_cmd
 {
@@ -31,6 +33,7 @@ typedef struct s_cmd
 typedef struct s_asm
 {
 	int		fdSource;
+	int 	debugg;
 	char	*name;
 
 }t_asm;

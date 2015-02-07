@@ -14,6 +14,8 @@
 
 int	main(int ac, char **av)
 {
+	t_asm	*d;
+
 	if (ac != 2)
 	{
 		ft_putendl_fd(ERR_NBR_ARGS, 2);
@@ -24,5 +26,13 @@ int	main(int ac, char **av)
 		ft_putendl_fd(ERR_INIT_FAILED, 2);
 		return (-1);
 	}
+
+
+
+
+	d = getASMdata();
+	/* END */
+	close(d->fdSource);
+	close(d->debugg);
 	return (0);
 }
