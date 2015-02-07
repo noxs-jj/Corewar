@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   asm_compil.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 15:38:50 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 15:38:51 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/07 13:30:20 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/07 13:30:22 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define COREWAR_H
 
 # include "libft/includes/libft.h"
+
+# define LOGS true
 
 typedef struct s_cmd
 {
@@ -28,19 +30,6 @@ typedef struct s_asm
 
 }t_asm;
 
-/*
-** COREWAR protoype
-*/
-
-/*
-** NCURSE protoype
-*/
-//void	n_draw_scene();
-
-/*
-** ASM protoype
-*/
-
 t_asm	*getASMdata( void );
 
 t_cmd	*s_lstCreate(char *string);
@@ -50,6 +39,5 @@ void	s_lstDelAll(t_cmd **lst);
 
 int		s_sti(void);
 int 	init_start(char **av);
-
 
 #endif

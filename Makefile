@@ -10,55 +10,48 @@
 #                                                                              #
 #******************************************************************************#
 
-CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -w -pedantic
+COMPIL = 		gcc -Wall -Wextra -Werror
+#COMPIL = /usr/bin/clang -Wall -Wextra -Werror
+#COMPIL = /usr/local/bin/gcc -Wall -Wextra -Werror
+#COMPIL = /usr/bin/gcc -Wall -Wextra -Werror
 
-HEADER = corewar.h
+BIN_ASM =		asm_compil/asm
+BIN_COREWAR =	corewar/corewar
 
-LIB = libft/libft.a
+LIBFT = 		libft/libft.a
 
-COREWAR = corewar
-CORE-OBJ = $(CORE-SRC:.c=.o)
-CORE-SRC = 
-
-
-COMPILATEUR = asm
-ASM-OBJ = $(ASM-SRC:.c=.o)
-ASM-SRC = 	asm_main.c \
-			asm_getASMdata.c \
-			asm_init_start.c \
-			asm_sti.c
-
-
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -o $@ $^
-
-all: $(NAME)
-
-$(LIB):
+all:
 	make -C libft
+	make -C corewar
+	make -C asm_compil
+	cp $(BIN_COREWAR) .
+	cp $(BIN_ASM) .
+	mkdir -m 777 -p log
 
-$(NAME): $(LIB) $(OBJ) asm corewar
-	@echo "asm & corewar compiled"
-	
+corewar:
+	make -C libft
+	make -C corewar
+	mkdir -m 777 -p log
 
-asm: $(LIB) $(ASM-OBJ)
-	$(CC) $(CFLAGS) $(ASM-OBJ) -o $(COMPILATEUR) -lncurses -L libft -lft
-
-corewar: $(LIB) $(CORE-OBJ)
-	$(CC) $(CFLAGS) $(ASM-OBJ) -o $(COMPILATEUR) -lncurses -L libft -lft
+asm:
+	make -C libft
+	make clean -C asm_compil
+	mkdir -m 777 -p log
 
 clean:
 	make clean -C libft
-	rm -rf $(ASM-OBJ)
-	rm -rf $(CORE-OBJ)
+	make clean -C corewar
+	make clean -C asm_compil
 
-fclean: clean
+fclean:
 	make fclean -C libft
-	rm -rf $(COREWAR)
-	rm -rf $(COMPILATEUR)
+	make fclean -C corewar
+	make fclean -C asm_compil
+	rm $(BIN_ASM) .
+	rm $(BIN_COREWAR) .
+	rm -rf log
 
 re: fclean all
 
-.PHONY: all clean fclean re asm corewar
+.PHONY: all clean fclean re corewar asm
