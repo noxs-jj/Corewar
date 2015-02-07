@@ -19,13 +19,13 @@ int 	init_start(char **av)
 	d = getASMdata();
 	if (d == NULL)
 	{
-		fd_putstr_fd("asm-:init_start Memory initialisation error.\n", 2);
+		ft_putendl_fd(ERR_INIT_MEM, 2);
 		return (-1);
 	}
 	d->fdSource = open(av[1], O_RDONLY);
 	if (d->fdSource < 0)
 	{
-		fd_putstr_fd("asm-:init_start File open error.\n", 2);
+		ft_putendl_fd(ERR_FILE_OPEN, 2);
 		return (-1);
 	}
 	return (0);

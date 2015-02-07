@@ -17,6 +17,11 @@
 
 # define LOGS true
 
+# define ERR_NBR_ARGS 		"asm::main Need 1 arguments: './asm file.s'"
+# define ERR_INIT_FAILED 	"asm::main Initialiation Failed'"
+# define ERR_INIT_MEM 		"asm::init_start Memory initialisation error."
+# define ERR_FILE_OPEN 		"asm::init_start File open error."
+
 typedef struct s_cmd
 {
 	char			*line;

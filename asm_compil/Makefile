@@ -10,41 +10,41 @@
 #                                                                              #
 #******************************************************************************#
 
+
 CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra -w -pedantic
+
+HEADER = ../includes/corewar.h
+
+LIB = ../libft/libft.a
 
 NAME = asm
 
-CFLAGS = -Wall -Werror -Wextra -pedantic
-
-PATH_LIB = ../libft
-LIBNAME = ft
-
-HEAD = asm_compil.h
-
-SRC = 	asm_getASMdata.c \
-		asm_main.c \
+SRCS =	asm_getASMdata.c \
 		asm_init_start.c \
-		asm_lst.c
+		asm_main.c
 
-OBJ = $(SRC:.c=.o)
-
-%.o: %.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $< -o $@
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) -L$(PATH_LIB) -l$(LIBNAME) $(OBJ)
-
-alone: $(OBJ)
+$(LIB):
 	make -C ../libft
-	cp ../libft/libft.a .
-	$(CC) $(CFLAGS) -o $(NAME) libft.a
+
+%.o: %.c $(HEADER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
+
+
+$(NAME): $(LIB) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lncurses $(LIB)
 
 clean:
-	rm -rf $(OBJ)
+	make clean -C ../libft
+	rm -rf $(OBJS)
 
 fclean: clean
+	make fclean -C ../libft
 	rm -rf $(NAME)
 
 re: fclean all

@@ -16,12 +16,12 @@ int	main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		fd_putstr_fd("asm-: Need 1 arguments: './asm file.s'\n", 2);
+		ft_putendl_fd(ERR_NBR_ARGS, 2);
 		return (-1);
 	}
 	if (init_start(av) < 0)
 	{
-		fd_putstr_fd("Initialiation Failed'\n", 2);
+		ft_putendl_fd(ERR_INIT_FAILED, 2);
 		return (-1);
 	}
 	return (0);
