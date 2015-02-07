@@ -14,9 +14,20 @@
 
 int main(int ac, char **av)
 {
+	int		fdDebugg;
+
 	if (ac < 3 || ac > 9)
 		ft_putendl_fd(ERR_PARAM, 2);
+	if (1 == LOG)
+	{
+		fdDebugg = open(PATH_DEBUGG, O_WRONLY || O_CREAT || O_APPEND);
+		if (fdDebugg < 0)
+		{
+			ft_putendl_fd(ERR_FILE_DEBUGG, 2);
+			return (-1);
+		}
+	}
 
-
+	close(fdDebugg);
 	return (0);
 }

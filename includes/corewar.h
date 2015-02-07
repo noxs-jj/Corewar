@@ -15,7 +15,11 @@
 
 # include "../libft/includes/libft.h"
 
+# define LOG				1
+# define PATH_DEBUGG		"../log/corewar.log"
+
 # define ERR_PARAM "./corewar [-dump nbr_cycles] [[-n number] champion.cor]..."
+# define ERR_FILE_DEBUGG "core corewar.log open error."
 
 // #define IND_SIZE				2
 #define REG_SIZE				4
