@@ -28,6 +28,19 @@ typedef struct s_asm
 
 }t_asm;
 
+/*
+** COREWAR protoype
+*/
+
+/*
+** NCURSE protoype
+*/
+//void	n_draw_scene();
+
+/*
+** ASM protoype
+*/
+
 t_asm	*getASMdata( void );
 
 t_cmd	*s_lstCreate(char *string);
@@ -37,5 +50,6 @@ void	s_lstDelAll(t_cmd **lst);
 
 int		s_sti(void);
 int 	init_start(char **av);
+
 
 #endif
