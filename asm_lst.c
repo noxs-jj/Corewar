@@ -56,7 +56,7 @@ void	s_lstAddEnd(t_cmd **lst, t_cmd *new)
 	}
 }
 
-void	s_lstDelAll(t_cmd **lst, )
+void	s_lstDelAll(t_cmd **lst)
 {
 	t_cmd	*tmp;
 	t_cmd	*toDel;

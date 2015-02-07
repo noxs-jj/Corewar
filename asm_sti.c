@@ -16,7 +16,7 @@ int	s_sti(void)
 {
 	t_asm	*d;
 
-	d + getASMdata();
+	d = getASMdata();
 
 	return (0);
 }

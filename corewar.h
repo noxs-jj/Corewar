@@ -17,25 +17,25 @@
 
 typedef struct s_cmd
 {
-	char	*line;
-	t_cmd	*next;
-}t_cmd
+	char			*line;
+	struct s_cmd	*next;
+}t_cmd;
 
 typedef struct s_asm
 {
 	int		fdSource;
 	char	*name;
 
-}t_asm
+}t_asm;
 
 t_asm	*getASMdata( void );
 
-t_cmp	*s_lstCreate(char *string);
+t_cmd	*s_lstCreate(char *string);
 void	s_lstFreeLink(t_cmd *toDel);
 void	s_lstAddEnd(t_cmd **lst, t_cmd *new);
-void	s_lstDelAll(t_cmd **lst, );
+void	s_lstDelAll(t_cmd **lst);
 
 int		s_sti(void);
-int 	init_start(t_asm *d);
+int 	init_start(char **av);
 
 #endif
