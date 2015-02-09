@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/09 13:27:56 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/09 13:30:23 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		init_start(t_data *d, int ac, char **av)
 	}
 	if (LOG == 1)
 	{
-		d->fdDebugg = open(PATH_DEBUGG, O_WRONLY|O_CREAT|O_TRUNC);
+		d->fdDebugg = open(PATH_DEBUGG, O_WRONLY|O_CREAT|O_TRUNC, 0777);
 		if (d->fdDebugg < 0)
 		{
 			ft_putendl_fd(ERR_FILE_DEBUGG, 2);
