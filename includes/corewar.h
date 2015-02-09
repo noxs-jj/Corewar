@@ -94,6 +94,11 @@ typedef	struct	s_data
 
 int		init_start(t_data *d, int ac, char **av);
 
+// NCurses
+void	renderClose(t_data *d);
+void	renderDraw(t_data *d);
+int 	renderInit(t_data *d);
+
 #endif
 
 
