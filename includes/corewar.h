@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/09 13:28:42 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/09 15:49:08 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 // # define IND_CODE				3
 
 #define MAX_PLAYERS				4
-#define MAX_ARGS_NUMBER			(3 + 2 * MAX_PLAYERS)
+#define MAX_ARGS_NUMBER			(3 + 3 * MAX_PLAYERS)
 
 #define MEM_SIZE				(4 * 1024)
 // #define IDX_MOD					(MEM_SIZE / 8)
@@ -93,6 +93,7 @@ typedef	struct	s_data
 
 
 int		init_start(t_data *d, int ac, char **av);
+int		print_error(char *str);
 t_data	*getData(void);
 
 // NCurses
