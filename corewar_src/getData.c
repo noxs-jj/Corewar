@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_draw_scene.c                                    :+:      :+:    :+:   */
+/*   getData.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 12:42:44 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/09 12:42:45 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 15:18:57 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 15:18:58 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-#include "../includes/render.h"
 
-void	renderDraw(t_data *d)
+t_data	*getData(void)
 {
-	werase(d->window);
+	static	t_data	*d = NULL;
 
-
-
-
-
-
-	refresh();
-	wrefresh(d->window);
+	if (d == NULL)
+	{
+		d = (t_data *)malloc(sizeof(t_data));
+		if (d == NULL)
+			return (NULL);
+	}
+	return (d);
 }

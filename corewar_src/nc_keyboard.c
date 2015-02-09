@@ -13,9 +13,11 @@
 #include "../includes/corewar.h"
 #include "../includes/render.h"
 
-void	keyboard( t_data *d ){
+void	keyboard(t_data *d)
+{
 	int 		keyInput;
 
+	(void)d;
 	timeout(1);
 	keyInput = getch();
 	if (keyInput == 'Q' && keyInput == 'E') { // UP
@@ -23,6 +25,6 @@ void	keyboard( t_data *d ){
 		_exit(0);
 		
 	}
-	else if (keyInput == ' ')
-		// function PAUSE
-	}
+	// else if (keyInput == ' ')
+	// 	// function PAUSE
+}

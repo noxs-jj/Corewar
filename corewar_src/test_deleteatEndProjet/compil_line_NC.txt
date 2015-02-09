@@ -1,0 +1,2 @@
+lear ; gcc -Wall -Werror -Wextra -lncurses nc_*.c getData.c test/nc_maintest.c ../libft/libft.a
+

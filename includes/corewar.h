@@ -87,12 +87,13 @@ typedef struct		s_header
 typedef	struct	s_data
 {
 	t_header	header[MAX_PLAYERS];
-	WINDOW		*windows;
+	WINDOW		*window;
 	int			fdDebugg;
 }				t_data;
 
 
 int		init_start(t_data *d, int ac, char **av);
+t_data	*getData(void);
 
 // NCurses
 void	renderClose(t_data *d);

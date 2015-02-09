@@ -64,7 +64,7 @@
 # define L_Y_P3_LIVE_N 233		// default 233 "0" value
 
 // Player 4
-# define L_Y_PLAY_2 23			// default 23 "Player 4"
+# define L_Y_PLAY_4 23			// default 23 "Player 4"
 # define L_Y_P4_LAST 24			// default 24 "Last live :"
 # define L_Y_P4_LAST_N 233		// default 233 "0" value
 # define L_Y_P4_LIVE 25			// default 25 "Lives in current period :"
