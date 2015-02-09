@@ -9,6 +9,7 @@ vin.jacquier@gmail.com
 fdeage@gmail.com
 
 ######CIRCIU Stefan-ciprian @ 42 Born2code
+stefan.circiu@gmail.com
 
 ######MOIROUX Jean-Jacques @ 42 Born2code
 jjmoiroux@gmail.com
