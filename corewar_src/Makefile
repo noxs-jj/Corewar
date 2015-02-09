@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/09 12:22:10 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/09 17:19:36 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ LIB = ../libft/libft.a
 
 NAME = corewar
 SRCS =	main.c \
-		init_start.c
+		init_start.c \
+		print_error.c
 
 OBJS = $(SRCS:.c=.o)
 

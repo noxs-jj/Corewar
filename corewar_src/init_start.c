@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/09 15:44:27 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/09 17:14:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static int champion(t_data *d, int ac, char **av, int i)
 {
 	int number;
 
-	number = 0;
+	number = 1;
 	if (++d->players >= MAX_PLAYERS)
 		return (-1);
-	while (checkNumber(d, number == -1) && number < MAX_PLAYERS)
+	while (checkNumber(d, number) == -1 && number <= MAX_PLAYERS)
 		number++;
 	d->prog[d->players].filename = av[i];
 	d->prog[d->players].number = number;

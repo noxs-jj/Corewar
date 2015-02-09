@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/09 15:49:08 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/09 17:17:05 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,17 @@ typedef struct		s_header
 	// unsigned int		magic;
 	//	stocker le prog
 	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		number;
+	char 				*filename;
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
 typedef	struct	s_data
 {
-	t_header	header[MAX_PLAYERS];
+	t_header	prog[MAX_PLAYERS];
+	int 		players;
+	int 		dump;
 	WINDOW		*window;
 	int			fdDebugg;
 }				t_data;
@@ -102,6 +106,3 @@ void	renderDraw(t_data *d);
 int 	renderInit(t_data *d);
 
 #endif
-
-
-
