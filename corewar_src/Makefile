@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/07 13:53:52 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/09 12:22:10 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ HEADER = ../includes/corewar.h
 LIB = ../libft/libft.a
 
 NAME = corewar
-SRCS = main.c
+SRCS =	main.c \
+		init_start.c
 
 OBJS = $(SRCS:.c=.o)
 

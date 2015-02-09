@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/09 12:26:01 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/09 13:27:56 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int main(int ac, char **av)
+int		init_start(t_data *d, int ac, char **av)
 {
-	t_data	d;
-	if (init_start(&d, ac, av))
+	if (ac < 3 || ac > MAX_ARGS_NUMBER)
+	{
+		ft_putendl_fd(ERR_PARAM, 2);
 		return (-1);
-
+	}
 	if (LOG == 1)
-		close(d.fdDebugg);
+	{
+		d->fdDebugg = open(PATH_DEBUGG, O_WRONLY|O_CREAT|O_TRUNC);
+		if (d->fdDebugg < 0)
+		{
+			ft_putendl_fd(ERR_FILE_DEBUGG, 2);
+			return (-1);
+		}
+	}
 	return (0);
 }
