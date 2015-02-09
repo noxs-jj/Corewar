@@ -99,6 +99,7 @@ typedef	struct	s_data
 int		init_start(t_data *d, int ac, char **av);
 int		print_error(char *str);
 t_data	*getData(void);
+void	writeL(char *str);
 
 // NCurses
 void	renderClose(t_data *d);

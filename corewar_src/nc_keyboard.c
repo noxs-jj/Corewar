@@ -22,6 +22,7 @@ void	keyboard(t_data *d)
 	keyInput = getch();
 	if (keyInput == 'Q' && keyInput == 'E') { // UP
 		// Exit function who free all program
+		renderClose(d);
 		_exit(0);
 		
 	}

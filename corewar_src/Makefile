@@ -19,9 +19,19 @@ HEADER = ../includes/corewar.h
 LIB = ../libft/libft.a
 
 NAME = corewar
+
 SRCS =	main.c \
 		init_start.c \
-		print_error.c
+		print_error.c \
+		writeL.c \
+		getData.c \
+		nc_init.c \
+		nc_draw_scene.c \
+		nc_close_free.c \
+		nc_keyboard.c \
+		nc_LegendColumn.c \
+		nc_legendPlayerSentence.c \
+		nc_LegendSentence.c
 
 OBJS = $(SRCS:.c=.o)
 
