@@ -5,6 +5,7 @@ C, Ncurse
 vin.jacquier@gmail.com 
 
 ######DEAGE Felix @ 42 Born2code
+fdeage@gmail.com
 
 ######CIRCIU Stefan-ciprian @ 42 Born2code
 
