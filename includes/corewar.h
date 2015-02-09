@@ -104,5 +104,8 @@ t_data	*getData(void);
 void	renderClose(t_data *d);
 void	renderDraw(t_data *d);
 int 	renderInit(t_data *d);
+void	renderLegendColumn(t_data *d);
+void	renderLegendSentence(t_data *d);
+void 	renderLegendPlayerSentence(t_data *d);
 
 #endif

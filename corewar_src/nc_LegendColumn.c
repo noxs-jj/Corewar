@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_maintest.c                                      :+:      :+:    :+:   */
+/*   nc_LegendColumn.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 15:01:42 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/09 15:01:43 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 17:48:03 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 17:48:04 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../includes/corewar.h"
+#include "../includes/render.h"
 
-int	main(void)
+void	renderLegendColumn(t_data *d)
 {
-	t_data *d = getData();
+	int y;
 
-	ft_putstr("1\n");
-	renderInit(d);
-	//ft_putstr("2\n");
-	renderDraw(d);
-	while (1)
-		;
-	ft_putstr("3\n");
-	renderInit(d);
-	ft_putstr("4\n");
-
-	return (0);
+	y = 1;
+	while (y < MAP_HEIGHT - 1)
+	{
+		mvwaddch(d->window, y, L_X_START, '|');
+		y++;
+	}
 }

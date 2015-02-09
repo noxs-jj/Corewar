@@ -15,12 +15,13 @@
 
 void	renderDraw(t_data *d)
 {
+
 	werase(d->window);
 
-
-
-
-
+	wborder(d->window, '|', '|', '-', '-', '+', '+', '+', '+');
+	renderLegendColumn(d);
+	renderLegendSentence(d);
+	renderLegendPlayerSentence(d);
 
 	refresh();
 	wrefresh(d->window);
