@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 13:21:20 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/11 16:27:30 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,41 @@
 
 // afficher 0 si le char est seul
 
-void	ft_putnbrhexaa(unsigned char n)
+void	getHexa(char *str[2], unsigned char n)
 {
+	int	x;
+
+	x = 0;
+	while(n >= 16)
+	{
+		if (n % 16 < 10)
+			(*str)[x] = n % 16 + '0';
+		else
+		{
+			if ((n % 16) == 10)
+				(*str)[x] = 'a';
+			else if ((n % 16) == 11)
+				(*str)[x] = 'b';
+			else if ((n % 16) == 12)
+				(*str)[x] = 'c';
+			else if ((n % 16) == 13)
+				(*str)[x] = 'd';
+			else if ((n % 16) == 14)
+				(*str)[x] = 'e';
+			else if ((n % 16) == 15)
+				(*str)[x] = 'f';
+		}
+		n = n / 16;
+		x++;
+	}
+}
+
+void	ft_putnbrhexaa(unsigned char n, bool test)
+{
+	if (n < 10 && test == true)
+		ft_putchar('0');
 	if (n >= 16)
-		ft_putnbrhexaa(n / 16);
+		ft_putnbrhexaa(n / 16, false);
 	if ((n % 16) < 10)
 		ft_putchar((n % 16) + '0');
 	else
@@ -42,15 +73,22 @@ static int	read_file(t_data *d, int fd)
 {
 	char buff[BUFFSIZE];
 	int		ret;
+	int		print = 1;
+	char	str[2];
 
 	ft_strclr(buff);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0)
 	{
 		// printf("%d\n", buff[0]);
-		ft_putnbrhexaa(buff[0]);
-		// if (ft_isalnum(buff[0]))
-		// 	ft_putstr(buff);
-
+		// getHexa(&str, 62);
+		// ft_putstr(str);
+		ft_putnbrhexaa(buff[0], true);
+		if (print % 2 == 0)
+		{
+			print = 0;
+			ft_putchar(' ');
+		}
+		print++;
 		ft_strclr(buff);
 	}
 	return (ret);

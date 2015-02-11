@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/11 11:28:27 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/11 15:50:34 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ SRCS =	main.c \
 		nc_LegendColumn.c \
 		nc_legendPlayerSentence.c \
 		nc_LegendSentence.c \
+		nc_LegendPlayerValue.c \
+		nc_LegendInfoValue.c \
 		read_files.c
 
 OBJS = $(SRCS:.c=.o)
