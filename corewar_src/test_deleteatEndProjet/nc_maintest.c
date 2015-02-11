@@ -12,6 +12,7 @@
 
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
+#include <time.h>
 
 int	main(void)
 {
@@ -22,7 +23,7 @@ int	main(void)
 	//ft_putstr("2\n");
 	renderDraw(d);
 	while (1)
-		;
+		sleep(10);
 	ft_putstr("3\n");
 	renderInit(d);
 	ft_putstr("4\n");

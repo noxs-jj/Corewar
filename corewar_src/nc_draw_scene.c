@@ -15,14 +15,14 @@
 
 void	renderDraw(t_data *d)
 {
-
 	werase(d->window);
-
 	wborder(d->window, '|', '|', '-', '-', '+', '+', '+', '+');
 
 	renderLegendColumn(d);
 	renderLegendSentence(d);
 	renderLegendPlayerSentence(d);
+	renderLegendPlayerValue(d);
+	renderLegendInfoValue(d);
 
 	refresh();
 	wrefresh(d->window);
