@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 18:12:00 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/11 18:36:15 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static int	read_file(t_data *d, int fd, int number)
 
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(str, 3);
+	ft_bzero(d->prog[number].prog, MEM_SIZE / 6);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && (index + 2) < MEM_SIZE / 6) // read prog only
 	{
 		ft_putnbrhexaa(buff[0], true, 1, &str);
@@ -109,13 +110,6 @@ static int	read_file(t_data *d, int fd, int number)
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
-	ft_putchar('\n');
-	ft_putendl(d->prog[number].prog_name);
-	ft_putchar('\n');
-	ft_putendl(d->prog[number].comment);
-	ft_putchar('\n');
-	ft_putendl(d->prog[number].prog);
-	ft_putchar('\n');
 	if (ret == -1 || (index + 2) >= MEM_SIZE / 6)
 		return (-1);
 	return (ret);

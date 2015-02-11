@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 17:40:50 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/11 18:32:18 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct		s_header
 	unsigned int		number;
 	char 				*filename; // no malloc
 	unsigned int		prog_size;
+	
 	unsigned char		prog[MEM_SIZE / 6];
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
