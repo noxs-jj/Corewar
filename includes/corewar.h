@@ -101,6 +101,7 @@ typedef	struct	s_data
 	int 		dump;
 	WINDOW		*window;
 	int			fdDebugg;
+	char 		*map;
 }				t_data;
 
 

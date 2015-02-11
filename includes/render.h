@@ -27,6 +27,14 @@
 
 // L = Legends
 # define L_X_START 196			// default 197
+# define L_X_END 195			// default 195
+
+# define L_Y_MAP_START 2 		// default 2
+# define L_X_MAP_START 2 		// default 2
+# define L_Y_MAP_END 66			// default 66
+# define L_X_MAP_END 194		// default 194
+
+
 # define L_X_WRITE 199			// default 199 column
 # define L_X_WRITE_value 233	// default 233
 # define L_Y_START 0 			// default 0

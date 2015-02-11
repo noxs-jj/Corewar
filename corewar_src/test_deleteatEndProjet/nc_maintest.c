@@ -16,17 +16,25 @@
 
 int	main(void)
 {
+	int 	i = 0;
 	t_data *d = getData();
 
-	ft_putstr("1\n");
+	d->map = (char *)malloc(sizeof(char) * MEM_SIZE);
+	if (d->map == NULL)
+		return (print_error("Map malloc error"));
+
+	while (i < MEM_SIZE)
+	{
+		d->map[i] = 0;
+		i++;
+	}
+
+
 	renderInit(d);
-	//ft_putstr("2\n");
 	renderDraw(d);
 	while (1)
 		sleep(10);
-	ft_putstr("3\n");
 	renderInit(d);
-	ft_putstr("4\n");
 
 	return (0);
 }
