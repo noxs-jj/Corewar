@@ -6,94 +6,119 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 16:27:30 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/11 18:12:00 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-# include <stdio.h>
 
-// afficher 0 si le char est seul
-
-void	getHexa(char *str[2], unsigned char n)
-{
-	int	x;
-
-	x = 0;
-	while(n >= 16)
-	{
-		if (n % 16 < 10)
-			(*str)[x] = n % 16 + '0';
-		else
-		{
-			if ((n % 16) == 10)
-				(*str)[x] = 'a';
-			else if ((n % 16) == 11)
-				(*str)[x] = 'b';
-			else if ((n % 16) == 12)
-				(*str)[x] = 'c';
-			else if ((n % 16) == 13)
-				(*str)[x] = 'd';
-			else if ((n % 16) == 14)
-				(*str)[x] = 'e';
-			else if ((n % 16) == 15)
-				(*str)[x] = 'f';
-		}
-		n = n / 16;
-		x++;
-	}
-}
-
-void	ft_putnbrhexaa(unsigned char n, bool test)
+void	ft_putnbrhexaa(unsigned char n, bool test, int index, char (*str)[])
 {
 	if (n < 10 && test == true)
-		ft_putchar('0');
+	{
+		(*str)[index] = '0';
+		index--;
+	}
 	if (n >= 16)
-		ft_putnbrhexaa(n / 16, false);
+		ft_putnbrhexaa(n / 16, false, index - 1, str);
 	if ((n % 16) < 10)
-		ft_putchar((n % 16) + '0');
+		(*str)[index] = (n % 16) + '0';
 	else
 	{
 		if ((n % 16) == 10)
-			ft_putchar('a');
+			(*str)[index] = 'a';
 		else if ((n % 16) == 11)
-			ft_putchar('b');
+			(*str)[index] = 'b';
 		else if ((n % 16) == 12)
-			ft_putchar('c');
+			(*str)[index] = 'c';
 		else if ((n % 16) == 13)
-			ft_putchar('d');
+			(*str)[index] = 'd';
 		else if ((n % 16) == 14)
-			ft_putchar('e');
+			(*str)[index] = 'e';
 		else if ((n % 16) == 15)
-			ft_putchar('f');
+			(*str)[index] = 'f';
 	}
 }
 
-static int	read_file(t_data *d, int fd)
+static int	read_prog_comment(t_data *d, int fd, int number)
 {
 	char buff[BUFFSIZE];
 	int		ret;
-	int		print = 1;
-	char	str[2];
+	int		index;
 
-	ft_strclr(buff);
-	while ((ret = read(fd, buff, BUFFSIZE)) > 0)
+	index = 0;
+	if (lseek(fd, 140, SEEK_SET) < 0)
+		return (-1);
+	ft_bzero(buff, BUFFSIZE);
+	ft_bzero(d->prog[number].comment, COMMENT_LENGTH + 1);
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < COMMENT_LENGTH + 1)
 	{
-		// printf("%d\n", buff[0]);
-		// getHexa(&str, 62);
-		// ft_putstr(str);
-		ft_putnbrhexaa(buff[0], true);
-		if (print % 2 == 0)
-		{
-			print = 0;
-			ft_putchar(' ');
-		}
-		print++;
-		ft_strclr(buff);
+		if (buff[0] == 0)
+			return (0);
+		strncpy(&d->prog[number].comment[index], buff, 1);
+		index += 1;
+		ft_bzero(buff, BUFFSIZE);
 	}
 	return (ret);
+}
 
+static int	read_prog_name(t_data *d, int fd, int number)
+{
+	char buff[BUFFSIZE];
+	int		ret;
+	int		index;
 
+	index = 0;
+	if (lseek(fd, 4, SEEK_SET) < 0)
+		return (-1);
+	ft_bzero(buff, BUFFSIZE);
+	ft_bzero(d->prog[number].prog_name, PROG_NAME_LENGTH + 1);
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < PROG_NAME_LENGTH + 1)
+	{
+		if (buff[0] == 0)
+			return (read_prog_comment(d, fd, number));
+		strncpy(&d->prog[number].prog_name[index], buff, 1);
+		index += 1;
+		ft_bzero(buff, BUFFSIZE);
+	}
+	return (-1);
+}
+
+static int	read_file(t_data *d, int fd, int number)
+{
+	char buff[BUFFSIZE];
+	int		ret;
+	int 	index;
+	char	str[3];
+
+	index = 0;
+	//must read .name and .comment
+	if (read_prog_name(d, fd, number) < 0)
+		return (-1);
+	if (lseek(fd, 2192, SEEK_SET) < 0)
+		return (-1);
+
+	ft_bzero(buff, BUFFSIZE);
+	ft_bzero(str, 3);
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && (index + 2) < MEM_SIZE / 6) // read prog only
+	{
+		ft_putnbrhexaa(buff[0], true, 1, &str);
+		strncpy(&d->prog[number].prog[index], str, 2);
+		// ft_putstr(str);
+		index += 2;
+		ft_bzero(buff, BUFFSIZE);
+		ft_bzero(str, 3);
+	}
+	ft_putchar('\n');
+	ft_putendl(d->prog[number].prog_name);
+	ft_putchar('\n');
+	ft_putendl(d->prog[number].comment);
+	ft_putchar('\n');
+	ft_putendl(d->prog[number].prog);
+	ft_putchar('\n');
+	if (ret == -1 || (index + 2) >= MEM_SIZE / 6)
+		return (-1);
+	return (ret);
 }
 
 int		read_files(t_data *d)
@@ -106,7 +131,7 @@ int		read_files(t_data *d)
 	{
 		if ((fd = open(d->prog[i].filename, O_RDONLY)) < 0)
 			return (print_error(ERR_FILE));
-		if (read_file(d, fd) < -1)
+		if (read_file(d, fd, i) < -1)
 			return (print_error(ERR_READ));
 		close(fd);
 		i++;

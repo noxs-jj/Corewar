@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 12:24:52 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/11 17:40:50 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <ncurses.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 # define LOG				1
 # define PATH_DEBUGG		"../log/corewar.log"
@@ -40,7 +42,7 @@
 
 #define MEM_SIZE				(4 * 1024)
 // #define IDX_MOD					(MEM_SIZE / 8)
-#define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
+#define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2)
 
 // #define COMMENT_CHAR				'#'
 // #define LABEL_CHAR				':'
@@ -87,6 +89,7 @@ typedef struct		s_header
 	unsigned int		number;
 	char 				*filename; // no malloc
 	unsigned int		prog_size;
+	unsigned char		prog[MEM_SIZE / 6];
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
