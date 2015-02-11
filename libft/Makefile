@@ -35,17 +35,17 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar -rc $(NAME) $(OBJ) $(HEADER)
+	ar -rc $(NAME) $(OBJ) $(HEADER)
 
 clean:
-	@rm -rf $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
 %.o: %.c $(HEADER)
-	@gcc -c $< -o $@
+	gcc $(CFLAGS) -c $< -o $@
 
 .PHONY: all clean fclean re

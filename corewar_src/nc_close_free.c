@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   nc_close_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 13:08:33 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 13:08:34 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/corewar.h"
+#include "../includes/render.h"
 
-void	ft_bzero(void *s, size_t n)
+void	renderClose(t_data *d)
 {
-	size_t			i;
-	unsigned char	*tmp;
-
-	if (n > 0)
-	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
-	}
+	delwin(d->window);
+	wrefresh(d->window);
+	refresh();
+	endwin();
 }

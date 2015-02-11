@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   nc_draw_scene.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 12:42:44 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 12:42:45 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/corewar.h"
+#include "../includes/render.h"
 
-void	ft_bzero(void *s, size_t n)
+void	renderDraw(t_data *d)
 {
-	size_t			i;
-	unsigned char	*tmp;
+	werase(d->window);
+	wborder(d->window, '|', '|', '-', '-', '+', '+', '+', '+');
 
-	if (n > 0)
-	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
-	}
+	renderLegendColumn(d);
+	renderLegendSentence(d);
+	renderLegendPlayerSentence(d);
+	renderLegendPlayerValue(d);
+	renderLegendInfoValue(d);
+
+	refresh();
+	wrefresh(d->window);
 }

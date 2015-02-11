@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   nc_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 12:42:28 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 12:42:29 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/corewar.h"
+#include "../includes/render.h"
 
-void	ft_bzero(void *s, size_t n)
+int 	renderInit(t_data *d)
 {
-	size_t			i;
-	unsigned char	*tmp;
-
-	if (n > 0)
-	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
-	}
+	initscr();
+	cbreak();
+	noecho();
+	refresh();
+	nodelay(stdscr, true);
+	curs_set(0);
+	d->window = newwin(MAP_HEIGHT , MAP_WIDTH, 0, 0);
+	wrefresh(d->window);
+	return (0);
 }

@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/09 14:18:14 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/corewar.h"
 
-void	ft_bzero(void *s, size_t n)
+int		print_error(char *str)
 {
-	size_t			i;
-	unsigned char	*tmp;
-
-	if (n > 0)
-	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
-	}
+	ft_putendl_fd(str, 2);
+	return (-1);
 }

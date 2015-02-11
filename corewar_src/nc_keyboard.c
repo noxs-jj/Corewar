@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   nc_keyboard.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 13:39:53 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 13:39:54 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/corewar.h"
+#include "../includes/render.h"
 
-void	ft_bzero(void *s, size_t n)
+void	keyboard(t_data *d)
 {
-	size_t			i;
-	unsigned char	*tmp;
+	int 		keyInput;
 
-	if (n > 0)
-	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
+	(void)d;
+	timeout(1);
+	keyInput = getch();
+	if (keyInput == 'Q' && keyInput == 'E') { // UP
+		// Exit function who free all program
+		renderClose(d);
+		_exit(0);
+		
 	}
+	// else if (keyInput == ' ')
+	// 	// function PAUSE
 }

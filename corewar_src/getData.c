@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   getData.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 15:18:57 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 15:18:58 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/corewar.h"
 
-void	ft_bzero(void *s, size_t n)
+t_data	*getData(void)
 {
-	size_t			i;
-	unsigned char	*tmp;
+	static	t_data	*d = NULL;
 
-	if (n > 0)
+	if (d == NULL)
 	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
+		d = (t_data *)malloc(sizeof(t_data));
+		if (d == NULL)
+			return (NULL);
 	}
+	return (d);
 }

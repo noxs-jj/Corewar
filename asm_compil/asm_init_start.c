@@ -30,7 +30,7 @@ int 	init_start(char **av)
 	}
 	if (1 == LOG)
 	{
-		d->debugg = open(PATH_DEBUGG, O_WRONLY || O_CREAT || O_APPEND);
+		d->debugg = open(PATH_DEBUGG, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		if (d->debugg < 0 )
 		{
 			ft_putendl_fd(ERR_FILE_DEBUGG, 2);

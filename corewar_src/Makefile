@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/07 13:53:52 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/11 15:50:34 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,22 @@ HEADER = ../includes/corewar.h
 LIB = ../libft/libft.a
 
 NAME = corewar
-SRCS = main.c
+
+SRCS =	main.c \
+		init_start.c \
+		print_error.c \
+		writeL.c \
+		getData.c \
+		nc_init.c \
+		nc_draw_scene.c \
+		nc_close_free.c \
+		nc_keyboard.c \
+		nc_LegendColumn.c \
+		nc_legendPlayerSentence.c \
+		nc_LegendSentence.c \
+		nc_LegendPlayerValue.c \
+		nc_LegendInfoValue.c \
+		read_files.c
 
 OBJS = $(SRCS:.c=.o)
 

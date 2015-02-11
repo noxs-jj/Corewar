@@ -1,0 +1,1 @@
+rm a.out ; clear ; gcc -Wall -Werror -Wextra -lncurses nc_*.c getData.c test_deleteatEndProjet/nc_maintest.c ../libft/libft.a ; ./a.out

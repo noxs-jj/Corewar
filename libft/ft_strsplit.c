@@ -63,7 +63,6 @@ char		**ft_strsplit(char const *s, char c)
 {
 	size_t	i;
 	size_t	y;
-	size_t	s_len;
 	char	**tab;
 
 	if (init(s, c, &tab) == -1)

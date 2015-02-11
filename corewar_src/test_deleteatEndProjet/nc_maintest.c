@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   nc_maintest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 15:33:08 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/24 15:41:21 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 15:01:42 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 15:01:43 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
+#include <time.h>
 
-void	ft_bzero(void *s, size_t n)
+int	main(void)
 {
-	size_t			i;
-	unsigned char	*tmp;
+	t_data *d = getData();
 
-	if (n > 0)
-	{
-		tmp = s;
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = 0;
-			i++;
-		}
-	}
+	ft_putstr("1\n");
+	renderInit(d);
+	//ft_putstr("2\n");
+	renderDraw(d);
+	while (1)
+		sleep(10);
+	ft_putstr("3\n");
+	renderInit(d);
+	ft_putstr("4\n");
+
+	return (0);
 }
