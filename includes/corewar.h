@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/09 17:17:05 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/11 12:24:52 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 
 # define ERR_PARAM "./corewar [-dump nbr_cycles] [[-n number] champion.cor]..."
 # define ERR_FILE_DEBUGG "core corewar.log open error."
+# define ERR_FILE "File doesn't exist"
+# define ERR_READ "Read file error"
+
+# define BUFFSIZE 1
 
 // #define IND_SIZE				2
 #define REG_SIZE				4
@@ -81,7 +85,7 @@ typedef struct		s_header
 	//	stocker le prog
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int		number;
-	char 				*filename;
+	char 				*filename; // no malloc
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
@@ -100,6 +104,7 @@ int		init_start(t_data *d, int ac, char **av);
 int		print_error(char *str);
 t_data	*getData(void);
 void	writeL(char *str);
+int		read_files(t_data *d);
 
 // NCurses
 void	renderClose(t_data *d);
