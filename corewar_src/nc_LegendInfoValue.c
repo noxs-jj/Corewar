@@ -29,5 +29,4 @@ void	renderLegendInfoValue(t_data *d)
 	mvwprintw(d->window, L_Y_N_LIVE, L_X_N_LIVE_VALUE, S_DEFAULT_VALUE);
 	// "NBR_LIVE : value"
 	mvwprintw(d->window, L_Y_N_CHECK, L_X_N_CHECK_VALUE, S_DEFAULT_VALUE);
-
 }
