@@ -6,39 +6,31 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 18:36:15 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/12 13:35:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_putnbrhexaa(unsigned char n, bool test, int index, char (*str)[])
+
+void	ft_putnbrhexaa(unsigned char n, char (*str)[])
 {
-	if (n < 10 && test == true)
+	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+							'a', 'b', 'c', 'd', 'e', 'f'};
+	if (n < 16)
 	{
-		(*str)[index] = '0';
-		index--;
+		(*str)[0] = '0';
+		(*str)[1] = tab[n];
 	}
-	if (n >= 16)
-		ft_putnbrhexaa(n / 16, false, index - 1, str);
-	if ((n % 16) < 10)
-		(*str)[index] = (n % 16) + '0';
 	else
 	{
-		if ((n % 16) == 10)
-			(*str)[index] = 'a';
-		else if ((n % 16) == 11)
-			(*str)[index] = 'b';
-		else if ((n % 16) == 12)
-			(*str)[index] = 'c';
-		else if ((n % 16) == 13)
-			(*str)[index] = 'd';
-		else if ((n % 16) == 14)
-			(*str)[index] = 'e';
-		else if ((n % 16) == 15)
-			(*str)[index] = 'f';
+		(*str)[0] = tab[(n / 16) % 16];
+		(*str)[1] = tab[n % 16];
 	}
 }
+
+// choo-choo, motherf*****s ! 126 (helltrain : 9)
+// I know i cant win 128 (bigzork : 7)
 
 static int	read_prog_comment(t_data *d, int fd, int number)
 {
@@ -47,7 +39,7 @@ static int	read_prog_comment(t_data *d, int fd, int number)
 	int		index;
 
 	index = 0;
-	if (lseek(fd, 140, SEEK_SET) < 0)
+	if (lseek(fd, 135 - ft_strlen(d->prog[number].prog_name), SEEK_CUR) < 0)// 140, SEEK_SET
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(d->prog[number].comment, COMMENT_LENGTH + 1);
@@ -84,6 +76,10 @@ static int	read_prog_name(t_data *d, int fd, int number)
 	return (-1);
 }
 
+
+// choo-choo, motherf*****s ! 126 (helltrain : 9)
+// I know i cant win 128 (bigzork : 7)
+
 static int	read_file(t_data *d, int fd, int number)
 {
 	char buff[BUFFSIZE];
@@ -92,24 +88,38 @@ static int	read_file(t_data *d, int fd, int number)
 	char	str[3];
 
 	index = 0;
-	//must read .name and .comment
 	if (read_prog_name(d, fd, number) < 0)
 		return (-1);
-	if (lseek(fd, 2192, SEEK_SET) < 0)
+	if (lseek(fd, 2192, SEEK_SET) < 0) // 2192
 		return (-1);
+	// ft_bzero(buff, BUFFSIZE);
+	// while ((ret = read(fd, buff, BUFFSIZE)) > 0 && buff[0] == 0)
+	// {
+	// 	ft_bzero(buff, BUFFSIZE);
+	// }
 
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(str, 3);
 	ft_bzero(d->prog[number].prog, MEM_SIZE / 6);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && (index + 2) < MEM_SIZE / 6) // read prog only
 	{
-		ft_putnbrhexaa(buff[0], true, 1, &str);
+		ft_putnbrhexaa(buff[0], &str);
+		// ft_putnbrhexaa(buff[0], true, 0, &str);
 		strncpy(&d->prog[number].prog[index], str, 2);
-		// ft_putstr(str);
+		// printf("%d\n", buff[0]);
+		// sleep(1);
 		index += 2;
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
+	ft_putchar('\n');
+	ft_putendl(d->prog[number].prog_name);
+	ft_putchar('\n');
+	ft_putendl(d->prog[number].comment);
+	ft_putchar('\n');
+	ft_putendl(d->prog[number].prog);
+	ft_putchar('\n');
+	ft_putchar('\n');
 	if (ret == -1 || (index + 2) >= MEM_SIZE / 6)
 		return (-1);
 	return (ret);
