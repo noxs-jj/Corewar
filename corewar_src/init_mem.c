@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:25:21 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:17:21 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/12 17:52:07 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int		init_mem(t_data *d)
 		return (print_error(ERR_MAP_ALLOC));
 	while (i < MEM_SIZE)
 	{
-		ft_bzero(d->map[i].hex, 3);
+		d->map[i].hex[0] = '0';
+		d->map[i].hex[1] = '0';
+		d->map[i].hex[2] = 0;
 		d->map[i].champ = 0;
 		d->map[i].present = 0;
 		d->map[i].used = false;
