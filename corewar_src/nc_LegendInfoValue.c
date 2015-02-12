@@ -15,7 +15,7 @@
 
 void	renderLegendInfoValue(t_data *d)
 {
-	// "value Cycle/second limit : 0"
+	// "value Cycle/second limit : 0"	
 	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, S_DEFAULT_VALUE);
 	// "value of Cycle: 0"
 	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, S_DEFAULT_VALUE);

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   putHexNbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:18:52 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/12 16:26:01 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/12 16:26:27 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int main(int ac, char **av)
+void	ft_putHexNbr(unsigned char n, char (*str)[])
 {
-	t_data	d;
-	if (init_start(&d, ac, av) < -1)
-		return (-1);
-	if (read_files(&d) < -1)
-		return (-1);
-	if (init_mem(&d) < 0)
-		return (-1);
-	if (LOG == 1)
-		close(d.fdDebugg);
-	return (0);
+	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+							'a', 'b', 'c', 'd', 'e', 'f'};
+	if (n < 16)
+	{
+		(*str)[0] = '0';
+		(*str)[1] = tab[n];
+	}
+	else
+	{
+		(*str)[0] = tab[(n / 16) % 16];
+		(*str)[1] = tab[n % 16];
+	}
 }
