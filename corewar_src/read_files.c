@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 16:26:22 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/12 17:19:10 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	read_prog_comment(t_data *d, int fd, int number)
 	if (lseek(fd, 135 - ft_strlen(d->prog[number].prog_name), SEEK_CUR) < 0)// 140, SEEK_SET
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
-	ft_bzero(d->prog[number].comment, COMMENT_LENGTH + 1);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < COMMENT_LENGTH + 1)
 	{
 		if (buff[0] == 0)
@@ -44,7 +43,6 @@ static int	read_prog_name(t_data *d, int fd, int number)
 	if (lseek(fd, 4, SEEK_CUR) < 0)
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
-	ft_bzero(d->prog[number].prog_name, PROG_NAME_LENGTH + 1);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < PROG_NAME_LENGTH + 1)
 	{
 		if (buff[0] == 0)
@@ -70,7 +68,6 @@ static int	read_file(t_data *d, int fd, int number)
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(str, 3);
-	ft_bzero(d->prog[number].prog, MEM_SIZE / 6);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && (index + 2) < MEM_SIZE / 6) // read prog only
 	{
 		ft_putHexNbr(buff[0], &str);
