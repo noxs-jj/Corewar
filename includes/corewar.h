@@ -131,5 +131,6 @@ void	renderLegendSentence(t_data *d);
 void 	renderLegendPlayerSentence(t_data *d);
 void	renderLegendPlayerValue(t_data *d);
 void	renderLegendInfoValue(t_data *d);
+void	renderInitPair(void);
 
 #endif

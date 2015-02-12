@@ -19,21 +19,15 @@
 # define MAP_WIDTH 254			// default 254
 # define MAP_HEIGHT 68			// default 68
 
-// set START au map
-# define MAP_X_START 3 			// default 3
-# define MAP_y_START 2 			// default 2
-# define MAP_X_END 194			// default 194
-# define MAPY_END 65			// default 65
-
-// L = Legends
-# define L_X_START 196			// default 197
-# define L_X_END 195			// default 195
-
+// Memory Map
 # define L_Y_MAP_START 2 		// default 2
 # define L_X_MAP_START 2 		// default 2
 # define L_Y_MAP_END 66			// default 66
 # define L_X_MAP_END 194		// default 194
 
+// L = Legends
+# define L_X_START 196			// default 197
+# define L_X_END 195			// default 195
 
 # define L_X_WRITE 199			// default 199 column
 # define L_X_WRITE_value 233	// default 233
@@ -118,6 +112,7 @@
 # define S_PLAYER_2			"Player 2 ->"
 # define S_PLAYER_3			"Player 3 ->"
 # define S_PLAYER_4			"Player 4 ->"
-# define S_DEFAULT_BAR		"[--------------------------------------------------]"
+# define S_DEFAULT_BAR "[--------------------------------------------------]"
+
 
 #endif

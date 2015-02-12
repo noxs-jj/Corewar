@@ -12,7 +12,7 @@
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -w -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic -lncurses
 
 HEADER = ../includes/corewar.h
 
@@ -48,7 +48,7 @@ $(LIB):
 
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lncurses $(LIB)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB)
 
 clean:
 	make clean -C ../libft

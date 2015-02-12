@@ -21,26 +21,26 @@ void	renderDraw(t_data *d)
 
 	werase(d->window);
 	wborder(d->window, '|', '|', '-', '-', '+', '+', '+', '+');
-
+	
 	renderLegendColumn(d);
 	renderLegendSentence(d);
 	renderLegendPlayerSentence(d);
 	renderLegendPlayerValue(d);
 	renderLegendInfoValue(d);
+	
 
 	while (y < L_Y_MAP_END)
 	{
 		x = L_X_MAP_START;
 		while (x < L_X_MAP_END && i < MEM_SIZE)
 		{
-			mvwaddch(d->window, y, x, 'E');
-			mvwaddch(d->window, y, x + 1, '3');
+			mvwaddch(d->window, y, x, 'E' | COLOR_PAIR(2));
+			mvwaddch(d->window, y, x + 1, '3' | COLOR_PAIR(1));
 			x += 3;
 			i++;
 		}
 		y++;
 	}
-
 
 	refresh();
 	wrefresh(d->window);
