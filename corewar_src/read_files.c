@@ -6,27 +6,11 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 13:48:54 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/12 16:26:22 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-void	ft_putnbrhexaa(unsigned char n, char (*str)[])
-{
-	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-							'a', 'b', 'c', 'd', 'e', 'f'};
-	if (n < 16)
-	{
-		(*str)[0] = '0';
-		(*str)[1] = tab[n];
-	}
-	else
-	{
-		(*str)[0] = tab[(n / 16) % 16];
-		(*str)[1] = tab[n % 16];
-	}
-}
 
 static int	read_prog_comment(t_data *d, int fd, int number)
 {
@@ -89,7 +73,7 @@ static int	read_file(t_data *d, int fd, int number)
 	ft_bzero(d->prog[number].prog, MEM_SIZE / 6);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && (index + 2) < MEM_SIZE / 6) // read prog only
 	{
-		ft_putnbrhexaa(buff[0], &str);
+		ft_putHexNbr(buff[0], &str);
 		strncpy(&d->prog[number].prog[index], str, 2);
 		index += 2;
 		ft_bzero(buff, BUFFSIZE);
