@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 13:48:48 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/12 16:26:35 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,16 @@
 // # define COREWAR_EXEC_MAGIC		0xea83f3
 
 
+typedef struct	s_case
+{
+	unsigned char 		hex[2];
+	short int 			champ; // champions's number ( 0 1 2 3 4 )
+	short int 			present; //is present ( 0 1 2 3 4 )
+	bool 				used; // true : yes, false : no
+
+
+}				t_case;
+
 typedef struct		s_header
 {
 	// unsigned int		magic;
@@ -110,6 +120,7 @@ int		print_error(char *str);
 t_data	*getData(void);
 void	writeL(char *str);
 int		read_files(t_data *d);
+void	ft_putHexNbr(unsigned char n, char (*str)[]);
 
 // NCurses
 void	renderClose(t_data *d);
