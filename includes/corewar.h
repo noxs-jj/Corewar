@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/11 18:32:18 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/12 13:48:48 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@
 **
 */
 
-# define PROG_NAME_LENGTH		128
-# define COMMENT_LENGTH			2048
+# define PROG_NAME_LENGTH		128	// 128
+# define COMMENT_LENGTH			2048// 2048
 // # define COREWAR_EXEC_MAGIC		0xea83f3
 
 
