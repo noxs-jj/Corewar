@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_LegendPlayerValue.c                             :+:      :+:    :+:   */
+/*   nc_renderLegendPlayerValue3.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 11:46:34 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/11 11:46:35 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/13 11:48:16 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/13 11:48:17 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 #include "../includes/render.h"
 
-void	renderLegendPlayerValue(t_data *d)
+void	renderLegendPlayerValue3(t_data *d)
 {
-	if (d->players > 0)
-		renderLegendPlayerValue1(d);
-	if (d->players > 1)
-		renderLegendPlayerValue2(d);
-	if (d->players > 2)
-		renderLegendPlayerValue3(d);
-	if (d->players > 3)
-		renderLegendPlayerValue4(d);
+		// "Player 3 -> champName"
+		wattron(d->window, COLOR_PAIR(3) | A_BOLD);
+		mvwprintw(d->window, L_Y_PLAY_3, L_X_PLAY3_VALUE, S_DEFAULT_VALUE);
+		wattroff(d->window, COLOR_PAIR(3) | A_BOLD);
+		// "Player 3: Last live : value"
+		mvwprintw(d->window, L_Y_P3_LAST, L_X_P3_LAST_VALUE, S_DEFAULT_VALUE);
+		// "Player 3: Lives period : value"
+		mvwprintw(d->window, L_Y_P3_LIVE, L_X_P3_LIVE_VALUE, S_DEFAULT_VALUE);
 }
