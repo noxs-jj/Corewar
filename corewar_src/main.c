@@ -21,8 +21,7 @@ int main(int ac, char **av)
 		return (-1);
 	if (init_mem(&d) < 0)
 		return (-1);
-	// if (load_champions(&d) < 0)
-		// return (-1);
+	load_champions(&d);
 	if (LOG == 1)
 		close(d.fdDebugg);
 	return (0);

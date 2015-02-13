@@ -42,7 +42,8 @@ SRCS =	main.c \
 		read_files.c \
 		init_prog.c \
 		init_mem.c \
-		putHexNbr.c
+		putHexNbr.c \
+		load_champions.c
 
 OBJS = $(SRCS:.c=.o)
 

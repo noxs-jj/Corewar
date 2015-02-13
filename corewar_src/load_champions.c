@@ -17,18 +17,23 @@ int		load_champions(t_data *d)
 	int player;
 	int start;
 	int	index;
+	int i;
 
 	player = 0;
 	start = 0;
+	index = 0;
 	while (player < d->players)
 	{
-		index = 0;
-		while (index < d->prog[player].prog_size)
+		i = 0;
+		while (i < d->prog[player].prog_size)
 		{
-
+			d->map[index].hex[0] = d->prog[player].prog[i];
+			d->map[index].hex[1] = d->prog[player].prog[i + 1];
+			index += 2;
+			i += 2;
 		}
+		player++;
+		index = (MEM_SIZE / d->players) * player;
 	}
-
-
 	return (0);
 }
