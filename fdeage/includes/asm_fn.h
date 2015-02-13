@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 17:51:11 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 19:36:39 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,42 @@
 //# include "libft.h"
 
 /*
-** read.c
+** read.c - OK, no leaks
 */
 
 int		read_file(t_file *file);
 
 /*
-** write.c
+** write.c - OK
 */
 
 void	write_cor(t_file *file);
 
 /*
-** parse.c
+** parse.c - TODO
 */
 
-void	parse_file(t_file *file);
+int		parse_file(t_file *file);
 
 /*
-** convert.c
+** convert.c - TODO
 */
 
 void	convert_file(t_file *file);
 
 /*
-** error.c
+** error.c - OK
 */
 
 void	asm_error(const char *str);
 
 /*
-** exit.c
+** exit.c - OK (TODO: complete) - no leaks
 */
 
 void	exit_asm(t_file *file);
+
+
 
 /*
 ** parsing_fn
@@ -76,14 +78,7 @@ void	exit_asm(t_file *file);
 //void	get_param_opcode(t_list *new);
 //void	get_label_opcode(t_list *new);
 //void	get_cmd_opcode(t_list *new, int i);
-//int		get_cmd_parambyte(t_list *new, int bin);
+//int	get_cmd_parambyte(t_list *new, int bin);
 //void	convert_file(t_list *root);
-
-/*
-** print utilities
-*/
-
-//void	str_to_code(t_list *new, char *str);
-//void	print_0(int n, int fd);
 
 #endif

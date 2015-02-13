@@ -6,109 +6,21 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 17:31:27 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 19:37:36 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op	g_op_tab[17];
-
-
-/*
-void    get_param_opcode(t_list *new)
-{
-	if (ft_strcmp(new->line->type, "T_REG      ") == 0)
-		new->line->code = ft_atoi((new->line->str) + 1);
-	else if (ft_strcmp(new->line->type, "T_DIR      ") == 0)
-		new->line->code = ft_atoi((new->line->str) + 1);
-	else if (ft_strcmp(new->line->type, "T_DIR_LABEL") == 0)
-	{
-		 ;
-	}
-	else if (ft_strcmp(new->line->type, "T_IND      ") == 0)
-	{
-		new->line->code = ft_atoi((new->line->str));
-	}
-}
-
-void	get_label_opcode(t_list *new)
-{
-	new->line->code = -1;
-	if (ft_strcmp(new->line->type, "instruction") == 0)
-	{
-		 ;
-	}
-	new->line->code = -1;
-}
-
-void	get_cmd_opcode(t_list *new, int i)
-{
-	if (ft_strcmp(new->line->type, "instruction") == 0)
-	{
-		while (i < 17)
-		{
-			if (ft_strcmp(new->line->str, (g_op_tab[i]).name) == 0)
-			{
-				new->line->code = (g_op_tab[i]).opcode;
-				return ;
-			}
-			++i;
-		}
-		new->line->code = -1;
-	}
-}
-
-int		get_cmd_parambyte(t_list *new, int bin)
-{
-	if (ft_strcmp(new->line->type, "T_REG      ") == 0)
-		bin += 1000000;
-	else if (ft_strcmp(new->line->type, "T_DIR      ") == 0
-		|| ft_strcmp(new->line->type, "T_DIR_LABEL") == 0)
-		bin += 10000000;
-	else if (ft_strcmp(new->line->type, "T_IND      ") == 0)
-		bin += 11000000;
-	new = new->next;
-	if (ft_strcmp(new->line->type, "T_REG      ") == 0)
-		bin += 10000;
-	else if (ft_strcmp(new->line->type, "T_DIR      ") == 0
-    	|| ft_strcmp(new->line->type, "T_DIR_LABEL") == 0)
-		bin += 100000;
-	else if (ft_strcmp(new->line->type, "T_IND      ") == 0)
-		bin += 110000;
-	new = new->next;
-	if (ft_strcmp(new->line->type, "T_REG      ") == 0)
-		bin += 100;
-	else if (ft_strcmp(new->line->type, "T_DIR      ") == 0
-		|| ft_strcmp(new->line->type, "T_DIR_LABEL") == 0)
-		bin += 1000;
-	else if (ft_strcmp(new->line->type, "T_IND      ") == 0)
-		bin += 1100;
-	return (bin);
-}
-*/
-
 void	convert_file(t_file *file)
 {
-	(void)file;
-/*
-	t_list	*new;
-	int		i;
+	t_list	*tmp;
 
-	new = root;
-	while (new->next)
+	tmp = file->lines;
+	while (tmp)
 	{
-		i = 0;
-		if (!(new->line->type))
-			 ;
-		else if (ft_strcmp(new->line->type, ".name      ") == 0
-			|| ft_strcmp(new->line->type, ".comment   ") == 0)
-			str_to_code(new, new->line->str);
-		else if (ft_strcmp(new->line->type, "label      ") == 0)
-			get_label_opcode(new);
-		else if (ft_strcmp(new->line->type, "instruction") == 0)
-			convert_params(new, i);
-		new = new->next;
+		LINE->bytecode = ft_memalloc(38);
+		ft_strcpy(LINE->bytecode, "tito");
+		tmp = tmp->next;
 	}
-*/
 }

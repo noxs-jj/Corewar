@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 17:29:44 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 19:41:04 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,23 @@
 
 static int	check_file(t_file *file, const char *filename)
 {
-	fprintf(stderr, "TEST1 - %s end=%s\n", filename, ft_strsub(filename, ft_strlen(filename) - 2, 2));
-	if (ft_strcmp(ft_strsub(filename, ft_strlen(filename) - 2, 2), ".s") != 0)
+	size_t	len;
+
+	len = ft_strlen(filename);
+	if (len < 3 || filename[len - 2] != '.' || filename[len - 1] != 's')
 		asm_error("The file doesn't end with .s.\n");
 	if (!(file->fd_s = open(filename, O_RDONLY)))
 		asm_error("Couldln't open the .s file\n");
 	file->name_s = ft_strdup(filename);
 	if (!(file->name_cor = (char *)ft_memalloc(sizeof(file->name_s))))
 		asm_error("Malloc failed.\n");
-	ft_strcpy(file->name_cor, ft_strsub(file->name_s, 0
-		, ft_strstr(file->name_s, ".s") - file->name_s));
+	ft_strncpy(file->name_cor, file->name_s,
+		ft_strstr(file->name_s, ".s") - file->name_s);
 	ft_strcat(file->name_cor, ".cor");
 	fprintf(stderr, "TEST1 - s: %s cor: %s\n", file->name_s, file->name_cor);
 	if (!(file->fd_cor = open(file->name_cor
-		, O_WRONLY | O_CREAT | O_EXCL, 0644)))
+		, O_WRONLY | O_CREAT, 0644)))
+//		, O_WRONLY | O_CREAT | O_EXCL, 0644)))
 		asm_error("Couldln't create the .cor file\n");
 	return (EXIT_SUCCESS);
 }
@@ -52,13 +55,13 @@ static void	init_file(t_file *file)
 	file->fd_cor = -1;
 }
 
-int     	main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_file	*file;
 
-    if (ac == 1)
+	if (ac == 1)
 		asm_error("No file entered. Use: ./asm filename.\n");
-	else if (ac > 2)
+	else if (ac > 2 && ft_strcmp(av[ac - 1], "leaks"))
 		asm_error("Too many files entered. Use: ./asm filename.\n");
 	if (!(file = (t_file *)malloc(sizeof(t_file))))
 		return (EXIT_FAILURE);
@@ -70,21 +73,21 @@ int     	main(int ac, char **av)
 	fprintf(stderr, "\nTEST2 - CHECK OK\n");
 	read_file(file);
 	fprintf(stderr, "\nTEST3 - READ OK\n");
-	parse_file(file);
+	if (!parse_file(file))
+	{
+		exit_asm(file);
+		return (EXIT_SUCCESS);
+	}
 	fprintf(stderr, "\nTEST4 - PARSE OK\n");
 	convert_file(file);
 	fprintf(stderr, "\nTEST5 - CONVERT OK\n");
-/*
-	if (analyse_parsing(root) == EXIT_SUCCESS)
-	{
-		convert_file(root);
-		print_file(root, fd_cor);
-	}
-	list_free(&root);
-*/
 	write_cor(file);
 	fprintf(stderr, "\nTEST6 - CONVERT OK\n");
 	exit_asm(file);
 	fprintf(stderr, "\nTEST7 - EXIT OK\n");
+
+	//TODO: virer
+	if (!ft_strcmp(av[ac - 1], "leaks"))
+		while (42);
 	return (EXIT_SUCCESS);
 }

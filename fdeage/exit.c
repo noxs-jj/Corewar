@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:17:22 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 17:28:26 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 19:38:33 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,34 @@
 
 static void	free_lines(t_file *file)
 {
-    t_list  *tmp;
-    t_list  *next;
+	t_list	*tmp;
+	t_list	*next;
 
-	int temp=0;
-
-    tmp = file->lines;
-    while (tmp)
-    {
-		tmp = next;
-		fprintf(stderr, "i=%d s=%s\n", temp, LINE->str);
+	tmp = file->lines;
+	while (tmp)
+	{
+		next = tmp->next;
 		if (LINE->str)
 			free(LINE->str);
-        free(LINE);
-        next = next->next;
-		temp++;
-    }
+		if (LINE->bytecode)
+			free(LINE->bytecode);
+		free(LINE);
+		free(tmp);
+		tmp = next;
+	}
 }
 
-void        exit_asm(t_file *file)
+void		exit_asm(t_file *file)
 {
-    ft_putstr_color("TRY EXITING... ", COL_LIGHT_GREEN);
-
-	//while (42);
-    free_lines(file);
-    ft_putstr_color("TEST1", COL_LIGHT_GREEN);
-    close(file->fd_s);
-    close(file->fd_cor);
-    ft_putstr_color("TEST2", COL_LIGHT_GREEN);
+	ft_putstr_color("TRY EXITING... ", COL_LIGHT_GREEN);
+	free_lines(file);
+	close(file->fd_s);
+	close(file->fd_cor);
 	if (file->name_s)
 		free(file->name_s);
-    ft_putstr_color("TEST3", COL_LIGHT_GREEN);
 	if (file->name_cor)
 		free(file->name_cor);
-    ft_putstr_color("TEST4", COL_LIGHT_GREEN);
-    free(file);
-    ft_putstr_color("SUCCESSFUL EXIT!\n", COL_GREEN);
-    return (EXIT_SUCCESS);
+	free(file);
+	ft_putstr_color("SUCCESSFUL EXIT!\n", COL_GREEN);
+	return ;
 }

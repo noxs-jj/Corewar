@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 16:15:49 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 18:11:25 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct				s_op
 typedef struct				s_line
 {
 	size_t					nb;
+	size_t					len;
 	char					*str; //malloc
 	t_line_type				type;
 	char					*bytecode; //malloc

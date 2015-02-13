@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/01 17:16:03 by fdeage            #+#    #+#             */
-/*   Updated: 2014/02/02 23:19:35 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 19:41:30 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,3 @@ void	get_args(t_list *root, char **par, t_line *new, int nb_line)
 		++i;
 	}
 }
-

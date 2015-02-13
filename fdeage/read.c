@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 15:26:07 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 19:40:24 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static int	add_line(t_file *file, char *str, int i)
 {
 	t_line	*line;
 
-	line = NULL;
 	if (!(line = (t_line *)malloc(sizeof(t_line))))
 		return (-1);
 	line->nb = i;
 	line->str = ft_strdup(str);
+	line->len = ft_strlen(line->str);
+	line->type = 0;
 	line->bytecode = NULL;
-//	line->type = 0;
 	ft_bzero(line->param, sizeof(int) * 4);
 	ft_bzero(line->param_types, sizeof(int) * 4);
 	ft_lstadd_back(&(file->lines), ft_lstnew((void *)line, sizeof(t_line)));
