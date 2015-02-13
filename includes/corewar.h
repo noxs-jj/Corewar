@@ -173,5 +173,9 @@ void 	renderLegendPlayerSentence(t_data *d);
 void	renderLegendPlayerValue(t_data *d);
 void	renderLegendInfoValue(t_data *d);
 void	renderInitPair(void);
+void	renderLegendPlayerValue1(t_data *d);
+void	renderLegendPlayerValue2(t_data *d);
+void	renderLegendPlayerValue3(t_data *d);
+void	renderLegendPlayerValue4(t_data *d);
 
 #endif

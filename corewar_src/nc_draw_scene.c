@@ -15,10 +15,10 @@
 
 void	renderDraw(t_data *d)
 {
-	int	i = 0;
-	int	x = L_X_MAP_START;
-	int y = L_Y_MAP_START;
-	short int v;
+	int			i = 0;
+	int			x = L_X_MAP_START;
+	int 		y = L_Y_MAP_START;
+	short int 	v;
 
 	werase(d->window);
 	wborder(d->window, '|', '|', '-', '-', '+', '+', '+', '+');
