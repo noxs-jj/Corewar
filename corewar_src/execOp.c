@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   execOp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 16:59:00 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 17:22:15 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int main(int ac, char **av)
+int		execOp(t_data *d)
 {
-	t_data	*d = NULL;
+	int player;
 
-	d = getData();
-	if (init_start(d, ac, av) < 0)
-		return (-1);
-	if (read_files(d) < 0)
-		return (-1);
-	if (init_mem(d) < 0)
-		return (-1);
-	renderInit(d);
-	load_champions(d);
+	player = 0;
+	while (player < d->players)
+	{
+		// exec d->prog[player].nextOp for player if d->prog[player].wait == 0
+		player++;
+	}
 
-	gameStart(d);
-
-	while (1)
-		sleep(10);
-	renderClose(d);
-	if (LOG == 1)
-		close(d->fdDebugg);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:00:38 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 15:06:04 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:17:31 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	init_prog(t_data *d)
 		d->prog[i].prog_size = 0;
 		ft_bzero(d->prog[i].prog, MEM_SIZE / MAX_PLAYERS + 2);
 		ft_bzero(d->prog[i].comment, COMMENT_LENGTH + 1);
+		d->prog[i].alive = false;
+		d->prog[i].wait = 0;
+		d->prog[i].nextOp = 0;
 		init_reg(d, i);
 		i++;
 	}

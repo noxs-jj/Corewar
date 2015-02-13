@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   op_ldi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 16:59:00 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 17:35:21 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "../../includes/corewar.h"
 
-int main(int ac, char **av)
+int		op_ldi(t_data *d, int player)
 {
-	t_data	*d = NULL;
-
-	d = getData();
-	if (init_start(d, ac, av) < 0)
-		return (-1);
-	if (read_files(d) < 0)
-		return (-1);
-	if (init_mem(d) < 0)
-		return (-1);
-	renderInit(d);
-	load_champions(d);
-
-	gameStart(d);
-
-	while (1)
-		sleep(10);
-	renderClose(d);
-	if (LOG == 1)
-		close(d->fdDebugg);
+	// wait 25 (d->prog[player].wait = 25)
 	return (0);
 }

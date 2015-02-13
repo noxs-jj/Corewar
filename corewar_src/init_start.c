@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 12:11:04 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 16:14:25 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		init_start(t_data *d, int ac, char **av)
 	d->dump = -1;
 	d->players = -1;
 	d->cycleDie = CYCLE_TO_DIE;
+	d->cycle = 0;
 	init_prog(d);
 	return (checkparam(d, ac, av));
 }

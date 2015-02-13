@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/12 17:25:44 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/13 17:21:12 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,10 @@ SRCS =	main.c \
 		init_prog.c \
 		init_mem.c \
 		putHexNbr.c \
-		load_champions.c
+		load_champions.c \
+		gameStart.c \
+		execOp.c \
+		checkNextOp.c
 
 OBJS = $(SRCS:.c=.o)
 

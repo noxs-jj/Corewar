@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:23:20 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 15:09:52 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 16:52:49 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		load_champions(t_data *d)
 	int	index;
 	int i;
 
-	d->players++;
 	player = 0;
 	start = 0;
 	index = 0;
@@ -31,7 +30,9 @@ int		load_champions(t_data *d)
 			d->map[index].champ = player + 1;
 			d->map[index].hex[0] = d->prog[player].prog[i];
 			d->map[index].hex[1] = d->prog[player].prog[i + 1];
-			index ++;
+			if (d->prog[player].PC == NULL)
+				d->prog[player].PC = &d->map[index];
+			index++;
 			i += 2;
 		}
 		player++;
