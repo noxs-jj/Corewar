@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   load_champions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:47:05 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/13 11:23:20 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 11:52:46 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int main(int ac, char **av)
+int		load_champions(t_data *d)
 {
-	t_data	d;
-	if (init_start(&d, ac, av) < -1)
-		return (-1);
-	if (read_files(&d) < -1)
-		return (-1);
-	if (init_mem(&d) < 0)
-		return (-1);
-	// if (load_champions(&d) < 0)
-		// return (-1);
-	if (LOG == 1)
-		close(d.fdDebugg);
+	int player;
+	int start;
+	int	index;
+
+	player = 0;
+	start = 0;
+	while (player < d->players)
+	{
+		index = 0;
+		while (index < d->prog[player].prog_size)
+		{
+
+		}
+	}
+
+
 	return (0);
 }

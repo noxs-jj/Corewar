@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:27:28 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 12:11:09 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,15 +143,16 @@ typedef struct		s_header
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
-typedef	struct	s_data
+typedef	struct		s_data
 {
-	t_header	prog[MAX_PLAYERS];
-	t_case		*map;
-	int 		players;
-	int 		dump;
-	WINDOW		*window;
-	int			fdDebugg;
-}				t_data;
+	t_header		prog[MAX_PLAYERS];
+	t_case			*map;
+	int 			players;
+	int 			dump;
+	WINDOW			*window;
+	int				fdDebugg;
+	unsigned  int 	cycleDie;// = CYCLE_TO_DIE
+}					t_data;
 
 int		init_start(t_data *d, int ac, char **av);
 int		print_error(char *str);

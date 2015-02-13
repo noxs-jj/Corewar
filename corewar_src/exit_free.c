@@ -1,29 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:47:05 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/13 11:33:54 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 11:34:30 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int main(int ac, char **av)
-{
-	t_data	d;
-	if (init_start(&d, ac, av) < -1)
-		return (-1);
-	if (read_files(&d) < -1)
-		return (-1);
-	if (init_mem(&d) < 0)
-		return (-1);
-	// if (load_champions(&d) < 0)
-		// return (-1);
-	if (LOG == 1)
-		close(d.fdDebugg);
-	return (0);
-}
+// d->map

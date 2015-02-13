@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:25:21 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:52:07 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 11:31:44 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		init_mem(t_data *d)
 	int		i;
 
 	i = 0;
+	if (MEM_SIZE > 4096 || MEM_SIZE < 1024)
+		return (print_error(ERR_MAP_ALLOC));
 	d->map = NULL;
 	d->map = (t_case *)malloc(sizeof(t_case) * MEM_SIZE);
 	if (d->map == NULL)

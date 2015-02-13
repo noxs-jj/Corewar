@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:19:10 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 11:51:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ static int	read_file(t_data *d, int fd, int number)
 		ft_putHexNbr(buff[0], &str);
 		strncpy(&d->prog[number].prog[index], str, 2);
 		index += 2;
+		d->prog[number].prog_size += 2;
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
+	d->prog[number].prog_size /= 2;
 	// ft_putchar('\n');
 	// ft_putendl(d->prog[number].prog_name);
 	// ft_putchar('\n');
@@ -83,8 +85,10 @@ static int	read_file(t_data *d, int fd, int number)
 	// ft_putchar('\n');
 	// ft_putendl(d->prog[number].prog);
 	// ft_putchar('\n');
+	// printf("%d\n", d->prog[number].prog_size);
 	// ft_putchar('\n');
-	if (ret == -1 || (index + 2) >= MEM_SIZE / 6)
+	// ft_putchar('\n');
+	if (ret == -1 || d->prog[number].prog_size > CHAMP_MAX_SIZE)
 		return (-1);
 	return (ret);
 }
