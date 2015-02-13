@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 19:41:04 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 20:31:37 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ static int	check_file(t_file *file, const char *filename)
 	ft_strncpy(file->name_cor, file->name_s,
 		ft_strstr(file->name_s, ".s") - file->name_s);
 	ft_strcat(file->name_cor, ".cor");
-	fprintf(stderr, "TEST1 - s: %s cor: %s\n", file->name_s, file->name_cor);
-	if (!(file->fd_cor = open(file->name_cor
-		, O_WRONLY | O_CREAT, 0644)))
-//		, O_WRONLY | O_CREAT | O_EXCL, 0644)))
+	if (!(file->fd_cor = open(file->name_cor, O_WRONLY | O_CREAT, 0644)))
 		asm_error("Couldln't create the .cor file\n");
 	return (EXIT_SUCCESS);
 }
@@ -55,6 +52,24 @@ static void	init_file(t_file *file)
 	file->fd_cor = -1;
 }
 
+static void	print_header(t_header *header, char *s_file, char *cor_file)
+{
+	ft_putstr("Assembling ");
+	ft_putstr_color(s_file, COL_LIGHT_YELLOW);
+	ft_putendl(":");
+	ft_putchar('\t');
+	ft_putstr("Name:      ");
+	ft_color_switch_fd(COL_LIGHT_RED, 1);
+	ft_putendl(header->prog_name);
+	ft_putchar('\t');
+	ft_putstr_color("Comment:   ", COL_RESET);
+	ft_color_switch_fd(COL_LIGHT_RED, 1);
+	ft_putendl(header->comment);
+	ft_putstr_color(cor_file, COL_GREEN);
+	ft_putstr_color(" successfully created!", COL_LIGHT_GREEN);
+	return ;
+}
+
 int			main(int ac, char **av)
 {
 	t_file	*file;
@@ -65,26 +80,27 @@ int			main(int ac, char **av)
 		asm_error("Too many files entered. Use: ./asm filename.\n");
 	if (!(file = (t_file *)malloc(sizeof(t_file))))
 		return (EXIT_FAILURE);
-	fprintf(stderr, "\nTEST0 - BEGIN\n");
+fprintf(stderr, "\nTEST0 - BEGIN\n");
 	init_file(file);
-	fprintf(stderr, "\nTEST1 - INIT OK\n");
+fprintf(stderr, "\nTEST1 - INIT OK\n");
 	if (check_file(file, av[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	fprintf(stderr, "\nTEST2 - CHECK OK\n");
+fprintf(stderr, "\nTEST2 - CHECK OK\n");
 	read_file(file);
-	fprintf(stderr, "\nTEST3 - READ OK\n");
+fprintf(stderr, "\nTEST3 - READ OK\n");
 	if (!parse_file(file))
 	{
 		exit_asm(file);
 		return (EXIT_SUCCESS);
 	}
-	fprintf(stderr, "\nTEST4 - PARSE OK\n");
+fprintf(stderr, "\nTEST4 - PARSE OK\n");
+print_header(&(file->header), av[1], file->name_cor);
 	convert_file(file);
-	fprintf(stderr, "\nTEST5 - CONVERT OK\n");
+fprintf(stderr, "\nTEST5 - CONVERT OK\n");
 	write_cor(file);
-	fprintf(stderr, "\nTEST6 - CONVERT OK\n");
+fprintf(stderr, "\nTEST6 - CONVERT OK\n");
 	exit_asm(file);
-	fprintf(stderr, "\nTEST7 - EXIT OK\n");
+fprintf(stderr, "\nTEST7 - EXIT OK\n");
 
 	//TODO: virer
 	if (!ft_strcmp(av[ac - 1], "leaks"))

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 18:11:25 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 20:21:14 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,20 @@ typedef struct				s_op
 	int						has_idx;
 }							t_op;
 
+typedef struct				s_inst
+{
+	char					opcode;
+	char					parambyte;
+	char					par1;
+	char					par1_type;
+	char					par2;
+	char					par2_type;
+	char					par3;
+	char					par3_type;
+	char					par4;
+	char					par4_type;
+}							t_inst;
+
 typedef struct				s_line
 {
 	size_t					nb;
@@ -60,9 +74,9 @@ typedef struct				s_line
 	char					*str; //malloc
 	t_line_type				type;
 	char					*bytecode; //malloc
+	t_inst					inst;
 	int						param[4];
 	int						param_types[4];
-
 }							t_line;
 
 typedef struct              s_file

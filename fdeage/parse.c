@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 19:40:04 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 20:24:39 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	check_name(t_file *file, t_list *tmp)
 	s = LINE->str + blank;
 	if (ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)) == 0)
 	{
-		fprintf(stderr, "TEST4b - name detected\n");
+		//fprintf(stderr, "TEST4b - name detected\n");
 		name_begin = ft_strlen(NAME_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
 			++name_begin;
@@ -35,7 +35,7 @@ static void	check_name(t_file *file, t_list *tmp)
 		name_end = name_begin;
 		while (s && s[name_end] && s[name_end] != '"')
 			++name_end;
-		fprintf(stderr, "TEST4ba - beg: %d end: %d\n", name_begin, name_end);
+		//fprintf(stderr, "TEST4ba - beg: %d end: %d\n", name_begin, name_end);
 		ft_strncpy(file->header.prog_name, (const char *)s + name_begin,
 			name_end - name_begin);
 	}
@@ -56,7 +56,7 @@ static void	check_comment(t_file *file, t_list *tmp)
 	if (ft_strncmp(s, COMMENT_CMD_STRING,
 		ft_strlen(COMMENT_CMD_STRING)) == 0)
 	{
-		fprintf(stderr, "TEST4d - comment detected\n");
+		//fprintf(stderr, "TEST4d - comment detected\n");
 		LINE->type = T_INIT_COMMENT;
 		name_begin = ft_strlen(COMMENT_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
@@ -65,11 +65,24 @@ static void	check_comment(t_file *file, t_list *tmp)
 		name_end = name_begin;
 		while (s && s[name_end] && s[name_end] != '"')
 			++name_end;
-		fprintf(stderr, "TEST4e - beg: %d end: %d\n", name_begin, name_end);
+		//fprintf(stderr, "TEST4e - beg: %d end: %d\n", name_begin, name_end);
 		ft_strncpy(file->header.comment, (const char *)s + name_begin,
 			name_end - name_begin);
 	}
 	return ;
+}
+
+static int	is_comment(t_line *line)
+{
+	register size_t	i;
+
+	i = 0;
+	while (line->str && line->str[i] && ft_isspace(line->str[i]))
+		++i;
+	if (line->str[i] == COMMENT_CHAR || line->str[i] == COMMENT_CHAR2
+		|| line->str[i] == COMMENT_CHAR3)
+		return (1);
+	return (0);
 }
 
 static void	check_inst(t_file *file, t_list *tmp)
@@ -86,13 +99,16 @@ int			parse_file(t_file *file)
 	tmp = file->lines;
 	while (tmp)
 	{
-		if (!(file->header.prog_name[0]))
-			check_name(file, tmp);
-		fprintf(stderr, "TEST4a - name: %s\n", file->header.prog_name);
-		if (!(file->header.comment[0]))
-			check_comment(file, tmp);
-		fprintf(stderr, "TEST4c - comment: %s\n", file->header.comment);
-		check_inst(file, tmp);
+		if (!is_comment(LINE))
+		{
+			if (!(file->header.prog_name[0]))
+				check_name(file, tmp);
+			//fprintf(stderr, "TEST4a - name: %s\n", file->header.prog_name);
+			if (!(file->header.comment[0]))
+				check_comment(file, tmp);
+			//fprintf(stderr, "TEST4c - comment: %s\n", file->header.comment);
+			check_inst(file, tmp);
+		}
 		tmp = tmp->next;
 	}
 	return (1);
