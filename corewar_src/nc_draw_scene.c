@@ -25,7 +25,7 @@ void	renderDraw(t_data *d)
 	
 	renderLegendColumn(d);
 	renderLegendSentence(d);
-	renderLegendPlayerSentence(d);
+	renderLegendPlayerSentence(d); 
 	renderLegendPlayerValue(d);
 	renderLegendInfoValue(d);
 

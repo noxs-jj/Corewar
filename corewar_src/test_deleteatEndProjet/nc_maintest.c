@@ -16,22 +16,15 @@
 
 int	main(void)
 {
-	int 	i = 0;
 	t_data	*d = getData();
 	d->players = 4;
 
 	init_mem(d);
 
-	while (i < MEM_SIZE)
-	{
-		d->map[i].hex[0] = '0';
-		d->map[i].hex[1] = '0';
-		d->map[i].hex[2] = 0;
-		d->map[i].champ = 0;
-		d->map[i].present = 0;
-		d->map[i].used = false;
-		i++;
-	}
+	ft_strcpy(d->prog[0].prog_name, "Tartiflette");
+	ft_strcpy(d->prog[1].prog_name, "champions for ever");
+	ft_strcpy(d->prog[2].prog_name, "born2code");
+	ft_strcpy(d->prog[3].prog_name, "noob posted");
 
 	d->map[360].hex[0] = 'Z';
 	d->map[360].hex[1] = '4';
@@ -77,6 +70,29 @@ int	main(void)
 	d->map[2995].champ = 4;
 	d->map[2995].present = 4;
 	d->map[2995].used = false;
+
+
+	d->map[1024].hex[0] = 'F';
+	d->map[1024].hex[1] = 'F';
+	d->map[1024].champ = 3;
+	d->map[1024].present = 3;
+	d->map[1024].used = true;
+	d->map[1026].hex[0] = 'R';
+	d->map[1026].hex[1] = 'R';
+	d->map[1026].champ = 3;
+	d->map[1026].present = 3;
+	d->map[1026].used = false;
+
+	d->map[4095].hex[0] = 'F';
+	d->map[4095].hex[1] = 'F';
+	d->map[4095].champ = 2;
+	d->map[4095].present = 2;
+	d->map[4095].used = true;
+	d->map[4091].hex[0] = 'R';
+	d->map[4091].hex[1] = 'R';
+	d->map[4091].champ = 2;
+	d->map[4091].present = 2;
+	d->map[4091].used = false;
 
 	
 

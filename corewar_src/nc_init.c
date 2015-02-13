@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 #include "../includes/render.h"
-	//		COLOR_BLACK   0
+	//		 COLOR_BLACK   0
 	//       COLOR_RED     1
 	//       COLOR_GREEN   2
 	//       COLOR_YELLOW  3
@@ -27,6 +27,8 @@ void	renderInitPair(void)
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	// VALUE BACKGROUND BLACK  + MAGENTA WRITE
 	init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
+
+	// VALUE
 
 	// PLAYER 1 BACKGROUND BLACK + RED WRITE
 	init_pair(1, COLOR_RED, COLOR_BLACK);
