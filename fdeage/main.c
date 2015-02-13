@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/12 17:31:02 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 17:29:44 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ static int	check_file(t_file *file, const char *filename)
 
 static void	init_file(t_file *file)
 {
+	file->header.magic = COREWAR_EXEC_MAGIC;
+	ft_bzero(file->header.prog_name, PROG_NAME_LENGTH + 1);
+	file->header.prog_size = 0;
+	ft_bzero(file->header.comment, COMMENT_LENGTH + 1);
 	file->lines = NULL;
 	file->lines = NULL;
 	file->name_s = NULL;
 	file->name_cor = NULL;
-	file->champ_name = NULL;
-	file->comment = NULL;
 	file->size = 0;
 	file->nb_line = 0;
 	file->fd_s = -1;
@@ -60,15 +62,18 @@ int     	main(int ac, char **av)
 		asm_error("Too many files entered. Use: ./asm filename.\n");
 	if (!(file = (t_file *)malloc(sizeof(t_file))))
 		return (EXIT_FAILURE);
-	fprintf(stderr, "TEST0 - BEGIN\n");
+	fprintf(stderr, "\nTEST0 - BEGIN\n");
 	init_file(file);
-	fprintf(stderr, "TEST1 - INIT OK\n");
+	fprintf(stderr, "\nTEST1 - INIT OK\n");
 	if (check_file(file, av[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	fprintf(stderr, "TEST2 - CHECK OK\n");
+	fprintf(stderr, "\nTEST2 - CHECK OK\n");
 	read_file(file);
-	fprintf(stderr, "TEST3 - READ OK\n");
+	fprintf(stderr, "\nTEST3 - READ OK\n");
 	parse_file(file);
+	fprintf(stderr, "\nTEST4 - PARSE OK\n");
+	convert_file(file);
+	fprintf(stderr, "\nTEST5 - CONVERT OK\n");
 /*
 	if (analyse_parsing(root) == EXIT_SUCCESS)
 	{
@@ -78,6 +83,8 @@ int     	main(int ac, char **av)
 	list_free(&root);
 */
 	write_cor(file);
+	fprintf(stderr, "\nTEST6 - CONVERT OK\n");
 	exit_asm(file);
+	fprintf(stderr, "\nTEST7 - EXIT OK\n");
 	return (EXIT_SUCCESS);
 }

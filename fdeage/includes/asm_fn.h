@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/12 17:33:07 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/13 17:51:11 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 //# include "asm.h"
 //# include "op.h"
 //# include "libft.h"
-
-/*
-** exit.c
-*/
-
-void	exit_asm(t_file *file);
 
 /*
 ** read.c
@@ -41,44 +35,55 @@ void	write_cor(t_file *file);
 
 void	parse_file(t_file *file);
 
-
 /*
-** parsing_fn
+** convert.c
 */
 
-char	*get_name_comment(char *line);
-char	*get_label(char **line);
-char	*get_cmd(char **line);
-void	get_args(t_list *root, char **par, t_line *new, int nb_line);
-
-/*
-** check utilities
-*/
-
-void	convert_params(t_list *new, int i);
-int		analyse_parsing(t_list *root);
-
-/*
-** conversion utilities
-*/
-
-void	get_param_opcode(t_list *new);
-void	get_label_opcode(t_list *new);
-void	get_cmd_opcode(t_list *new, int i);
-int		get_cmd_parambyte(t_list *new, int bin);
-void	convert_file(t_list *root);
-
-/*
-** print utilities
-*/
-
-void	str_to_code(t_list *new, char *str);
-void	print_0(int n, int fd);
+void	convert_file(t_file *file);
 
 /*
 ** error.c
 */
 
 void	asm_error(const char *str);
+
+/*
+** exit.c
+*/
+
+void	exit_asm(t_file *file);
+
+/*
+** parsing_fn
+*/
+
+//char	*get_name_comment(char *line);
+//char	*get_label(char **line);
+//char	*get_cmd(char **line);
+//void	get_args(t_list *root, char **par, t_line *new, int nb_line);
+
+/*
+** check utilities
+*/
+
+//void	convert_params(t_list *new, int i);
+//int		analyse_parsing(t_list *root);
+
+/*
+** conversion utilities
+*/
+
+//void	get_param_opcode(t_list *new);
+//void	get_label_opcode(t_list *new);
+//void	get_cmd_opcode(t_list *new, int i);
+//int		get_cmd_parambyte(t_list *new, int bin);
+//void	convert_file(t_list *root);
+
+/*
+** print utilities
+*/
+
+//void	str_to_code(t_list *new, char *str);
+//void	print_0(int n, int fd);
 
 #endif

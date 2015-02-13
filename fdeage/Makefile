@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/29 16:38:06 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/12 17:31:55 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/13 17:32:20 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,6 +16,7 @@ SRC 		=	main.c	\
 				read.c	\
 				write.c	\
 				parse.c	\
+				convert.c	\
 				error.c	\
 				exit.c
 
