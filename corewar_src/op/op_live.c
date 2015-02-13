@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writeL.c                                           :+:      :+:    :+:   */
+/*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 17:53:59 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/09 17:54:01 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 17:35:38 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "../../includes/corewar.h"
 
-void	writeL(char *str)
+int		op_live(t_data *d, int player)
 {
-	static t_data *d = NULL;
-
-	if (d == NULL)
-		d = getData();
-	if (1 == LOG)
-		ft_putendl_fd(str, d->fdDebugg);
+	// wait 10 (d->prog[player].wait = 10)
+	return (0);
 }

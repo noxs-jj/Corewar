@@ -114,5 +114,7 @@
 # define S_PLAYER_4			"Player 4 ->"
 # define S_DEFAULT_BAR "[--------------------------------------------------]"
 
+//Console drawing
+# define S_C_BYTES			" bytes, "
 
 #endif

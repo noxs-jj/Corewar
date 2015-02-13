@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:27:28 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:40:22 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define BUFFSIZE 1
 
 // #define IND_SIZE				2
+#define REG_NUMBER				16
 #define REG_SIZE				4
 // #define DIR_SIZE				REG_SIZE
 
@@ -55,7 +56,6 @@
 // #define NAME_CMD_STRING			".name"
 // #define COMMENT_CMD_STRING		".comment"
 
-#define REG_NUMBER				16
 
 #define CYCLE_TO_DIE			1536
 #define CYCLE_DELTA				50
@@ -136,22 +136,29 @@ typedef struct		s_header
 	bool				carry; // true if prev action worked
 	t_case				*PC; // program counter
 	char				prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int		number;
+	int					wait; // turn to wait before exec new instruction
+	bool				alive; // is alive true or false
+	unsigned int		number; // champions's number
+	short int			nextOp;
 	char 				*filename; // no malloc
 	unsigned int		prog_size;
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
+	char 				reg[REG_NUMBER][REG_SIZE];
 }					t_header;
 
-typedef	struct	s_data
+typedef	struct		s_data
 {
-	t_header	prog[MAX_PLAYERS];
-	t_case		*map;
-	int 		players;
-	int 		dump;
-	WINDOW		*window;
-	int			fdDebugg;
-}				t_data;
+	t_header		prog[MAX_PLAYERS];
+	bool			run; // is run : y = true, n = false
+	t_case			*map;
+	int 			players; // player number
+	int 			cycle; // nbr cycle done
+	int 			dump; // dump option activated if dump != -1
+	WINDOW			*window;
+	int				fdDebugg; // file debug fd
+	unsigned  int 	cycleDie;// = CYCLE_TO_DIE
+}					t_data;
 
 int		init_start(t_data *d, int ac, char **av);
 int		print_error(char *str);
@@ -161,6 +168,10 @@ int		read_files(t_data *d);
 void	init_prog(t_data *d);
 void	ft_putHexNbr(unsigned char n, char (*str)[]);
 int		init_mem(t_data *d);
+int 	gameStart(t_data *d);
+int		checkNextOp(t_data *d);
+int		execOp(t_data *d);
+
 
 // NCurses
 void	renderClose(t_data *d);
@@ -172,5 +183,9 @@ void 	renderLegendPlayerSentence(t_data *d);
 void	renderLegendPlayerValue(t_data *d);
 void	renderLegendInfoValue(t_data *d);
 void	renderInitPair(void);
+void	renderLegendPlayerValue1(t_data *d);
+void	renderLegendPlayerValue2(t_data *d);
+void	renderLegendPlayerValue3(t_data *d);
+void	renderLegendPlayerValue4(t_data *d);
 
 #endif

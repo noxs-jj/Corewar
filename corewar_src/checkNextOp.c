@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writeL.c                                           :+:      :+:    :+:   */
+/*   checkNextOp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 17:53:59 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/09 17:54:01 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/13 17:13:56 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 17:21:26 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	writeL(char *str)
+int		checkNextOp(t_data *d)
 {
-	static t_data *d = NULL;
+	int player;
 
-	if (d == NULL)
-		d = getData();
-	if (1 == LOG)
-		ft_putendl_fd(str, d->fdDebugg);
+	player = 0;
+	while (player < d->players)
+	{
+		// check PC for player d->prog[player]
+		player++;
+	}
+	return (0);
 }

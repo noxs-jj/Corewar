@@ -6,11 +6,29 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:00:38 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:12:29 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:17:31 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
+
+static void	init_reg(t_data *d, int number)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < REG_NUMBER)
+	{
+		j = 0;
+		while (j < REG_SIZE)
+		{
+			d->prog[number].reg[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+}
 
 void	init_prog(t_data *d)
 {
@@ -27,6 +45,10 @@ void	init_prog(t_data *d)
 		d->prog[i].prog_size = 0;
 		ft_bzero(d->prog[i].prog, MEM_SIZE / MAX_PLAYERS + 2);
 		ft_bzero(d->prog[i].comment, COMMENT_LENGTH + 1);
+		d->prog[i].alive = false;
+		d->prog[i].wait = 0;
+		d->prog[i].nextOp = 0;
+		init_reg(d, i);
 		i++;
 	}
 }

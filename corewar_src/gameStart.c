@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writeL.c                                           :+:      :+:    :+:   */
+/*   gameStart.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 17:53:59 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/09 17:54:01 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/13 17:17:52 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	writeL(char *str)
+int gameStart(t_data *d)
 {
-	static t_data *d = NULL;
-
-	if (d == NULL)
-		d = getData();
-	if (1 == LOG)
-		ft_putendl_fd(str, d->fdDebugg);
+	d->run = true;
+	while (d->run == true)
+	{
+		checkNextOp(d); // check next champion's instruction (ptr by PC)
+		execOp(d); // exec next op defined in d->prog[player].nextOp
+		renderDraw(d); // draw game
+	}
+	return (0);
 }

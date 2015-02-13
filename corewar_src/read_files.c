@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/12 17:19:10 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:16:00 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ static int	read_file(t_data *d, int fd, int number)
 	char	str[3];
 
 	index = 0;
-	if (read_prog_name(d, fd, number) < 0)
-		return (-1);
-	if (lseek(fd, 2192, SEEK_SET) < 0) // 2192
+	if (read_prog_name(d, fd, number) < 0 || lseek(fd, 2192, SEEK_SET) < 0) // 2192
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(str, 3);
@@ -73,18 +71,14 @@ static int	read_file(t_data *d, int fd, int number)
 		ft_putHexNbr(buff[0], &str);
 		strncpy(&d->prog[number].prog[index], str, 2);
 		index += 2;
+		d->prog[number].prog_size += 2;
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
-	// ft_putchar('\n');
-	// ft_putendl(d->prog[number].prog_name);
-	// ft_putchar('\n');
-	// ft_putendl(d->prog[number].comment);
-	// ft_putchar('\n');
-	// ft_putendl(d->prog[number].prog);
-	// ft_putchar('\n');
-	// ft_putchar('\n');
-	if (ret == -1 || (index + 2) >= MEM_SIZE / 6)
+	d->prog[number].prog_size /= 2;
+	d->prog[number].alive = true;
+	ft_strcpy(d->prog[number].reg[0], ft_itoa(d->prog[number].number)); // free itoa result ?
+	if (ret == -1 || d->prog[number].prog_size > CHAMP_MAX_SIZE)
 		return (-1);
 	return (ret);
 }
@@ -104,5 +98,6 @@ int		read_files(t_data *d)
 		close(fd);
 		i++;
 	}
+	d->players++;
 	return (0);
 }
