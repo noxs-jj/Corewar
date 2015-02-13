@@ -19,6 +19,7 @@ int		load_champions(t_data *d)
 	int	index;
 	int i;
 
+	d->players++;
 	player = 0;
 	start = 0;
 	index = 0;
@@ -27,9 +28,10 @@ int		load_champions(t_data *d)
 		i = 0;
 		while (i < d->prog[player].prog_size)
 		{
+			d->map[index].champ = player + 1;
 			d->map[index].hex[0] = d->prog[player].prog[i];
 			d->map[index].hex[1] = d->prog[player].prog[i + 1];
-			index += 2;
+			index ++;
 			i += 2;
 		}
 		player++;

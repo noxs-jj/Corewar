@@ -56,12 +56,12 @@ int 	renderInit(t_data *d)
 	initscr();
 	start_color();
 	renderInitPair();
+	d->window = newwin(MAP_HEIGHT , MAP_WIDTH, 0, 0);
 	wbkgd(d->window, COLOR_PAIR(0));
 	cbreak();
 	noecho();
 	nodelay(stdscr, true);
 	curs_set(0);
-	d->window = newwin(MAP_HEIGHT , MAP_WIDTH, 0, 0);
 	wrefresh(d->window);
 	return (0);
 }

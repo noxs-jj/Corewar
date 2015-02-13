@@ -14,6 +14,10 @@
 
 void	writeL(char *str)
 {
+	static t_data *d = NULL;
+
+	if (d == NULL)
+		d = getData();
 	if (1 == LOG)
-		ft_putendl_fd(str, (getData())->fdDebugg);
+		ft_putendl_fd(str, d->fdDebugg);
 }
