@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:51:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 15:10:48 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,7 @@ static int	read_file(t_data *d, int fd, int number)
 		ft_bzero(str, 3);
 	}
 	d->prog[number].prog_size /= 2;
-	// ft_putchar('\n');
-	// ft_putendl(d->prog[number].prog_name);
-	// ft_putchar('\n');
-	// ft_putendl(d->prog[number].comment);
-	// ft_putchar('\n');
-	// ft_putendl(d->prog[number].prog);
-	// ft_putchar('\n');
-	// printf("%d\n", d->prog[number].prog_size);
-	// ft_putchar('\n');
-	// ft_putchar('\n');
+	d->prog[number].reg[0][0] = d->prog[number].number;
 	if (ret == -1 || d->prog[number].prog_size > CHAMP_MAX_SIZE)
 		return (-1);
 	return (ret);

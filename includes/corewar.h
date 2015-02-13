@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 12:11:09 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/13 15:09:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define BUFFSIZE 1
 
 // #define IND_SIZE				2
+#define REG_NUMBER				16
 #define REG_SIZE				4
 // #define DIR_SIZE				REG_SIZE
 
@@ -55,7 +56,6 @@
 // #define NAME_CMD_STRING			".name"
 // #define COMMENT_CMD_STRING		".comment"
 
-#define REG_NUMBER				16
 
 #define CYCLE_TO_DIE			1536
 #define CYCLE_DELTA				50
@@ -141,6 +141,7 @@ typedef struct		s_header
 	unsigned int		prog_size;
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
+	int 				reg[REG_NUMBER][REG_SIZE] // REG_SIZE * int ?
 }					t_header;
 
 typedef	struct		s_data
