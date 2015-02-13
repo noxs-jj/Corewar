@@ -141,7 +141,7 @@ typedef struct		s_header
 	unsigned int		prog_size;
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
-	int 				reg[REG_NUMBER][REG_SIZE] // REG_SIZE * int ?
+	int 				reg[REG_NUMBER][REG_SIZE]; // REG_SIZE * int ?
 }					t_header;
 
 typedef	struct		s_data
