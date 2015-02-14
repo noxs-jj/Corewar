@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:21:35 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:33:56 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	check_name(t_file *file, t_line *line)
 	return ;
 }
 
+//OK - 24L
 static void	check_comment(t_file *file, t_line *line)
 {
 	char	*s;

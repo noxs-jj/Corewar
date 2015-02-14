@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:24:05 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:38:14 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void print_token(t_token *token)
 
 static int	get_inst(t_token *token)
 {
-    register size_t	i;
+	register size_t	i;
 
 	//fprintf(stderr, "get_instruction begin - data=%s\n", token->data);
-    i = 0;
-    while (i < 16)
-    {
+	i = 0;
+	while (i < 16)
+	{
 		//fprintf(stderr, "before strcmp\n");
 		if (!ft_strcmp(token->data, (g_op_tab[i]).name))
 		{
@@ -43,10 +43,10 @@ static int	get_inst(t_token *token)
 			return (EXIT_SUCCESS);
 		}
 		//fprintf(stderr, "after strcmp\n");
-        ++i;
-    }
+		++i;
+	}
 	//fprintf(stderr, "get_instruction end\n");
-    return (EXIT_FAILURE);
+	return (EXIT_FAILURE);
 }
 
 static int	check_label(char *s)
@@ -78,8 +78,8 @@ static int	get_token_type(t_token *token)
 			if (check_label(token->data) == EXIT_FAILURE)
 				RET("Wrong chars used in label.\n", EXIT_FAILURE);
 		}
-		else
-			token->type = T_INSTRUCTION;
+		//else
+		//	token->type = T_INSTRUCTION;
 	}
 	else if ((token->data)[0] == DIRECT_CHAR)
 	{
@@ -95,8 +95,7 @@ static int	get_token_type(t_token *token)
 	return (EXIT_SUCCESS);
 }
 
-//OK - 23L
-//static t_token	*init_token(char *data, int i, int j, int id)
+//OK - 24L
 static int	init_token(t_line *line, int i, int j, int id)
 {
 	t_token			*token;
@@ -117,9 +116,7 @@ static int	init_token(t_line *line, int i, int j, int id)
 	if (token->type == T_UNKNOWN)
 		RET("No token type found.\n", EXIT_FAILURE);
 	print_token(token);
-	if (token->type == T_INSTRUCTION)
-	{
-		if (get_inst(token) == EXIT_FAILURE)
+	if (token->type == T_INSTRUCTION && get_inst(token) == EXIT_FAILURE)
 			RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
 	}
 	//push_token ! memleaks

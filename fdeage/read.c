@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:14:09 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:33:40 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static int	add_line(t_file *file, char *str, size_t *i, int has_label)
 	return (EXIT_SUCCESS);
 }
 
+//OK - 25L
 int			read_file(t_file *file)
 {
 	size_t	i;
