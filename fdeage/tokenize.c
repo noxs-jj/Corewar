@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:38:14 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:49:02 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,18 @@ static int	get_inst(t_token *token)
 {
 	register size_t	i;
 
-	//fprintf(stderr, "get_instruction begin - data=%s\n", token->data);
 	i = 0;
 	while (i < 16)
 	{
-		//fprintf(stderr, "before strcmp\n");
 		if (!ft_strcmp(token->data, (g_op_tab[i]).name))
 		{
-			//fprintf(stderr, "in strcmp\n");
 			if (!(token->op = (t_op *)malloc(sizeof(t_op))))
 				RET("Malloc() failed.\n", EXIT_FAILURE);
 			ft_memcpy((void *)token->op, (void *)&(g_op_tab[i]), sizeof(t_op));
 			return (EXIT_SUCCESS);
 		}
-		//fprintf(stderr, "after strcmp\n");
 		++i;
 	}
-	//fprintf(stderr, "get_instruction end\n");
 	return (EXIT_FAILURE);
 }
 
@@ -70,16 +65,11 @@ static int	get_token_type(t_token *token)
 	size_t	len;
 
 	len = ft_strlen(token->data);
-	if (token->id == 0)
+	if (token->id == 0 && (token->data)[len - 1] == LABEL_CHAR)
 	{
-		if ((token->data)[len - 1] == LABEL_CHAR)
-		{
-			token->type = T_LABEL;
-			if (check_label(token->data) == EXIT_FAILURE)
-				RET("Wrong chars used in label.\n", EXIT_FAILURE);
-		}
-		//else
-		//	token->type = T_INSTRUCTION;
+		token->type = T_LABEL;
+		if (check_label(token->data) == EXIT_FAILURE)
+			RET("Wrong chars used in label.\n", EXIT_FAILURE);
 	}
 	else if ((token->data)[0] == DIRECT_CHAR)
 	{
@@ -95,7 +85,7 @@ static int	get_token_type(t_token *token)
 	return (EXIT_SUCCESS);
 }
 
-//OK - 24L
+//OK - 23L
 static int	init_token(t_line *line, int i, int j, int id)
 {
 	t_token			*token;
@@ -117,9 +107,7 @@ static int	init_token(t_line *line, int i, int j, int id)
 		RET("No token type found.\n", EXIT_FAILURE);
 	print_token(token);
 	if (token->type == T_INSTRUCTION && get_inst(token) == EXIT_FAILURE)
-			RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
-	}
-	//push_token ! memleaks
+		RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
 	free(token->data);
 	free(token->op);
@@ -134,32 +122,25 @@ int				tokenize_line(t_file *file, t_line *line)
 	register size_t	i;
 	register size_t	j;
 	size_t			token_id;
-	//t_token			*token;
 
 	//fprintf(stderr, "tokenize begin\n");
 	i = 0;
 	token_id = 0;
-	//token = NULL;
-	//7 is a mistake: too many tokens
 	while (token_id < 7)
 	{
 		if (token_id == 6)
 			RET("Too many tokens in line.\n", EXIT_FAILURE);
 		while (line->str[i] && ft_isspace(line->str[i]))
 			++i;
-		//fprintf(stderr, "i=%d s=|%s|\n", (int)i, &(line->str[i]));
 		j = i;
-		while (line->str[j] && !ft_isspace(line->str[j]) && line->str[j] != SEPARATOR_CHAR)
+		while (line->str[j] && !ft_isspace(line->str[j])
+			&& line->str[j] != SEPARATOR_CHAR)
 			++j;
-		//if token exists
 		if (init_token(line, i, j, token_id) == EXIT_FAILURE)
 			RET("Init_token() failed.\n", EXIT_FAILURE);
-		//token = NULL;
 		i = j + 1;
 		if (!line->str[i - 1])
 			break ;
-		//++i;
-		//fprintf(stderr, "i=%d j=%d s=|%s|\n", (int)i, (int)j, &(line->str[i]));
 		++token_id;
 	}
 	(void)file;

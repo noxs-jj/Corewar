@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:26:43 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:40:36 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@
 # define LINE				((t_line *)(tmp->content))
 
 # define RET(x, y)			{ft_putstr_color("ERR: ",COL_RED);ft_putstr_color( x ,COL_LIGHT_RED);return( y );}
-
-/*
-typedef char				t_line_type;
-
-#define T_INIT_COMMENT		1
-#define T_NAME				2
-#define T_COMMENT			3
-#define T_INST				4
-*/
 
 #define OP_NAME				0
 #define OP_ARG_NB			1
@@ -83,16 +74,16 @@ typedef struct				s_token
 	int						id;
 	int						col;
 	char					*data; //malloc
-	t_op					*op; // malloc
+	t_op					*op; //malloc
 	enum e_token_type		type;
-}							t_token;
+}							t_token; //malloc !
 
 typedef struct				s_line
 {
 	size_t					id;
 	size_t					len;
 	char					*str; //malloc
-    enum e_token_type       type;
+	enum e_token_type       type;
 	char					*bytecode; //malloc
 	char					pcode;
 	t_list					*tokens;
@@ -111,7 +102,5 @@ typedef struct              s_file
 	int						fd_cor;
 	//int						error; //cf e_error_type
 }                           t_file;
-
-//extern t_op						g_op_tab[17];
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2015/02/14 21:10:35 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:39:35 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,9 @@
 # define DIR_CODE				2
 # define IND_CODE				3
 
-//# define MAX_ARGS_NUMBER		4
-//# define MAX_PLAYERS			4
-//# define MEM_SIZE				(4*1024)
-//# define IDX_MOD				(MEM_SIZE / 8)
-//# define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
-
 # define COMMENT_CHAR			'#'
 # define COMMENT_CHAR2			';'
 # define COMMENT_CHAR3			','
-//# define CMD_STRING_CHAR		'.'
 
 # define LABEL_CHAR				':'
 # define REGISTER_CHAR			'r'
