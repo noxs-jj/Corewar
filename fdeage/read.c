@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 22:58:29 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:14:09 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "asm.h"
 #include "libft.h"
 
-static int	init_line(t_file *file, char *str, int i, int line_type)
+static int	init_line(t_file *file, char *str, size_t i, int line_type)
 {
 	t_line	*line;
 
@@ -34,7 +34,7 @@ static int	init_line(t_file *file, char *str, int i, int line_type)
 
 static int	has_label(char *str)
 {
-	register size_t	i;
+	register int	i;
 
 	i = 0;
 	while (str[i] && ft_isspace(str[i]))
@@ -42,13 +42,12 @@ static int	has_label(char *str)
 	while (str[i] && !ft_isspace(str[i]) && str[i] != SEPARATOR_CHAR)
 		++i;
 	--i;
-	fprintf(stderr, "test c=%c\n", str[i]);
 	if (str[i] == LABEL_CHAR)
 		return (i);
 	return (0);
 }
 
-static int	add_line(t_file *file, char *str, int *i, int has_label)
+static int	add_line(t_file *file, char *str, size_t *i, int has_label)
 {
 	if (has_label)
 	{
@@ -71,7 +70,7 @@ static int	add_line(t_file *file, char *str, int *i, int has_label)
 
 int			read_file(t_file *file)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
 	//fprintf(stderr, "TEST2a\n");

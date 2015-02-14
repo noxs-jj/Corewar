@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 22:46:12 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:26:43 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,9 @@ enum            			e_token_type
 typedef struct				s_token
 {
 	int						id;
-	//int						line;
 	int						col;
-	char					*data;
-	t_op					*op;
+	char					*data; //malloc
+	t_op					*op; // malloc
 	enum e_token_type		type;
 }							t_token;
 
@@ -94,13 +93,9 @@ typedef struct				s_line
 	size_t					len;
 	char					*str; //malloc
     enum e_token_type       type;
-	//t_line_type				type;
 	char					*bytecode; //malloc
 	char					pcode;
 	t_list					*tokens;
-	//t_inst					inst;
-	//int						param[4];
-	//int						param_types[4];
 }							t_line;
 
 typedef struct              s_file
@@ -117,6 +112,6 @@ typedef struct              s_file
 	//int						error; //cf e_error_type
 }                           t_file;
 
-t_op						g_op_tab[17];
+//extern t_op						g_op_tab[17];
 
 #endif

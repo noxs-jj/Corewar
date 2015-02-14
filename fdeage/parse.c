@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 21:22:44 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:21:35 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ static int	is_comment(t_line *line)
 	register size_t	i;
 
 	i = 0;
-	while (line->str && line->str[i] && ft_isspace(line->str[i]))
+	while (line->str && (line->str)[i] && ft_isspace((line->str)[i]))
 		++i;
-	if (line->str[i] == COMMENT_CHAR || line->str[i] == COMMENT_CHAR2
-		|| line->str[i] == COMMENT_CHAR3)
+	if ((line->str)[i] == COMMENT_CHAR || (line->str)[i] == COMMENT_CHAR2
+		|| (line->str)[i] == COMMENT_CHAR3)
 	{
 		line->type = T_COMMENT;
 		return (true);
