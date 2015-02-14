@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 19:56:17 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 22:48:02 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "asm.h"
 #include "libft.h"
 
-static int	add_line(t_file *file, char *str, int i)
+static int	init_line(t_file *file, char *str, int i, int line_type)
 {
 	t_line	*line;
 
@@ -23,17 +23,47 @@ static int	add_line(t_file *file, char *str, int i)
 	line->id = i;
 	line->str = ft_strdup(str);
 	line->len = ft_strlen(line->str);
-	line->type = 0;
+	line->type = line_type;
 	line->tokens = NULL;
-	//line->inst.opcode = -1;
-	//line->inst.parambyte = -1;
-
 	line->pcode = -1;
 	line->bytecode = NULL;
-	//ft_bzero(line->param, sizeof(int) * 4);
-	//ft_bzero(line->param_types, sizeof(int) * 4);
 	ft_lstadd_back(&(file->lines), ft_lstnew((void *)line, sizeof(t_line)));
 	free(line);
+	return (EXIT_SUCCESS);
+}
+
+static int	has_label(char *str)
+{
+	register size_t	i;
+
+	i = 0;
+	while (str[i] && ft_isspace(str[i]))
+		++i;
+	while (str[i] && !ft_isspace(str[i]) && str[i] != SEPARATOR_CHAR)
+		++i;
+	--i;
+	fprintf(stderr, "test c=%c\n", str[i]);
+	if (str[i] == LABEL_CHAR)
+		return (i);
+	return (0);
+}
+
+static int	add_line(t_file *file, char *str, int *i, int has_label)
+{
+	if (has_label)
+	{
+		//add label line
+		if (init_line(file, str, *i, T_LABEL) == EXIT_FAILURE)
+			RET("Init_line() failed.\n", EXIT_FAILURE);
+		(*i)++;
+		init_line(file, str + has_label + 1, *i, 0);
+	}
+	else
+	{
+		//add regular line
+		if (init_line(file, str, *i, 0) == EXIT_FAILURE)
+			RET("Init_line() failed.\n", EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -54,7 +84,7 @@ int			read_file(t_file *file)
 			continue ;
 		}
 		//fprintf(stderr, "TEST2b - i=%d\n", i);
-		if (add_line(file, str, i))
+		if (add_line(file, str, &i, has_label(str)))
 			return (EXIT_FAILURE);
 		free(str);
 		++i;

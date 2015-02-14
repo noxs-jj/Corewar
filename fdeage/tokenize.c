@@ -6,19 +6,19 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 22:13:18 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 22:46:52 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-//extern t_op	g_op_tab[17];
+extern t_op	g_op_tab[17];
 
 //virer
 void print_token(t_token *token)
 {
 	fprintf(stderr, "\n---------------------\ntoken #%d  -  type %d\n", token->id, token->type);
-	fprintf(stderr, "l. %d, col. %d\n", token->line, token->col);
+	fprintf(stderr, "col. %d\n", token->col);
 	if (token->op)
 		fprintf(stderr, "str: |%s|  ->  opcode %d\n---------------------\n", token->data, token->op->opcode);
 	else
@@ -96,7 +96,8 @@ static int		get_token_type(t_token *token)
 }
 
 //OK - 23L
-static t_token	*init_token(char *data, int i, int j, int id)
+//static t_token	*init_token(char *data, int i, int j, int id)
+static t_token	*init_token(t_line *line, int i, int j, int id)
 {
 	t_token			*token;
 
@@ -105,7 +106,7 @@ static t_token	*init_token(char *data, int i, int j, int id)
 		RET("Malloc() failed.\n", NULL);
 	if (!(token->data = (char *)malloc(sizeof(char) * (j - i + 1))))
 		RET("Malloc() failed.\n", NULL);
-	ft_strncpy(token->data,  &(data[i]), j - i);
+	ft_strncpy(token->data,  &(line->str[i]), j - i);
 	token->data[j - i] = 0;
 	token->id = id;
 	token->col = i;
@@ -121,6 +122,10 @@ static t_token	*init_token(char *data, int i, int j, int id)
 		if (get_inst(token) == EXIT_FAILURE)
 		RET("No matching opcode for the instruction.\n", NULL);
 	}
+	//push_token ! memleaks
+	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
+	free(token->data);
+	free(token);
 	fprintf(stderr, "init token end.\n");
 	return (token);
 }
@@ -150,13 +155,10 @@ int				tokenize_line(t_file *file, t_line *line)
 			++j;
 		fprintf(stderr, "test1\n");
 		//if token exists
-		if (!(token = init_token(line->str, i, j, (token ? token_id - 1 : token_id))))
+		if (!(token = init_token(line, i, j, token_id)))
 			RET("Init_token() failed.\n", EXIT_FAILURE);
 		fprintf(stderr, "test2\n");
-		token->line = line->id;
-		//push_token ! memleaks
-		ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token));
-		//print_token(token);
+		//token->line = line->id;
 		//token = NULL;
 		i = j + 1;
 		if (!line->str[i - 1])
