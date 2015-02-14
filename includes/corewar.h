@@ -158,8 +158,10 @@ typedef	struct		s_data
 	WINDOW			*window;
 	int				fdDebugg; // file debug fd
 	unsigned  int 	cycleDie;// = CYCLE_TO_DIE
+	bool 			pause;
 }					t_data;
 
+// Corewar bin
 int		init_start(t_data *d, int ac, char **av);
 int		print_error(char *str);
 t_data	*getData(void);
@@ -171,8 +173,6 @@ int		init_mem(t_data *d);
 int 	gameStart(t_data *d);
 int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
-//void	keyboard(t_data *d);
-
 
 // NCurses
 void	renderClose(t_data *d);

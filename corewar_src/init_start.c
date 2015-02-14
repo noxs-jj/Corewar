@@ -87,6 +87,7 @@ int		init_start(t_data *d, int ac, char **av)
 			return (print_error(ERR_FILE_DEBUGG));
 	}
 	d->dump = -1;
+	d->pause = false;
 	d->players = -1;
 	d->cycleDie = CYCLE_TO_DIE;
 	d->cycle = 0;
