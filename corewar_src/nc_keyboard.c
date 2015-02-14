@@ -13,19 +13,15 @@
 #include "../includes/corewar.h"
 #include "../includes/render.h"
 
-void	keyboard(t_data *d)
+void	keyboard()
 {
 	int 		keyInput;
 
-	(void)d;
 	timeout(1);
 	keyInput = getch();
-	if (keyInput == 'Q' && keyInput == 'E') { // UP
-		// Exit function who free all program
-		renderClose(d);
-		_exit(0);
-		
+	if (keyInput == 113 // Q
+		|| keyInput == 101 // E
+		|| keyInput == 27) { // ECHAP
+		exitFree();
 	}
-	// else if (keyInput == ' ')
-	// 	// function PAUSE
 }

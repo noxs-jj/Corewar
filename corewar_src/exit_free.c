@@ -12,4 +12,20 @@
 
 #include "../includes/corewar.h"
 
-// d->map
+void	exitFree(void)
+{
+	t_data *d;
+
+	d = getData();
+	renderClose(d);
+	if (LOG == 1)
+	{
+		writeL("Exit Success !!!");
+		close(d->fdDebugg);
+	}
+	if (d->map != NULL)
+		ft_memdel((void **)&d->map);
+	if (d != NULL)
+		ft_memdel((void **)&d);
+	exit(0);
+}

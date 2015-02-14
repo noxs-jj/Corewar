@@ -171,6 +171,7 @@ int		init_mem(t_data *d);
 int 	gameStart(t_data *d);
 int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
+//void	keyboard(t_data *d);
 
 
 // NCurses
