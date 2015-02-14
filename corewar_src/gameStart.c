@@ -12,14 +12,21 @@
 
 #include "../includes/corewar.h"
 
-int gameStart(t_data *d)
+int	gameStart(t_data *d)
 {
 	d->run = true;
 	while (d->run == true)
 	{
-		checkNextOp(d); // check next champion's instruction (ptr by PC)
-		execOp(d); // exec next op defined in d->prog[player].nextOp
-		renderDraw(d); // draw game
+		if (d->pause == false)
+		{
+			checkNextOp(d); // check next champion's instruction (ptr by PC)
+			execOp(d); // exec next op defined in d->prog[player].nextOp
+			renderDraw(d); // draw game
+		}
+		keyboard(&d);
+		if (d->pause == true)
+			sleep(2); 						// REMOVE
 	}
+
 	return (0);
 }

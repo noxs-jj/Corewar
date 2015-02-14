@@ -15,8 +15,8 @@
 
 void	renderClose(t_data *d)
 {
+	refresh();
 	wrefresh(d->window);
 	delwin(d->window);
-	refresh();
 	endwin();
 }

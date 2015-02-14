@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 17:40:22 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/14 17:32:25 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 #define REG_SIZE				4
 // #define DIR_SIZE				REG_SIZE
 
-// # define REG_CODE				1
-// # define DIR_CODE				2
-// # define IND_CODE				3
+# define REG_CODE				1
+# define DIR_CODE				2
+# define IND_CODE				3
 
 #define MAX_PLAYERS				4
 #define MAX_ARGS_NUMBER			(3 + 3 * MAX_PLAYERS)
@@ -68,10 +68,10 @@
 
 // typedef char	t_arg_type;
 
-// #define T_REG					1
-// #define T_DIR					2
-// #define T_IND					4
-// #define T_LAB					8
+#define T_REG					1
+#define T_DIR					2
+#define T_IND					4
+#define T_LAB					8
 
 /*
 **
@@ -82,17 +82,17 @@
 // # define COREWAR_EXEC_MAGIC		0xea83f3
 
 
-// typedef struct		s_op
-// {
-// 	char*			name;
-// 	int				nb_params;
-// 	int				param_types[4];
-// 	int				opcode;
-// 	int				nb_cycles;
-// 	char*			description;
-// 	int				has_pcode;
-// 	int				has_idx;
-// }					t_op;
+typedef struct		s_op
+{
+	char*			name;
+	int				nb_params;
+	int				param_types[4];
+	int				opcode;
+	int				nb_cycles;
+	char*			description;
+	int				has_pcode;
+	int				has_idx;
+}					t_op;
 
 // t_op    op_tab[17] =
 // {
@@ -158,8 +158,10 @@ typedef	struct		s_data
 	WINDOW			*window;
 	int				fdDebugg; // file debug fd
 	unsigned  int 	cycleDie;// = CYCLE_TO_DIE
+	bool 			pause;
 }					t_data;
 
+// Corewar bin
 int		init_start(t_data *d, int ac, char **av);
 int		print_error(char *str);
 t_data	*getData(void);
@@ -171,7 +173,6 @@ int		init_mem(t_data *d);
 int 	gameStart(t_data *d);
 int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
-
 
 // NCurses
 void	renderClose(t_data *d);

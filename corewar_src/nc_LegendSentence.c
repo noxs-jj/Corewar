@@ -39,4 +39,9 @@ void	renderLegendSentence(t_data *d)
 	mvwprintw(d->window, L_Y_N_LIVE, L_X_WRITE, S_NBR_LIVE);
 	// "MAX_CHECKS :"
 	mvwprintw(d->window, L_Y_N_CHECK, L_X_WRITE, S_MAX_CHECKS);
+
+	// PAUSE
+	mvwprintw(d->window, L_Y_PAUSE, L_X_WRITE, S_PAUSE);
+	// EXIT
+	mvwprintw(d->window, L_Y_EXIT, L_X_WRITE, S_EXIT);
 }

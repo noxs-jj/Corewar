@@ -26,12 +26,7 @@ int main(int ac, char **av)
 	renderInit(d);
 	load_champions(d);
 
-	gameStart(d);
+	gameStart(d);// Main loop
 
-	while (1)
-		sleep(10);
-	renderClose(d);
-	if (LOG == 1)
-		close(d->fdDebugg);
 	return (0);
 }
