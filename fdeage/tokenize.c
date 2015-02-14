@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 22:46:52 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 23:00:09 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,23 @@ static int		get_inst(t_token *token)
 {
     register size_t	i;
 
-	fprintf(stderr, "get_instruction begin - data=%s\n", token->data);
+	//fprintf(stderr, "get_instruction begin - data=%s\n", token->data);
     i = 0;
     while (i < 16)
     {
-		fprintf(stderr, "before strcmp\n");
+		//fprintf(stderr, "before strcmp\n");
 		if (!ft_strcmp(token->data, (g_op_tab[i]).name))
 		{
-			fprintf(stderr, "in strcmp\n");
+			//fprintf(stderr, "in strcmp\n");
 			if (!(token->op = (t_op *)malloc(sizeof(t_op))))
 				RET("Malloc() failed.\n", EXIT_FAILURE);
 			ft_memcpy((void *)token->op, (void *)&(g_op_tab[i]), sizeof(t_op));
 			return (EXIT_SUCCESS);
 		}
-		fprintf(stderr, "after strcmp\n");
+		//fprintf(stderr, "after strcmp\n");
         ++i;
     }
-	fprintf(stderr, "get_instruction end\n");
+	//fprintf(stderr, "get_instruction end\n");
     return (EXIT_FAILURE);
 }
 
@@ -101,7 +101,7 @@ static t_token	*init_token(t_line *line, int i, int j, int id)
 {
 	t_token			*token;
 
-	fprintf(stderr, "init token begin.\n");
+	//fprintf(stderr, "init token begin.\n");
 	if (!(token = (t_token *)malloc(sizeof(t_token))))
 		RET("Malloc() failed.\n", NULL);
 	if (!(token->data = (char *)malloc(sizeof(char) * (j - i + 1))))
@@ -126,7 +126,7 @@ static t_token	*init_token(t_line *line, int i, int j, int id)
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
 	free(token->data);
 	free(token);
-	fprintf(stderr, "init token end.\n");
+	//fprintf(stderr, "init token end.\n");
 	return (token);
 }
 
@@ -138,7 +138,7 @@ int				tokenize_line(t_file *file, t_line *line)
 	size_t			token_id;
 	t_token			*token;
 
-	fprintf(stderr, "tokenize begin\n");
+	//fprintf(stderr, "tokenize begin\n");
 	i = 0;
 	token_id = 0;
 	token = NULL;
@@ -153,12 +153,9 @@ int				tokenize_line(t_file *file, t_line *line)
 		j = i;
 		while (line->str[j] && !ft_isspace(line->str[j]) && line->str[j] != SEPARATOR_CHAR)
 			++j;
-		fprintf(stderr, "test1\n");
 		//if token exists
 		if (!(token = init_token(line, i, j, token_id)))
 			RET("Init_token() failed.\n", EXIT_FAILURE);
-		fprintf(stderr, "test2\n");
-		//token->line = line->id;
 		//token = NULL;
 		i = j + 1;
 		if (!line->str[i - 1])
@@ -168,6 +165,6 @@ int				tokenize_line(t_file *file, t_line *line)
 		++token_id;
 	}
 	(void)file;
-	fprintf(stderr, "tokenize end\n");
+	//fprintf(stderr, "tokenize end\n");
 	return (EXIT_SUCCESS);
 }

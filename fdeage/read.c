@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 22:48:02 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 22:58:29 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ static int	add_line(t_file *file, char *str, int *i, int has_label)
 	if (has_label)
 	{
 		//add label line
+		str[has_label + 1] = 0;
 		if (init_line(file, str, *i, T_LABEL) == EXIT_FAILURE)
 			RET("Init_line() failed.\n", EXIT_FAILURE);
+		str[has_label + 1] = ' ';
 		(*i)++;
 		init_line(file, str + has_label + 1, *i, 0);
 	}
