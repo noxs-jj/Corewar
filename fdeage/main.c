@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 19:20:11 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 19:44:30 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ fprintf(stderr, "\nTEST1 - INIT OK\n");
 	if (check_file(file, av[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 fprintf(stderr, "\nTEST2 - CHECK OK\n");
-	read_file(file);
+	if (read_file(file) == EXIT_FAILURE)
+		asm_error("Failed to read the file.\n");
 fprintf(stderr, "\nTEST3 - READ OK\n");
 	if (parse_file(file) == EXIT_FAILURE)
 	{

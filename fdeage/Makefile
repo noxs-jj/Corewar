@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/29 16:38:06 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/14 18:54:18 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/14 22:04:13 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,7 +19,8 @@ SRC 		=	main.c	\
 				tokenize.c	\
 				convert.c	\
 				error.c	\
-				exit.c
+				exit.c	\
+				op.c
 
 OBJ			=	$(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 19:24:16 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 21:22:44 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	check_name(t_file *file, t_line *line)
 	if (ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)) == 0)
 	{
 		//fprintf(stderr, "TEST4b - name detected\n");
-		line->type = T_NAME;
+		line->type = T_CMD_NAME;
 		name_begin = ft_strlen(NAME_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
 			++name_begin;
@@ -58,7 +58,7 @@ static void	check_comment(t_file *file, t_line *line)
 		ft_strlen(COMMENT_CMD_STRING)) == 0)
 	{
 		//fprintf(stderr, "TEST4d - comment detected\n");
-		line->type = T_INIT_COMMENT;
+		line->type = T_CMD_COMMENT;
 		name_begin = ft_strlen(COMMENT_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
 			++name_begin;
@@ -98,14 +98,15 @@ int			parse_file(t_file *file)
 	{
 		if (!is_comment(LINE))
 		{
-			LINE->type = T_INST;
+			LINE->type = T_EXEC;
 			if (!(file->header.prog_name[0]))
 				check_name(file, LINE);
-			//fprintf(stderr, "TEST4a - name: %s\n", file->header.prog_name);
 			if (!(file->header.comment[0]))
 				check_comment(file, LINE);
-			//fprintf(stderr, "TEST4c - comment: %s\n", file->header.comment);
-			tokenize_line(file, LINE);
+			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str);
+			if (LINE->type == T_EXEC
+				&& tokenize_line(file, LINE) == EXIT_FAILURE)
+				return (EXIT_FAILURE);
 		}
 		tmp = tmp->next;
 	}

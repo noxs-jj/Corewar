@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 19:20:37 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 19:46:54 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		parse_file(t_file *file);
 ** tokenize - TODO
 */
 
-void	tokenize_line(t_file *file, t_line *line);
+int		tokenize_line(t_file *file, t_line *line);
 
 /*
 ** convert.c - TODO
