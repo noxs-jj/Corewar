@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/12 11:29:33 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 19:11:56 by fdeage           ###   ########.fr       */
+/*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/14 19:19:45 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "asm.h"
-#include "libft.h"
 
-void	asm_error(const char *str)
+/*
+static void get_inst(t_file *file, t_line *line)
 {
-	ft_putstr_color(str, COL_LIGHT_RED);
-	exit(EXIT_FAILURE);
+    //register size_t   i;
+
+    //i = 0;
+    //while (
+    (void)file;
+    (void)line;
+    return ;
 }
 
-void	print_detailed_error(t_file *file, const char *av1)
+static void get_params(t_file *file, t_line *line)
 {
+    //register size_t i;
+
+    //i = 0;
+    (void)file;
+    (void)line;
+    return ;
+}
+*/
+
+void	tokenize_line(t_file *file, t_line *line)
+{
+	//get_inst(file, LINE);
+	//get_params(file, LINE);
 	(void)file;
-	ft_putstr_color("Couln't convert ", COL_LIGHT_RED);
-	ft_putstr_color(av1, COL_LIGHT_YELLOW);
-	ft_putstr_color(".\n", COL_LIGHT_RED);
+	(void)line;
 }

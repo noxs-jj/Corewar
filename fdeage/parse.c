@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 20:24:39 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 19:24:16 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "asm_fn.h"
 #include "libft.h"
 
-static void	check_name(t_file *file, t_list *tmp)
+static void	check_name(t_file *file, t_line *line)
 {
 	char	*s;
 	int		name_begin;
@@ -22,12 +22,13 @@ static void	check_name(t_file *file, t_list *tmp)
 	int		blank;
 
 	blank = 0;
-	while (ft_isspace((LINE->str)[blank]))
+	while (ft_isspace((line->str)[blank]))
 		++blank;
-	s = LINE->str + blank;
+	s = line->str + blank;
 	if (ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)) == 0)
 	{
 		//fprintf(stderr, "TEST4b - name detected\n");
+		line->type = T_NAME;
 		name_begin = ft_strlen(NAME_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
 			++name_begin;
@@ -42,7 +43,7 @@ static void	check_name(t_file *file, t_list *tmp)
 	return ;
 }
 
-static void	check_comment(t_file *file, t_list *tmp)
+static void	check_comment(t_file *file, t_line *line)
 {
 	char	*s;
 	int		name_begin;
@@ -50,14 +51,14 @@ static void	check_comment(t_file *file, t_list *tmp)
 	int		blank;
 
 	blank = 0;
-	while (ft_isspace((LINE->str)[blank]))
+	while (ft_isspace((line->str)[blank]))
 		++blank;
-	s = LINE->str + blank;
+	s = line->str + blank;
 	if (ft_strncmp(s, COMMENT_CMD_STRING,
 		ft_strlen(COMMENT_CMD_STRING)) == 0)
 	{
 		//fprintf(stderr, "TEST4d - comment detected\n");
-		LINE->type = T_INIT_COMMENT;
+		line->type = T_INIT_COMMENT;
 		name_begin = ft_strlen(COMMENT_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
 			++name_begin;
@@ -81,15 +82,11 @@ static int	is_comment(t_line *line)
 		++i;
 	if (line->str[i] == COMMENT_CHAR || line->str[i] == COMMENT_CHAR2
 		|| line->str[i] == COMMENT_CHAR3)
-		return (1);
-	return (0);
-}
-
-static void	check_inst(t_file *file, t_list *tmp)
-{
-	(void)file;
-	(void)tmp;
-	return ;
+	{
+		line->type = T_COMMENT;
+		return (true);
+	}
+	return (false);
 }
 
 int			parse_file(t_file *file)
@@ -101,15 +98,16 @@ int			parse_file(t_file *file)
 	{
 		if (!is_comment(LINE))
 		{
+			LINE->type = T_INST;
 			if (!(file->header.prog_name[0]))
-				check_name(file, tmp);
+				check_name(file, LINE);
 			//fprintf(stderr, "TEST4a - name: %s\n", file->header.prog_name);
 			if (!(file->header.comment[0]))
-				check_comment(file, tmp);
+				check_comment(file, LINE);
 			//fprintf(stderr, "TEST4c - comment: %s\n", file->header.comment);
-			check_inst(file, tmp);
+			tokenize_line(file, LINE);
 		}
 		tmp = tmp->next;
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }

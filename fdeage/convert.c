@@ -6,13 +6,17 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 19:37:36 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 19:09:31 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	convert_file(t_file *file)
+/*
+**
+*/
+
+int	convert_file(t_file *file)
 {
 	t_list	*tmp;
 
@@ -23,4 +27,5 @@ void	convert_file(t_file *file)
 		ft_strcpy(LINE->bytecode, "tito");
 		tmp = tmp->next;
 	}
+	return (EXIT_SUCCESS);
 }

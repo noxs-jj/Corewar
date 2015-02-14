@@ -6,21 +6,23 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 20:21:14 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 18:12:25 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
-//# include <stdlib.h>
-//# include <unistd.h>
 # include "libft.h"
 # include "op.h"
 
-
+//TODO:
 /* virer */
 #include<stdio.h>
+//si erreur, pas de fichier zork.cor
+
+
+
 
 # define COMMENT_CHAR2		';'
 # define COMMENT_CHAR3		','

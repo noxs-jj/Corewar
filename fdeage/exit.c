@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:17:22 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 19:38:33 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 18:30:13 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	free_lines(t_file *file)
 
 void		exit_asm(t_file *file)
 {
-	ft_putstr_color("TRY EXITING... ", COL_LIGHT_GREEN);
+	ft_putstr_color("TRY EXITING... ", COL_GREEN);
 	free_lines(file);
 	close(file->fd_s);
 	close(file->fd_cor);

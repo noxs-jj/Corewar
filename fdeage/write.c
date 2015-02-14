@@ -6,11 +6,13 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:13:52 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 18:47:48 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 18:55:53 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include "asm.h"
+#include "asm_fn.h"
 #include "libft.h"
 
 static void	write_magic(int fd)
@@ -52,6 +54,8 @@ static void	write_text_section(t_file *file)
 
 void		write_cor(t_file *file)
 {
+    if (!(file->fd_cor = open(file->name_cor, O_WRONLY | O_CREAT, 0644)))
+        asm_error("Couldln't create the .cor file\n");
 	write_magic(file->fd_cor);
 	write_name_comment(file->fd_cor, file->header);
 	write_text_section(file);

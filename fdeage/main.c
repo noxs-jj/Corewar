@@ -6,12 +6,12 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/13 20:31:37 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/14 19:20:11 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <Stdlib.h>
+#include <stdlib.h>
 #include "asm.h"
 #include "asm_fn.h"
 #include "op.h"
@@ -31,8 +31,8 @@ static int	check_file(t_file *file, const char *filename)
 	ft_strncpy(file->name_cor, file->name_s,
 		ft_strstr(file->name_s, ".s") - file->name_s);
 	ft_strcat(file->name_cor, ".cor");
-	if (!(file->fd_cor = open(file->name_cor, O_WRONLY | O_CREAT, 0644)))
-		asm_error("Couldln't create the .cor file\n");
+	//if (!(file->fd_cor = open(file->name_cor, O_WRONLY | O_CREAT, 0644)))
+	//	asm_error("Couldln't create the .cor file\n");
 	return (EXIT_SUCCESS);
 }
 
@@ -65,8 +65,8 @@ static void	print_header(t_header *header, char *s_file, char *cor_file)
 	ft_putstr_color("Comment:   ", COL_RESET);
 	ft_color_switch_fd(COL_LIGHT_RED, 1);
 	ft_putendl(header->comment);
-	ft_putstr_color(cor_file, COL_GREEN);
-	ft_putstr_color(" successfully created!", COL_LIGHT_GREEN);
+	ft_putstr_color(cor_file, COL_LIGHT_YELLOW);
+	ft_putstr(" successfully created!\n");
 	return ;
 }
 
@@ -88,19 +88,24 @@ fprintf(stderr, "\nTEST1 - INIT OK\n");
 fprintf(stderr, "\nTEST2 - CHECK OK\n");
 	read_file(file);
 fprintf(stderr, "\nTEST3 - READ OK\n");
-	if (!parse_file(file))
+	if (parse_file(file) == EXIT_FAILURE)
 	{
+		print_detailed_error(file, av[1]);
 		exit_asm(file);
 		return (EXIT_SUCCESS);
 	}
-fprintf(stderr, "\nTEST4 - PARSE OK\n");
-print_header(&(file->header), av[1], file->name_cor);
-	convert_file(file);
+fprintf(stderr, "\nTEST4 - TOKENIZE OK\n");
+	if (convert_file(file) == EXIT_SUCCESS)
+	{
 fprintf(stderr, "\nTEST5 - CONVERT OK\n");
-	write_cor(file);
-fprintf(stderr, "\nTEST6 - CONVERT OK\n");
+		write_cor(file);
+fprintf(stderr, "\nTEST6 - WRITE OK\n");
+		print_header(&(file->header), av[1], file->name_cor);
+	}
+	else
+		print_detailed_error(file, av[1]);
+	//prepare to exit but doesnt exit itself
 	exit_asm(file);
-fprintf(stderr, "\nTEST7 - EXIT OK\n");
 
 	//TODO: virer
 	if (!ft_strcmp(av[ac - 1], "leaks"))
