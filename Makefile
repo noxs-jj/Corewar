@@ -16,7 +16,7 @@ COMPIL = 		gcc -Wall -Wextra -Werror
 #COMPIL = /usr/local/bin/gcc -Wall -Wextra -Werror
 #COMPIL = /usr/bin/gcc -Wall -Wextra -Werror
 
-BIN_ASM =		asm_compil/asm
+BIN_ASM =		fdeage/asm
 BIN_COREWAR =	corewar_src/corewar
 
 LIBFT = 		libft/libft.a
@@ -24,7 +24,7 @@ LIBFT = 		libft/libft.a
 all:
 	make -C libft
 	make -C corewar_src
-	make -C asm_compil
+	make -C fdeage
 	cp $(BIN_COREWAR) .
 	cp $(BIN_ASM) .
 
@@ -35,18 +35,18 @@ corewar:
 
 asm:
 	make -C libft
-	make -C asm_compil
+	make -C fdeage
 	cp $(BIN_ASM) .
 
 clean:
 	make clean -C libft
 	make clean -C corewar_src
-	make clean -C asm_compil
+	make clean -C fdeage
 
 fclean:
 	make fclean -C libft
 	make fclean -C corewar_src
-	make fclean -C asm_compil
+	make fclean -C fdeage
 	rm -rf log/*.log
 	rm asm
 	rm corewar

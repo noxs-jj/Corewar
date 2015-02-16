@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
-#include "../includes/render.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
 
 void	renderLegendPlayerValue4(t_data *d)
 {
-		// "Player 4 -> champName"
+		/* "Player 4 -> champName" */
 		wattron(d->window, COLOR_PAIR(4) | A_BOLD);
 		mvwprintw(d->window, L_Y_PLAY_4, L_X_PLAY4_VALUE, d->prog[3].prog_name);
 		wattroff(d->window, COLOR_PAIR(4) | A_BOLD);
-		// "Player 4: Last live : value"
+		/* "Player 4: Last live : value" */
 		wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 		mvwprintw(d->window, L_Y_P4_LAST, L_X_P4_LAST_VALUE, S_DEFAULT_VALUE);
-		// "Player 4: Lives period : value"
+		/* "Player 4: Lives period : value" */
 		mvwprintw(d->window, L_Y_P4_LIVE, L_X_P4_LIVE_VALUE, S_DEFAULT_VALUE);
 		wattroff(d->window, COLOR_PAIR(10) | A_BOLD);
 }

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_fork.c                                         :+:      :+:    :+:   */
+/*   nc_close_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 16:12:31 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 16:12:32 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 13:08:33 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 13:08:34 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm_compil.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
 
-int	s_fork(void)
+void	renderClose(t_data *d)
 {
-	t_asm	*d;
-
-	d = getASMdata();
-
-	return (0);
+	refresh();
+	wrefresh(d->window);
+	delwin(d->window);
+	endwin();
 }

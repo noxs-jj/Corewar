@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
-#include "../includes/render.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
 
 void	renderDraw(t_data *d)
 {
