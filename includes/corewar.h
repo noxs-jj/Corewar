@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 12:16:33 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 13:27:27 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@
 #define IDX_MOD					(MEM_SIZE / 8)
 #define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2)
 
-// #define COMMENT_CHAR				'#'
-// #define LABEL_CHAR				':'
-// #define DIRECT_CHAR				'%'
-// #define SEPARATOR_CHAR			','
+#define COMMENT_CHAR				'#'
+#define LABEL_CHAR				':'
+#define DIRECT_CHAR				'%'
+#define SEPARATOR_CHAR			','
 
-// #define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
+#define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
 
 // #define NAME_CMD_STRING			".name"
 // #define COMMENT_CMD_STRING		".comment"
@@ -68,9 +68,9 @@
 
 // typedef char	t_arg_type;
 
-#define T_REG					1
-#define T_DIR					2
-#define T_IND					4
+#define T_REG					1 // registre
+#define T_DIR					2 // label ou nombre
+#define T_IND					4 // nombre
 #define T_LAB					8
 
 /*
