@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 15:20:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 16:09:34 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 18:39:11 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	readOpCode(t_data *d, int player)
 	t_case *args;
 
 	args = ((d->prog[player].PC) + 1);
-	ft_bzero(d->prog[player].opArgs, 9);
+	ft_bzero(d->prog[player].codage, 9);
 	while (i < 16)
 	{
 		if ( !(args->hex[0] >= 'a' && args->hex[0] <= 'f')
 			&& !(args->hex[0] >= '0' && args->hex[0] <= '9'))
 			return (-1);
 		if (bin_tab[i].hex == args->hex[0])
-			ft_strncpy(d->prog[player].opArgs, bin_tab[i].bin, 4);
+			ft_strncpy(d->prog[player].codage, bin_tab[i].bin, 4);
 		i++;
 	}
 	i = 0;
@@ -39,7 +39,7 @@ int	readOpCode(t_data *d, int player)
 			&& !(args->hex[1] >= '0' && args->hex[1] <= '9'))
 			return (-1);
 		if (bin_tab[i].hex == args->hex[1])
-			ft_strncpy(&d->prog[player].opArgs[4], bin_tab[i].bin, 4);
+			ft_strncpy(&d->prog[player].codage[4], bin_tab[i].bin, 4);
 		i++;
 	}
 	return (0);
