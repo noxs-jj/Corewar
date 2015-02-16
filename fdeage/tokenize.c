@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 13:32:13 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 20:46:39 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ static int	get_token_type(t_token *token)
 	else if ((token->data)[0] == DIRECT_CHAR)
 	{
 		if ((token->data)[1] == LABEL_CHAR)
-			token->type = T_DIRECT_LABEL;
+			token->type = T_A_DLAB;
 		else
-			token->type = T_DIRECT;
+			token->type = T_A_DIR;
 	}
 	else if ((token->data)[0] == REGISTER_CHAR)
-		token->type = T_REGISTER;
+		token->type = T_A_REG;
 	else
-		token->type = T_INDIRECT;
+		token->type = T_A_IND;
 	return (EXIT_SUCCESS);
 }
 

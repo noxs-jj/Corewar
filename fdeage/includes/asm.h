@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 15:26:13 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 20:45:07 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,14 @@
 //error_handling: globale t_error ?
 //TODO: Makefile harmonise
 //TODO: libft unique
+//TODO : commentaites en ";" en fin de ligne (pas oblig)
 
+//TODO ERROR:
+//reg number > REG_NUMBER
+//label en dehors du file
+//type d'arg incorrect
+
+//macro conversion T_DIRECT_LABEL
 
 # define LINE				((t_line *)(tmp->content))
 # define TOKEN				((t_token *)(tmp->content))
@@ -62,17 +69,17 @@ typedef struct				s_op
 enum						e_token_type
 {
 	T_UNKNOWN = 0,
-	T_CMD_NAME,
-	T_CMD_COMMENT,
-	T_COMMENT,
-	T_EXEC,
-	T_STRING,
-	T_INSTRUCTION,
-	T_REGISTER,
-	T_LABEL,
-	T_INDIRECT,
-	T_DIRECT,
-	T_DIRECT_LABEL,
+	T_CMD_NAME,  //1
+	T_CMD_COMMENT,  //2
+	T_COMMENT,  //3
+	T_EXEC,  //4
+	T_STRING, //5
+	T_LABEL, //6
+	T_INSTRUCTION, //7
+	T_A_REG, //8
+	T_A_IND, //9
+	T_A_DIR, //10
+	T_A_DLAB, //11
 };
 
 typedef struct				s_token

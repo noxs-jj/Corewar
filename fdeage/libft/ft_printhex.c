@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 14:37:37 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 16:10:54 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 16:57:37 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ void	ft_printchar_hex(unsigned char n, int fd, int *print_all)
 void	ft_printhex_fd(uint32_t n, int fd, int print_all)
 {
 	if ((n / (256 * 256 * 256)) || print_all)
-		printchar_hex((n / (256 * 256 * 256)), fd, &print_all);
+		ft_printchar_hex((n / (256 * 256 * 256)), fd, &print_all);
 	n -= (256 * 256 * 256) * (n / (256 * 256 * 256));
 	if ((n / (256 * 256)) || print_all)
-		printchar_hex((n / (256 * 256)), fd, &print_all);
+		ft_printchar_hex((n / (256 * 256)), fd, &print_all);
 	n -= (256 * 256) * (n / (256 * 256));
 	if ((n / 256) || print_all)
-		printchar_hex((n / 256), fd, &print_all);
+		ft_printchar_hex((n / 256), fd, &print_all);
 	n -= (256) * (n / (256));
-	printchar_hex(n, fd, &print_all);
+	ft_printchar_hex(n, fd, &print_all);
 }
 
 void	ft_printhex(uint32_t n, int print_all)
