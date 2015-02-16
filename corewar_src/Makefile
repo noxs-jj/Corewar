@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/13 17:21:12 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/16 15:55:00 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,19 +25,19 @@ SRCS =	main.c \
 		print_error.c \
 		writeL.c \
 		getData.c \
-		nc_LegendColumn.c \
-		nc_LegendInfoValue.c \
-		nc_LegendPlayerValue.c \
-		nc_LegendSentence.c \
-		nc_close_free.c \
-		nc_draw_scene.c \
-		nc_init.c \
-		nc_keyboard.c \
-		nc_legendPlayerSentence.c \
-		nc_renderLegendPlayerValue1.c \
-		nc_renderLegendPlayerValue2.c \
-		nc_renderLegendPlayerValue3.c \
-		nc_renderLegendPlayerValue4.c \
+		ncurse/nc_LegendColumn.c \
+		ncurse/nc_LegendInfoValue.c \
+		ncurse/nc_LegendPlayerValue.c \
+		ncurse/nc_LegendSentence.c \
+		ncurse/nc_close_free.c \
+		ncurse/nc_draw_scene.c \
+		ncurse/nc_init.c \
+		ncurse/nc_keyboard.c \
+		ncurse/nc_legendPlayerSentence.c \
+		ncurse/nc_renderLegendPlayerValue1.c \
+		ncurse/nc_renderLegendPlayerValue2.c \
+		ncurse/nc_renderLegendPlayerValue3.c \
+		ncurse/nc_renderLegendPlayerValue4.c \
 		exit_free.c \
 		read_files.c \
 		init_prog.c \
@@ -46,7 +46,8 @@ SRCS =	main.c \
 		load_champions.c \
 		gameStart.c \
 		execOp.c \
-		checkNextOp.c
+		checkNextOp.c \
+		readOpCode.c
 
 OBJS = $(SRCS:.c=.o)
 

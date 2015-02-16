@@ -6,14 +6,14 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 17:34:34 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 12:49:32 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
+#include "../../includes/corewarOpTab.h"
 
 int		op_fork(t_data *d, int player)
 {
-	// wait 800 (d->prog[player].wait = 800)
+	d->prog[player].wait = op_tab[d->prog[player].nextOp][4];
 	return (0);
 }

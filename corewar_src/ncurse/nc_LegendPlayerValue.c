@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_or.c                                           :+:      :+:    :+:   */
+/*   nc_LegendPlayerValue.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 16:13:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 16:13:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/11 11:46:34 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/11 11:46:35 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm_compil.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
 
-int	s_or(void)
+void	renderLegendPlayerValue(t_data *d)
 {
-	t_asm	*d;
-
-	d = getASMdata();
-
-	return (0);
+	if (d->players > 0)
+		renderLegendPlayerValue1(d);
+	if (d->players > 1)
+		renderLegendPlayerValue2(d);
+	if (d->players > 2)
+		renderLegendPlayerValue3(d);
+	if (d->players > 3)
+		renderLegendPlayerValue4(d);
 }

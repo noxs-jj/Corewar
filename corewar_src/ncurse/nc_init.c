@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
-#include "../includes/render.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
 /*
 **	COLOR_BLACK   0
 **	COLOR_RED     1
@@ -25,29 +25,29 @@
 
 void	renderInitPair(void)
 {
-	// DEFAULT BACKGROUND BLACK  + WHITE WRITE
+	/* DEFAULT BACKGROUND BLACK  + WHITE WRITE */
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
-	// VALUE BACKGROUND BLACK  + MAGENTA WRITE
+	/* VALUE BACKGROUND BLACK  + MAGENTA WRITE */
 	init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
 
-	// PLAYER 1 BACKGROUND BLACK + RED WRITE
+	/* PLAYER 1 BACKGROUND BLACK + RED WRITE */
 	init_pair(1, COLOR_RED, COLOR_BLACK);
-	// PLAYER 1 BACKGROUND BLACK + RED WRITE
+	/* PLAYER 1 BACKGROUND BLACK + RED WRITE */
 	init_pair(11, COLOR_BLACK, COLOR_RED);
 
-	// PLAYER 2 BACKGROUND BLACK + BLUE WRITE
+	/* PLAYER 2 BACKGROUND BLACK + BLUE WRITE */
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
-	// PLAYER 2 BACKGROUND BLACK + BLUE WRITE
+	/* PLAYER 2 BACKGROUND BLACK + BLUE WRITE */
 	init_pair(12, COLOR_BLACK, COLOR_BLUE);
 
-	// PLAYER 3 BACKGROUND BLACK + YELLOW WRITE
+	/* PLAYER 3 BACKGROUND BLACK + YELLOW WRITE */
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-	// PLAYER 3 BACKGROUND BLACK + YELLOW WRITE
+	/* PLAYER 3 BACKGROUND BLACK + YELLOW WRITE */
 	init_pair(13, COLOR_BLACK, COLOR_YELLOW);
 
-	// PLAYER 4 BACKGROUND BLACK + GREEN WRITE
+	/* PLAYER 4 BACKGROUND BLACK + GREEN WRITE */
 	init_pair(4, COLOR_GREEN, COLOR_BLACK);
-	// PLAYER 4 BACKGROUND BLACK + GREEN WRITE
+	/* PLAYER 4 BACKGROUND BLACK + GREEN WRITE */
 	init_pair(14, COLOR_BLACK, COLOR_GREEN);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:00:38 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 17:17:31 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 12:17:08 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	init_prog(t_data *d)
 		d->prog[i].alive = false;
 		d->prog[i].wait = 0;
 		d->prog[i].nextOp = 0;
+		d->prog[i].lastLive = 0;
+		d->prog[i].liveNbr = 0;
 		init_reg(d, i);
 		i++;
 	}

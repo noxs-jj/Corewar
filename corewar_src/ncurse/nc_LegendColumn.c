@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_lld.c                                          :+:      :+:    :+:   */
+/*   nc_LegendColumn.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 16:12:38 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/06 16:12:39 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/09 17:48:03 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 17:48:04 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm_compil.h"
+#include "../../includes/corewar.h"
+#include "../../includes/render.h"
 
-int	s_lld(void)
+void	renderLegendColumn(t_data *d)
 {
-	t_asm	*d;
+	int y;
 
-	d = getASMdata();
-
-	return (0);
+	y = 1;
+	while (y < MAP_HEIGHT - 1)
+	{
+		mvwaddch(d->window, y, L_X_START, '|');
+		y++;
+	}
 }

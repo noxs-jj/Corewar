@@ -8,6 +8,10 @@ asm_compil/*.o
 asm_compil/*~
 asm_compil/#*
 asm_compil/asm
+fdeage/*.o
+fdeage/*~
+fdeage/#*
+fdeage/asm
 asm
 libft/*.o
 libft/*~
