@@ -106,8 +106,8 @@ typedef struct		s_header
 {
 	// unsigned int		magic;
 	bool				carry; // true if prev action worked
-	int					lastLive;
-	int 				liveNbr;
+	int					lastLive; /* Last live : */
+	int 				liveNbr; /* Lives in current period : */
 	t_case				*PC; // program counter
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	int					wait; // turn to wait before exec new instruction

@@ -17,12 +17,17 @@ void	renderLegendPlayerValue3(t_data *d)
 {
 		/* "Player 3 -> champName" */
 		wattron(d->window, COLOR_PAIR(3) | A_BOLD);
-		mvwprintw(d->window, L_Y_PLAY_3, L_X_PLAY3_VALUE, d->prog[2].prog_name);
+		mvwprintw(d->window, L_Y_PLAY_3, L_X_PLAY3_VALUE,
+					d->prog[2].prog_name);
 		wattroff(d->window, COLOR_PAIR(3) | A_BOLD);
+
 		/* "Player 3: Last live : value" */
 		wattron(d->window, COLOR_PAIR(10) | A_BOLD);
-		mvwprintw(d->window, L_Y_P3_LAST, L_X_P3_LAST_VALUE, S_DEFAULT_VALUE);
+		mvwprintw(d->window, L_Y_P3_LAST, L_X_P3_LAST_VALUE,
+					ft_itoa(d->prog[2].lastLive));
+
 		/* "Player 3: Lives period : value" */
-		mvwprintw(d->window, L_Y_P3_LIVE, L_X_P3_LIVE_VALUE, S_DEFAULT_VALUE);
+		mvwprintw(d->window, L_Y_P3_LIVE, L_X_P3_LIVE_VALUE,
+					ft_itoa(d->prog[2].liveNbr));
 		wattroff(d->window, COLOR_PAIR(10) | A_BOLD);
 }
