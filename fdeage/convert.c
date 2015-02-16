@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 21:00:59 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 21:18:26 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static void	get_pcode(t_list *tokens, char *bytecode)
 		}
         if (TOKEN->type == T_A_REG || TOKEN->type == T_A_IND)
 		{
-			pcode2 |= (1 << (6 - 1));
+			pcode2 |= (1 << (6 - i));
 			fprintf(stderr, "c4=%u\n\n", 1 << (6 - i));
 		}
 		i += 2;
