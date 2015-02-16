@@ -6,11 +6,11 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 17:36:00 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 12:06:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
+#include "../../includes/corewarOpTab.h"
 
 int		op_lldi(t_data *d, int player)
 {
