@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 15:55:21 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 18:28:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ typedef struct		s_header
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
 	char 				reg[REG_NUMBER][REG_SIZE];
-	char 				opArgs[9];
+	char 				codage[9]; // octet de codage
+	char 				opArgs[4][T_LAB];
 }					t_header;
 
 typedef	struct		s_data
