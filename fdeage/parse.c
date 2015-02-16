@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:33:56 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 15:53:39 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,13 @@ int			parse_file(t_file *file)
 	{
 		if (!is_comment(LINE))
 		{
-			LINE->type = T_EXEC;
+			if (LINE->type != T_LABEL)
+				LINE->type = T_EXEC;
 			if (!(file->header.prog_name[0]))
 				check_name(file, LINE);
 			if (!(file->header.comment[0]))
 				check_comment(file, LINE);
-			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str);
+			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|    --  type: %d\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str, LINE->type);
 			if (LINE->type == T_EXEC
 				&& tokenize_line(file, LINE) == EXIT_FAILURE)
 				return (EXIT_FAILURE);

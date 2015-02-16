@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:49:02 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 13:32:13 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ extern t_op	g_op_tab[17];
 //virer
 void print_token(t_token *token)
 {
-	fprintf(stderr, "\n---------------------\ntoken #%d  -  type %d\n", token->id, token->type);
-	fprintf(stderr, "col. %d\n", token->col);
+	fprintf(stderr, "\n---------------------\ntoken #%d  -  type %d\n", (int)token->id, token->type);
+	fprintf(stderr, "col. %d\n", (int)token->col);
 	if (token->op)
 		fprintf(stderr, "str: |%s|  ->  opcode %d\n---------------------\n", token->data, token->op->opcode);
 	else
@@ -29,18 +29,22 @@ static int	get_inst(t_token *token)
 {
 	register size_t	i;
 
+	fprintf(stderr, "GET INST: ");
 	i = 0;
 	while (i < 16)
 	{
 		if (!ft_strcmp(token->data, (g_op_tab[i]).name))
 		{
+			//fprintf(stderr, "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\n");
 			if (!(token->op = (t_op *)malloc(sizeof(t_op))))
 				RET("Malloc() failed.\n", EXIT_FAILURE);
 			ft_memcpy((void *)token->op, (void *)&(g_op_tab[i]), sizeof(t_op));
+			fprintf(stderr, "op = %p\n", token->op);
 			return (EXIT_SUCCESS);
 		}
 		++i;
 	}
+	fprintf(stderr, "no op found\n ");
 	return (EXIT_FAILURE);
 }
 
@@ -60,16 +64,23 @@ static int	check_label(char *s)
 	return (EXIT_SUCCESS);
 }
 
+
+//TODO: check label chars in a separate file/function
 static int	get_token_type(t_token *token)
 {
 	size_t	len;
 
 	len = ft_strlen(token->data);
-	if (token->id == 0 && (token->data)[len - 1] == LABEL_CHAR)
+	if (token->id == 0)
 	{
-		token->type = T_LABEL;
-		if (check_label(token->data) == EXIT_FAILURE)
-			RET("Wrong chars used in label.\n", EXIT_FAILURE);
+		if ((token->data)[len - 1] == LABEL_CHAR)
+		{
+			token->type = T_LABEL;
+			if (check_label(token->data) == EXIT_FAILURE)
+				RET("Wrong chars used in label.\n", EXIT_FAILURE);
+		}
+        else
+			token->type = T_INSTRUCTION;
 	}
 	else if ((token->data)[0] == DIRECT_CHAR)
 	{
@@ -97,6 +108,7 @@ static int	init_token(t_line *line, int i, int j, int id)
 		RET("Malloc() failed.\n", EXIT_FAILURE);
 	ft_strncpy(token->data,  &(line->str[i]), j - i);
 	token->data[j - i] = 0;
+	//fprintf(stderr, "data = %p\n", token->data);
 	token->id = id;
 	token->col = i;
 	token->op = NULL;
@@ -105,12 +117,11 @@ static int	init_token(t_line *line, int i, int j, int id)
 		return (EXIT_FAILURE);
 	if (token->type == T_UNKNOWN)
 		RET("No token type found.\n", EXIT_FAILURE);
-	print_token(token);
 	if (token->type == T_INSTRUCTION && get_inst(token) == EXIT_FAILURE)
 		RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
+	//fprintf(stderr, "data = %p\n", token->op);
+	print_token(token);
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
-	free(token->data);
-	free(token->op);
 	free(token);
 	//fprintf(stderr, "init token end.\n");
 	return (EXIT_SUCCESS);

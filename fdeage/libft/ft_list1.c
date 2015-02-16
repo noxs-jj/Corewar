@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:43:18 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/12 14:27:19 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/15 00:19:42 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** }
 ** l.37: content_size + creates a segf in test2 due to SIZE_MAX overflow
 ** watch out: lstnew copies the content (malloc() and stuff), so it  has to be
-** freed in the caller function
+** freed in the calling function
 */
 
 t_list	*ft_lstnew(void const *content, size_t content_size)

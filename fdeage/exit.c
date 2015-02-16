@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:17:22 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:30:26 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 12:20:57 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@
 ** exit_asm() doesn't exit itself but returns to the main
 */
 
-static void	free_token(t_list *tokens)
+static void	free_token_list(t_list *tokens)
 {
-	t_list	*token;
+	t_list	*tmp;
 	t_list	*next;
 
-	token = tokens;
-	while (token)
+	tmp = tokens;
+	while (tmp)
 	{
-		next = token->next;
-		free((t_token *)(token->content));
-		free(token);
-		token = next;
+		next = tmp->next;
+		free(TOKEN->data);
+		if (TOKEN->op)
+			free(TOKEN->op);
+		free(TOKEN);
+		free(tmp);
+		tmp = next;
 	}
 }
 
@@ -44,9 +47,7 @@ static void	free_lines(t_file *file)
 		next = tmp->next;
 		if (LINE->str)
 			free(LINE->str);
-		if (LINE->bytecode)
-			free(LINE->bytecode);
-		free_token(LINE->tokens);
+		free_token_list(LINE->tokens);
 		free(LINE);
 		free(tmp);
 		tmp = next;

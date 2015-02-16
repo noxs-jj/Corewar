@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 14:37:37 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/12 15:42:54 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 16:10:54 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** 5 will give        5 with all == 0
 */
 
-static void	printchar_hex(unsigned char n, int fd, int *print_all)
+void	ft_printchar_hex(unsigned char n, int fd, int *print_all)
 {
 	unsigned int	g;
 	unsigned int	d;
@@ -36,7 +36,7 @@ static void	printchar_hex(unsigned char n, int fd, int *print_all)
 		ft_putchar_fd(d + '0', fd);
 }
 
-void		ft_printhex_fd(uint32_t n, int fd, int print_all)
+void	ft_printhex_fd(uint32_t n, int fd, int print_all)
 {
 	if ((n / (256 * 256 * 256)) || print_all)
 		printchar_hex((n / (256 * 256 * 256)), fd, &print_all);
@@ -50,7 +50,7 @@ void		ft_printhex_fd(uint32_t n, int fd, int print_all)
 	printchar_hex(n, fd, &print_all);
 }
 
-void		ft_printhex(uint32_t n, int print_all)
+void	ft_printhex(uint32_t n, int print_all)
 {
 	ft_printhex_fd(n, 1, print_all);
 	return ;

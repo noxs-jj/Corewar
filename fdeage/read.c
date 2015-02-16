@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:33:40 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 15:48:04 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	init_line(t_file *file, char *str, size_t i, int line_type)
 	line->type = line_type;
 	line->tokens = NULL;
 	line->pcode = -1;
-	line->bytecode = NULL;
+	ft_bzero(line->bytecode, 20);
 	ft_lstadd_back(&(file->lines), ft_lstnew((void *)line, sizeof(t_line)));
 	free(line);
 	return (EXIT_SUCCESS);
@@ -62,7 +62,7 @@ static int	add_line(t_file *file, char *str, size_t *i, int has_label)
 	else
 	{
 		//add regular line
-		if (init_line(file, str, *i, 0) == EXIT_FAILURE)
+		if (init_line(file, str, *i, T_UNKNOWN) == EXIT_FAILURE)
 			RET("Init_line() failed.\n", EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

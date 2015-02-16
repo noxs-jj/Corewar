@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/29 16:38:06 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/14 23:22:16 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/16 13:04:30 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,14 +24,16 @@ SRC 		=	main.c	\
 
 OBJ			=	$(SRC:.c=.o)
 
-INC			=	-I./includes -I./libft/includes -Llibft -lft
+INC			=	-I./includes -I./libft/includes
+LINK		=	-Llibft -lft
 
 FLAGS		=	$(CFLAGS)
 CFLAGS		=	-Wall -Wextra -Werror -g3
 P			=	-pedantic
-EXTRAFLAGS	=	--analyze -Weverything -Wno-missing-prototypes -Qunused-arguments
+EXTRAFLAGS	=	--analyze -Weverything -Wno-missing-prototypes	\
+				-Qunused-arguments
 
-CC			=	$(GCC)
+CC			=	$(CLANG)
 GCC			=	/usr/local/bin/gcc
 CLANG		=	/usr/bin/clang
 RM			=	/bin/rm -v
@@ -40,7 +42,7 @@ all			:	$(NAME)
 
 $(NAME)		:	$(OBJ)
 				make -C ./libft
-				$(CC) $(FLAGS) $(INC) $(OBJ) -o $(NAME)
+				$(CC) $(FLAGS) $(INC) $(LINK) $(OBJ) -o $(NAME)
 clean		:
 				make -C ./libft clean
 				$(RM) $(OBJ)

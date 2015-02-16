@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 19:44:30 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 15:05:57 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ static void	print_header(t_header *header, char *s_file, char *cor_file)
 	ft_putstr(" successfully created!\n");
 	return ;
 }
+
+/*
+** main
+** init_file
+** check_file
+** read_file
+** parse_file -> tokenize_line
+** convert_file
+** write_cor
+** print_header
+*/
 
 int			main(int ac, char **av)
 {

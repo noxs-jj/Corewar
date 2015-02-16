@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:13:52 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 18:55:53 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 12:04:39 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	write_text_section(t_file *file)
 	t_list	*tmp;
 
 	tmp = file->lines;
+	fprintf(stderr, "WRITE:\n");
 	while (tmp)
 	{
 		if (LINE->bytecode)
