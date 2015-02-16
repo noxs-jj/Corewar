@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 20:45:07 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 21:35:52 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct				s_token
 	size_t					id;
 	size_t					col;
 	char					*data; //malloc
+	int						value;
 	t_op					*op; //malloc
 	enum e_token_type		type;
 }							t_token; //malloc !
@@ -97,7 +98,8 @@ typedef struct				s_line
 	size_t					len;
 	char					*str; //malloc
 	enum e_token_type		type;
-	char					bytecode[20];
+	size_t					nb_param;
+	char					bytecode[8]; //1 + 1 + 2 + 2 + 2
 	char					pcode;
 	t_list					*tokens;
 }							t_line;

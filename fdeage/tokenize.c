@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 20:46:39 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/16 21:36:13 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ static int	init_token(t_line *line, int i, int j, int id)
 	//fprintf(stderr, "data = %p\n", token->data);
 	token->id = id;
 	token->col = i;
+	token->value = -1;
 	token->op = NULL;
 	token->type = T_UNKNOWN;
 	if (get_token_type(token) == EXIT_FAILURE)
@@ -127,7 +128,7 @@ static int	init_token(t_line *line, int i, int j, int id)
 	return (EXIT_SUCCESS);
 }
 
-//OK - 24L
+//OK - 24L - file solely needed for error report
 int				tokenize_line(t_file *file, t_line *line)
 {
 	register size_t	i;
@@ -154,6 +155,7 @@ int				tokenize_line(t_file *file, t_line *line)
 			break ;
 		++token_id;
 	}
+	line->nb_param = token_id - 1;
 	(void)file;
 	//fprintf(stderr, "tokenize end\n");
 	return (EXIT_SUCCESS);
