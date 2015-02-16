@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
 #include "../../includes/render.h"
 /*
 **	COLOR_BLACK   0
@@ -34,21 +33,29 @@ void	renderInitPair(void)
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	/* PLAYER 1 BACKGROUND BLACK + RED WRITE */
 	init_pair(11, COLOR_BLACK, COLOR_RED);
+	/* PLAYER 1 BACKGROUND RED + WHITE WRITE */
+	init_pair(21, COLOR_WHITE, COLOR_RED);
 
 	/* PLAYER 2 BACKGROUND BLACK + BLUE WRITE */
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
 	/* PLAYER 2 BACKGROUND BLACK + BLUE WRITE */
 	init_pair(12, COLOR_BLACK, COLOR_BLUE);
+	/* PLAYER 2 BACKGROUND BLUE + BLUE WRITE */
+	init_pair(22, COLOR_WHITE, COLOR_BLUE);
 
 	/* PLAYER 3 BACKGROUND BLACK + YELLOW WRITE */
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
 	/* PLAYER 3 BACKGROUND BLACK + YELLOW WRITE */
 	init_pair(13, COLOR_BLACK, COLOR_YELLOW);
+	/* PLAYER 3 BACKGROUND YELLOW + WHITE WRITE */
+	init_pair(23, COLOR_WHITE, COLOR_YELLOW);
 
 	/* PLAYER 4 BACKGROUND BLACK + GREEN WRITE */
 	init_pair(4, COLOR_GREEN, COLOR_BLACK);
 	/* PLAYER 4 BACKGROUND BLACK + GREEN WRITE */
 	init_pair(14, COLOR_BLACK, COLOR_GREEN);
+	/* PLAYER 4 BACKGROUND GREEN + WHITE WRITE */
+	init_pair(24, COLOR_WHITE, COLOR_GREEN);
 }
 
 int 	renderInit(t_data *d)
