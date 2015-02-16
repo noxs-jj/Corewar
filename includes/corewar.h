@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 13:27:27 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/16 15:55:21 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@
 # define COMMENT_LENGTH			2048// 2048
 // # define COREWAR_EXEC_MAGIC		0xea83f3
 
+typedef struct 		s_bin
+{
+	char 		hex;
+	char 		bin[4];
+}t_bin;
 
 typedef struct		s_op
 {
@@ -119,6 +124,7 @@ typedef struct		s_header
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
 	char 				reg[REG_NUMBER][REG_SIZE];
+	char 				opArgs[9];
 }					t_header;
 
 typedef	struct		s_data
@@ -147,6 +153,7 @@ int		init_mem(t_data *d);
 int 	gameStart(t_data *d);
 int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
+int		readOpCode(t_data *d, int player);
 
 // NCurses
 void	renderClose(t_data *d);
