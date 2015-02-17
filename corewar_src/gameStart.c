@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 18:46:07 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 13:04:37 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	gameStart(t_data *d)
 
 			// ((d->prog[0].PC) + 1)->hex[0] = '7';//			REMOVE
 			// ((d->prog[0].PC) + 1)->hex[1] = '8';//			REMOVE
-			d->prog[0].nextOp = 11;
+			d->prog[0].nextOp = 10;
 			readOpCode(d, 0);//								REMOVE
 			getOpArgs(d, 0);
-			writeL(d->prog[0].opArgs[0]);
-			writeL(d->prog[0].opArgs[1]);
-			writeL(d->prog[0].opArgs[2]);
+			// writeL(d->prog[0].opArgs[0]);
+			// writeL(&d->prog[0].opArgs[1][2]);
+			// writeL(&d->prog[0].opArgs[2][2]);
 			sleep(10);
 			renderDraw(d); // draw game
 		}
