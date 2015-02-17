@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 13:09:58 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 14:22:21 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int		getOpArgs(t_data *d, int player)
 		else if (ft_strncmp(&d->prog[player].codage[i * 2], "11", 2) == 0)
 			getValue(&d->prog[player], i, &index, T_IND);
 		else if (i + 1 == op_tab[d->prog[player].nextOp].nb_params)
-			return (0);
+			return (index);
 		else
 			return (-1);
 		i++;
 	}
+	return (index);
 }

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 12:06:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 14:29:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct 		s_bin
 typedef struct		s_op
 {
 	char*			name;
-	int				nb_params;
+	int				 ;
 	int				param_types[4];
 	int				opcode;
 	int				nb_cycles;
