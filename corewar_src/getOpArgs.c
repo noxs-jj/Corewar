@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 13:07:39 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 13:09:58 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 	i = 0;
 	while (i < len)
 	{
-		arg = ((player->PC) + *index + 2);
+		arg = ((player->PC) + *index + 1 + op_tab[player->nextOp].has_pcode);
 		ft_strncpy(&player->opArgs[argNbr][i * 2], arg->hex, 2);
 		(*index)++;
 		i++;
