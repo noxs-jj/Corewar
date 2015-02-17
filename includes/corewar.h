@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 14:29:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 15:28:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,16 @@ typedef struct 		s_bin
 	char 		bin[4];
 }t_bin;
 
+typedef struct 		s_dec
+{
+	char 			hex;
+	unsigned int 	deci;
+}t_dec;
+
 typedef struct		s_op
 {
 	char*			name;
-	int				 ;
+	int				nb_params;
 	int				param_types[4];
 	int				opcode;
 	int				nb_cycles;
@@ -155,6 +161,8 @@ int 	gameStart(t_data *d);
 int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
 int		readOpCode(t_data *d, int player);
+unsigned int	ft_hex2Dec(char *str);
+
 
 // NCurses
 void	renderClose(t_data *d);

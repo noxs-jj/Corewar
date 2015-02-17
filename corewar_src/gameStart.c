@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 13:04:37 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 16:20:18 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	gameStart(t_data *d)
 	{
 		if (d->pause == false)
 		{
+			// ft_hex2Dec("7de\0");
+			// writeL("test");
+			sleep(10);
 			// checkNextOp(d); // check next champion's instruction (ptr by PC)
 			// execOp(d); // exec next op defined in d->prog[player].nextOp
 
