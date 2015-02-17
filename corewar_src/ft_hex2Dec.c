@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 14:33:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 16:20:52 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/17 16:43:14 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,3 @@ unsigned int	ft_hex2Dec(char *str)
 	// 	writeL("Test failed");
 	return (result);
 }
-
-
-// unsigned int	ft_hex2Dec(char *str)
-// {
-// 	unsigned int	result;
-// 	unsigned int	i;
-// 	unsigned int	y;
-// 	unsigned int	tmp;
-// 	unsigned int	len;
-
-// 	i = 0;
-// 	len = ft_strlen(str);
-// 	while(str[i] != '\0')
-// 	{
-// 		y = 0;
-// 		while (y < 16)
-// 		{
-// 			if (str[i] == deci_tab[y].hex)
-// 				tmp = deci_tab[y].deci;
-// 			y++;
-// 		}
-// 		result += tmp * ft_pow(16, len - 1);
-// 		i++;
-// 		len--;
-// 	}
-// 	// if (result == 3149642683)
-// 	// 	writeL("Test success");
-// 	// else
-// 	// 	writeL("Test failed");
-// 	return (result);
-// }
