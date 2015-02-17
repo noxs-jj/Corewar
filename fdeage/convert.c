@@ -6,13 +6,13 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 21:35:25 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/17 18:22:37 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	get_param_value(t_token *token)
+static void	get_param_value(t_list *tokens, t_token *token)
 {
 	t_list	*tmp;
 
@@ -22,28 +22,39 @@ static void	get_param_value(t_token *token)
 		token->value = ft_atoi(token->data);
 	else if (token->type == T_A_DLAB)
 	{
-		g
+		tmp = tokens;
+		//get label value
+		while (tmp)
+		{
+
+
+
+			tmp = tmp->next;
+		}
 	}
+	(void)tokens;
 	return ;
 }
 
 //bytecode[8]
-static void	translate_params(t_list *tokens, size_t nb_param, char *bytecode,
-	int has_pcode)
+//static void	translate_params(t_list *tokens, size_t nb_param, char *bytecode,
+static void	translate_params(t_file *file, t_line *line, int has_pcode)
 {
 	t_list	*tmp;
 	size_t	i;
 
 	i = 0;
-	tmp = tokens;
-	while (tmp && i < nb_param)
+	tmp = line->tokens;
+	while (tmp && i < line->nb_param)
 	{
-		get_param_value(TOKEN);
-		//bytecode[has_pcode + 2 * i] = ;
-		//bytecode[has_pcode + 2 * i + 1] = ;
+		get_param_value(line->tokens, TOKEN);
+		//line->bytecode[has_pcode + 2 * i] = ;
+		//line->bytecode[has_pcode + 2 * i + 1] = ;
 		++i;
 		tmp = tmp->next;
 	}
+	(void)file;
+	(void)has_pcode;
 	return ;
 }
 
@@ -83,6 +94,8 @@ static void	get_inst_code(t_op *op, char *bytecode)
 	bytecode[0] = op->opcode;
 }
 
+
+//OK - 24L
 int			convert_file(t_file *file)
 {
 	t_list	*tmp;
@@ -99,8 +112,7 @@ int			convert_file(t_file *file)
 			fprintf(stderr, "CONVERT loop 2 - %p\n", LINE->tokens);
 			token = (t_token *)(LINE->tokens->content);
 			fprintf(stderr, "CONVERT loop 3 - str = %s\n", token->data);
-			op = token->op;
-			if (!op)
+			if (!(op = token->op))
 				return (EXIT_FAILURE);
 			get_inst_code(op, LINE->bytecode);
 			fprintf(stderr, "CONVERT loop 4a - bytecode = %s\n", LINE->bytecode);
@@ -108,15 +120,15 @@ int			convert_file(t_file *file)
 			if (!(LINE->tokens->next))
 				return (EXIT_FAILURE);
 			fprintf(stderr, "CONVERT loop 4b\n");
-			token = (t_token *)(LINE->tokens->next->content);
+			//token = (t_token *)(LINE->tokens->next->content);
 			fprintf(stderr, "CONVERT loop 5\n");
 			if (op->has_pcode)
 				get_pcode(LINE->tokens->next, LINE->bytecode);
 			fprintf(stderr, "CONVERT loop 6 - bytecode = %s\n", LINE->bytecode);
 
 			//refiler file->lines to get label values
-			translate_params(LINE->tokens, LINE->nb_param, LINE->bytecode,
-				op->has_pcode);
+			//translate_params(LINE->tokens, LINE->nb_param, LINE->bytecode,
+			translate_params(file, LINE, op->has_pcode);
 			fprintf(stderr, "CONVERT loop 7\n");
 		}
 		tmp = tmp->next;

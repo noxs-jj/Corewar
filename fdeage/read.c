@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 21:23:35 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/17 18:55:42 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	init_line(t_file *file, char *str, size_t i, int line_type)
 		return (EXIT_FAILURE);
 	line->id = i;
 	line->str = ft_strdup(str);
-	line->len = ft_strlen(line->str);
+	line->code_len = 0;
+	//line->str_len = ft_strlen(line->str);
 	line->type = line_type;
 	line->nb_param = -1;
 	line->tokens = NULL;

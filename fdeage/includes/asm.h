@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 21:35:52 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/17 19:02:12 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@
 //TODO : commentaites en ";" en fin de ligne (pas oblig)
 
 //TODO ERROR:
-//reg number > REG_NUMBER
-//label en dehors du file
-//type d'arg incorrect
+// - reg number > REG_NUMBER
+// - label en dehors du file
+// - type d'arg incorrect
+// - is not number nor label -> lexical error
+// - %:label: is label_chars
 
 //macro conversion T_DIRECT_LABEL
 
@@ -39,6 +41,7 @@
 
 # define RET(x, y)			{ft_putstr_color("ERR: ",COL_RED);ft_putstr_color( x ,COL_LIGHT_RED);return( y );}
 
+/*
 #define OP_NAME				0
 #define OP_ARG_NB			1
 #define OP_ARG_TYPE			2
@@ -47,6 +50,7 @@
 #define OP_DESC				5
 #define OP_HAS_PCODE		6
 #define OP_HAS_IDX			7
+*/
 
 enum						e_error_type
 {
@@ -82,6 +86,11 @@ enum						e_token_type
 	T_A_DLAB, //11
 };
 
+# define T_DIR_LEN			4
+# define T_DLAB_LEN			4
+# define T_IND_LEN			2
+# define T_REG_LEN			1
+
 typedef struct				s_token
 {
 	size_t					id;
@@ -95,11 +104,12 @@ typedef struct				s_token
 typedef struct				s_line
 {
 	size_t					id;
-	size_t					len;
+	size_t					code_len;
+	//size_t					str_len;
 	char					*str; //malloc
 	enum e_token_type		type;
 	size_t					nb_param;
-	char					bytecode[8]; //1 + 1 + 2 + 2 + 2
+	char					bytecode[14]; //MAX: 1 + 1 + 4 + 4 + 4
 	char					pcode;
 	t_list					*tokens;
 }							t_line;
