@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/17 19:02:12 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/18 23:42:51 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 //TODO: Makefile harmonise
 //TODO: libft unique
 //TODO : commentaites en ";" en fin de ligne (pas oblig)
+//TODO: check if params type are legit
 
 //TODO ERROR:
 // - reg number > REG_NUMBER
@@ -39,18 +40,8 @@
 
 //# define COL(x)				ft_putstr_color( x )
 
-# define RET(x, y)			{ft_putstr_color("ERR: ",COL_RED);ft_putstr_color( x ,COL_LIGHT_RED);return( y );}
-
-/*
-#define OP_NAME				0
-#define OP_ARG_NB			1
-#define OP_ARG_TYPE			2
-#define OP_CODE				3
-#define OP_CYCLES			4
-#define OP_DESC				5
-#define OP_HAS_PCODE		6
-#define OP_HAS_IDX			7
-*/
+# define RET(x, y)			{ft_putstr_color("ERR: ",COL_RED);\
+		ft_putstr_color( x ,COL_LIGHT_RED);return( y );}
 
 enum						e_error_type
 {
@@ -87,31 +78,31 @@ enum						e_token_type
 };
 
 # define T_DIR_LEN			4
-# define T_DLAB_LEN			4
+# define T_DLAB_LEN			2
 # define T_IND_LEN			2
 # define T_REG_LEN			1
 
 typedef struct				s_token
 {
+	t_op					*op; //malloc
+	char					*data; //malloc
 	size_t					id;
 	size_t					col;
-	char					*data; //malloc
 	int						value;
-	t_op					*op; //malloc
 	enum e_token_type		type;
 }							t_token; //malloc !
 
 typedef struct				s_line
 {
+	t_list					*tokens;
 	size_t					id;
 	size_t					code_len;
-	//size_t					str_len;
 	char					*str; //malloc
-	enum e_token_type		type;
 	size_t					nb_param;
-	char					bytecode[14]; //MAX: 1 + 1 + 4 + 4 + 4
+	enum e_token_type		type;
+	int						has_final_comment;
+	char					bytecode[14]; //MAX: 1 + 1 + 4 + 4 + 4, no EOL
 	char					pcode;
-	t_list					*tokens;
 }							t_line;
 
 typedef struct				s_file
@@ -120,7 +111,7 @@ typedef struct				s_file
 	t_list					*lines; //malloc
 	char					*name_s; //malloc
 	char					*name_cor; //malloc
-	size_t					size;
+	//size_t					size;
 	size_t					nb_line;
 	int						ret;
 	int						fd_s;

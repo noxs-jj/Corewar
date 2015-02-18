@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/17 19:10:33 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/18 23:29:37 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,29 @@
 #include "asm_fn.h"
 #include "libft.h"
 
-
-//TODO: check if params are legit at the same time!
+//OK - 25L
 static void	get_line_code_len(t_line *line)
 {
 	t_list	*tmp;
+	t_op	*op;
 
 	if (!(tmp = line->tokens))
 		return ;
+	op = TOKEN->op;
 	line->code_len = 1;
 	fprintf(stderr, "getlinecode2 - type = %d\n", TOKEN->type);
 	if (TOKEN->type == T_CMD_NAME || TOKEN->type == T_CMD_COMMENT
 		|| TOKEN->type == T_COMMENT)
 		return ;
-	if (TOKEN->op && TOKEN->op->has_pcode)
+	if (op && op->has_pcode)
 		(line->code_len)++;
 	while (tmp)
 	{
-		if (TOKEN->type == T_A_DIR || TOKEN->type == T_A_DLAB)
+		if (TOKEN->type == T_A_DIR && !(op->has_idx))
 			line->code_len += T_DIR_LEN;
+		else if (TOKEN->type == T_A_DLAB
+			|| (TOKEN->type == T_A_DIR && op->has_idx))
+			line->code_len += T_DLAB_LEN;
 		else if (TOKEN->type == T_A_IND)
 			line->code_len += T_IND_LEN;
 		else if (TOKEN->type == T_A_REG)
@@ -42,11 +46,7 @@ static void	get_line_code_len(t_line *line)
 	fprintf(stderr, "code len = %d\n", (int)line->code_len);
 }
 
-# define T_DIR_LEN          4
-# define T_DLAB_LEN         4
-# define T_IND_LEN          2
-# define T_REG_LEN          1
-
+//OK - 23L
 static void	check_name(t_file *file, t_line *line)
 {
 	char	*s;

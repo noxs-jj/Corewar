@@ -6,12 +6,13 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/17 18:55:42 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/18 23:43:00 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "asm.h"
+#include "asm_fn.h"
 #include "libft.h"
 
 static int	init_line(t_file *file, char *str, size_t i, int line_type)
@@ -26,6 +27,7 @@ static int	init_line(t_file *file, char *str, size_t i, int line_type)
 	//line->str_len = ft_strlen(line->str);
 	line->type = line_type;
 	line->nb_param = -1;
+	line->has_final_comment = 0;
 	line->tokens = NULL;
 	line->pcode = -1;
 	ft_bzero(line->bytecode, 20);
@@ -82,7 +84,7 @@ int			read_file(t_file *file)
 	i = 0;
 	while ((file->ret = get_next_line(file->fd_s, &str)) > 0 || *str)
 	{
-		if (str && !(*str))
+		if (str && (!(*str) || is_only_whitespace(str)))
 		{
 			free(str);
 			continue ;

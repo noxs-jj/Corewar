@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/14 23:03:21 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/18 23:36:43 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,17 @@ void	print_detailed_error(t_file *file, const char *av1);
 
 void	exit_asm(t_file *file);
 
+/*
+** printhex.c
+*/
 
+char	*get_code(unsigned char n, char tab[2]);
+
+/*
+** check.c
+*/
+
+int		is_only_whitespace(const char *s);
 
 /*
 ** parsing_fn

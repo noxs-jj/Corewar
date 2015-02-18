@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/29 16:38:06 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/16 13:04:30 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/18 23:36:53 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,7 +20,9 @@ SRC 		=	main.c	\
 				convert.c	\
 				error.c	\
 				exit.c	\
-				op.c
+				op.c	\
+				printhex.c	\
+				check.c
 
 OBJ			=	$(SRC:.c=.o)
 
