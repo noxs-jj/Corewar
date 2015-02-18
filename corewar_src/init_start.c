@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 16:14:25 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:25:57 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		init_start(t_data *d, int ac, char **av)
 			return (print_error(ERR_FILE_DEBUGG));
 	}
 	d->dump = -1;
-	d->pause = false;
+	d->pause = true;
 	d->players = -1;
 	d->cycleDie = CYCLE_TO_DIE;
 	d->cycle = 0;

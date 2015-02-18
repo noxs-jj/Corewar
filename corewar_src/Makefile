@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/17 14:59:32 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/18 13:02:17 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS =	main.c \
 		checkNextOp.c \
 		readOpCode.c \
 		getOpArgs.c \
-		ft_hex2Dec.c
+		ft_hex2Dec.c \
+		op/op_live.c
 
 OBJS = $(SRCS:.c=.o)
 
