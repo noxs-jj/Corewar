@@ -14,6 +14,13 @@
 
 int		op_zjump(t_data *d, t_header *player, int id)
 {
-	d->prog[id].wait = op_tab[d->prog[id].nextOp].nb_cycles;
+	int		ret;
+	
+	if ((ret = getOpArgs(d, id)) < 0)
+		return (ret);
+	if (player->carry == 0)
+		pcAdvance(player, ret);
+	else
+		pcAdvance(player, ft_hex2intdec(player->opArgs[0]));
 	return (0);
 }

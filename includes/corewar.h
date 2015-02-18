@@ -164,6 +164,7 @@ int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
 int		readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
+int				ft_hex2intdec(char *str);
 void pcAdvance(t_header *player, int adv);
 
 // OP functions

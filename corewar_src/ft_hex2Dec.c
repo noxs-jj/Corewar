@@ -53,3 +53,30 @@ unsigned int	ft_hex2Dec(char *str)
 	// 	writeL("Test failed");
 	return (result);
 }
+
+int				ft_hex2intdec(char *str)
+{
+	int				result;
+	unsigned int	len;
+	int				i;
+
+	i = 0;
+	result = 0;
+	len = ft_strlen(str) - 1;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			result += (str[i] - '0') * ft_pow(16, len);
+		else if (str[i] >= 'a' && str[i] <= 'f')
+			result += (str[i] - 'a' + 10) * ft_pow(16, len);
+		else
+			return (-1);
+		i++;
+		len--;
+	}
+	// if (result == 2014)
+	// 	writeL("Test success");
+	// else
+	// 	writeL("Test failed");
+	return (result);
+}

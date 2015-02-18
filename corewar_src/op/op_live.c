@@ -27,6 +27,6 @@ int		op_live(t_data *d, t_header *player, int id)
 		d->prog[value].liveNbr++;
 	}
 	player->PC->live = 10;
-	pcAdvance(&d->prog[id], ret);
+	pcAdvance(&d->prog[id], d, ret);
 	return (0);
 }

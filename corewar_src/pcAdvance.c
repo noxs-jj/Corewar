@@ -12,9 +12,10 @@
 
 #include "../includes/corewar.h"
 
-void pcAdvance(t_header *player, int adv)
+void pcAdvance(t_header *player, t_data *d, int adv)
 {
 	player->PC->present = false;
 	player->PC = ((player->PC) + adv);
+	if ((player->PC - &d->map[MEM_SIZE]))
 	player->PC->present = true;
 }
