@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 16:25:10 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 18:33:57 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct		s_header
 	int					lastLive; /* Last live : */
 	int 				liveNbr; /* Lives in current period : */
 	t_case				*PC; // program counter
+	int					indexPC;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	int					wait; // turn to wait before exec new instruction
 	bool				alive; // is alive true or false
@@ -165,7 +166,7 @@ int		execOp(t_data *d);
 int		readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
 int				ft_hex2intdec(char *str);
-void pcAdvance(t_header *player, int adv);
+void pcAdvance(t_header *player, t_data *d, int adv);
 
 // OP functions
 typedef struct		s_opfunc

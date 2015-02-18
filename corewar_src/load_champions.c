@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:23:20 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 16:20:06 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 18:35:46 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		load_champions(t_data *d)
 	{
 		i = 0;
 		d->map[index].present = true;
+		d->prog[player].indexPC = index;
 		while (i < d->prog[player].prog_size * 2)
 		{
 			d->map[index].champ = player + 1;
