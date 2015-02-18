@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 13:26:32 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:33:13 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	gameStart(t_data *d)
 			// ((d->prog[0].PC) + 1)->hex[0] = '7';//			REMOVE
 			// ((d->prog[0].PC) + 1)->hex[1] = '8';//			REMOVE
 			d->prog[0].nextOp = 0;
-			op_live(d, &d->prog[0], 0);
+			// op_live(d, &d->prog[0], 0);
 			// readOpCode(d, 0);//								REMOVE
 			// getOpArgs(d, 0);
 			// writeL(d->prog[0].opArgs[0]);
