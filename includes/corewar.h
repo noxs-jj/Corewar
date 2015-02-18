@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 15:28:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 18:33:57 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 
 #define MAX_PLAYERS				4
 #define MAX_ARGS_NUMBER			(3 + 3 * MAX_PLAYERS)
+#define PLAYER_NBR				4294967295
 
 #define MEM_SIZE				(4 * 1024)
 #define IDX_MOD					(MEM_SIZE / 8)
@@ -109,8 +110,9 @@ typedef struct			s_case
 {
 	unsigned char		hex[3];
 	short int			champ; // champions's number ( 0 1 2 3 4 )
-	short int			present; //is present ( 0 1 2 3 4 )
+	bool				present; //is present ( 0 1 2 3 4 )
 	bool				used; // true : yes, false : no
+	int 				live;
 }						t_case;
 
 typedef struct		s_header
@@ -120,6 +122,7 @@ typedef struct		s_header
 	int					lastLive; /* Last live : */
 	int 				liveNbr; /* Lives in current period : */
 	t_case				*PC; // program counter
+	int					indexPC;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	int					wait; // turn to wait before exec new instruction
 	bool				alive; // is alive true or false
@@ -162,6 +165,52 @@ int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
 int		readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
+int				ft_hex2intdec(char *str);
+void pcAdvance(t_header *player, t_data *d, int adv);
+
+// OP functions
+typedef struct		s_opfunc
+{
+	int				op;
+	void			(*func)(t_data *, t_header *, int);
+}					t_opfunc;
+
+int		op_add(t_data *d, t_header *player, int id);
+int		op_aff(t_data *d, t_header *player, int id);
+int		op_and(t_data *d, t_header *player, int id);
+int		op_fork(t_data *d, t_header *player, int id);
+int		op_ld(t_data *d, t_header *player, int id);
+int		op_ldi(t_data *d, t_header *player, int id);
+int		op_lfork(t_data *d, t_header *player, int id);
+int		op_live(t_data *d, t_header *player, int id);
+int		op_lld(t_data *d, t_header *player, int id);
+int		op_lldi(t_data *d, t_header *player, int id);
+int		op_or(t_data *d, t_header *player, int id);
+int		op_st(t_data *d, t_header *player, int id);
+int		op_sti(t_data *d, t_header *player, int id);
+int		op_sub(t_data *d, t_header *player, int id);
+int		op_xor(t_data *d, t_header *player, int id);
+int		op_zjump(t_data *d, t_header *player, int id);
+
+static const t_opfunc	g_opfunc[] =
+{
+	{1, &op_live},
+	{2, &op_ld},
+	{3, &op_st},
+	{4, &op_add},
+	{5, &op_sub},
+	{6, &op_and},
+	{7, &op_or},
+	{8, &op_xor},
+	{9, &op_zjump},
+	{10, &op_ldi},
+	{11, &op_sti},
+	{12, &op_fork},
+	{13, &op_lld},
+	{14, &op_lldi},
+	{15, &op_lfork},
+	{16, &op_aff}
+};
 
 
 // NCurses

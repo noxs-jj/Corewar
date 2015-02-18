@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execOp.c                                           :+:      :+:    :+:   */
+/*   pcAdvance.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 14:27:59 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/18 16:02:50 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/02/18 18:35:30 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		execOp(t_data *d)
+void pcAdvance(t_header *player, t_data *d, int adv)
 {
-	int player;
-
-	player = 0;
-	while (player < d->players)
-	{
-		// exec d->prog[player].nextOp for player if d->prog[player].wait == 0
-		if ( d->prog[player].wait == 1)
-		{
-			// exec func
-			d->prog[player].wait--;
-		}
-		else if (d->prog[player].wait > 0)
-			d->prog[player].wait--;
-		player++;
-	}
-
-	return (0);
+	player->PC->present = false;
+	player->indexPC = (player->indexPC + adv) % MEM_SIZE;
+	player->PC = &d->map[player->indexPC];
+	player->PC->present = true;
 }

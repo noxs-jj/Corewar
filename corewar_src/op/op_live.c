@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/17 15:03:40 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 16:32:27 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int		op_live(t_data *d, t_header *player, int id)
 {
-	t_case *arg;
 	int ret;
+	unsigned int value;
 	
 	if ((ret = getOpArgs(d, id)) < 0)
 		return (ret);
 
-	if (player->PC > 0 && player->PC < d->players)
+	value = PLAYER_NBR - ft_hex2Dec(player->opArgs[0]);
+	if (value >= 0 && value < d->players)
 	{
-		player->wait = op_tab[player->nextOp][4];
-		d->prog[ft_hex2Dec(player->opArgs[0])].lastLive = d->cycle;
-		d->prog[player->PC].liveNbr++;
+		d->prog[value].lastLive = d->cycle;
+		d->prog[value].liveNbr++;
 	}
-	player->PC = ((player->PC) + ret);
+	player->PC->live = 10;
+	pcAdvance(&d->prog[id], d, ret);
 	return (0);
 }

@@ -12,9 +12,9 @@
 
 #include "../../includes/corewarOpTab.h"
 
-int		op_aff(t_data *d, int player)
+int		op_aff(t_data *d, t_header *player, int id)
 {
-	d->prog[player].wait = op_tab[d->prog[player].nextOp][4];
+	d->prog[id].wait = op_tab[d->prog[id].nextOp].nb_cycles;
 	
 	return (0);
 }
