@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/18 23:18:01 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/18 23:56:10 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static int	check_file(t_file *file, const char *filename)
 	ft_strncpy(file->name_cor, file->name_s,
 		ft_strstr(file->name_s, ".s") - file->name_s);
 	ft_strcat(file->name_cor, ".cor");
-	//if (!(file->fd_cor = open(file->name_cor, O_WRONLY | O_CREAT, 0644)))
-	//	asm_error("Couldln't create the .cor file\n");
 	return (EXIT_SUCCESS);
 }
 
@@ -46,7 +44,6 @@ static void	init_file(t_file *file)
 	file->lines = NULL;
 	file->name_s = NULL;
 	file->name_cor = NULL;
-	//file->size = 0;
 	file->nb_line = 0;
 	file->fd_s = -1;
 	file->fd_cor = -1;
