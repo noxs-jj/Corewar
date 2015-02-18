@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 13:32:58 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 16:25:10 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,9 @@ typedef struct			s_case
 {
 	unsigned char		hex[3];
 	short int			champ; // champions's number ( 0 1 2 3 4 )
-	short int			present; //is present ( 0 1 2 3 4 )
+	bool				present; //is present ( 0 1 2 3 4 )
 	bool				used; // true : yes, false : no
+	int 				live;
 }						t_case;
 
 typedef struct		s_header
@@ -163,6 +164,7 @@ int		checkNextOp(t_data *d);
 int		execOp(t_data *d);
 int		readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
+void pcAdvance(t_header *player, int adv);
 
 // OP functions
 typedef struct		s_opfunc

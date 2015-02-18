@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/17 14:59:32 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/18 16:09:33 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS =	main.c \
 		readOpCode.c \
 		getOpArgs.c \
 		ft_hex2Dec.c \
+		pcAdvance.c \
 		op/op_add.c \
 		op/op_aff.c \
 		op/op_and.c \

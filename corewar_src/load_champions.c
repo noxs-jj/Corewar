@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:23:20 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 13:31:04 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/18 16:20:06 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		load_champions(t_data *d)
 	while (player < d->players)
 	{
 		i = 0;
+		d->map[index].present = true;
 		while (i < d->prog[player].prog_size * 2)
 		{
 			d->map[index].champ = player + 1;
@@ -35,6 +36,7 @@ int		load_champions(t_data *d)
 			index++;
 			i += 2;
 		}
+
 		player++;
 		index = (MEM_SIZE / d->players) * player;
 	}
