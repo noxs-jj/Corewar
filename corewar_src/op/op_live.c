@@ -20,11 +20,11 @@ int		op_live(t_data *d, t_header *player, int id)
 	if ((ret = getOpArgs(d, id)) < 0)
 		return (ret);
 
-	if (player->PC > 0 && player->PC < d->players)
+	if (ft_hex2Dec(player->opArgs[0]) > 0 && ft_hex2Dec(player->opArgs[0]) < d->players)
 	{
-		player->wait = op_tab[player->nextOp][4];
+		player->wait = op_tab[player->nextOp].nb_cycles;
 		d->prog[ft_hex2Dec(player->opArgs[0])].lastLive = d->cycle;
-		d->prog[player->PC].liveNbr++;
+		d->prog[ft_hex2Dec(player->opArgs[0])].liveNbr++;
 	}
 	player->PC = ((player->PC) + ret);
 	return (0);

@@ -163,6 +163,50 @@ int		execOp(t_data *d);
 int		readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
 
+// OP functions
+typedef struct		s_opfunc
+{
+	int				op;
+	void			(*func)(t_data *, t_header *, int);
+}					t_opfunc;
+
+int		op_add(t_data *d, t_header *player, int id);
+int		op_aff(t_data *d, t_header *player, int id);
+int		op_and(t_data *d, t_header *player, int id);
+int		op_fork(t_data *d, t_header *player, int id);
+int		op_ld(t_data *d, t_header *player, int id);
+int		op_ldi(t_data *d, t_header *player, int id);
+int		op_lfork(t_data *d, t_header *player, int id);
+int		op_live(t_data *d, t_header *player, int id);
+int		op_lld(t_data *d, t_header *player, int id);
+int		op_lldi(t_data *d, t_header *player, int id);
+int		op_or(t_data *d, t_header *player, int id);
+int		op_st(t_data *d, t_header *player, int id);
+int		op_sti(t_data *d, t_header *player, int id);
+int		op_sub(t_data *d, t_header *player, int id);
+int		op_xor(t_data *d, t_header *player, int id);
+int		op_zjump(t_data *d, t_header *player, int id);
+
+static const t_opfunc				g_opfunc[] =
+{
+	{1, &op_add},
+	{2, &op_aff},
+	{3, &op_and},
+	{4, &op_fork},
+	{5, &op_ld},
+	{6, &op_ldi},
+	{7, &op_lfork},
+	{8, &op_live},
+	{9, &op_lld},
+	{10, &op_lldi},
+	{11, &op_or},
+	{12, &op_st},
+	{13, &op_sti},
+	{14, &op_sub},
+	{15, &op_xor},
+	{16, &op_zjump}
+};
+
 
 // NCurses
 void	renderClose(t_data *d);

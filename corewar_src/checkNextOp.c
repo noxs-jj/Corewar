@@ -13,6 +13,17 @@
 #include "../includes/corewar.h"
 // #include "../includes/corewarOpTab.h"
 
+void	checkPC(t_header *h)
+{
+	unsigned int 	instruction;
+
+	instruction = ft_hex2Dec(h->PC->hex);
+	if (instruction > 0 && instruction < 17)
+		h->nextOp = instruction;
+	else
+		h->nextOp = -1;
+}
+
 int		checkNextOp(t_data *d)
 {
 	int player;
@@ -20,6 +31,7 @@ int		checkNextOp(t_data *d)
 	player = 0;
 	while (player < d->players)
 	{
+		checkPC(&(d->prog[player]));
 		// check PC for player d->prog[player]
 		player++;
 	}
