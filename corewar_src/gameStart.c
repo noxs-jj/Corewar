@@ -40,7 +40,7 @@ int	gameStart(t_data *d)
 		}
 		keyboard(&d);
 		if (d->pause == true)
-			sleep(2); 						// REMOVE
+			sleep(1); 						// REMOVE
 	}
 
 	return (0);

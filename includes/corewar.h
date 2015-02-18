@@ -41,6 +41,7 @@
 
 #define MAX_PLAYERS				4
 #define MAX_ARGS_NUMBER			(3 + 3 * MAX_PLAYERS)
+#define PLAYER_NBR				4294967295
 
 #define MEM_SIZE				(4 * 1024)
 #define IDX_MOD					(MEM_SIZE / 8)
@@ -187,24 +188,24 @@ int		op_sub(t_data *d, t_header *player, int id);
 int		op_xor(t_data *d, t_header *player, int id);
 int		op_zjump(t_data *d, t_header *player, int id);
 
-static const t_opfunc				g_opfunc[] =
+static const t_opfunc	g_opfunc[] =
 {
-	{1, &op_add},
-	{2, &op_aff},
-	{3, &op_and},
-	{4, &op_fork},
-	{5, &op_ld},
-	{6, &op_ldi},
-	{7, &op_lfork},
-	{8, &op_live},
-	{9, &op_lld},
-	{10, &op_lldi},
-	{11, &op_or},
-	{12, &op_st},
-	{13, &op_sti},
-	{14, &op_sub},
-	{15, &op_xor},
-	{16, &op_zjump}
+	{1, &op_live},
+	{2, &op_ld},
+	{3, &op_st},
+	{4, &op_add},
+	{5, &op_sub},
+	{6, &op_and},
+	{7, &op_or},
+	{8, &op_xor},
+	{9, &op_zjump},
+	{10, &op_ldi},
+	{11, &op_sti},
+	{12, &op_fork},
+	{13, &op_lld},
+	{14, &op_lldi},
+	{15, &op_lfork},
+	{16, &op_aff}
 };
 
 

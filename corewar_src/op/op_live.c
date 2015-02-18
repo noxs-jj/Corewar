@@ -14,17 +14,17 @@
 
 int		op_live(t_data *d, t_header *player, int id)
 {
-	t_case *arg;
 	int ret;
+	unsigned int value;
 	
 	if ((ret = getOpArgs(d, id)) < 0)
 		return (ret);
 
-	if (ft_hex2Dec(player->opArgs[0]) > 0 && ft_hex2Dec(player->opArgs[0]) < d->players)
+	value = PLAYER_NBR - ft_hex2Dec(player->opArgs[0]);
+	if (value >= 0 && value < d->players)
 	{
-		player->wait = op_tab[player->nextOp].nb_cycles;
-		d->prog[ft_hex2Dec(player->opArgs[0])].lastLive = d->cycle;
-		d->prog[ft_hex2Dec(player->opArgs[0])].liveNbr++;
+		d->prog[value].lastLive = d->cycle;
+		d->prog[value].liveNbr++;
 	}
 	player->PC = ((player->PC) + ret);
 	return (0);

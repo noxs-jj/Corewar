@@ -20,6 +20,13 @@ int		execOp(t_data *d)
 	while (player < d->players)
 	{
 		// exec d->prog[player].nextOp for player if d->prog[player].wait == 0
+		if ( d->prog[player].wait == 1)
+		{
+			// exec func
+			d->prog[player].wait--;
+		}
+		else if (d->prog[player].wait > 0)
+			d->prog[player].wait--;
 		player++;
 	}
 

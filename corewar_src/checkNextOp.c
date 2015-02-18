@@ -31,8 +31,15 @@ int		checkNextOp(t_data *d)
 	player = 0;
 	while (player < d->players)
 	{
-		checkPC(&(d->prog[player]));
-		// check PC for player d->prog[player]
+		if (d->prog[player].wait <= 0)
+		{
+			checkPC(&(d->prog[player]));
+			if (d->prog[player].nextOp != -1)
+				d->prog[player].wait = op_tab[d->prog[player].nextOp].nb_cycles;
+			else
+				d->prog[player].wait = -1;
+			// check PC for player d->prog[player]
+		}
 		player++;
 	}
 	return (0);

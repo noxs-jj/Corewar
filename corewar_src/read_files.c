@@ -80,7 +80,8 @@ static int	read_file(t_data *d, int fd, int number)
 	writeL(d->prog[number].prog);
 
 	d->prog[number].alive = true;
-	ft_strcpy(d->prog[number].reg[0], ft_itoa(d->prog[number].number)); // free itoa result ?
+	ft_strcpy(d->prog[number].reg[0], "fffffff"); // free itoa result ?
+	d->prog[number].reg[0][7] = 'f' - d->prog[number].number;
 	if (ret == -1 || d->prog[number].prog_size > CHAMP_MAX_SIZE)
 		return (-1);
 	return (ret);
