@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 18:33:57 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 13:25:00 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@
 
 // typedef char	t_arg_type;
 
-#define T_REG					1 // registre
-#define T_DIR					2 // label ou nombre
-#define T_IND					4 // nombre
+#define T_REG					1 // registre : 01
+#define T_DIR					2 // label ou nombre : 10
+#define T_IND					4 // nombre : 11
 #define T_LAB					8
 
 /*
@@ -158,7 +158,7 @@ t_data			*getData(void);
 void			writeL(char *str);
 int				read_files(t_data *d);
 void			init_prog(t_data *d);
-void			ft_putHexNbr(unsigned char n, char (*str)[]);
+void	ft_putHexNbr(unsigned int n, char (*str)[]);
 int				init_mem(t_data *d);
 int 			gameStart(t_data *d);
 int				checkNextOp(t_data *d);
@@ -167,6 +167,7 @@ int				readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
 int				ft_hex2intdec(char *str);
 void 			pcAdvance(t_header *player, t_data *d, int adv);
+int				isValidRegister(unsigned int reg);
 
 // OP functions
 typedef struct		s_opfunc

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 16:02:14 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 13:10:08 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	read_file(t_data *d, int fd, int number)
 		ft_bzero(str, 3);
 	}
 	d->prog[number].prog_size /= 2;
-	writeL(d->prog[number].prog);
+	// writeL(d->prog[number].prog);
 	d->prog[number].alive = true;
 	ft_strcpy(d->prog[number].reg[0], "fffffff");
 	d->prog[number].reg[0][7] = 'f' - d->prog[number].number;

@@ -6,11 +6,15 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 16:32:27 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 12:20:09 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewarOpTab.h"
+
+/*
+** not tested
+*/
 
 int		op_live(t_data *d, t_header *player, int id)
 {
