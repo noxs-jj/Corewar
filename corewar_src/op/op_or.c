@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 12:44:55 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 15:16:27 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** not tested
-** arg 1 & 2 type : T_REG | T_DIR | T_IND
+** T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG
 */
 
 int		op_or(t_data *d, t_header *player, int id)
@@ -22,6 +22,7 @@ int		op_or(t_data *d, t_header *player, int id)
 	int ret;
 	unsigned int reg;
 	unsigned int value[2];
+	char		str[9];
 	
 	if ((ret = getOpArgs(&d->prog[id], id)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
@@ -38,7 +39,9 @@ int		op_or(t_data *d, t_header *player, int id)
 	else
 		value[1] = ft_hex2Dec(player->opArgs[1]);
 	ft_bzero(player->opArgs[reg], REG_SIZE);
-	ft_strcpy(player->opArgs[reg], ft_itoa(value[0] | value[1]));
+	ft_bzero(str, 9);
+	ft_putHexNbr(value[0] | value[1], str);
+	ft_strcpy(player->opArgs[reg], str);
 	if (value[0] | value[1])
 		player->carry = true;
 	else

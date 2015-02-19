@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 12:19:56 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 15:16:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 ** not tested
+** T_DIR
 */
 
 int		op_zjump(t_data *d, t_header *player, int id)
