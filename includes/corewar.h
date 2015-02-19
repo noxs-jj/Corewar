@@ -82,29 +82,29 @@
 # define COMMENT_LENGTH			2048// 2048
 // # define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct 		s_bin
+typedef struct 			s_bin
 {
-	char 		hex;
-	char 		bin[4];
-}t_bin;
+	char 				hex;
+	char 				bin[4];
+}						t_bin;
 
-typedef struct 		s_dec
+typedef struct 			s_dec
 {
-	char 			hex;
-	unsigned int 	deci;
-}t_dec;
+	char 				hex;
+	unsigned int 		deci;
+}						t_dec;
 
-typedef struct		s_op
+typedef struct			s_op
 {
-	char*			name;
-	int				nb_params;
-	int				param_types[4];
-	int				opcode;
-	int				nb_cycles;
-	char*			description;
-	int				has_pcode;
-	int				has_idx;
-}					t_op;
+	char*				name;
+	int					nb_params;
+	int					param_types[4];
+	int					opcode;
+	int					nb_cycles;
+	char*				description;
+	int					has_pcode;
+	int					has_idx;
+}						t_op;
 
 typedef struct			s_case
 {
@@ -115,7 +115,7 @@ typedef struct			s_case
 	int 				live;
 }						t_case;
 
-typedef struct		s_header
+typedef struct			s_header
 {
 	// unsigned int		magic;
 	bool				carry; // true if prev action worked
@@ -135,38 +135,38 @@ typedef struct		s_header
 	char 				reg[REG_NUMBER][REG_SIZE];
 	char 				codage[9]; // octet de codage
 	char 				opArgs[4][T_LAB];
-}					t_header;
+}						t_header;
 
-typedef	struct		s_data
+typedef	struct			s_data
 {
-	t_header		prog[MAX_PLAYERS];
-	bool			run; // is run : y = true, n = false
-	t_case			*map;
-	int 			players; // player number
-	int 			cycle; // nbr cycle done
-	int 			dump; // dump option activated if dump != -1
-	WINDOW			*window;
-	int				fdDebugg; // file debug fd
-	unsigned  int 	cycleDie;// = CYCLE_TO_DIE
-	bool 			pause;
-}					t_data;
+	t_header			prog[MAX_PLAYERS];
+	bool				run; // is run : y = true, n = false
+	t_case				*map;
+	int 				players; // player number
+	int 				cycle; // nbr cycle done
+	int 				dump; // dump option activated if dump != -1
+	WINDOW				*window;
+	int					fdDebugg; // file debug fd
+	unsigned  int 		cycleDie;// = CYCLE_TO_DIE
+	bool 				pause;
+}						t_data;
 
 // Corewar bin
-int		init_start(t_data *d, int ac, char **av);
-int		print_error(char *str);
-t_data	*getData(void);
-void	writeL(char *str);
-int		read_files(t_data *d);
-void	init_prog(t_data *d);
-void	ft_putHexNbr(unsigned char n, char (*str)[]);
-int		init_mem(t_data *d);
-int 	gameStart(t_data *d);
-int		checkNextOp(t_data *d);
-int		execOp(t_data *d);
-int		readOpCode(t_data *d, int player);
+int				init_start(t_data *d, int ac, char **av);
+int				print_error(char *str);
+t_data			*getData(void);
+void			writeL(char *str);
+int				read_files(t_data *d);
+void			init_prog(t_data *d);
+void			ft_putHexNbr(unsigned char n, char (*str)[]);
+int				init_mem(t_data *d);
+int 			gameStart(t_data *d);
+int				checkNextOp(t_data *d);
+int				execOp(t_data *d);
+int				readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
 int				ft_hex2intdec(char *str);
-void pcAdvance(t_header *player, t_data *d, int adv);
+void 			pcAdvance(t_header *player, t_data *d, int adv);
 
 // OP functions
 typedef struct		s_opfunc
@@ -175,22 +175,22 @@ typedef struct		s_opfunc
 	void			(*func)(t_data *, t_header *, int);
 }					t_opfunc;
 
-int		op_add(t_data *d, t_header *player, int id);
-int		op_aff(t_data *d, t_header *player, int id);
-int		op_and(t_data *d, t_header *player, int id);
-int		op_fork(t_data *d, t_header *player, int id);
-int		op_ld(t_data *d, t_header *player, int id);
-int		op_ldi(t_data *d, t_header *player, int id);
-int		op_lfork(t_data *d, t_header *player, int id);
-int		op_live(t_data *d, t_header *player, int id);
-int		op_lld(t_data *d, t_header *player, int id);
-int		op_lldi(t_data *d, t_header *player, int id);
-int		op_or(t_data *d, t_header *player, int id);
-int		op_st(t_data *d, t_header *player, int id);
-int		op_sti(t_data *d, t_header *player, int id);
-int		op_sub(t_data *d, t_header *player, int id);
-int		op_xor(t_data *d, t_header *player, int id);
-int		op_zjump(t_data *d, t_header *player, int id);
+int				op_add(t_data *d, t_header *player, int id);
+int				op_aff(t_data *d, t_header *player, int id);
+int				op_and(t_data *d, t_header *player, int id);
+int				op_fork(t_data *d, t_header *player, int id);
+int				op_ld(t_data *d, t_header *player, int id);
+int				op_ldi(t_data *d, t_header *player, int id);
+int				op_lfork(t_data *d, t_header *player, int id);
+int				op_live(t_data *d, t_header *player, int id);
+int				op_lld(t_data *d, t_header *player, int id);
+int				op_lldi(t_data *d, t_header *player, int id);
+int				op_or(t_data *d, t_header *player, int id);
+int				op_st(t_data *d, t_header *player, int id);
+int				op_sti(t_data *d, t_header *player, int id);
+int				op_sub(t_data *d, t_header *player, int id);
+int				op_xor(t_data *d, t_header *player, int id);
+int				op_zjump(t_data *d, t_header *player, int id);
 
 static const t_opfunc	g_opfunc[] =
 {
@@ -214,18 +214,18 @@ static const t_opfunc	g_opfunc[] =
 
 
 // NCurses
-void	renderClose(t_data *d);
-void	renderDraw(t_data *d);
-int 	renderInit(t_data *d);
-void	renderLegendColumn(t_data *d);
-void	renderLegendSentence(t_data *d);
-void 	renderLegendPlayerSentence(t_data *d);
-void	renderLegendPlayerValue(t_data *d);
-void	renderLegendInfoValue(t_data *d);
-void	renderInitPair(void);
-void	renderLegendPlayerValue1(t_data *d);
-void	renderLegendPlayerValue2(t_data *d);
-void	renderLegendPlayerValue3(t_data *d);
-void	renderLegendPlayerValue4(t_data *d);
+void			renderClose(t_data *d);
+void			renderDraw(t_data *d);
+int 			renderInit(t_data *d);
+void			renderLegendColumn(t_data *d);
+void			renderLegendSentence(t_data *d);
+void 			renderLegendPlayerSentence(t_data *d);
+void			renderLegendPlayerValue(t_data *d);
+void			renderLegendInfoValue(t_data *d);
+void			renderInitPair(void);
+void			renderLegendPlayerValue1(t_data *d);
+void			renderLegendPlayerValue2(t_data *d);
+void			renderLegendPlayerValue3(t_data *d);
+void			renderLegendPlayerValue4(t_data *d);
 
 #endif

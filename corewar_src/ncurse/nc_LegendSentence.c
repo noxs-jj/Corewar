@@ -16,7 +16,8 @@
 void	renderLegendSentence(t_data *d)
 {
 	/* "** RUNNING **" || "** PAUSED **" */
-	mvwprintw(d->window, L_Y_STATUS, L_X_WRITE, S_RUNNING);
+	mvwprintw(d->window, L_Y_STATUS, L_X_WRITE,
+		((d->pause == false) ? S_RUNNING : S_PAUSE));
 	/* "Cycles/second limit :" */
 	mvwprintw(d->window, L_Y_SEC_CLE, L_X_WRITE, S_CYCLE_SECOND);
 	/* "Cycle :" */
@@ -41,7 +42,7 @@ void	renderLegendSentence(t_data *d)
 	mvwprintw(d->window, L_Y_N_CHECK, L_X_WRITE, S_MAX_CHECKS);
 
 	/* PAUSE */
-	mvwprintw(d->window, L_Y_PAUSE, L_X_WRITE, S_PAUSE);
+	mvwprintw(d->window, L_Y_PAUSE, L_X_WRITE, S_KEY_PAUSE);
 	/* EXIT */
-	mvwprintw(d->window, L_Y_EXIT, L_X_WRITE, S_EXIT);
+	mvwprintw(d->window, L_Y_EXIT, L_X_WRITE, S_KEY_EXIT);
 }

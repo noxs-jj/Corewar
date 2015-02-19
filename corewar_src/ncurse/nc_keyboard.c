@@ -26,7 +26,19 @@ void	keyboard()
 		exitFree();
 	}
 	else if (keyInput == 112 || keyInput == 32) // P SPACE
-		d->pause = (d->pause == true) ? false : true;
-
-	writeL(ft_itoa(keyInput));
+	{
+		if (d->pause == true)
+		{
+			d->pause = false;
+			writeL("keyboard\tRUNNING");
+		}
+		else
+		{
+			d->pause = true;
+			writeL("keyboard\tPAUSE");
+			renderDraw(d);
+		}
+	}
+	// else
+	// 	writeL(ft_itoa(keyInput));
 }

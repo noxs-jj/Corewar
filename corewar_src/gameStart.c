@@ -35,7 +35,7 @@ int	gameStart(t_data *d)
 			// writeL(d->prog[0].opArgs[0]);
 			// writeL(&d->prog[0].opArgs[1][2]);
 			// writeL(&d->prog[0].opArgs[2][2]);
-			sleep(1);
+			//sleep(1);
 			renderDraw(d); // draw game
 		}
 		keyboard(&d);

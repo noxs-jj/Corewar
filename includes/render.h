@@ -116,8 +116,8 @@
 # define S_PLAYER_3			"Player 3 ->"
 # define S_PLAYER_4			"Player 4 ->"
 # define S_DEFAULT_BAR "[--------------------------------------------------]"
-# define S_PAUSE			"PAUSE: P or SPACE"
-# define S_EXIT				"EXIT: E, Q or ECHAP"
+# define S_KEY_PAUSE		"PAUSE: P or SPACE"
+# define S_KEY_EXIT			"EXIT: E, Q or ECHAP"
 
 /* Console drawing */
 # define S_C_BYTES			" bytes, "
