@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:00:38 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 12:17:08 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 16:59:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_reg(t_data *d, int number)
 	int j;
 
 	i = 0;
-	while (i < REG_NUMBER)
+	while (i < REG_NUMBER + 1)
 	{
 		j = 0;
 		while (j < REG_SIZE)

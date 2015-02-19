@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:13:56 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 16:20:51 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 16:27:21 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	checkPC(t_header *h)
 
 	instruction = ft_hex2Dec(h->PC->hex);
 	if (instruction > 0 && instruction < 17)
-		h->nextOp = instruction;
+		h->nextOp = instruction - 1;
 	else
 		h->nextOp = -1;
 }
@@ -35,8 +35,12 @@ int		checkNextOp(t_data *d)
 		{
 			d->prog[player].PC->present = d->prog[player].number;
 			checkPC(&(d->prog[player]));
+			writeL(ft_itoa(d->prog[player].nextOp));
 			if (d->prog[player].nextOp != -1)
+			{
 				d->prog[player].wait = op_tab[d->prog[player].nextOp].nb_cycles;
+				readOpCode(d, player);
+			}
 			else
 				d->prog[player].wait = -1;
 			// check PC for player d->prog[player]

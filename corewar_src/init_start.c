@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 13:25:57 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 18:05:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int 	checkparam(t_data *d, int ac, char **av)
 			return (print_error(ERR_PARAM));
 		if (i == -1)
 			return (print_error(ERR_PARAM));
+		if (REG_SIZE < 4)
+			return (print_error("REG_SIZE invalid"));
 		i++;
 	}
 }

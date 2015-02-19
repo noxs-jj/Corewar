@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 15:16:49 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 16:44:38 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int		op_live(t_data *d, t_header *player, int id)
 		d->prog[value].liveNbr++;
 	}
 	player->PC->live = 10;
-	pcAdvance(&d->prog[id], d, ret);
+	pcAdvance(d, player, ret);
 	return (0);
 }

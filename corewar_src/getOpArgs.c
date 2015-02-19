@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 13:04:34 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 18:52:59 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 	int i;
 
 	i = 0;
+
+	// writeL("----args-----");
 	while (i < len)
 	{
 		arg = ((player->PC) + *index + 1 + op_tab[player->nextOp].has_pcode);
 		ft_strncpy(&player->opArgs[argNbr][i * 2], arg->hex, 2);
+		// writeL(arg->hex);
 		(*index)++;
 		i++;
 	}
@@ -42,6 +45,13 @@ int		getOpArgs(t_data *d, int player)
 	i = 0;
 	ft_bzero(d->prog[player].opArgs, T_LAB * 4 * sizeof(char));
 	index = 0;
+
+	// writeL("getOpArgs");
+	// writeL(op_tab[d->prog[player].nextOp].name);
+	// writeL("needed args");
+	// writeL(ft_itoa(op_tab[d->prog[player].nextOp].nb_params));
+	// writeL("codage");
+	// writeL(d->prog[player].codage);
 	while (i < op_tab[d->prog[player].nextOp].nb_params)
 	{
 		if (ft_strncmp(&d->prog[player].codage[i * 2], "01", 2) == 0)
@@ -56,5 +66,7 @@ int		getOpArgs(t_data *d, int player)
 			return (-1);
 		i++;
 	}
+	// writeL("get op args return");
+	// sleep(5);
 	return (index);
 }

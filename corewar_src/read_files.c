@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 13:10:08 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 18:44:12 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,13 @@ static int	read_file(t_data *d, int fd, int number)
 	d->prog[number].prog_size /= 2;
 	// writeL(d->prog[number].prog);
 	d->prog[number].alive = true;
-	ft_strcpy(d->prog[number].reg[0], "fffffff");
-	d->prog[number].reg[0][7] = 'f' - d->prog[number].number;
+	// ft_strcpy(d->prog[number].reg[1], "fffffff");
+	d->prog[number].reg[1][0] = '0' + d->prog[number].number;
+	// writeL(d->prog[number].reg[1]);
+	// d->prog[number].reg[1][7] = 'f' - d->prog[number].number;
+	// writeL("=================");
+	// writeL(d->prog[number].reg[0]);
+	// sleep(5);
 	if (ret == -1 || d->prog[number].prog_size > CHAMP_MAX_SIZE)
 		return (-1);
 	return (ret);

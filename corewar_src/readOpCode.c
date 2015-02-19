@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 15:20:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/16 18:39:11 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 16:26:56 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	readOpCode(t_data *d, int player)
 
 	args = ((d->prog[player].PC) + 1);
 	ft_bzero(d->prog[player].codage, 9);
+	i = 0;
 	while (i < 16)
 	{
 		if ( !(args->hex[0] >= 'a' && args->hex[0] <= 'f')

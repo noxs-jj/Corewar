@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:23:20 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 18:35:46 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/19 18:44:44 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		load_champions(t_data *d)
 			index++;
 			i += 2;
 		}
-
 		player++;
 		index = (MEM_SIZE / d->players) * player;
 	}
