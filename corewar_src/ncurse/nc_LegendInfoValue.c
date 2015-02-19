@@ -19,7 +19,7 @@ void	renderLegendInfoValue(t_data *d)
 	/* "value Cycle/second limit : 0"	 */
 	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, S_DEFAULT_VALUE);
 	/* "value of Cycle: 0" */
-	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, S_DEFAULT_VALUE);
+	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, ft_itoa(d->cycle));
 	/* "value of processes : 0" */
 	mvwprintw(d->window, L_Y_PROCES, L_X_PROCES_VALUE, S_DEFAULT_VALUE);
 	/* "CYCLE_TO_DIE : value" */
