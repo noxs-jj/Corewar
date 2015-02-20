@@ -173,7 +173,7 @@ int				execOp(t_data *d);
 int				readOpCode(t_data *d, int player);
 unsigned int	ft_hex2Dec(char *str);
 int				ft_hex2intdec(char *str);
-void				pcAdvance(t_data *d, t_header *player, int adv);
+void			pcAdvance(t_data *d, t_header *player, int adv);
 int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
 
@@ -201,40 +201,48 @@ int				op_sub(t_data *d, t_header *player, int id);
 int				op_xor(t_data *d, t_header *player, int id);
 int				op_zjump(t_data *d, t_header *player, int id);
 
-static const t_opfunc	g_opfunc[] =
-{
-	{1, &op_live},
-	{2, &op_ld},
-	{3, &op_st},
-	{4, &op_add},
-	{5, &op_sub},
-	{6, &op_and},
-	{7, &op_or},
-	{8, &op_xor},
-	{9, &op_zjump},
-	{10, &op_ldi},
-	{11, &op_sti},
-	{12, &op_fork},
-	{13, &op_lld},
-	{14, &op_lldi},
-	{15, &op_lfork},
-	{16, &op_aff}
-};
+// static const t_opfunc	g_opfunc[] =
+// {
+// 	{1, &op_live},
+// 	{2, &op_ld},
+// 	{3, &op_st},
+// 	{4, &op_add},
+// 	{5, &op_sub},
+// 	{6, &op_and},
+// 	{7, &op_or},
+// 	{8, &op_xor},
+// 	{9, &op_zjump},
+// 	{10, &op_ldi},
+// 	{11, &op_sti},
+// 	{12, &op_fork},
+// 	{13, &op_lld},
+// 	{14, &op_lldi},
+// 	{15, &op_lfork},
+// 	{16, &op_aff}
+// };
 
 
 // NCurses
+int 			renderInit(t_data *d);
 void			renderClose(t_data *d);
 void			renderDraw(t_data *d);
-int 			renderInit(t_data *d);
-void			renderLegendColumn(t_data *d);
-void			renderLegendSentence(t_data *d);
-void 			renderLegendPlayerSentence(t_data *d);
-void			renderLegendPlayerValue(t_data *d);
-void			renderLegendInfoValue(t_data *d);
 void			renderInitPair(void);
+void			renderLegendColumn(t_data *d);
+void			renderLegendInfoValue(t_data *d);
+void			renderLegendPlayerValue(t_data *d);
 void			renderLegendPlayerValue1(t_data *d);
 void			renderLegendPlayerValue2(t_data *d);
 void			renderLegendPlayerValue3(t_data *d);
 void			renderLegendPlayerValue4(t_data *d);
+void			renderLegendSentence(t_data *d);
+void 			renderLegendPlayerSentence(t_data *d);
+
+// Shell Render
+void			co_infoPlayer1(t_data *d);
+void			co_infoPlayer2(t_data *d);
+void			co_infoPlayer3(t_data *d);
+void			co_infoPlayer4(t_data *d);
+void			co_showInitPlayers(t_data *d);
+void			drawResultConsole(t_data *d);
 
 #endif
