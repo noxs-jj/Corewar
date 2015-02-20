@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:13:56 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 14:47:07 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 15:25:24 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ int		checkNextOp(t_data *d)
 			{
 				d->prog[player].wait = op_tab[d->prog[player].nextOp].nb_cycles;
 				readOpCode(d, player);
+				writeL("find next op");
+				writeL(op_tab[d->prog[player].nextOp].name);
 			}
 			else
 				d->prog[player].wait = -1;
 			// check PC for player d->prog[player]
-			writeL(d->prog[player].codage);
 			sleep(1);
 		}
 		player++;
