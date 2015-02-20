@@ -20,7 +20,12 @@
 int	gameStart(t_data *d)
 {
 	d->run = true;
-	renderDraw(d);
+	// renderDraw(d);
+	if (d->graphActiv == true)
+		renderDraw(d);
+	else
+		co_showInitPlayers(d);
+
 	while (d->run == true)
 	{
 		if (d->pause == false)
@@ -41,7 +46,10 @@ int	gameStart(t_data *d)
 			// writeL(&d->prog[0].opArgs[1][2]);
 			// writeL(&d->prog[0].opArgs[2][2]);
 			//sleep(1);
-			renderDraw(d); // draw game
+			if (d->graphActiv == true)
+				renderDraw(d); // draw game with ncurses
+			else
+				renderShell(d); // draw game on shell
 			// sleep(1);
 		}
 		keyboard(&d);
@@ -51,5 +59,7 @@ int	gameStart(t_data *d)
 			sleep(2);
 	}
 
+	if (d->graphActiv == false)
+		drawResultConsole(d);
 	return (0);
 }

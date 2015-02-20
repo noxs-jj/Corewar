@@ -41,7 +41,7 @@
 # define IND_CODE				3
 
 #define MAX_PLAYERS				4
-#define MAX_ARGS_NUMBER			(3 + 3 * MAX_PLAYERS)
+#define MAX_ARGS_NUMBER			(4 + 3 * MAX_PLAYERS)
 #define PLAYER_NBR				4294967295
 
 #define MEM_SIZE				(4 * 1024)
@@ -155,6 +155,7 @@ typedef	struct			s_data
 	int					fdDebugg; // file debug fd
 	unsigned  int 		cycleDie;// = CYCLE_TO_DIE
 	bool 				pause;
+	bool				graphActiv;
 }						t_data;
 
 // Corewar bin
@@ -244,5 +245,6 @@ void			co_infoPlayer3(t_data *d);
 void			co_infoPlayer4(t_data *d);
 void			co_showInitPlayers(t_data *d);
 void			drawResultConsole(t_data *d);
+void			renderShell(t_data *d);
 
 #endif

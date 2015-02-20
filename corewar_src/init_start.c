@@ -68,6 +68,8 @@ int 	checkparam(t_data *d, int ac, char **av)
 			i = champion_number(d, ac, av, i);
 		else if (ft_strstr(av[i], ".cor") != NULL)
 			i = champion(d, ac, av, i);
+		else if (ft_strcmp(av[i], "-graphic") == 0)
+			d->graphActiv = true;
 		else
 			return (print_error(ERR_PARAM));
 		if (i == -1)
@@ -93,6 +95,7 @@ int		init_start(t_data *d, int ac, char **av)
 	d->players = -1;
 	d->cycleDie = CYCLE_TO_DIE;
 	d->cycle = 0;
+	d->graphActiv = false;
 	init_prog(d);
 	return (checkparam(d, ac, av));
 }

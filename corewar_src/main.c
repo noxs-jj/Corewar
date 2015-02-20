@@ -23,7 +23,8 @@ int main(int ac, char **av)
 		return (-1);
 	if (init_mem(d) < 0)
 		return (-1);
-	renderInit(d);
+	if (d->graphActiv == true)
+		renderInit(d);
 	load_champions(d);
 
 	gameStart(d);// Main loop
