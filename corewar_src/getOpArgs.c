@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 11:24:42 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 12:16:30 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 
 /*
 ** read Op args and put them in d->prog[player].opArgs
+** must correct return (index) value
 */
 
 
@@ -52,7 +53,8 @@ int		getOpArgs(t_data *d, int player)
 	// writeL("needed args");
 	// writeL(ft_itoa(op_tab[d->prog[player].nextOp].nb_params));
 	// writeL("codage");
-	// writeL(d->prog[player].codage);
+	writeL(d->prog[player].codage);
+	sleep(1);
 	while (i < op_tab[d->prog[player].nextOp].nb_params)
 	{
 		if (ft_strncmp(&d->prog[player].codage[i * 2], "01", 2) == 0)
@@ -67,6 +69,7 @@ int		getOpArgs(t_data *d, int player)
 			getValue(&d->prog[player], i, &index, T_IND);
 		else if (i + 1 == op_tab[d->prog[player].nextOp].nb_params)
 		{
+			index += op_tab[d->prog[player].nextOp].has_pcode;
 			// writeL("get op arg");
 			// writeL(d->prog[player].opArgs[0]);
 			return (index);
@@ -79,5 +82,6 @@ int		getOpArgs(t_data *d, int player)
 	// sleep(5);
 	// writeL("get op arg");
 	// writeL(d->prog[player].opArgs[0]);
+	index += op_tab[d->prog[player].nextOp].has_pcode;
 	return (index);
 }

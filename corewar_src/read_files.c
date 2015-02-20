@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 18:44:12 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:15:48 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,29 @@ static int	read_prog_comment(t_data *d, int fd, int number)
 	return (ret);
 }
 
+static int	checkMagic(t_data *d, int fd)
+{
+	char buff[16];
+	char cmp[16];
+	int ret;
+
+	ft_bzero(buff, 16);
+	ft_bzero(cmp, 16);
+	if ((ret = read(fd, buff, 4)) < 0)
+		return (-1);
+	ft_putHexNbr(buff[0], cmp);
+	ft_putHexNbr(buff[1], &cmp[2]);
+	ft_putHexNbr(buff[2], &cmp[4]);
+	ft_putHexNbr(buff[3], &cmp[6]);
+	// writeL("----");
+	// writeL(COREWAR_EXEC_MAGIC);
+	// writeL(cmp);
+	// sleep(10);
+	if (ft_strcmp(COREWAR_EXEC_MAGIC, cmp) != 0)
+		return (-1);
+	return (0);
+}
+
 static int	read_prog_name(t_data *d, int fd, int number)
 {
 	char buff[BUFFSIZE];
@@ -40,8 +63,10 @@ static int	read_prog_name(t_data *d, int fd, int number)
 	int		index;
 
 	index = 0;
-	if (lseek(fd, 4, SEEK_CUR) < 0)
-		return (-1);
+	if (checkMagic(d, fd) < 0)
+		return (print_error(INV_FILE));
+	// if (lseek(fd, 4, SEEK_CUR) < 0)
+	// 	return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < PROG_NAME_LENGTH + 1)
 	{
@@ -100,8 +125,11 @@ int		read_files(t_data *d)
 	{
 		if ((fd = open(d->prog[i].filename, O_RDONLY)) < 0)
 			return (print_error(ERR_FILE));
-		if (read_file(d, fd, i) < -1)
+		if (read_file(d, fd, i) < 0)
+		{
+			close(fd);
 			return (print_error(ERR_READ));
+		}
 		close(fd);
 		i++;
 	}

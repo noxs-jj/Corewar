@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 16:59:35 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 13:08:06 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define ERR_FILE "File doesn't exist"
 # define ERR_READ "Read file error"
 # define ERR_MAP_ALLOC "Malloc map error"
+# define INV_FILE "Invalid file"
 
 # define BUFFSIZE 1
 
@@ -69,10 +70,15 @@
 
 // typedef char	t_arg_type;
 
+#define REG 1
+#define DIR 2 // or 4 if no idx
+#define IND 2
+
+
 #define T_REG					1 // registre : 01
 #define T_DIR					2 // label ou nombre : 10
 #define T_IND					4 // nombre : 11
-#define T_LAB					8
+#define T_LAB					8 // label
 
 /*
 **
@@ -80,7 +86,7 @@
 
 # define PROG_NAME_LENGTH		128	// 128
 # define COMMENT_LENGTH			2048// 2048
-// # define COREWAR_EXEC_MAGIC		0xea83f3
+# define COREWAR_EXEC_MAGIC		"00ea83f3"
 
 typedef struct 			s_bin
 {
@@ -117,7 +123,7 @@ typedef struct			s_case
 
 typedef struct			s_header
 {
-	// unsigned int		magic;
+	unsigned int		magic;
 	bool				carry; // true if prev action worked
 	int					lastLive; /* Last live : */
 	int 				liveNbr; /* Lives in current period : */

@@ -6,14 +6,14 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 11:30:32 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 12:13:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewarOpTab.h"
 
 /*
-** not tested
+** tested OK
 ** T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG
 ** change carry ?
 */
@@ -71,6 +71,9 @@ int		op_sti(t_data *d, t_header *player, int id)
 	// writeL("after changeMemVal");
 	// writeL("player id:");
 	// writeL(ft_itoa(id));
+	// writeL("adv sti");
+	// writeL(ft_itoa(ret));
+	// sleep(5);
 	pcAdvance(d, player, ret);
 	// writeL("-----end------");
 	// writeL("-----------");

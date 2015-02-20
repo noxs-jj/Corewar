@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 16:34:36 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 12:10:16 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	gameStart(t_data *d)
 		keyboard(&d);
 		if (d->pause == true)
 			sleep(1); 						// REMOVE
+		if (d->cycle % 10 == 0)
+			sleep(2);
 	}
 
 	return (0);
