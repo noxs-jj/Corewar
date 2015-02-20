@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 13:08:06 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:24:00 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 // typedef char	t_arg_type;
 
 #define REG 1
-#define DIR 2 // or 4 if no idx
+#define DIR 4 // or 2 if has idx
 #define IND 2
 
 
@@ -123,7 +123,7 @@ typedef struct			s_case
 
 typedef struct			s_header
 {
-	unsigned int		magic;
+	// unsigned int		magic;
 	bool				carry; // true if prev action worked
 	int					lastLive; /* Last live : */
 	int 				liveNbr; /* Lives in current period : */
