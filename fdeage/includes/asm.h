@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/18 23:42:51 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/20 17:51:40 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,15 @@ enum						e_token_type
 	T_CMD_NAME,  //1
 	T_CMD_COMMENT,  //2
 	T_COMMENT,  //3
-	T_EXEC,  //4
-	T_STRING, //5
-	T_LABEL, //6
-	T_INSTRUCTION, //7
-	T_A_REG, //8
-	T_A_IND, //9
-	T_A_DIR, //10
-	T_A_DLAB, //11
+	T_F_COMMENT,  //4
+	T_EXEC,  //5
+	T_STRING, //6
+	T_LABEL, //7
+	T_INSTRUCTION, //8
+	T_A_REG, //9
+	T_A_IND, //10
+	T_A_DIR, //11
+	T_A_DLAB, //12
 };
 
 # define T_DIR_LEN			4
@@ -85,7 +86,7 @@ enum						e_token_type
 typedef struct				s_token
 {
 	t_op					*op; //malloc
-	char					*data; //malloc
+	char					*str; //malloc
 	size_t					id;
 	size_t					col;
 	int						value;
@@ -105,13 +106,16 @@ typedef struct				s_line
 	char					pcode;
 }							t_line;
 
+# define T_OPTION_VERBOSE	1
+# define T_OPTION_LEAKS		2
+
 typedef struct				s_file
 {
+	int						options;
 	t_header				header;
 	t_list					*lines; //malloc
 	char					*name_s; //malloc
 	char					*name_cor; //malloc
-	//size_t					size;
 	size_t					nb_line;
 	int						ret;
 	int						fd_s;

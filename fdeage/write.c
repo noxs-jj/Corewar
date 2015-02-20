@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:13:52 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/18 17:04:28 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/20 15:47:06 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,11 @@ static void	write_text_section(t_file *file)
 
 void		write_cor(t_file *file)
 {
+	fprintf(stderr, "file nb=%d\n", (int)file->nb_line);
+	if (file->nb_line == 0)
+        asm_error("No instruction in the file.\n");
     if (!(file->fd_cor = open(file->name_cor, O_WRONLY | O_CREAT, 0644)))
-        asm_error("Couldln't create the .cor file\n");
+        asm_error("Couldln't create the .cor file.\n");
 	write_magic(file->fd_cor);
 	write_name_comment(file->fd_cor, file->header);
 	write_text_section(file);

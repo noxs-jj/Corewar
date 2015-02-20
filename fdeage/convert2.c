@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 19:50:30 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/20 19:58:07 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	translate_token_value(int value, char *bytecode, int size, size_t *i
 		sign = -1;
 		value = -value;
 	}
-	j = 0
+	j = 0;
 	if (size == 1)
 		bytecode[j] = value % 256;
 	else if (size == 2)
@@ -47,9 +47,9 @@ static void	translate_token_value(int value, char *bytecode, int size, size_t *i
 	else if (size == 4)
 	{
 		bytecode[j] = value / (256 * 256 * 256);
-		bytecode[j + 1] = value / (256 * 256);
-		bytecode[j + 2] = value / 256;
-		bytecode[j + 3] = value % 256;
+		bytecode[j + 1] = (value - bytecode[j] * 256 * 256 * 256) / (256 * 256);
+		bytecode[j + 2] = (value - bytecode[j + 1] * 256 * 256) / 256;
+		bytecode[j + 3] = (value - bytecode[j + 2] * 256) % 256;
 	}
 	*i += size;
 	return ;
@@ -79,37 +79,17 @@ static void	translate_params(t_file *file, t_line *line, t_op *op)
 		get_param_value(file->lines, line, TOKEN);
 		fprintf(stderr, "type=%d val=%d\n", (int)TOKEN->type, (int)TOKEN->value);
 		if (TOKEN->type == T_A_REG)
-		{
-			fprintf(stderr, "REG i=%d pos=%d\n", (int)i, (int)(1 + op->has_pcode + i));
-			line->bytecode[1 + op->has_pcode + i] = TOKEN->value % 256;
-			//get_code(TOKEN->value, &(line->bytecode[1 + op->has_pcode + i]));
-			i += T_REG_LEN;
-		}
+			translate_token_value(TOKEN->value, &(line->bytecode[1
+				+ op->has_pcode + i]), T_REG_LEN, &i);
 		else if (TOKEN->type == T_A_IND)
-		{
-			fprintf(stderr, "IND i=%d pos=%d\n", (int)i, (int)(1 + op->has_pcode + i));
-			line->bytecode[1 + op->has_pcode + i] = TOKEN->value / 256;
-			//line->bytecode[2 + op->has_pcode + i] = TOKEN->value / 256;
-			line->bytecode[2 + op->has_pcode + i] = TOKEN->value % 256;
-			i += T_IND_LEN;
-		}
+			translate_token_value(TOKEN->value, &(line->bytecode[1
+				+ op->has_pcode + i]), T_IND_LEN, &i);
         else if (TOKEN->type == T_A_DLAB || (TOKEN->type == T_A_DIR && (op->has_idx)))
-        {
-			fprintf(stderr, "DLAB/IDX i=%d pos=%d\n", (int)i, (int)(1 + op->has_pcode + i));
-            line->bytecode[1 + op->has_pcode + i] = TOKEN->value / 256;
-            line->bytecode[2 + op->has_pcode + i] = TOKEN->value % 256;
-            i += T_DLAB_LEN;
-        }
+			translate_token_value(TOKEN->value, &(line->bytecode[1
+				+ op->has_pcode + i]), T_DLAB_LEN, &i);
         else if (TOKEN->type == T_A_DIR)
-		{
-			//TODO256 - 256*256...
-			fprintf(stderr, "DIR i=%d pos=%d\n", (int)i, (int)(1 + op->has_pcode + i));
-			line->bytecode[1 + op->has_pcode + i] = TOKEN->value / (256 * 256 * 256);
-			line->bytecode[2 + op->has_pcode + i] = TOKEN->value / (256 * 256);
-            line->bytecode[3 + op->has_pcode + i] = TOKEN->value / 256;
-            line->bytecode[4 + op->has_pcode + i] = TOKEN->value % 256;
-            i += T_DIR_LEN;
-		}
+			translate_token_value(TOKEN->value, &(line->bytecode[1
+				+ op->has_pcode + i]), T_DIR_LEN, &i);
 
 		int j = 0;
 		//virer

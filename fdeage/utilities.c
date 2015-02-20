@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   printhex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/12 11:29:33 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 15:23:18 by fdeage           ###   ########.fr       */
+/*   Created: 2015/02/18 22:50:03 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/20 15:18:52 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "asm.h"
-#include "libft.h"
+#include <stdio.h>
 
-void	asm_error(const char *str)
+char	*get_code(unsigned char n, char tab[2])
 {
-	ft_putstr_color(str, COL_LIGHT_RED);
-	exit(EXIT_FAILURE);
-}
+	char	g;
+	char	d;
 
-void	print_detailed_error(t_file *file, const char *av1)
-{
-	(void)file;
-	ft_putstr_color("Couln't convert ", COL_LIGHT_RED);
-	ft_putstr_color(av1, COL_LIGHT_YELLOW);
-	ft_putstr_color(".\n", COL_LIGHT_RED);
+	g = n / 16;
+	d = n - (g * 16);
+	if (g >= 10)
+		tab[0] = g + 87;
+	else
+		tab[0] = g + '0';
+	if (d >= 10)
+		tab[1] = d + 87;
+	else
+		tab[1] = d + '0';
+	fprintf(stderr, "PRINTHEX: %c%c\n", tab[0], tab[1]);
+	return (tab);
 }

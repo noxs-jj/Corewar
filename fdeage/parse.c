@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/18 23:29:37 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/19 19:21:12 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ static int	is_comment(t_line *line)
 	i = 0;
 	while (line->str && (line->str)[i] && ft_isspace((line->str)[i]))
 		++i;
-	if ((line->str)[i] == COMMENT_CHAR || (line->str)[i] == COMMENT_CHAR2
-		|| (line->str)[i] == COMMENT_CHAR3)
+	if ((line->str)[i] == COMMENT_CHAR || (line->str)[i] == FINAL_COMMENT_CHAR)
 	{
 		line->type = T_COMMENT;
 		return (true);
@@ -131,6 +130,7 @@ int			parse_file(t_file *file)
 	tmp = file->lines;
 	while (tmp)
 	{
+		//fprintf(stderr, "PARSE s=%s\n", LINE->str);
 		if (!is_comment(LINE))
 		{
 			if (LINE->type != T_LABEL)
@@ -141,7 +141,7 @@ int			parse_file(t_file *file)
 				check_comment(file, LINE);
 			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|    --  type: %d\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str, LINE->type);
 			if (LINE->type == T_EXEC
-				&& tokenize_line(file, LINE) == EXIT_FAILURE)
+				&& tokenize_line(LINE) == EXIT_FAILURE)
 				return (EXIT_FAILURE);
 			//if LINE->type == T_EXEC then
 			get_line_code_len(LINE);

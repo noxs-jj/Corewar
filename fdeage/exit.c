@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:17:22 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 12:20:57 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/20 17:55:06 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	free_token_list(t_list *tokens)
 	while (tmp)
 	{
 		next = tmp->next;
-		free(TOKEN->data);
+		free(TOKEN->str);
 		if (TOKEN->op)
 			free(TOKEN->op);
 		free(TOKEN);
@@ -54,7 +54,7 @@ static void	free_lines(t_file *file)
 	}
 }
 
-void		exit_asm(t_file *file)
+int			exit_asm(t_file *file)
 {
 	ft_putstr_color("TRY EXITING... ", COL_GREEN);
 	free_lines(file);
@@ -66,5 +66,11 @@ void		exit_asm(t_file *file)
 		free(file->name_cor);
 	free(file);
 	ft_putstr_color("SUCCESSFUL EXIT!\n", COL_GREEN);
-	return ;
+	if ((file->options & T_OPTION_LEAKS) == T_OPTION_LEAKS)
+	{
+		ft_putstr_color("Leaks mode activated...\n", COL_YELLOW);
+		while (42)
+			usleep(1);
+	}
+	return (EXIT_SUCCESS);
 }

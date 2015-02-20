@@ -6,16 +6,12 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/18 23:36:43 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/20 18:46:33 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_FN_H
 # define ASM_FN_H
-
-//# include "asm.h"
-//# include "op.h"
-//# include "libft.h"
 
 /*
 ** read.c - OK, no leaks
@@ -39,7 +35,7 @@ int		parse_file(t_file *file);
 ** tokenize - OK
 */
 
-int		tokenize_line(t_file *file, t_line *line);
+int		tokenize_line(t_line *line);
 
 /*
 ** convert.c - TODO
@@ -51,7 +47,7 @@ int		convert_file(t_file *file);
 ** error.c - OK
 */
 
-void	asm_error(const char *str);
+int		asm_error(const char *str);
 void	print_detailed_error(t_file *file, const char *av1);
 
 /*
@@ -61,7 +57,7 @@ void	print_detailed_error(t_file *file, const char *av1);
 void	exit_asm(t_file *file);
 
 /*
-** printhex.c
+** utilities.c
 */
 
 char	*get_code(unsigned char n, char tab[2]);
@@ -71,31 +67,13 @@ char	*get_code(unsigned char n, char tab[2]);
 */
 
 int		is_only_whitespace(const char *s);
+int		has_final_comment(t_line *line);
 
 /*
-** parsing_fn
+** int get_label_value(t_list *tokens, t_token *token)
 */
 
-//char	*get_name_comment(char *line);
-//char	*get_label(char **line);
-//char	*get_cmd(char **line);
-//void	get_args(t_list *root, char **par, t_line *new, int nb_line);
-
-/*
-** check utilities
-*/
-
-//void	convert_params(t_list *new, int i);
-//int		analyse_parsing(t_list *root);
-
-/*
-** conversion utilities
-*/
-
-//void	get_param_opcode(t_list *new);
-//void	get_label_opcode(t_list *new);
-//void	get_cmd_opcode(t_list *new, int i);
-//int	get_cmd_parambyte(t_list *new, int bin);
-//void	convert_file(t_list *root);
+//void	get_param_value(t_list *tokens, t_token *token);
+void	get_param_value(t_list *tokens, t_line *line, t_token *token);
 
 #endif
