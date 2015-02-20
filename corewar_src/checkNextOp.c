@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:13:56 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 16:27:21 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:47:07 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		checkNextOp(t_data *d)
 			else
 				d->prog[player].wait = -1;
 			// check PC for player d->prog[player]
+			writeL(d->prog[player].codage);
+			sleep(1);
 		}
 		player++;
 	}

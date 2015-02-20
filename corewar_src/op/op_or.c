@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 16:44:47 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:56:58 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		op_or(t_data *d, t_header *player, int id)
 	unsigned int value[2];
 	char		str[9];
 	
-	if ((ret = getOpArgs(&d->prog[id], id)) < 0
+	if ((ret = getOpArgs(d, id)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
 		return (ret);
 	reg = ft_hex2Dec(player->opArgs[2]);

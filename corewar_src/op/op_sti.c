@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 12:13:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:31:44 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 ** tested OK
 ** T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG
 ** change carry ?
+** has idx
 */
 
 int		op_sti(t_data *d, t_header *player, int id)
@@ -67,7 +68,7 @@ int		op_sti(t_data *d, t_header *player, int id)
 	// writeL(ft_itoa(reg));
 	// writeL("in  reg");
 	// writeL(player->reg[reg]);
-	changeMemVal(d, id, player->indexPC + 1 + (value[0] + value[1]) / 2, player->reg[reg]);
+	changeMemVal(d, id, player->indexPC + 1 + (((value[0] + value[1]) / 2) % IDX_MOD), player->reg[reg]);
 	// writeL("after changeMemVal");
 	// writeL("player id:");
 	// writeL(ft_itoa(id));

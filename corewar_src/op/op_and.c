@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 12:15:19 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:57:22 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@ int		op_and(t_data *d, t_header *player, int id)
 	unsigned int value[2];
 	char		str[9];
 	
-	writeL("op and");
+	// writeL("op and");
+	// writeL("codage");
+	// writeL(player->codage);
+	// writeL("codage data");
+	// writeL(d->prog[id].codage);
 	// sleep(5);
 
-	if ((ret = getOpArgs(&d->prog[id], id)) < 0
+	if ((ret = getOpArgs(d, id)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
 		return (ret);
 	reg = ft_hex2Dec(player->opArgs[2]);
@@ -49,9 +53,9 @@ int		op_and(t_data *d, t_header *player, int id)
 		player->carry = true;
 	else
 		player->carry = false;
-	writeL("adv op and");
-	writeL(ft_itoa(ret));
-	sleep(5);
+	// writeL("adv op and");
+	// writeL(ft_itoa(ret));
+	// sleep(5);
 	pcAdvance(d, player, ret);
 	return (0);
 }

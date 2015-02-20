@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 14:24:00 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/20 14:32:27 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,25 +201,25 @@ int				op_sub(t_data *d, t_header *player, int id);
 int				op_xor(t_data *d, t_header *player, int id);
 int				op_zjump(t_data *d, t_header *player, int id);
 
-// static const t_opfunc	g_opfunc[] =
-// {
-// 	{1, &op_live},
-// 	{2, &op_ld},
-// 	{3, &op_st},
-// 	{4, &op_add},
-// 	{5, &op_sub},
-// 	{6, &op_and},
-// 	{7, &op_or},
-// 	{8, &op_xor},
-// 	{9, &op_zjump},
-// 	{10, &op_ldi},
-// 	{11, &op_sti},
-// 	{12, &op_fork},
-// 	{13, &op_lld},
-// 	{14, &op_lldi},
-// 	{15, &op_lfork},
-// 	{16, &op_aff}
-// };
+static const t_opfunc	g_opfunc[] =
+{
+	{1, &op_live},
+	{2, &op_ld},
+	{3, &op_st},
+	{4, &op_add},
+	{5, &op_sub},
+	{6, &op_and},
+	{7, &op_or},
+	{8, &op_xor},
+	{9, &op_zjump},
+	{10, &op_ldi},
+	{11, &op_sti},
+	{12, &op_fork},
+	{13, &op_lld},
+	{14, &op_lldi},
+	{15, &op_lfork},
+	{16, &op_aff}
+};
 
 
 // NCurses
