@@ -38,6 +38,13 @@ SRCS =	main.c \
 		ncurse/nc_renderLegendPlayerValue2.c \
 		ncurse/nc_renderLegendPlayerValue3.c \
 		ncurse/nc_renderLegendPlayerValue4.c \
+		shell/co_drawResultConsole.c \
+		shell/co_infoPlayer1.c \
+		shell/co_infoPlayer2.c \
+		shell/co_infoPlayer3.c \
+		shell/co_infoPlayer4.c \
+		shell/co_renderShell.c \
+		shell/co_showInitPlayers.c \
 		exit_free.c \
 		read_files.c \
 		init_prog.c \
