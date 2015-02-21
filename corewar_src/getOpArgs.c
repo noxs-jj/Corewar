@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 14:46:46 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/21 12:39:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,7 @@ int		getOpArgs(t_data *d, int player)
 	while (i < op_tab[d->prog[player].nextOp].nb_params)
 	{
 		if (ft_strncmp(&d->prog[player].codage[i * 2], "01", 2) == 0)
-		{
 			getValue(&d->prog[player], i, &index, REG);
-			// writeL("after get value arg 0");
-			// writeL(d->prog[player].opArgs[0]);
-		}
 		else if (ft_strncmp(&d->prog[player].codage[i * 2], "10", 2) == 0)
 			getValue(&d->prog[player], i, &index, DIR);
 		else if (ft_strncmp(&d->prog[player].codage[i * 2], "11", 2) == 0)
@@ -72,8 +68,6 @@ int		getOpArgs(t_data *d, int player)
 		else if (i + 1 == op_tab[d->prog[player].nextOp].nb_params)
 		{
 			index += op_tab[d->prog[player].nextOp].has_pcode;
-			// writeL("get op arg");
-			// writeL(d->prog[player].opArgs[0]);
 			return (index);
 		}
 		else
