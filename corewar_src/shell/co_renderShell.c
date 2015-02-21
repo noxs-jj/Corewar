@@ -12,7 +12,7 @@
 
 #include "../../includes/render.h"
 
-//"un processus dit que le joueur x(nom_champion) est en vie"
+// "un processus dit que le joueur x(nom_champion) est en vie"
 
 void	renderShell(t_data *d)
 {
@@ -20,6 +20,7 @@ void	renderShell(t_data *d)
 	int			x = L_X_MAP_START;
 	int 		y = L_Y_MAP_START;
 
+	writeL("renderShell Start");
 	while (y < L_Y_MAP_END)
 	{
 		x = L_X_MAP_START;
@@ -27,9 +28,9 @@ void	renderShell(t_data *d)
 		{
 			if (d->map[i].live == 10)
 			{
-				ft_putstr("un processus dit que le joueur ");
-				ft_putstr(d->prog[d->map[i].champ].prog_name);
-				ft_putstr(" est en vie");
+				ft_putstr("\tun processus dit que le joueur | ");
+				ft_putstr(d->prog[ (d->map[i].champ - 1) ].prog_name);
+				ft_putstr(" | est en vie\n");
 			}
 			i++; // case mem jump
 		}

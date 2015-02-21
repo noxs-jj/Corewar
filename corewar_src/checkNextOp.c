@@ -46,7 +46,7 @@ int		checkNextOp(t_data *d)
 			else
 				d->prog[player].wait = -1;
 			// check PC for player d->prog[player]
-			sleep(1);
+			//sleep(1);
 		}
 		player++;
 	}

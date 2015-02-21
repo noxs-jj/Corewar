@@ -56,7 +56,7 @@ int		getOpArgs(t_data *d, int player)
 	// writeL(ft_itoa(op_tab[d->prog[player].nextOp].nb_params));
 	// writeL("codage");
 	writeL(d->prog[player].codage);
-	sleep(1);
+	//sleep(1);
 	while (i < op_tab[d->prog[player].nextOp].nb_params)
 	{
 		if (ft_strncmp(&d->prog[player].codage[i * 2], "01", 2) == 0)

@@ -25,7 +25,6 @@ int	gameStart(t_data *d)
 		renderDraw(d);
 	else
 		co_showInitPlayers(d);
-
 	while (d->run == true)
 	{
 		if (d->pause == false)
@@ -56,7 +55,7 @@ int	gameStart(t_data *d)
 		if (d->pause == true)
 			sleep(1); 						// REMOVE
 		if (d->cycle % 10 == 0)
-			sleep(2);
+		 	sleep(2);
 	}
 
 	if (d->graphActiv == false)
