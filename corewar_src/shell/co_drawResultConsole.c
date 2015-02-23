@@ -18,6 +18,6 @@ void	drawResultConsole(t_data *d)
 {
 	(void)d;
 	ft_putstr("le joueur ");
-	ft_putstr(S_DEFAULT_VALUE); // player number
+	ft_putstr(d->prog[d->nbrWinner].prog_name); // player number
 	ft_putstr(" a gagne\n");
 }

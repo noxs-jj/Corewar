@@ -50,14 +50,14 @@ void	checkCyles(t_data *d)
 			if (d->cycleDie <= 0) // Game done
 			{
 				d->run = false; // Stop the game
-				i = 0;
+				d->iCheckCycles = 0;
 				moreRecentLive = 0;
-				while (i < d->players) // search the winner
+				while (d->iCheckCycles < d->players) // search the winner
 				{
-					if (d->prog[i].lastlive > moreRecentLive
-						&& d->prog[i].alive == true)
-						d->nbrWinner = i;
-					i++;
+					if (d->prog[(d->iCheckCycles)].lastLive > moreRecentLive
+						&& d->prog[d->iCheckCycles].alive == true)
+						d->nbrWinner = d->iCheckCycles;
+					d->iCheckCycles++;
 				}
 			}
 			d->iMaxCheck = 0; // reset maxcheck
