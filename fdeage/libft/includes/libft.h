@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 15:02:02 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/12 15:35:57 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 14:20:30 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strrev(char *s);
 char		*ft_getfirststr(const char *s1);
 size_t		ft_strlen(const char *str);
+size_t		ft_strpos(const char *str, int c);
 
 /*
 ** ft_strcpy.c / ft_strdup.c

@@ -6,13 +6,22 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/19 19:21:12 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 19:10:57 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "asm_fn.h"
 #include "libft.h"
+
+/*
+**  - get_line_code_len() get the line length once translated into bytecode;
+**  this is needed later when preprocessing the %:label arguments
+**  - check_name() and check_comment() just look for the .name and .comment lines,
+** remove the '"' and save them;
+** - in the main parse_file() function, the label lines lose their final ':' to
+** ease further comparisons with the labels of tokens in the middle
+*/
 
 //OK - 25L
 static void	get_line_code_len(t_line *line)
@@ -122,7 +131,7 @@ static int	is_comment(t_line *line)
 	return (false);
 }
 
-//OK - 20L
+//OK - 24L
 int			parse_file(t_file *file)
 {
 	t_list	*tmp;
@@ -140,11 +149,13 @@ int			parse_file(t_file *file)
 			if (!(file->header.comment[0]))
 				check_comment(file, LINE);
 			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|    --  type: %d\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str, LINE->type);
-			if (LINE->type == T_EXEC
-				&& tokenize_line(LINE) == EXIT_FAILURE)
+			if ((LINE->type == T_EXEC) && ((tokenize_line(LINE) == EXIT_FAILURE)
+			   || (has_right_params(LINE) == EXIT_FAILURE)))
 				return (EXIT_FAILURE);
-			//if LINE->type == T_EXEC then
-			get_line_code_len(LINE);
+			if (LINE->type == T_LABEL)
+				(LINE->str)[ft_strpos(LINE->str, LABEL_CHAR)] = 0;
+			else //?
+				get_line_code_len(LINE);
 		}
 		tmp = tmp->next;
 	}

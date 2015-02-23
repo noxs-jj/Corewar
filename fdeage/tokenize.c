@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 17:52:26 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:36:12 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,6 @@ static int	get_inst(t_token *token)
 	return (EXIT_FAILURE);
 }
 
-static int	check_label(char *s)
-{
-	register size_t	i;
-	char			*check;
-
-	check = LABEL_CHARS;
-	i = 0;
-	while (s[i] && s[i] != LABEL_CHAR)
-	{
-		if (!ft_strchr(check, s[i]))
-			return (EXIT_FAILURE);
-		++i;
-	}
-	return (EXIT_SUCCESS);
-}
-
 //TODO: check label chars in a separate file/function
 static int	get_token_type(t_token *token)
 {
@@ -74,8 +58,6 @@ static int	get_token_type(t_token *token)
 		{
 			token->type = T_LABEL;
 			//separate function
-			if (check_label(token->str) == EXIT_FAILURE)
-				RET("Wrong chars used in label.\n", EXIT_FAILURE);
 		}
 		else
 			token->type = T_INSTRUCTION;
@@ -89,6 +71,8 @@ static int	get_token_type(t_token *token)
 	}
 	else if ((token->str)[0] == REGISTER_CHAR)
 		token->type = T_A_REG;
+	else if ((token->str)[0] == LABEL_CHAR)
+		token->type = T_A_INDLAB;
 	else if ((token->str)[0] == FINAL_COMMENT_CHAR)
 		token->type = T_F_COMMENT;
 	else
@@ -119,6 +103,8 @@ static int	add_token(t_line *line, int i, int j, int id)
 		RET("No token type found.\n", EXIT_FAILURE);
 	if (token->type == T_INSTRUCTION && get_inst(token) == EXIT_FAILURE)
 		RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
+	if (token->type == T_A_INDLAB && check_label(token->str) == EXIT_FAILURE)
+		RET("Wrong chars used in label.\n", EXIT_FAILURE);
 	if (token->type == T_COMMENT)
 		line->has_final_comment = 1;
 	print_token(token);
@@ -128,8 +114,6 @@ static int	add_token(t_line *line, int i, int j, int id)
 }
 
 //OK - 24L - file solely needed for error report
-
-//TODO: if last is comment
 int				tokenize_line(t_line *line)
 {
 	register size_t	i;
@@ -156,7 +140,7 @@ int				tokenize_line(t_line *line)
 			break ;
 		++token_id;
 	}
-	line->nb_param = token_id - 1;
+	line->nb_params = token_id - 1;
 	fprintf(stderr, "tokenize end\n");
 	return (EXIT_SUCCESS);
 }

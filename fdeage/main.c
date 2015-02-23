@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 15:34:18 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:34:10 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@
 #include "asm_fn.h"
 #include "op.h"
 
-static int	check_file(t_file *file, const char *filename)
+/*
+** main
+** init_file
+** check_file
+** read_file
+** parse_file -> tokenize_line
+** convert_file
+** write_cor
+** print_header
+*/
+
+static int	check_file_1(t_file *file, const char *filename)
 {
 	size_t	len;
 
@@ -70,7 +81,7 @@ static void	print_header(t_header *header, char *file_s, char *file_cor)
 	return ;
 }
 
-static void	check_params(t_file *file, int ac, char *av[])
+static void	check_asm_params(t_file *file, int ac, char *av[])
 {
 	if (ac == 1)
 		asm_error("No file entered. Use: ./asm filename [-v] [-l].\n");
@@ -81,7 +92,7 @@ static void	check_params(t_file *file, int ac, char *av[])
 		else if (!ft_strcmp(av[2], "-l"))
 			file->options |= T_OPTION_LEAKS;
 		else
-			asm_error("Too many files entered. Use: ./asm filename [-v] [-l].\n");
+			asm_error("Too many files. Use: ./asm filename [-v] [-l].\n");
 	}
 	else if (ac == 4)
 	{
@@ -95,18 +106,7 @@ static void	check_params(t_file *file, int ac, char *av[])
 	return ;
 }
 
-/*
-** main
-** init_file
-** check_file
-** read_file
-** parse_file -> tokenize_line
-** convert_file
-** write_cor
-** print_header
-*/
-
-//
+//OK - 23L
 int			main(int ac, char **av)
 {
 	t_file	*file;
@@ -114,22 +114,22 @@ int			main(int ac, char **av)
 	if (!(file = (t_file *)malloc(sizeof(t_file))))
 		return (EXIT_FAILURE);
 
-		fprintf(stderr, "\nTEST0 - BEGIN\n");
+	fprintf(stderr, "\nTEST0 - BEGIN\n");
 
 	init_file(file);
-	check_params(file, ac, av);
+	check_asm_params(file, ac, av);
 
-		fprintf(stderr, "\nTEST1 - INIT OK\n");
+	fprintf(stderr, "\nTEST1 - INIT OK\n");
 
-	if (check_file(file, av[1]) == EXIT_FAILURE)
+	if (check_file_1(file, av[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 
-		fprintf(stderr, "\nTEST2 - CHECK OK\n");
+	fprintf(stderr, "\nTEST2 - CHECK OK\n");
 
 	if (read_file(file) == EXIT_FAILURE)
 		asm_error("Failed to read the file.\n");
 
-		fprintf(stderr, "\nTEST3 - READ OK\n");
+	fprintf(stderr, "\nTEST3 - READ OK\n");
 
 	if (parse_file(file) == EXIT_FAILURE)
 	{
@@ -138,9 +138,9 @@ int			main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 
-		fprintf(stderr, "\nTEST4 - TOKENIZE OK\n");
+	fprintf(stderr, "\nTEST4 - TOKENIZE OK\n");
 
-	if (convert_file(file) == EXIT_SUCCESS)
+	if (check_file_2(file) && convert_file(file) == EXIT_SUCCESS)
 	{
 		fprintf(stderr, "\nTEST5 - CONVERT OK\n");
 		write_cor(file);

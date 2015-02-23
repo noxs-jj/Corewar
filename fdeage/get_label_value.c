@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 17:14:16 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 13:32:10 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:37:44 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void get_param_value(t_list *lines, t_line *srcline, t_token *token)
 		while (tmp)
 		{
 			fprintf(stderr, "DATA = %s, data = %s\n", LINE->str, token->str + 2);
-			if (LINE->type == T_LABEL && !ft_strncmp(LINE->str,
-				token->str + 2, ft_strlen(LINE->str) - 1))
+			if (LINE->type == T_LABEL && !ft_strcmp(LINE->str,
+				token->str + 2))
 			{
 				fprintf(stderr, "label found, getting value...\n");
 				token->value = get_label_value(lines, srcline, LINE);
@@ -84,6 +84,7 @@ void get_param_value(t_list *lines, t_line *srcline, t_token *token)
 			}
 			tmp = tmp->next;
 		}
+		ft_putstr("No matching label found.\n");
 	}
 	return ;
 }

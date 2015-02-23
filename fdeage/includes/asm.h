@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 17:51:40 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:35:34 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 //TODO:
 /* virer */
 #include<stdio.h>
-//si erreur, pas de fichier zork.cor
 //error_handling: globale t_error ?
 //TODO: Makefile harmonise
 //TODO: libft unique
 //TODO : commentaites en ";" en fin de ligne (pas oblig)
+//TODO: if ref to a label that doesnt exist
 //TODO: check if params type are legit
 
 //TODO ERROR:
@@ -32,8 +32,7 @@
 // - type d'arg incorrect
 // - is not number nor label -> lexical error
 // - %:label: is label_chars
-
-//macro conversion T_DIRECT_LABEL
+// file that doenst exist: error message
 
 # define LINE				((t_line *)(tmp->content))
 # define TOKEN				((t_token *)(tmp->content))
@@ -73,9 +72,10 @@ enum						e_token_type
 	T_LABEL, //7
 	T_INSTRUCTION, //8
 	T_A_REG, //9
-	T_A_IND, //10
-	T_A_DIR, //11
+	T_A_DIR, //10
+	T_A_IND, //11
 	T_A_DLAB, //12
+	T_A_INDLAB, //13
 };
 
 # define T_DIR_LEN			4
@@ -99,7 +99,7 @@ typedef struct				s_line
 	size_t					id;
 	size_t					code_len;
 	char					*str; //malloc
-	size_t					nb_param;
+	size_t					nb_params;
 	enum e_token_type		type;
 	int						has_final_comment;
 	char					bytecode[14]; //MAX: 1 + 1 + 4 + 4 + 4, no EOL

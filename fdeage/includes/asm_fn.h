@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 18:46:33 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:34:51 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		parse_file(t_file *file);
 int		tokenize_line(t_line *line);
 
 /*
-** convert.c - TODO
+** convert.c - OK
 */
 
 int		convert_file(t_file *file);
@@ -66,14 +66,16 @@ char	*get_code(unsigned char n, char tab[2]);
 ** check.c
 */
 
+int		check_file_2(t_file *file);
 int		is_only_whitespace(const char *s);
 int		has_final_comment(t_line *line);
+int		has_right_params(t_line *line);
+int		check_label(char *s);
 
 /*
 ** int get_label_value(t_list *tokens, t_token *token)
 */
 
-//void	get_param_value(t_list *tokens, t_token *token);
 void	get_param_value(t_list *tokens, t_line *line, t_token *token);
 
 #endif
