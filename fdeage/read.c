@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 19:09:05 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:57:57 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static int	init_line(t_file *file, char *str, size_t i, int line_type)
 }
 
 /*
-** has_label() returns 0 if no ':' is found at the end of the token, else returns
-** the position of it
+** has_label() returns 0 if no ':' is found at the end of the token, else
+** returns the position of it
 */
 
 static int	has_label(char *str)
@@ -63,6 +63,7 @@ static int	has_label(char *str)
 ** WARNING: if no inst follows the label, then only adds the label!
 */
 
+//OK - 21L
 static int	add_line(t_file *file, char *str, size_t *i, int has_label)
 {
 	size_t	len;
@@ -78,7 +79,8 @@ static int	add_line(t_file *file, char *str, size_t *i, int has_label)
 		str[has_label + 1] = ' ';
 		//?
 		(*i)++;
-		if ((int)len != has_label + 1 && !is_only_whitespace(&(str[has_label + 2])))
+		if ((int)len != has_label + 1
+			&& !is_only_whitespace(&(str[has_label + 2])))
 		{
 			fprintf(stderr, "ADD INST POST LABEL: |%s| len=%d has_label=%d - only whitespace = %d\n", &(str[has_label + 2]), (int)len, has_label, is_only_whitespace(&(str[has_label + 2])));
 			init_line(file, str + has_label + 2, *i, 0);

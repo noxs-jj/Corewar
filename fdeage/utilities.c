@@ -6,11 +6,11 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 22:50:03 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/20 15:18:52 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:48:40 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+# include<stdio.h>
 
 char	*get_code(unsigned char n, char tab[2])
 {

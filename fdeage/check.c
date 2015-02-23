@@ -6,14 +6,14 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:37:53 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:50:59 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "asm.h"
-
 #define G	g_op_tab[inst - 1]
+
 extern t_op	g_op_tab[17];
 
 # include<stdio.h>

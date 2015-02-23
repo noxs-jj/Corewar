@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 19:10:57 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:56:18 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 /*
 **  - get_line_code_len() get the line length once translated into bytecode;
 **  this is needed later when preprocessing the %:label arguments
-**  - check_name() and check_comment() just look for the .name and .comment lines,
-** remove the '"' and save them;
+**  - check_name() and check_comment() just look for the .name and .comment
+** lines, remove the '"' and save them;
 ** - in the main parse_file() function, the label lines lose their final ':' to
 ** ease further comparisons with the labels of tokens in the middle
 */
 
-//OK - 25L
+//TODO - 26L
 static void	get_line_code_len(t_line *line)
 {
 	t_list	*tmp;
@@ -150,7 +150,7 @@ int			parse_file(t_file *file)
 				check_comment(file, LINE);
 			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|    --  type: %d\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str, LINE->type);
 			if ((LINE->type == T_EXEC) && ((tokenize_line(LINE) == EXIT_FAILURE)
-			   || (has_right_params(LINE) == EXIT_FAILURE)))
+				|| (has_right_params(LINE) == EXIT_FAILURE)))
 				return (EXIT_FAILURE);
 			if (LINE->type == T_LABEL)
 				(LINE->str)[ft_strpos(LINE->str, LABEL_CHAR)] = 0;

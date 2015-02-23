@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 13:08:01 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:52:30 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ static void	translate_params(t_file *file, t_line *line, t_op *op)
 		else if (TOKEN->type == T_A_IND)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_IND_LEN, &i);
-        else if (TOKEN->type == T_A_DLAB || (TOKEN->type == T_A_DIR && (op->has_idx)))
+		else if (TOKEN->type == T_A_DLAB || (TOKEN->type == T_A_DIR && (op->has_idx)))
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_DLAB_LEN, &i);
-        else if (TOKEN->type == T_A_DIR)
+		else if (TOKEN->type == T_A_DIR)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_DIR_LEN, &i);
 
@@ -116,12 +116,12 @@ static void	get_pcode(t_list *tokens, char *bytecode)
 	while (tmp)
 	{
 		fprintf(stderr, "data = %s type = %d\n", TOKEN->str, TOKEN->type);
-        if (TOKEN->type == T_A_DLAB || TOKEN->type == T_A_DIR || TOKEN->type == T_A_IND)
+		if (TOKEN->type == T_A_DLAB || TOKEN->type == T_A_DIR || TOKEN->type == T_A_IND)
 		{
 			pcode2 |= (1 << (7 - i));
 			fprintf(stderr, "c3=%u\n", 1 << (7 - i));
 		}
-        if (TOKEN->type == T_A_REG || TOKEN->type == T_A_IND)
+		if (TOKEN->type == T_A_REG || TOKEN->type == T_A_IND)
 		{
 			pcode2 |= (1 << (6 - i));
 			fprintf(stderr, "c4=%u\n", 1 << (6 - i));
@@ -137,7 +137,7 @@ static void	get_pcode(t_list *tokens, char *bytecode)
 static t_op	*get_inst_code(t_line *line)
 {
 	t_token	*token;
-    t_op	*op;
+	t_op	*op;
 
 	token = (t_token *)(line->tokens->content);
 	//fprintf(stderr, "CONVERT loop 3 - str = %s\n", token->data);

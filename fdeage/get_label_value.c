@@ -6,13 +6,19 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 17:14:16 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:37:44 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:54:34 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-//27L
+/*
+**  - get_param_value() gets the value of the token according to its type
+** for labels it's a bit more tricky: LTOKEN points to the first token of the
+** line: no line with no token
+*/
+
+//TODO: 27L
 static int	get_label_value(t_list *lines, t_line *dir_line, t_line *lab_line)
 {
 	int		value;
@@ -48,14 +54,8 @@ static int	get_label_value(t_list *lines, t_line *dir_line, t_line *lab_line)
 	return (value);
 }
 
-/*
-** get_param_value() gets the value of the token according to its type
-** for labels it's a bit more tricky: LTOKEN points to the first token of the
-** line: no line with no token
-*/
-
 //OK - 23L
-void get_param_value(t_list *lines, t_line *srcline, t_token *token)
+void		get_param_value(t_list *lines, t_line *srcline, t_token *token)
 {
 	t_list	*tmp;
 	char	*label;

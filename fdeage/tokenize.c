@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:36:12 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 20:58:28 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,14 @@ static int	add_token(t_line *line, int i, int j, int id)
 		RET("Wrong chars used in label.\n", EXIT_FAILURE);
 	if (token->type == T_COMMENT)
 		line->has_final_comment = 1;
-	print_token(token);
+	print_token(token); //virer
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
 	free(token);
 	return (EXIT_SUCCESS);
 }
 
-//OK - 24L - file solely needed for error report
-int				tokenize_line(t_line *line)
+//OK - 24L
+int			tokenize_line(t_line *line)
 {
 	register size_t	i;
 	register size_t	j;
