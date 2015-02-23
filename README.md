@@ -2,13 +2,13 @@
 C, Ncurse
 
 
-		-dump NBR_CYLCLE
+	-dump NBR_CYLCLE
 After NBR_CYCLE dump memory on to STDOUT
 
-		-g
+	-g
 Draw action on NCurse
 
-		-n NUMBER
+	-n NUMBER
 Set player number
 
 

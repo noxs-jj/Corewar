@@ -127,7 +127,7 @@ typedef struct			s_header
 {
 	// unsigned int		magic;
 	bool				carry; // true if prev action worked
-	int					lastLive; /* Last live : */
+	int					lastLive; /* Last live : (the number of cyle where the last live is) */
 	int 				liveNbr; /* Lives in current period : */
 	t_case				*PC; // program counter
 	int					indexPC;
@@ -159,6 +159,7 @@ typedef	struct			s_data
 	unsigned int		periode; // value between 0 and cycleDie
 	bool 				pause;
 	bool				graphActiv;
+	short int 			caseColor;
 }						t_data;
 
 // Corewar bin
@@ -241,6 +242,10 @@ void			renderLegendPlayerValue3(t_data *d);
 void			renderLegendPlayerValue4(t_data *d);
 void			renderLegendSentence(t_data *d);
 void 			renderLegendPlayerSentence(t_data *d);
+void			color_champ1(t_data *d, int i);
+void			color_champ2(t_data *d, int i);
+void			color_champ3(t_data *d, int i);
+void			color_champ4(t_data *d, int i);
 
 // Shell Render
 void			co_infoPlayer1(t_data *d);
