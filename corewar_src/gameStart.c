@@ -46,6 +46,7 @@ int	gameStart(t_data *d)
 			// writeL(&d->prog[0].opArgs[1][2]);
 			// writeL(&d->prog[0].opArgs[2][2]);
 			//sleep(1);
+			checkCyles(d);
 			if (true == d->graphActiv)
 				renderDraw(d); // draw game with ncurses
 			else

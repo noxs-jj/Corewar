@@ -60,10 +60,10 @@
 // #define COMMENT_CMD_STRING		".comment"
 
 
-#define CYCLE_TO_DIE			1536
-#define CYCLE_DELTA				50
-#define NBR_LIVE				21
-#define MAX_CHECKS				10
+#define CYCLE_TO_DIE			1536	// default 1536
+#define CYCLE_DELTA				150		// default 50
+#define NBR_LIVE				21		// default 21
+#define MAX_CHECKS				2		// default 10
 
 /*
 **
@@ -151,15 +151,20 @@ typedef	struct			s_data
 	bool				run; // is run : y = true, n = false
 	t_case				*map;
 	int 				players; // player number
-	unsigned int 		cycle; // nbr cycle done
 	int 				dump; // dump option activated if dump != -1
 	WINDOW				*window;
 	int					fdDebugg; // file debug fd
-	unsigned  int		cycleDie;// = CYCLE_TO_DIE
 	unsigned int		periode; // value between 0 and cycleDie
 	bool 				pause;
 	bool				graphActiv;
 	short int 			caseColor;
+	// checkCycles
+	unsigned int 		cycle; // nbr cycle done
+	unsigned int		cycleDie;// = CYCLE_TO_DIE
+	unsigned int 		livesCurrent;
+	unsigned int 		iCheckCycles;
+	unsigned int 		iMaxCheck;
+	unsigned int 		nbrWinner;
 }						t_data;
 
 // Corewar bin
@@ -182,6 +187,7 @@ void			pcAdvance(t_data *d, t_header *player, int adv);
 int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
 void			arg_dump(t_data *d);
+void			checkCyles(t_data *d);
 
 // OP functions
 typedef struct		s_opfunc
