@@ -22,6 +22,7 @@ NAME = corewar
 
 SRCS =	main.c \
 		arg_dump.c \
+		cycle.c \
 		init_start.c \
 		print_error.c \
 		writeL.c \
@@ -39,6 +40,10 @@ SRCS =	main.c \
 		ncurse/nc_renderLegendPlayerValue2.c \
 		ncurse/nc_renderLegendPlayerValue3.c \
 		ncurse/nc_renderLegendPlayerValue4.c \
+		ncurse/nc_color_champ1.c \
+		ncurse/nc_color_champ2.c \
+		ncurse/nc_color_champ3.c \
+		ncurse/nc_color_champ4.c \
 		shell/co_drawResultConsole.c \
 		shell/co_infoPlayer1.c \
 		shell/co_infoPlayer2.c \

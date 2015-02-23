@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 14:15:48 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 13:24:55 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,23 @@ static int	read_file(t_data *d, int fd, int number)
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(str, 3);
-	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && (index + 2) < MEM_SIZE / 6) // read prog only
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0) // read prog only  && (index + 2) < CHAMP_MAX_SIZE
 	{
 		ft_putHexNbr(buff[0], &str);
 		strncpy(&d->prog[number].prog[index], str, 2);
 		index += 2;
 		d->prog[number].prog_size += 2;
+		if (d->prog[number].prog_size > CHAMP_MAX_SIZE)
+			return (print_error("Champions too big"));
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
+	// writeL("size");
+	// writeL(ft_itoa(d->prog[number].prog_size));
+
 	d->prog[number].prog_size /= 2;
 	// writeL(d->prog[number].prog);
+	// sleep(5);
 	d->prog[number].alive = true;
 	// ft_strcpy(d->prog[number].reg[1], "fffffff");
 	d->prog[number].reg[1][0] = '0' + d->prog[number].number;
@@ -110,8 +116,8 @@ static int	read_file(t_data *d, int fd, int number)
 	// writeL("=================");
 	// writeL(d->prog[number].reg[0]);
 	// sleep(5);
-	if (ret == -1 || d->prog[number].prog_size > CHAMP_MAX_SIZE)
-		return (-1);
+	if (ret == -1)
+		return (print_error(ERR_READ));
 	return (ret);
 }
 

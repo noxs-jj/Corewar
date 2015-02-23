@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 17:09:33 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 14:56:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@
 
 #define MEM_SIZE				(4 * 1024)
 #define IDX_MOD					(MEM_SIZE / 8)
-#define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2)
+// #define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2) // original
+#define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
 
 #define COMMENT_CHAR				'#'
 #define LABEL_CHAR				':'
@@ -59,10 +60,10 @@
 // #define COMMENT_CMD_STRING		".comment"
 
 
-#define CYCLE_TO_DIE			1536
-#define CYCLE_DELTA				50
-#define NBR_LIVE				21
-#define MAX_CHECKS				10
+#define CYCLE_TO_DIE			1536	// default 1536
+#define CYCLE_DELTA				150		// default 50
+#define NBR_LIVE				21		// default 21
+#define MAX_CHECKS				2		// default 10
 
 /*
 **
@@ -118,6 +119,7 @@ typedef struct			s_case
 	short int			champ; // champions's number ( 0 1 2 3 4 )
 	bool				present; //is present ( 0 1 2 3 4 )
 	bool				used; // true : yes, false : no
+	int 				recent;	// if value was modify recently
 	int 				live;
 }						t_case;
 
@@ -125,7 +127,7 @@ typedef struct			s_header
 {
 	// unsigned int		magic;
 	bool				carry; // true if prev action worked
-	int					lastLive; /* Last live : */
+	int					lastLive; /* Last live : (the number of cyle where the last live is) */
 	int 				liveNbr; /* Lives in current period : */
 	t_case				*PC; // program counter
 	int					indexPC;
@@ -149,13 +151,20 @@ typedef	struct			s_data
 	bool				run; // is run : y = true, n = false
 	t_case				*map;
 	int 				players; // player number
-	int 				cycle; // nbr cycle done
 	int 				dump; // dump option activated if dump != -1
 	WINDOW				*window;
 	int					fdDebugg; // file debug fd
-	unsigned  int 		cycleDie;// = CYCLE_TO_DIE
+	unsigned int		periode; // value between 0 and cycleDie
 	bool 				pause;
 	bool				graphActiv;
+	short int 			caseColor;
+	// checkCycles
+	unsigned int 		cycle; // nbr cycle done
+	unsigned int		cycleDie;// = CYCLE_TO_DIE
+	unsigned int 		livesCurrent;
+	unsigned int 		iCheckCycles;
+	unsigned int 		iMaxCheck;
+	unsigned int 		nbrWinner;
 }						t_data;
 
 // Corewar bin
@@ -178,6 +187,7 @@ void			pcAdvance(t_data *d, t_header *player, int adv);
 int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
 void			arg_dump(t_data *d);
+void			checkCyles(t_data *d);
 
 // OP functions
 typedef struct		s_opfunc
@@ -238,6 +248,10 @@ void			renderLegendPlayerValue3(t_data *d);
 void			renderLegendPlayerValue4(t_data *d);
 void			renderLegendSentence(t_data *d);
 void 			renderLegendPlayerSentence(t_data *d);
+void			color_champ1(t_data *d, int i);
+void			color_champ2(t_data *d, int i);
+void			color_champ3(t_data *d, int i);
+void			color_champ4(t_data *d, int i);
 
 // Shell Render
 void			co_infoPlayer1(t_data *d);

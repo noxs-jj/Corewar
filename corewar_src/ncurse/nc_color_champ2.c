@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   co_drawResultConsole.c                             :+:      :+:    :+:   */
+/*   nc_color_champ2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/13 15:00:49 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/13 15:00:50 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/02/23 16:19:59 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/23 16:20:00 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/render.h"
 
-//le joueur x(nom_champion) a gagne
-
-void	drawResultConsole(t_data *d)
+void	color_champ2(t_data *d, int i)
 {
-	(void)d;
-	ft_putstr("le joueur ");
-	ft_putstr(d->prog[d->nbrWinner].prog_name); // player number
-	ft_putstr(" a gagne\n");
+	if (d->map[i].present == true)
+		d->caseColor = COLOR_PAIR(12);
+	else if (d->map[i].live > 0)
+	{
+		d->caseColor = COLOR_PAIR(22);
+		d->map[i].live--;
+	}
+	else if (d->map[i].recent > 0)
+	{
+		d->caseColor = COLOR_PAIR(32);
+		d->map[i].recent--;
+	}
+	else
+		d->caseColor = COLOR_PAIR(2);
 }

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 14:52:04 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 17:25:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		execOp(t_data *d)
 			// exec func
 			writeL("playerNbr");
 			writeL(ft_itoa(player));
-			sleep(1);
+			usleep(10000);
 			g_opfunc[d->prog[player].nextOp].func(d, &d->prog[player], player);
 			d->prog[player].wait--;
 		}
