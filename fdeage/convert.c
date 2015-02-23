@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:52:30 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 21:03:33 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ void print_token(t_token *token)
 */
 
 //OK - 20L
-static void	translate_token_value(int value, char *bytecode, int size, size_t *i)
+static void	translate_token_value(int value, char *code, int size, size_t *i)
 {
 	size_t	j;
 
 	j = 0;
 	if (size == 1)
-		bytecode[j] = ((size_t)value) % 256;
+		code[j] = ((size_t)value) % 256;
 	else if (size == 2)
 	{
-		bytecode[j] = ((size_t)value) / 256;
-		bytecode[j + 1] = ((size_t)value) % 256;
+		code[j] = ((size_t)value) / 256;
+		code[j + 1] = ((size_t)value) % 256;
 	}
 	else if (size == 4)
 	{
-		bytecode[j] = ((size_t)value) / (256 * 256 * 256);
-		bytecode[j + 1] = (((size_t)value) - bytecode[j] * 256 * 256 * 256)
+		code[j] = ((size_t)value) / (256 * 256 * 256);
+		code[j + 1] = (((size_t)value) - code[j] * 256 * 256 * 256)
 			/ (256 * 256);
-		bytecode[j + 2] = (((size_t)value) - bytecode[j + 1] * 256 * 256) / 256;
-		bytecode[j + 3] = (((size_t)value) - bytecode[j + 2] * 256) % 256;
+		code[j + 2] = (((size_t)value) - code[j + 1] * 256 * 256) / 256;
+		code[j + 3] = (((size_t)value) - code[j + 2] * 256) % 256;
 	}
 	*i += size;
 	return ;
@@ -84,7 +84,8 @@ static void	translate_params(t_file *file, t_line *line, t_op *op)
 		else if (TOKEN->type == T_A_IND)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_IND_LEN, &i);
-		else if (TOKEN->type == T_A_DLAB || (TOKEN->type == T_A_DIR && (op->has_idx)))
+		else if (TOKEN->type == T_A_DLAB || (TOKEN->type == T_A_DIR
+				&& (op->has_idx)))
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_DLAB_LEN, &i);
 		else if (TOKEN->type == T_A_DIR)
@@ -116,7 +117,8 @@ static void	get_pcode(t_list *tokens, char *bytecode)
 	while (tmp)
 	{
 		fprintf(stderr, "data = %s type = %d\n", TOKEN->str, TOKEN->type);
-		if (TOKEN->type == T_A_DLAB || TOKEN->type == T_A_DIR || TOKEN->type == T_A_IND)
+		if (TOKEN->type == T_A_DLAB || TOKEN->type == T_A_DIR
+			|| TOKEN->type == T_A_IND || TOKEN->type == T_A_INDLAB)
 		{
 			pcode2 |= (1 << (7 - i));
 			fprintf(stderr, "c3=%u\n", 1 << (7 - i));

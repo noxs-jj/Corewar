@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:58:28 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/23 21:05:05 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int	add_token(t_line *line, int i, int j, int id)
 		RET("Malloc() failed.\n", EXIT_FAILURE);
 	if (!(token->str = (char *)malloc(sizeof(char) * (j - i + 1))))
 		RET("Malloc() failed.\n", EXIT_FAILURE);
-	ft_strncpy(token->str,  &(line->str[i]), j - i);
+	ft_strncpy(token->str, &(line->str[i]), j - i);
 	token->op = NULL;
 	token->str[j - i] = 0;
 	token->id = id;
