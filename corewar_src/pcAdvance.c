@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 16:02:50 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 17:17:16 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 18:19:57 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void	pcAdvance(t_data *d, t_header *player, int adv)
 		writeL("adv:");
 	writeL(ft_itoa(adv));
 	player->indexPC = (player->indexPC + MEM_SIZE + adv + 1) % MEM_SIZE;
-	// writeL("hello2");
-
-
+	// player->indexPC = (player->indexPC + MEM_SIZE + adv + 1) % MEM_SIZE;
+	writeL("hello2");
+	writeL(d->map[player->indexPC].hex);
+	usleep(100000);
 	player->PC = &d->map[player->indexPC];
 	writeL("index:");
 	 writeL(ft_itoa(player->indexPC));
