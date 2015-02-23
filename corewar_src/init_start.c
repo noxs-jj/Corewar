@@ -100,6 +100,9 @@ int		init_start(t_data *d, int ac, char **av)
 	d->players = -1;
 	d->cycleDie = CYCLE_TO_DIE;
 	d->cycle = 0;
+	d->livesCurrent = 0;
+	d->iMaxCheck = 0;
+	d->nbrWinner = 0;
 	d->graphActiv = false;
 	init_prog(d);
 	return (checkparam(d, ac, av));

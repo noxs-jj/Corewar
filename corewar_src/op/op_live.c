@@ -38,6 +38,7 @@ int		op_live(t_data *d, t_header *player, int id)
 	{
 		d->prog[value].lastLive = d->cycle;
 		d->prog[value].liveNbr++;
+		d->livesCurrent++; //checkCycles
 	}
 	player->PC->live = 10;
 	pcAdvance(d, player, ret);
