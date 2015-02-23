@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 17:09:33 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 13:31:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@
 
 #define MEM_SIZE				(4 * 1024)
 #define IDX_MOD					(MEM_SIZE / 8)
-#define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2)
+// #define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2) // original
+#define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
 
 #define COMMENT_CHAR				'#'
 #define LABEL_CHAR				':'
@@ -118,6 +119,7 @@ typedef struct			s_case
 	short int			champ; // champions's number ( 0 1 2 3 4 )
 	bool				present; //is present ( 0 1 2 3 4 )
 	bool				used; // true : yes, false : no
+	int 				recent;	// if value was modify recently
 	int 				live;
 }						t_case;
 

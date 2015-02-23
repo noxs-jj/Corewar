@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:25:21 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/18 16:32:45 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 13:35:17 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		init_mem(t_data *d)
 		d->map[i].present = false;
 		d->map[i].used = false;
 		d->map[i].live = 0;
+		d->map[i].recent = 0;
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 15:28:04 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 12:00:06 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 13:34:56 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 	while (i + len <= REG_SIZE * 2 - 1)
 	{
 		d->map[where].hex[i % 2] = '0';
+		d->map[where].recent = 20;
 		i++;
 		if (i % 2 == 0)
 			where = (where + 1) % MEM_SIZE;
@@ -50,6 +51,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 		// writeL("before");
 		// writeL(d->map[where].hex);
 		d->map[where].hex[i % 2] = str[index];
+		d->map[where].recent = 20;
 		// ft_strncpy(d->map[where].hex, &str[i], 2);
 		// writeL("after");
 		// writeL(d->map[where].hex);
