@@ -43,6 +43,11 @@ void	renderDraw(t_data *d)
 					v = COLOR_PAIR(21);
 					d->map[i].live;
 				}
+				else if (d->map[i].recent > 0)
+				{
+					v = COLOR_PAIR(31);
+					d->map[i].recent--;
+				}
 				else
 					v = (d->map[i].present == false) ? COLOR_PAIR(1) : COLOR_PAIR(11);
 			}
@@ -52,6 +57,11 @@ void	renderDraw(t_data *d)
 				{
 					v = COLOR_PAIR(22);
 					d->map[i].live;
+				}
+				else if (d->map[i].recent > 0)
+				{
+					v = COLOR_PAIR(32);
+					d->map[i].recent--;
 				}
 				else
 					v = (d->map[i].present == false) ? COLOR_PAIR(2) : COLOR_PAIR(12);
@@ -63,6 +73,11 @@ void	renderDraw(t_data *d)
 					v = COLOR_PAIR(23);
 					d->map[i].live;
 				}
+				else if (d->map[i].recent > 0)
+				{
+					v = COLOR_PAIR(33);
+					d->map[i].recent--;
+				}
 				else
 					v = (d->map[i].present == false) ? COLOR_PAIR(3) : COLOR_PAIR(13);
 			}
@@ -72,6 +87,11 @@ void	renderDraw(t_data *d)
 				{
 					v = COLOR_PAIR(24);
 					d->map[i].live;
+				}
+				else if (d->map[i].recent > 0)
+				{
+					v = COLOR_PAIR(34);
+					d->map[i].recent--;
 				}
 				else
 					v = (d->map[i].present == false) ? COLOR_PAIR(4) : COLOR_PAIR(14);

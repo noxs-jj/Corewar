@@ -98,7 +98,7 @@ static int	read_file(t_data *d, int fd, int number)
 		index += 2;
 		d->prog[number].prog_size += 2;
 		if (d->prog[number].prog_size > CHAMP_MAX_SIZE)
-			return (-1);
+			return (print_error("Champions too big"));
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
@@ -117,7 +117,7 @@ static int	read_file(t_data *d, int fd, int number)
 	// writeL(d->prog[number].reg[0]);
 	// sleep(5);
 	if (ret == -1)
-		return (-1);
+		return (print_error(ERR_READ));
 	return (ret);
 }
 
