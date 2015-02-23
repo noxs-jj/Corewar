@@ -177,6 +177,7 @@ int				ft_hex2intdec(char *str);
 void			pcAdvance(t_data *d, t_header *player, int adv);
 int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
+void			arg_dump(t_data *d);
 
 // OP functions
 typedef struct		s_opfunc

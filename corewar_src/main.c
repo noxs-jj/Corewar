@@ -29,5 +29,7 @@ int main(int ac, char **av)
 
 	gameStart(d);// Main loop
 
+	writeL("Game Done (main.c)");
+
 	return (0);
 }

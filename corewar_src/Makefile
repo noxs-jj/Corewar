@@ -21,6 +21,7 @@ LIB = ../libft/libft.a
 NAME = corewar
 
 SRCS =	main.c \
+		arg_dump.c \
 		init_start.c \
 		print_error.c \
 		writeL.c \
