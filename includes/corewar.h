@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/23 13:31:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/23 14:56:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,12 @@ typedef	struct			s_data
 	bool				run; // is run : y = true, n = false
 	t_case				*map;
 	int 				players; // player number
-	int 				cycle; // nbr cycle done
+	unsigned int 		cycle; // nbr cycle done
 	int 				dump; // dump option activated if dump != -1
 	WINDOW				*window;
 	int					fdDebugg; // file debug fd
-	unsigned  int 		cycleDie;// = CYCLE_TO_DIE
+	unsigned  int		cycleDie;// = CYCLE_TO_DIE
+	unsigned int		periode; // value between 0 and cycleDie
 	bool 				pause;
 	bool				graphActiv;
 }						t_data;
