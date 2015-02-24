@@ -16,8 +16,23 @@
 
 void	drawResultConsole(t_data *d)
 {
-	(void)d;
-	ft_putstr("le joueur ");
-	ft_putstr(d->prog[d->nbrWinner].prog_name); // player number
-	ft_putstr(" a gagne\n");
+	if (true == d->graphActiv)
+	{
+		renderClose(d);
+		sleep(1);
+	}
+	if (999 != d->nbrWinner && -1 == d->dump)
+	{
+		co_troll_all();
+		ft_putstr("#######################################################\n");
+		ft_putstr("\t\tle joueur ");
+		ft_putstr(d->prog[d->nbrWinner].prog_name); // player number
+		ft_putstr(" a gagne\n");
+		ft_putstr("#######################################################\n");
+	}
+	else if (-1 == d->dump)
+	{
+		co_troll_all();
+		ft_putstr("No Winner\n");
+	}
 }

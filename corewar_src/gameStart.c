@@ -21,7 +21,7 @@ int	gameStart(t_data *d)
 {
 	d->run = true;
 	// renderDraw(d);
-	if (d->graphActiv == true)
+	if (true == d->graphActiv)
 		renderDraw(d);
 	else
 		co_showInitPlayers(d);
@@ -29,7 +29,7 @@ int	gameStart(t_data *d)
 	writeL(ft_itoa(d->dump));
 	while (d->run == true)
 	{
-		if (d->pause == false)
+		if (false == d->pause)
 		{
 			// ft_hex2Dec("7de\0");
 			// writeL("test");
@@ -46,11 +46,11 @@ int	gameStart(t_data *d)
 			// writeL(&d->prog[0].opArgs[1][2]);
 			// writeL(&d->prog[0].opArgs[2][2]);
 			//sleep(1);
-			checkCyles(d);
 			if (true == d->graphActiv)
 				renderDraw(d); // draw game with ncurses
 			else
 				renderShell(d); // draw game on shell
+
 			if (d->dump != -1 && d->cycle == d->dump)
 			{
 				if (true == d->graphActiv)
@@ -58,16 +58,12 @@ int	gameStart(t_data *d)
 				d->run = false;
 				arg_dump(d);
 			}
-			// sleep(1);
+			checkCyles(d);
 		}
 		keyboard(&d);
-		if (d->pause == true)
+		if (true == d->pause)
 			sleep(1); 						// REMOVE
-		// if (d->cycle % 10 == 0)
-		//  	sleep(2);
 	}
-
-	if (d->graphActiv == false)
-		drawResultConsole(d);
+	drawResultConsole(d);
 	return (0);
 }
