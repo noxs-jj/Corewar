@@ -3,37 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 17:52:07 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/02 15:55:57 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/01/22 18:13:26 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/05 12:05:31 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 char	*ft_strstr(const char *s1, const char *s2)
 {
-	unsigned int	i;
-	unsigned int	y;
+	return (ft_strnstr(s1, s2, 2147483647));
+}
 
-	i = 0;
-	y = 0;
-	if (ft_strlen(s2) == 0)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+{
+	register size_t	i;
+
+	if (!(*s2))
 		return ((char *)s1);
-	while (s1[i] != '\0')
+	i = 0;
+	while (s1[i] && n)
 	{
-		if (s2[y] == s1[i])
+		i = 0;
+		while (s1[i] == s2[i] && (int)(n - i) > 0)
 		{
-			while ((s2[y] == s1[i + y]) && (s2[y] != '\0'))
-			{
-				y++;
-			}
-			if (y == ft_strlen(s2))
-				return ((char *)s1 + i);
-			y = 0;
+			++i;
+			if (!s2[i])
+				return ((char *)s1);
 		}
-		i++;
+		++s1;
+		--n;
 	}
 	return (NULL);
 }

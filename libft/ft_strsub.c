@@ -3,29 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 11:03:43 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/03/05 15:40:21 by vjacquie         ###   ########.fr       */
+/*   Created: 2013/11/27 17:22:20 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/12 14:30:13 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+/*
+** Mem leaks! Test dest unless src is null
+*/
+
+char			*ft_strsub(char const *src, unsigned int start, size_t len)
 {
-	char	*new;
-	size_t	i;
+	char					*dest;
+	register unsigned int	i;
+	size_t					min;
 
-	if (s == NULL || len > 65535)
+	if (!src || !src[start] || !len)
 		return (NULL);
-	new = (char *)malloc(sizeof(char) * len + 1);
+	min = ft_min(len, ft_strlen(src));
+	min = ft_max(min, 0);
+	if (!(dest = (char *)malloc(sizeof(char) * (min + 1))))
+		return (NULL);
 	i = 0;
-	while (i < len && s[start + i] != '\0')
-	{
-		new[i] = s[start + i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
+	while (i < min)
+		dest[i++] = src[start++];
+	dest[i] = '\0';
+	return (dest);
 }

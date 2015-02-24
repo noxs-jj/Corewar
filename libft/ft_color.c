@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 18:54:26 by fdeage            #+#    #+#             */
-/*   Updated: 2015/01/28 15:37:25 by fdeage           ###   ########.fr       */
+/*   Created: 2014/04/16 20:35:35 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/05 13:38:12 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-/*
-** equivalent to calloc(): allocates AND sets the memory to 0
-*/
-
-void	*ft_memalloc(size_t size)
+void	ft_putstr_color(char const *s, const char *color)
 {
-	void			*new;
-	register char	*ptr;
+	ft_putstr_color_fd(s, color, 1);
+}
 
-	if (!(new = (void *)malloc(size * sizeof(void *))))
-		return (NULL);
-	ptr = (char *)new;
-	while (size--)
-		*ptr++ = (char)0;
-	return (new);
+void	ft_putstr_color_fd(char const *s, const char *color, int fd)
+{
+	ft_color_switch_fd(color, fd);
+	ft_putstr_fd(s, fd);
+	ft_color_reset_fd(fd);
+}
+
+void	ft_color_switch_fd(const char *color, int fd)
+{
+	ft_putstr_fd(color, fd);
+}
+
+void	ft_color_reset_fd(int fd)
+{
+	ft_putstr_fd(COL_RESET, fd);
 }

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_pow_a.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 18:54:26 by fdeage            #+#    #+#             */
-/*   Updated: 2015/01/28 15:37:25 by fdeage           ###   ########.fr       */
+/*   Created: 2014/02/14 16:38:27 by fdeage            #+#    #+#             */
+/*   Updated: 2014/05/13 15:13:31 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
 
 /*
-** equivalent to calloc(): allocates AND sets the memory to 0
+** returns a long int a ^ b
+** ft_realloc uses a dedicated pow2 function with bit-shifting
 */
 
-void	*ft_memalloc(size_t size)
+size_t	pow_a(int a, unsigned int b)
 {
-	void			*new;
-	register char	*ptr;
+	size_t	ret;
 
-	if (!(new = (void *)malloc(size * sizeof(void *))))
-		return (NULL);
-	ptr = (char *)new;
-	while (size--)
-		*ptr++ = (char)0;
-	return (new);
+	ret = 1;
+	while (b)
+	{
+		ret *= (size_t)a;
+		--b;
+	}
+	return (ret);
 }

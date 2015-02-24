@@ -3,49 +3,116 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+         #
+#    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/11/19 11:59:27 by jmoiroux          #+#    #+#              #
-#    Updated: 2014/03/26 12:20:22 by jmoiroux         ###   ########.fr        #
+#    Created: 2013/11/20 11:55:12 by fdeage            #+#    #+#              #
+#    Updated: 2015/02/24 19:44:30 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = libft.a
+NAME		=	libft.a
 
-HEADER = includes/libft.h
+V =				0
+SILENCE_1 :=
+SILENCE_0 :=	@
+SILENCE =		$(SILENCE_$(V))
 
-CFLAGS = -Wall -Werror -Wextra
 
-SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
-ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
-ft_strcat.c ft_strlcat.c ft_strncat.c ft_strchr.c ft_strrchr.c ft_strstr.c \
-ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c \
-ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c ft_putchar.c \
-ft_putstr.c ft_putendl.c ft_putnbr_fd.c ft_putnbr.c ft_strclr.c ft_putchar.c \
-ft_putchar_fd.c ft_putendl_fd.c ft_putstr.c ft_putstr_fd.c ft_memalloc.c \
-ft_memdel.c ft_strnew.c ft_strdel.c ft_striter.c ft_striteri.c ft_strmap.c \
-ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c \
-ft_strsplit.c ft_itoa.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
-ft_lstiter.c ft_lstmap.c ft_lstswap.c ft_lstlen.c ft_getnbr.c \
-ft_lstaddend.c ft_printf.c ft_print_char.c ft_lst_i.c ft_lst_double.c \
-get_next_line.c ft_putnbrhexa.c 
+SAVETEMP	=
+SVTMPSYNTAX	=	-save-temps
 
-OBJ = $(SRC:.c=.o)
+CC			=	$(CLANG)
+GCC			=	$(SILENCE)/usr/local/bin/gcc
+CLANG		=	$(SILENCE)/usr/bin/clang
 
-all: $(NAME)
+SRC			=	ft_memset.c ft_memcpy.c	\
+				ft_mem_misc.c	\
+				ft_strlen.c	\
+				ft_strcpy.c ft_strdup.c	\
+				ft_strcat.c	 ft_strjoin.c	\
+				ft_strchr.c	ft_strstr.c	\
+				ft_strpos.c	\
+				ft_strcmp.c	\
+				ft_atoi.c ft_itoa.c	\
+				ft_is.c	ft_to.c\
+				ft_memalloc.c	\
+				ft_strnew.c ft_strdel.c ft_strclr.c	\
+				ft_map_iter.c	\
+				ft_strequ.c	\
+				ft_strsub.c ft_strtrim.c	\
+				ft_strsplit.c ft_strsplit_str.c	\
+				ft_print.c ft_print_fd.c	\
+				ft_gnl.c ft_color.c	\
+				ft_error.c	\
+				ft_list1.c ft_list2.c	\
+				ft_strrev.c ft_pow_a.c ft_realloc.c	\
+				ft_qsort.c ft_minmax.c ft_swap.c	\
+				ft_printhex.c ft_printf.c
 
-$(NAME): $(OBJ)
-	ar -rc $(NAME) $(OBJ) $(HEADER)
+HDIR		=	./includes/
 
-clean:
-	rm -rf $(OBJ)
+OBJ			=	$(SRC:.c=.o)
 
-fclean: clean
-	rm -rf $(NAME)
+OBJS		=	$(SRC:.c=.s)
 
-re: fclean all
+CFLAGS		=	-Wall -Wextra -Werror -pedantic
 
-%.o: %.c $(HEADER)
-	gcc $(CFLAGS) -c $< -o $@
+SKIP_0 :=		\033[A
+SKIP =			$(SKIP_$(V))
+C =				\033[1;34m
+U =				$(C)[$(NAME)]----->\033[0m
 
-.PHONY: all clean fclean re
+RM =			@/bin/rm -f
+
+all			:	$(NAME)
+
+$(NAME)		:	$(OBJ)
+				@echo "$(U)$(C)[COMPILE:\033[1;32m DONE$(C)]\033[0m"
+				@echo "$(U)$(C)[BUILD LIB]\033[0;32m"
+				$(SILENCE)ar rc $(NAME) $(OBJ)
+				$(SILENCE)ranlib $(NAME)
+				chmod +x $(NAME)
+				@echo "$(SKIP)$(U)$(C)[BUILD  :\033[1;32m DONE$(C)]\033[0m"
+
+clean		:
+				@echo "$(U)$(C)[CLEAN]\033[0;32m"
+				$(RM) $(OBJ)
+				$(RM) $(OBJS)
+				@echo "$(SKIP)$(U)$(C)[CLEAN:\033[1;32m   DONE$(C)]\033[0m"
+
+fclean		:	clean
+				@echo "$(U)$(C)[F-CLEAN]\033[1;32m"
+				$(RM) $(NAME)
+				$(RM) exe_test
+				$(RM) exe_test2
+				@echo "$(SKIP)$(U)$(C)[F-CLEAN:\033[1;32m DONE$(C)]\033[0m"
+
+re			:	fclean all
+
+%.o			:	%.c
+				@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"
+				@echo "\033[0;32m"
+				$(CC) $(CFLAGS) -c $< -o $@ -I $(HDIR) $(SAVETEMP)
+				@echo "\033[1;31m [.working.]"
+				@echo "$(SKIP)\033[A\033[2K$(SKIP)"
+
+
+%.s			:	%.c
+				@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"
+				@echo "\033[0;32m"
+				$(CC) $(CFLAGS) -c $< -S -I $(HDIR)
+				@echo "\033[1;31m [.working.]"
+				@echo "$(SKIP)\033[A\033[2K$(SKIP)"
+
+asm			:	$(OBJS)
+
+test		:
+				$(CC) test/main_test.c $(NAME) -o exe_test -I $(HDIR)
+
+test2		:
+				$(CC) test/new_main.c $(NAME) -o exe_test2 -I $(HDIR)
+
+extra		:	CFLAGS += --analyze -Weverything -Wno-missing-prototypes
+extra		:	re
+
+.PHONY		:	all clean fclean re test extra

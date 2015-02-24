@@ -3,39 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 16:06:09 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/02 15:45:32 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/01/21 12:56:23 by fdeage            #+#    #+#             */
+/*   Updated: 2015/01/21 15:37:21 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+/*
+** beware of memory leaks with strjoin!
+** strjoin doesn't free the old dst nor src
+*/
+char	*ft_strjoin(char const *dst, char const *src)
 {
-	size_t	i;
-	size_t	j;
-	char	*tmp;
+	char			*new;
+	size_t			len_dst;
+	size_t			len_src;
+	register size_t	i;
 
+	if (!src)
+		return (NULL);
+	len_dst = (dst ? ft_strlen(dst) : 0);
+	len_src = ft_strlen(src);
+	if (!(new = (char *)malloc((len_dst + len_src + 1) * sizeof(char))))
+		return (NULL);
 	i = 0;
-	j = 0;
-	tmp = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (s1 != NULL && s2 != NULL)
+	while (i < len_dst)
 	{
-		while (s1[i] != '\0')
-		{
-			tmp[i] = s1[i];
-			i++;
-		}
-		while (s2[j] != '\0')
-		{
-			tmp[i] = s2[j];
-			i++;
-			j++;
-		}
-		i++;
-		tmp[i] = '\0';
+		new[i] = dst[i];
+		++i;
 	}
-	return (tmp);
+	while (i < len_dst + len_src)
+	{
+		new[i] = src[i - len_dst];
+		++i;
+	}
+	new[i] = '\0';
+	return (new);
 }

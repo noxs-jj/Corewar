@@ -3,49 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 16:20:13 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/09 14:32:03 by jmoiroux         ###   ########.fr       */
+/*   Created: 2013/11/28 15:24:36 by fdeage            #+#    #+#             */
+/*   Updated: 2015/01/23 13:25:29 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-static size_t	ft_next_char(char *c)
+/*
+** Mem leaks! -> strtrim() returns a copy of the original since s1 is const...
+** The condition after the first run "if (!s1[i] )ret(NULL)" has been removed
+** so strdup() is called anyways
+*/
+
+char	*ft_strtrim(char const *s1)
 {
-	size_t	i;
+	register size_t	i;
+	char			*s2;
 
+	if (!s1)
+		return (NULL);
 	i = 0;
-	while ((c[i] == ' ' || c[i] == '\n' || c[i] == '\t') && c[i] != '\0')
-	{
-		i++;
-	}
-	if (c[i] == '\0')
-		return (0);
-	return (1);
-}
-
-char			*ft_strtrim(char const *s)
-{
-	size_t	i;
-	size_t	k;
-	char	*tmp;
-
-	i = 0;
-	k = 0;
-	if (s != NULL)
-	{
-		tmp = ft_strnew(ft_strlen(s) + 1);
-		while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
-			i++;
-		while (s[i + k] != '\0' && (ft_next_char(&((char *)s)[i + k]) == 1))
-		{
-			tmp[k] = s[k + i];
-			k++;
-		}
-		tmp[k] = '\0';
-		return (tmp);
-	}
-	return (NULL);
+	while (s1[i] && ft_isspace(s1[i]))
+		++i;
+	s2 = ft_strdup(&s1[i]);
+	i = ft_strlen(s2) - 1;
+	while (s2[i] && ft_isspace(s2[i]))
+		s2[i--] = '\0';
+	return (s2);
 }

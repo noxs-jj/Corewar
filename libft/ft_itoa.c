@@ -3,74 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 12:35:24 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/01/25 15:26:19 by jmoiroux         ###   ########.fr       */
+/*   Created: 2013/11/28 16:22:33 by fdeage            #+#    #+#             */
+/*   Updated: 2015/01/28 13:06:49 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-static int	ft_nbrlen(int f)
+/*
+** ft_itoatab() takes at most a tab[12]
+*/
+
+static void	ft_put_string_nbr(int nbr, char *dest)
 {
-	int	i;
-
-	i = 0;
-	if (f < 0)
+	if (nbr >= 0)
 	{
-		i++;
-		f = f * (-1);
+		if (nbr < 10)
+		{
+			while (*dest)
+				++dest;
+			*dest = (char)nbr + '0';
+		}
+		else
+		{
+			ft_put_string_nbr(nbr / 10, dest);
+			ft_put_string_nbr(nbr % 10, dest);
+		}
 	}
-	while (f != 0)
+	else
 	{
-		f = f / 10;
-		i++;
+		dest[0] = '-';
+		ft_put_string_nbr(-nbr, dest);
 	}
-	return (i);
 }
 
-static char	*ft_putnbr_char(long f)
+char		*ft_itoa(int nbr)
 {
-	char	*tmp;
-	int		i;
-	int		negative;
+	char	*str;
 
-	negative = 0;
-	i = ft_nbrlen(f);
-	tmp = (char *)malloc(sizeof(tmp) * i + 1);
-	tmp[i] = '\0';
-	if (f < 0)
+	if (!(str = (char*)ft_memalloc(sizeof(char) * 12)))
+		return (NULL);
+	if (nbr == -2147483648)
 	{
-		negative = 1;
-		f = f * (-1);
+		ft_put_string_nbr(nbr / 10, str);
+		str[10] = '8';
 	}
-	while (i > 0)
-	{
-		tmp[i - 1] = (f % 10) + '0';
-		f = f / 10;
-		i--;
-	}
-	if (negative == 1)
-		tmp[i] = '-';
-	return (tmp);
+	else
+		ft_put_string_nbr(nbr, str);
+	return (str);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoatab(int nbr, char *tab)
 {
-	char	*tmp;
-	long	f;
-
-	f = n;
-	if (n != 0)
+	ft_bzero(tab, 12);
+	if (nbr == -2147483648)
 	{
-		tmp = ft_putnbr_char(f);
-		return (tmp);
+		ft_put_string_nbr(nbr / 10, tab);
+		(tab)[10] = '8';
 	}
-	if (n == 0)
-	{
-		tmp = "0";
-		return (tmp);
-	}
-	return (NULL);
+	else
+		ft_put_string_nbr(nbr, tab);
+	return (tab);
 }

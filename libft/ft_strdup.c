@@ -3,33 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/24 15:51:26 by jmoiroux          #+#    #+#             */
-/*   Updated: 2014/03/17 13:13:16 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/01/21 13:00:39 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/05 13:52:49 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include "includes/libft.h"
+#include "libft.h"
+
+/*
+** Mem leaks!
+** strdup is an OpenBSD implementation
+*/
 
 char	*ft_strdup(const char *s1)
 {
-	char	*dest;
-	size_t	i;
-	size_t	len;
+	char	*s2;
+	size_t	size;
 
-	if (s1 == NULL)
+	size = ft_strlen(s1) + 1;
+	if (!(s2 = (char *)malloc((size) * sizeof(char))))
 		return (NULL);
-	len = ft_strlen(s1);
-	dest = (char *)malloc(sizeof(s1) * (len + 1));
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	(void)ft_memcpy(s2, s1, size);
+	return (s2);
 }

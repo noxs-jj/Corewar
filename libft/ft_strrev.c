@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 18:54:26 by fdeage            #+#    #+#             */
-/*   Updated: 2015/01/28 15:37:25 by fdeage           ###   ########.fr       */
+/*   Created: 2014/02/13 21:45:25 by fdeage            #+#    #+#             */
+/*   Updated: 2015/01/21 15:32:19 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 /*
-** equivalent to calloc(): allocates AND sets the memory to 0
+** K&R implementation
 */
 
-void	*ft_memalloc(size_t size)
+char	*ft_strrev(char *s)
 {
-	void			*new;
-	register char	*ptr;
+	int					len;
+	char				c;
+	register int		i;
+	register int		j;
 
-	if (!(new = (void *)malloc(size * sizeof(void *))))
-		return (NULL);
-	ptr = (char *)new;
-	while (size--)
-		*ptr++ = (char)0;
-	return (new);
+	len = (int)ft_strlen(s);
+	i = 0;
+	j = len - 1;
+	while (i < j)
+	{
+		c = s[i];
+		s[i] = s[j];
+		s[j] = c;
+		++i;
+		--j;
+	}
+	return (s);
 }

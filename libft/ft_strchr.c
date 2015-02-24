@@ -3,28 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 10:09:53 by jmoiroux          #+#    #+#             */
-/*   Updated: 2013/12/07 16:31:25 by jmoiroux         ###   ########.fr       */
+/*   Created: 2013/11/21 18:41:34 by fdeage            #+#    #+#             */
+/*   Updated: 2015/01/22 18:13:21 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "includes/libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	register int	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i - 1] || !i)
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			return ((char *)&s[i]);
-		i++;
+		++i;
 	}
-	if (c == '\0')
-		return ((char *)&s[i]);
+	return (NULL);
+}
+
+char	*ft_strrchr(const char *s, int c)
+{
+	register int	i;
+
+	if (!s)
+		return (NULL);
+	i = (int)ft_strlen(s);
+	while (s[i] || i > 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		--i;
+	}
 	return (NULL);
 }

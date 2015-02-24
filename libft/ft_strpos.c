@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strpos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 18:54:26 by fdeage            #+#    #+#             */
-/*   Updated: 2015/01/28 15:37:25 by fdeage           ###   ########.fr       */
+/*   Created: 2015/02/23 14:08:09 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/23 14:20:58 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-/*
-** equivalent to calloc(): allocates AND sets the memory to 0
-*/
-
-void	*ft_memalloc(size_t size)
+size_t	ft_strpos(const char *s, int c)
 {
-	void			*new;
-	register char	*ptr;
+	register size_t	i;
 
-	if (!(new = (void *)malloc(size * sizeof(void *))))
-		return (NULL);
-	ptr = (char *)new;
-	while (size--)
-		*ptr++ = (char)0;
-	return (new);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (i);
+		++i;
+	}
+	return (-1);
 }

@@ -3,53 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 14:11:22 by jmoiroux          #+#    #+#             */
-/*   Updated: 2013/12/13 11:54:14 by jmoiroux         ###   ########.fr       */
+/*   Created: 2014/02/08 14:05:35 by fdeage            #+#    #+#             */
+/*   Updated: 2015/01/21 10:32:40 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-static int	ft_clean_str(const char *str)
+int		ft_atoi(const char *s)
 {
-	int		i;
-
-	i = 0;
-	while (str[i] == ' '
-			|| str[i] == '\t'
-			|| str[i] == '\n'
-			|| str[i] == '\v'
-			|| str[i] == '\f'
-			|| str[i] == '\r')
-		i++;
-	return (i);
-}
-
-int			ft_atoi(const char *str)
-{
-	int	result;
+	int	res;
 	int	i;
-	int	negative;
+	int	sign;
 
-	i = ft_clean_str(str);
-	result = 0;
-	negative = 1;
-	if ((str[i] == '-') || (str[i] == '+'))
+	res = 0;
+	sign = 1;
+	i = 0;
+	while (s[i] && ft_isspace(s[i]))
+		++i;
+	if (s[i] == '-')
 	{
-		if (str[i] == '-')
-			negative = -1;
-		i++;
+		sign = -1;
+		++i;
 	}
-	if (str[i] >= '0' && str[i] <= '9')
-	{
-		while ((str[i] != '\0') && (str[i] >= '0') && (str[i] <= '9'))
-		{
-			result = result * 10 + str[i] - '0';
-			i++;
-		}
-		return (result * negative);
-	}
-	return (0);
+	else if (s[i] == '+')
+		++i;
+	while (s[i] && ft_isdigit(s[i]) && !ft_isspace(s[i]))
+		res = res * 10 + s[i++] - '0';
+	return (sign * res);
 }
