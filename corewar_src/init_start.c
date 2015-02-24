@@ -102,7 +102,7 @@ int		init_start(t_data *d, int ac, char **av)
 	d->cycle = 0;
 	d->livesCurrent = 0;
 	d->iMaxCheck = 0;
-	d->nbrWinner = 0;
+	d->nbrWinner = 999;
 	d->graphActiv = false;
 	init_prog(d);
 	return (checkparam(d, ac, av));

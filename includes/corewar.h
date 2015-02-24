@@ -60,10 +60,10 @@
 // #define COMMENT_CMD_STRING		".comment"
 
 
-#define CYCLE_TO_DIE			1536	// default 1536
-#define CYCLE_DELTA				150		// default 50
+#define CYCLE_TO_DIE			1536	// default 1536 test winner with 50
+#define CYCLE_DELTA				50		// default 50
 #define NBR_LIVE				21		// default 21
-#define MAX_CHECKS				2		// default 10
+#define MAX_CHECKS				10		// default 10 test winner with 2
 
 /*
 **
@@ -258,6 +258,11 @@ void			co_infoPlayer1(t_data *d);
 void			co_infoPlayer2(t_data *d);
 void			co_infoPlayer3(t_data *d);
 void			co_infoPlayer4(t_data *d);
+void			co_troll_all(void);
+void			co_troll0(void);
+void			co_troll1(void);
+void			co_troll2(void);
+void			co_troll3(void);
 void			co_showInitPlayers(t_data *d);
 void			drawResultConsole(t_data *d);
 void			renderShell(t_data *d);

@@ -51,6 +51,7 @@ SRCS =	main.c \
 		shell/co_infoPlayer4.c \
 		shell/co_renderShell.c \
 		shell/co_showInitPlayers.c \
+		shell/co_troll.c \
 		exit_free.c \
 		read_files.c \
 		init_prog.c \
