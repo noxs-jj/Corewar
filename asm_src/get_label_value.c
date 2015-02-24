@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 17:14:16 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:54:34 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/24 11:20:55 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 */
 
 //TODO: 27L
-static int	get_label_value(t_list *lines, t_line *dir_line, t_line *lab_line)
+static int	get_label_value(t_list *tmp, t_line *dir_line, t_line *lab_line)
 {
 	int		value;
-	t_list	*tmp;
+	//t_list	*tmp;
 
 	value = 0;
+	//tmp = lines;
 	if (dir_line->id > lab_line->id)
 	{
 		//negative value
-		tmp = lines;
 		while (tmp && LINE != lab_line)
 			tmp = tmp->next;
 		while (tmp && LINE != dir_line)
@@ -41,7 +41,6 @@ static int	get_label_value(t_list *lines, t_line *dir_line, t_line *lab_line)
 	else if (dir_line->id < lab_line->id)
 	{
 		//positive value
-		tmp = lines;
 		while (tmp && LINE != dir_line)
 			tmp = tmp->next;
 		while (tmp && LINE != lab_line)

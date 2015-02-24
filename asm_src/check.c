@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:50:59 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/24 17:24:07 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,36 +51,62 @@ int	has_final_comment(t_line *line)
 	tmp = line->tokens;
 	while (tmp)
 	{
+		if (TOKEN->str[0] == FINAL_COMMENT_CHAR)
+		{
+			fprintf(stderr, "HAS FINAL COMMENT OK\n");
+			line->has_final_comment = 1;
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+/*
+int	has_final_comment(t_line *line)
+{
+	t_list	*tmp;
+
+	tmp = line->tokens;
+	while (tmp)
+	{
 		if (TOKEN->type == T_F_COMMENT)
 			return (1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
+*/
 
 int	has_right_params(t_line *line)
 {
 	t_list	*tmp;
 	size_t	inst;
 	size_t	nb;
+	int		new_type;
 
 	tmp = line->tokens;
 	inst = TOKEN->op->opcode;
-	nb = G.nb_params;
 	if (G.nb_params != (int)line->nb_params)
 		RET("Wrong parameters number for the inst.\n", 0);
-	while (tmp || nb)
+	if (!(tmp->next))
+		return (0); //no param
+	tmp = tmp->next;
+	nb = 0;
+	fprintf(stderr, "inst: %s theor: %d, file: %d\n", G.name, G.nb_params, (int)line->nb_params);
+	while (tmp || (int)nb < G.nb_params)
 	{
-		if (TOKEN->type == T_A_REG && ((G.param_types[nb] & T_REG) != T_REG))
+		//fprintf(stderr, "TOKEN->type = %d = %d, expected = %d\n", TOKEN->type, TOKEN->type - 8, G.param_types[nb]);
+		new_type = (TOKEN->type == T_A_DLAB ? 2 : TOKEN->type - 8);
+		new_type = (new_type == T_A_INDLAB - 8 ? 4 : new_type);
+		fprintf(stderr, "TOKEN->type = %d = %d, expected = %d\n", TOKEN->type, new_type, G.param_types[nb]);
+		if (new_type & ~G.param_types[nb])
+		{
+			fprintf(stderr, "ERROR with the type of param\n"); //virer
 			return (0);
-		if (TOKEN->type == T_A_DIR && ((G.param_types[nb] & T_DIR) != T_DIR))
-			return (0);
-		if (TOKEN->type == T_A_IND && ((G.param_types[nb] & T_IND) != T_IND))
-			return (0);
-		if (TOKEN->type == T_A_DLAB && ((G.param_types[nb] & T_DIR) != T_DIR))
-			return (0);
+		}
 		tmp = tmp->next;
-		--nb;
+		++nb;
 	}
 	return (1);
 }

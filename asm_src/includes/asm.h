@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:35:34 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/24 17:09:11 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ enum						e_error_type
 	T_NOT_ENOUGH_PARAMS
 };
 
-typedef struct				s_op
-{
-	char					*name;
-	int						nb_params;
-	int						param_types[4];
-	int						opcode;
-	int						nb_cycles;
-	char					*description;
-	int						has_pcode;
-	int						has_idx;
-}							t_op;
-
 enum						e_token_type
 {
 	T_UNKNOWN = 0,
@@ -71,11 +59,11 @@ enum						e_token_type
 	T_STRING, //6
 	T_LABEL, //7
 	T_INSTRUCTION, //8
-	T_A_REG, //9
-	T_A_DIR, //10
-	T_A_IND, //11
-	T_A_DLAB, //12
-	T_A_INDLAB, //13
+	T_A_REG = 9,
+	T_A_DIR = 10,
+	T_A_IND = 12,
+	T_A_DLAB, //13
+	T_A_INDLAB, //14
 };
 
 # define T_DIR_LEN			4
@@ -101,7 +89,7 @@ typedef struct				s_line
 	char					*str; //malloc
 	size_t					nb_params;
 	enum e_token_type		type;
-	int						has_final_comment;
+	int						has_final_comment; //doubl0on ?
 	char					bytecode[14]; //MAX: 1 + 1 + 4 + 4 + 4, no EOL
 	char					pcode;
 }							t_line;

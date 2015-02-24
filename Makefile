@@ -6,7 +6,7 @@
 #    By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 14:35:17 by jmoiroux          #+#    #+#              #
-#    Updated: 2015/02/06 14:35:18 by jmoiroux         ###   ########.fr        #
+#    Updated: 2015/02/24 19:16:11 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ COMPIL = 		gcc -Wall -Wextra -Werror
 #COMPIL = /usr/local/bin/gcc -Wall -Wextra -Werror
 #COMPIL = /usr/bin/gcc -Wall -Wextra -Werror
 
-BIN_ASM =		fdeage/asm
+BIN_ASM =		asm_src/asm
 BIN_COREWAR =	corewar_src/corewar
 
 LIBFT = 		libft/libft.a

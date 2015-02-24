@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:57:57 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/24 17:25:04 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	init_line(t_file *file, char *str, size_t i, int line_type)
 	line->id = i;
 	line->code_len = 0;
 	line->str = ft_strtrim(str);
-	line->nb_params = -1;
+	line->nb_params = 0;
 	line->type = line_type;
-	line->has_final_comment = 0;
+	line->has_final_comment = -1;
 	ft_bzero(line->bytecode, 14);
 	line->pcode = -1;
 	ft_lstadd_back(&(file->lines), ft_lstnew((void *)line, sizeof(t_line)));

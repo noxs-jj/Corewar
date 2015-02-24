@@ -1,0 +1,275 @@
+
+live T_REG
+live T_DIR
+live T_IND
+
+zjmp T_REG
+zjmp T_DIR
+zjmp T_IND
+
+fork T_REG
+fork T_DIR
+fork T_IND
+
+lfork T_REG
+lfork T_DIR
+lfork T_IND
+
+aff T_REG
+aff T_DIR
+aff T_IND
+
+lld T_REG, T_REG
+lld T_REG, T_IND
+lld T_REG, T_DIR
+lld T_DIR, T_REG
+lld T_DIR, T_DIR
+lld T_DIR, T_IND
+lld T_IND, T_REG
+lld T_IND, T_DIR
+lld T_IND, T_IND
+
+ld T_REG, T_REG
+ld T_REG, T_IND
+ld T_REG, T_DIR
+ld T_DIR, T_REG
+ld T_DIR, T_DIR
+ld T_DIR, T_IND
+ld T_IND, T_REG
+ld T_IND, T_DIR
+ld T_IND, T_IND
+
+st T_REG, T_REG
+st T_REG, T_IND
+st T_REG, T_DIR
+st T_DIR, T_REG
+st T_DIR, T_DIR
+st T_DIR, T_IND
+st T_IND, T_REG
+st T_IND, T_DIR
+st T_IND, T_IND
+
+add T_REG, T_REG, T_REG
+add T_REG, T_REG, T_IND
+add T_REG, T_REG, T_DIR
+add T_REG, T_DIR, T_REG
+add T_REG, T_DIR, T_DIR
+add T_REG, T_DIR, T_IND
+add T_REG, T_IND, T_REG
+add T_REG, T_IND, T_DIR
+add T_REG, T_IND, T_IND
+add T_DIR, T_REG, T_REG
+add T_DIR, T_REG, T_IND
+add T_DIR, T_REG, T_DIR
+add T_DIR, T_DIR, T_REG
+add T_DIR, T_DIR, T_DIR
+add T_DIR, T_DIR, T_IND
+add T_DIR, T_IND, T_REG
+add T_DIR, T_IND, T_DIR
+add T_DIR, T_IND, T_IND
+add T_IND, T_REG, T_REG
+add T_IND, T_REG, T_IND
+add T_IND, T_REG, T_DIR
+add T_IND, T_DIR, T_REG
+add T_IND, T_DIR, T_DIR
+add T_IND, T_DIR, T_IND
+add T_IND, T_IND, T_REG
+add T_IND, T_IND, T_DIR
+add T_IND, T_IND, T_IND
+
+sub T_REG, T_REG, T_REG
+sub T_REG, T_REG, T_IND
+sub T_REG, T_REG, T_DIR
+sub T_REG, T_DIR, T_REG
+sub T_REG, T_DIR, T_DIR
+sub T_REG, T_DIR, T_IND
+sub T_REG, T_IND, T_REG
+sub T_REG, T_IND, T_DIR
+sub T_REG, T_IND, T_IND
+sub T_DIR, T_REG, T_REG
+sub T_DIR, T_REG, T_IND
+sub T_DIR, T_REG, T_DIR
+sub T_DIR, T_DIR, T_REG
+sub T_DIR, T_DIR, T_DIR
+sub T_DIR, T_DIR, T_IND
+sub T_DIR, T_IND, T_REG
+sub T_DIR, T_IND, T_DIR
+sub T_DIR, T_IND, T_IND
+sub T_IND, T_REG, T_REG
+sub T_IND, T_REG, T_IND
+sub T_IND, T_REG, T_DIR
+sub T_IND, T_DIR, T_REG
+sub T_IND, T_DIR, T_DIR
+sub T_IND, T_DIR, T_IND
+sub T_IND, T_IND, T_REG
+sub T_IND, T_IND, T_DIR
+sub T_IND, T_IND, T_IND
+
+and T_REG, T_REG, T_REG
+and T_REG, T_REG, T_IND
+and T_REG, T_REG, T_DIR
+and T_REG, T_DIR, T_REG
+and T_REG, T_DIR, T_DIR
+and T_REG, T_DIR, T_IND
+and T_REG, T_IND, T_REG
+and T_REG, T_IND, T_DIR
+and T_REG, T_IND, T_IND
+and T_DIR, T_REG, T_REG
+and T_DIR, T_REG, T_IND
+and T_DIR, T_REG, T_DIR
+and T_DIR, T_DIR, T_REG
+and T_DIR, T_DIR, T_DIR
+and T_DIR, T_DIR, T_IND
+and T_DIR, T_IND, T_REG
+and T_DIR, T_IND, T_DIR
+and T_DIR, T_IND, T_IND
+and T_IND, T_REG, T_REG
+and T_IND, T_REG, T_IND
+and T_IND, T_REG, T_DIR
+and T_IND, T_DIR, T_REG
+and T_IND, T_DIR, T_DIR
+and T_IND, T_DIR, T_IND
+and T_IND, T_IND, T_REG
+and T_IND, T_IND, T_DIR
+and T_IND, T_IND, T_IND
+
+or T_REG, T_REG, T_REG
+or T_REG, T_REG, T_IND
+or T_REG, T_REG, T_DIR
+or T_REG, T_DIR, T_REG
+or T_REG, T_DIR, T_DIR
+or T_REG, T_DIR, T_IND
+or T_REG, T_IND, T_REG
+or T_REG, T_IND, T_DIR
+or T_REG, T_IND, T_IND
+or T_DIR, T_REG, T_REG
+or T_DIR, T_REG, T_IND
+or T_DIR, T_REG, T_DIR
+or T_DIR, T_DIR, T_REG
+or T_DIR, T_DIR, T_DIR
+or T_DIR, T_DIR, T_IND
+or T_DIR, T_IND, T_REG
+or T_DIR, T_IND, T_DIR
+or T_DIR, T_IND, T_IND
+or T_IND, T_REG, T_REG
+or T_IND, T_REG, T_IND
+or T_IND, T_REG, T_DIR
+or T_IND, T_DIR, T_REG
+or T_IND, T_DIR, T_DIR
+or T_IND, T_DIR, T_IND
+or T_IND, T_IND, T_REG
+or T_IND, T_IND, T_DIR
+or T_IND, T_IND, T_IND
+
+xor T_REG, T_REG, T_REG
+xor T_REG, T_REG, T_IND
+xor T_REG, T_REG, T_DIR
+xor T_REG, T_DIR, T_REG
+xor T_REG, T_DIR, T_DIR
+xor T_REG, T_DIR, T_IND
+xor T_REG, T_IND, T_REG
+xor T_REG, T_IND, T_DIR
+xor T_REG, T_IND, T_IND
+xor T_DIR, T_REG, T_REG
+xor T_DIR, T_REG, T_IND
+xor T_DIR, T_REG, T_DIR
+xor T_DIR, T_DIR, T_REG
+xor T_DIR, T_DIR, T_DIR
+xor T_DIR, T_DIR, T_IND
+xor T_DIR, T_IND, T_REG
+xor T_DIR, T_IND, T_DIR
+xor T_DIR, T_IND, T_IND
+xor T_IND, T_REG, T_REG
+xor T_IND, T_REG, T_IND
+xor T_IND, T_REG, T_DIR
+xor T_IND, T_DIR, T_REG
+xor T_IND, T_DIR, T_DIR
+xor T_IND, T_DIR, T_IND
+xor T_IND, T_IND, T_REG
+xor T_IND, T_IND, T_DIR
+xor T_IND, T_IND, T_IND
+
+ldi T_REG, T_REG, T_REG
+ldi T_REG, T_REG, T_IND
+ldi T_REG, T_REG, T_DIR
+ldi T_REG, T_DIR, T_REG
+ldi T_REG, T_DIR, T_DIR
+ldi T_REG, T_DIR, T_IND
+ldi T_REG, T_IND, T_REG
+ldi T_REG, T_IND, T_DIR
+ldi T_REG, T_IND, T_IND
+ldi T_DIR, T_REG, T_REG
+ldi T_DIR, T_REG, T_IND
+ldi T_DIR, T_REG, T_DIR
+ldi T_DIR, T_DIR, T_REG
+ldi T_DIR, T_DIR, T_DIR
+ldi T_DIR, T_DIR, T_IND
+ldi T_DIR, T_IND, T_REG
+ldi T_DIR, T_IND, T_DIR
+ldi T_DIR, T_IND, T_IND
+ldi T_IND, T_REG, T_REG
+ldi T_IND, T_REG, T_IND
+ldi T_IND, T_REG, T_DIR
+ldi T_IND, T_DIR, T_REG
+ldi T_IND, T_DIR, T_DIR
+ldi T_IND, T_DIR, T_IND
+ldi T_IND, T_IND, T_REG
+ldi T_IND, T_IND, T_DIR
+ldi T_IND, T_IND, T_IND
+
+sti T_REG, T_REG, T_REG
+sti T_REG, T_REG, T_IND
+sti T_REG, T_REG, T_DIR
+sti T_REG, T_DIR, T_REG
+sti T_REG, T_DIR, T_DIR
+sti T_REG, T_DIR, T_IND
+sti T_REG, T_IND, T_REG
+sti T_REG, T_IND, T_DIR
+sti T_REG, T_IND, T_IND
+sti T_DIR, T_REG, T_REG
+sti T_DIR, T_REG, T_IND
+sti T_DIR, T_REG, T_DIR
+sti T_DIR, T_DIR, T_REG
+sti T_DIR, T_DIR, T_DIR
+sti T_DIR, T_DIR, T_IND
+sti T_DIR, T_IND, T_REG
+sti T_DIR, T_IND, T_DIR
+sti T_DIR, T_IND, T_IND
+sti T_IND, T_REG, T_REG
+sti T_IND, T_REG, T_IND
+sti T_IND, T_REG, T_DIR
+sti T_IND, T_DIR, T_REG
+sti T_IND, T_DIR, T_DIR
+sti T_IND, T_DIR, T_IND
+sti T_IND, T_IND, T_REG
+sti T_IND, T_IND, T_DIR
+sti T_IND, T_IND, T_IND
+
+lldi T_REG, T_REG, T_REG
+lldi T_REG, T_REG, T_IND
+lldi T_REG, T_REG, T_DIR
+lldi T_REG, T_DIR, T_REG
+lldi T_REG, T_DIR, T_DIR
+lldi T_REG, T_DIR, T_IND
+lldi T_REG, T_IND, T_REG
+lldi T_REG, T_IND, T_DIR
+lldi T_REG, T_IND, T_IND
+lldi T_DIR, T_REG, T_REG
+lldi T_DIR, T_REG, T_IND
+lldi T_DIR, T_REG, T_DIR
+lldi T_DIR, T_DIR, T_REG
+lldi T_DIR, T_DIR, T_DIR
+lldi T_DIR, T_DIR, T_IND
+lldi T_DIR, T_IND, T_REG
+lldi T_DIR, T_IND, T_DIR
+lldi T_DIR, T_IND, T_IND
+lldi T_IND, T_REG, T_REG
+lldi T_IND, T_REG, T_IND
+lldi T_IND, T_REG, T_DIR
+lldi T_IND, T_DIR, T_REG
+lldi T_IND, T_DIR, T_DIR
+lldi T_IND, T_DIR, T_IND
+lldi T_IND, T_IND, T_REG
+lldi T_IND, T_IND, T_DIR
+lldi T_IND, T_IND, T_IND
+
