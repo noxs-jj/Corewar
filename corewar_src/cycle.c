@@ -31,6 +31,8 @@ void	checkCyles(t_data *d)
 	if (d->cycle % d->cycleDie == 0)
 	{
 		writeL("checkCyles boucle 1");
+
+
 		d->iCheckCycles = 0; // set index to 0
 		while (d->iCheckCycles < d->players) // check lives all players
 		{
@@ -38,6 +40,7 @@ void	checkCyles(t_data *d)
 				d->prog[d->iCheckCycles].alive = false;
 			d->iCheckCycles++;
 		}
+
 
 		d->iCheckCycles = 0; // set index to 0
 		while (d->iCheckCycles < d->players) // reset live current session all players
@@ -76,7 +79,7 @@ void	checkCyles(t_data *d)
 
 			d->iCheckCycles++;
 		}
-		writeL(d->prog[d->nbrWinner].prog_name);
+		writeL(d->prog[d->nbrWinner - 1].prog_name);
 		writeL(ft_itoa(d->nbrWinner));
 		writeL("^^^  is the winner !!!");
 	}
