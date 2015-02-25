@@ -61,16 +61,23 @@ void	checkCyles(t_data *d)
 	{
 		writeL("checkCyles Game Done");
 		d->run = false; // Stop the game
-		d->iCheckCycles = 0;
+		d->iCheckCycles = 0; // index i
 		moreRecentLive = 0;
 		while (d->iCheckCycles < d->players) // search the winner
 		{
-			if (d->prog[(d->iCheckCycles)].lastLive >= moreRecentLive
+
+			if (d->prog[(d->iCheckCycles)].lastLive > moreRecentLive
 				&& d->prog[d->iCheckCycles].alive == true)
-				d->nbrWinner = d->iCheckCycles;
+			{
+				moreRecentLive = d->prog[(d->iCheckCycles)].lastLive;
+				d->nbrWinner = d->iCheckCycles + 1;
+			}
+				
+
 			d->iCheckCycles++;
 		}
 		writeL(d->prog[d->nbrWinner].prog_name);
+		writeL(ft_itoa(d->nbrWinner));
 		writeL("^^^  is the winner !!!");
 	}
 }
