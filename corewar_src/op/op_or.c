@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 15:56:14 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/25 16:57:21 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int		op_or(t_data *d, t_header *player, int id)
 		value[1] = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[1])]);
 	else
 		value[1] = ft_hex2Dec(player->opArgs[1]);
-	ft_bzero(player->opArgs[reg], REG_SIZE);
+	ft_bzero(player->reg[reg], REG_SIZE);
 	ft_bzero(str, 9);
 	ft_putHexBNbr(value[0] | value[1], str);
-	ft_strcpy(player->opArgs[reg], str);
+	ft_strcpy(player->reg[reg], str);
 	if (value[0] | value[1])
 		player->carry = true;
 	else
