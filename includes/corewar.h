@@ -16,8 +16,8 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <ncurses.h>
-#include <unistd.h>
-#include <sys/types.h>
+# include <unistd.h>
+# include <sys/types.h>
 
 # define LOG				1
 # define PATH_DEBUGG		"../log/corewar.log"
@@ -32,38 +32,38 @@
 # define BUFFSIZE 1
 
 // #define IND_SIZE				2
-#define REG_NUMBER				16
-#define REG_SIZE				4
+# define REG_NUMBER				16
+# define REG_SIZE				4
 // #define DIR_SIZE				REG_SIZE
 
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
 
-#define MAX_PLAYERS				4
-#define MAX_ARGS_NUMBER			(4 + 3 * MAX_PLAYERS)
-#define PLAYER_NBR				4294967295
+# define MAX_PLAYERS				4
+# define MAX_ARGS_NUMBER			(4 + 3 * MAX_PLAYERS)
+# define PLAYER_NBR				4294967295
 
-#define MEM_SIZE				(4 * 1024)
-#define IDX_MOD					(MEM_SIZE / 8)
+# define MEM_SIZE				(4 * 1024)
+# define IDX_MOD					(MEM_SIZE / 8)
 // #define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2) // original
-#define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
+# define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
 
-#define COMMENT_CHAR				'#'
-#define LABEL_CHAR				':'
-#define DIRECT_CHAR				'%'
-#define SEPARATOR_CHAR			','
+# define COMMENT_CHAR				'#'
+# define LABEL_CHAR				':'
+# define DIRECT_CHAR				'%'
+# define SEPARATOR_CHAR			','
 
-#define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
 
 // #define NAME_CMD_STRING			".name"
 // #define COMMENT_CMD_STRING		".comment"
 
 
-#define CYCLE_TO_DIE			1536	// default 1536 test winner with 50
-#define CYCLE_DELTA				50		// default 50
-#define NBR_LIVE				21		// default 21
-#define MAX_CHECKS				10		// default 10 test winner with 2
+# define CYCLE_TO_DIE			150	// default 1536 test winner with 50
+# define CYCLE_DELTA			50		// default 50
+# define NBR_LIVE				21		// default 21
+# define MAX_CHECKS				2		// default 10 test winner with 2
 
 /*
 **
@@ -71,15 +71,15 @@
 
 // typedef char	t_arg_type;
 
-#define REG 1
-#define DIR 4 // or 2 if has idx
-#define IND 2
+# define REG 1
+# define DIR 4 // or 2 if has idx
+# define IND 2
 
 
-#define T_REG					1 // registre : 01
-#define T_DIR					2 // label ou nombre : 10
-#define T_IND					4 // nombre : 11
-#define T_LAB					8 // label
+# define T_REG					1 // registre : 01
+# define T_DIR					2 // label ou nombre : 10
+# define T_IND					4 // nombre : 11
+# define T_LAB					8 // label
 
 /*
 **
@@ -160,7 +160,7 @@ typedef	struct			s_data
 	short int 			caseColor;
 	// checkCycles
 	unsigned int 		cycle; // nbr cycle done
-	unsigned int		cycleDie;// = CYCLE_TO_DIE
+	int					cycleDie;// = CYCLE_TO_DIE
 	unsigned int 		livesCurrent;
 	unsigned int 		iCheckCycles;
 	unsigned int 		iMaxCheck;

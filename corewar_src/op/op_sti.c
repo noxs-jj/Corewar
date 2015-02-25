@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 14:31:44 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/25 15:31:26 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ int		op_sti(t_data *d, t_header *player, int id)
 	if ((ret = getOpArgs(d, id)) < 0)
 	{
 		writeL("error in op_sti arg");
-		sleep(5);
+		// sleep(5);
 		return (ret);
 	}
 	if (isValidRegister(ft_hex2Dec(player->opArgs[0])) < 0)
 	{
 		writeL("error in op_sti reg =");
 		writeL(ft_itoa(ft_hex2Dec(player->opArgs[0])));
-		sleep(5);
+		// sleep(5);
 		return (ret);
 	}
 	// writeL("arg 0 content1");

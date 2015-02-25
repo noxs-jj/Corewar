@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/23 17:25:41 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/25 13:13:40 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		execOp(t_data *d)
 {
 	int player;
 
-	player = 0;
-	while (player < d->players)
+	player = d->players - 1;
+	while (player >= 0)
 	{
 		// exec d->prog[player].nextOp for player if d->prog[player].wait == 0
 		writeL("-----------");
@@ -38,7 +38,7 @@ int		execOp(t_data *d)
 		}
 		else if (d->prog[player].wait > 0)
 			d->prog[player].wait--;
-		player++;
+		player--;
 	}
 	// sleep(1);
 	d->cycle++;
