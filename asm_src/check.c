@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/24 17:24:07 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/25 19:21:57 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,19 @@ int	is_only_whitespace(const char *s)
 	return (1);
 }
 
-int	has_final_comment(t_line *line)
+int	has_final_comment(const char *str)
 {
-	t_list	*tmp;
+	register size_t	i;
 
-	tmp = line->tokens;
-	while (tmp)
+	i = 0;
+	while (str[i])
 	{
-		if (TOKEN->str[0] == FINAL_COMMENT_CHAR)
+		if (str[i] == FINAL_COMMENT_CHAR)
 		{
-			fprintf(stderr, "HAS FINAL COMMENT OK\n");
-			line->has_final_comment = 1;
+			fprintf(stderr, "HAS FINAL COMMENT OK\n"); //virer
 			return (1);
 		}
-		tmp = tmp->next;
+		++i;
 	}
 	return (0);
 }
@@ -85,12 +84,18 @@ int	has_right_params(t_line *line)
 	size_t	nb;
 	int		new_type;
 
-	tmp = line->tokens;
+	fprintf(stderr, "hasrightparam... line = %s\n", line->str);
+	if (!(tmp = line->tokens))
+		return (1);
+	fprintf(stderr, "hrp 1 token = %p", tmp);
 	inst = TOKEN->op->opcode;
+	fprintf(stderr, " 2 ");
 	if (G.nb_params != (int)line->nb_params)
 		RET("Wrong parameters number for the inst.\n", 0);
+	fprintf(stderr, " 3 ");
 	if (!(tmp->next))
 		return (0); //no param
+	fprintf(stderr, " 4 ");
 	tmp = tmp->next;
 	nb = 0;
 	fprintf(stderr, "inst: %s theor: %d, file: %d\n", G.name, G.nb_params, (int)line->nb_params);
@@ -108,6 +113,7 @@ int	has_right_params(t_line *line)
 		tmp = tmp->next;
 		++nb;
 	}
+	fprintf(stderr, "ok\n");
 	return (1);
 }
 
