@@ -20,9 +20,9 @@
 
 int		op_lld(t_data *d, t_header *player, int id)
 {
-	int ret;
-	unsigned int reg;
-	int value;
+	int 			ret;
+	unsigned int 	reg;
+	int 			value;
 	
 	writeL("--- op_ld ---");
 	if ((ret = getOpArgs(d, id)) < 0
