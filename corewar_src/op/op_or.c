@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 16:57:21 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/25 17:09:49 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** not tested
 ** T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG
+** change carry
 */
 
 int		op_or(t_data *d, t_header *player, int id)
