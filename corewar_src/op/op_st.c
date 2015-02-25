@@ -20,9 +20,9 @@
 
 int		op_st(t_data *d, t_header *player, int id)
 {
-	int ret;
-	unsigned int reg;
-	int value;
+	int 			ret;
+	unsigned int 	reg;
+	int 			value;
 
 	// writeL("--- op_st ---");
 	if ((ret = getOpArgs(d, id)) < 0
@@ -33,7 +33,10 @@ int		op_st(t_data *d, t_header *player, int id)
 		value = ft_hex2Dec(player->opArgs[1]);
 	else
 		value = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[1])]);
-	changeMemVal(d, id, player->indexPC + ((value % IDX_MOD)), player->reg[reg]); // + 1?
+	if (value > 0)
+		changeMemVal(d, id, player->indexPC + ((value % IDX_MOD)), player->reg[reg]); // + 1?
+	else
+		changeMemVal(d, id, player->indexPC + ((value % -IDX_MOD)), player->reg[reg]); // + 1?
 	player->carry = true;
 	pcAdvance(d, player, ret);
 	return (0);

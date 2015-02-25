@@ -21,9 +21,9 @@
 
 int		op_ld(t_data *d, t_header *player, int id)
 {
-	int ret;
-	unsigned int reg;
-	int value;
+	int 			ret;
+	unsigned int 	reg;
+	int 			value;
 	
 	writeL("--- op_ld ---");
 	if ((ret = getOpArgs(d, id)) < 0
@@ -31,7 +31,10 @@ int		op_ld(t_data *d, t_header *player, int id)
 		return (ret);
 	reg = ft_hex2Dec(player->opArgs[1]);
 	value = ft_hex2intdec(player->opArgs[0]);
-	value = value % IDX_MOD;
+	if (value > 0)
+		value = value % IDX_MOD;
+	else
+		value = value % -IDX_MOD;
 	ft_bzero(player->reg[reg], REG_SIZE);
 	ft_strcpy(player->reg[reg], player->opArgs[0]);
 	player->carry = true;

@@ -121,8 +121,10 @@ void	co_troll3(void)
 
 void	co_troll_all(void)
 {
+	ft_putstr("\n\n\n");
 	co_troll0();
 	co_troll1();
 	co_troll2();
 	co_troll3();
+	ft_putstr("\n\n\n");
 }
