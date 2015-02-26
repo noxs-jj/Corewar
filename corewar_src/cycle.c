@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cycle.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/23 15:51:02 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/23 15:51:02 by jmoiroux         ###   ########.fr       */
+/*   Updated: 2015/02/26 15:46:38 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,29 @@ MAX_CHECKS : 10
 void	checkCyles(t_data *d)
 {
 	int	moreRecentLive;
+	t_header *prog;
 
 	if (d->cycle % d->cycleDie == 0)
 	{
 		writeL("checkCyles boucle 1");
 
 
-		d->iCheckCycles = 0; // set index to 0
-		while (d->iCheckCycles < d->players) // check lives all players
+		d->iCheckCycles = 1; // set index to 0
+		// prog = d->prog;
+		while ((prog = searchProg(d, d->iCheckCycles)) != NULL) // check lives all players
 		{
-			if (d->prog[d->iCheckCycles].liveNbr == 0) // if players wasn't live set it to DIE
-				d->prog[d->iCheckCycles].alive = false;
+			if (prog->liveNbr == 0) // if players wasn't live set it to DIE
+			{
+				prog->alive = false;
+				writeL("player die");
+				writeL(ft_itoa(prog->number));
+				sleep(6);
+			}
+			if (prog->alive == true)
+				prog->liveNbr = 0;
 			d->iCheckCycles++;
 		}
 
-
-		d->iCheckCycles = 0; // set index to 0
-		while (d->iCheckCycles < d->players) // reset live current session all players
-		{
-			d->prog[d->iCheckCycles].liveNbr = 0;
-			d->iCheckCycles++;
-		}
 		d->iMaxCheck++; // incr maxcheck
 
 		if (d->livesCurrent >= NBR_LIVE || d->iMaxCheck >= MAX_CHECKS)
@@ -64,22 +66,30 @@ void	checkCyles(t_data *d)
 	{
 		writeL("checkCyles Game Done");
 		d->run = false; // Stop the game
-		d->iCheckCycles = 0; // index i
+		d->iCheckCycles = 1; // index i
 		moreRecentLive = 0;
-		while (d->iCheckCycles < d->players) // search the winner
+		// prog = d->prog;
+		while ((prog = searchProg(d, d->iCheckCycles)) != NULL) // search the winner
 		{
-
-			if (d->prog[(d->iCheckCycles)].lastLive > moreRecentLive
-				&& d->prog[d->iCheckCycles].alive == true)
+			// writeL("last live");
+			// writeL(ft_itoa(prog->lastLive));
+			// writeL("moreRecentLive");
+			// writeL(ft_itoa(moreRecentLive));
+			// writeL("player number");
+			// writeL(ft_itoa(prog->number));
+			// sleep(5);
+			if (prog->lastLive > moreRecentLive
+				&& prog->alive == true)
 			{
-				moreRecentLive = d->prog[(d->iCheckCycles)].lastLive;
-				d->nbrWinner = d->iCheckCycles + 1;
+				moreRecentLive = prog->lastLive;
+				d->nbrWinner = prog->number;
+				// writeL("i'm here !");
+				// sleep(10);
 			}
-				
-
 			d->iCheckCycles++;
 		}
-		writeL(d->prog[d->nbrWinner - 1].prog_name);
+
+		// writeL(d->prog[d->nbrWinner - 1].prog_name);
 		writeL(ft_itoa(d->nbrWinner));
 		writeL("^^^  is the winner !!!");
 	}

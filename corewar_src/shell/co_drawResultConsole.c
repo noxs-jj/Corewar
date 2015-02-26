@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   co_drawResultConsole.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 15:00:49 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/13 15:00:50 by jmoiroux         ###   ########.fr       */
+/*   Updated: 2015/02/26 15:11:30 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 void	drawResultConsole(t_data *d)
 {
+	t_header *prog;
+
 	if (true == d->graphActiv)
 	{
 		renderClose(d);
@@ -26,7 +28,12 @@ void	drawResultConsole(t_data *d)
 		co_troll_all();
 		ft_putstr("#######################################################\n");
 		ft_putstr("\t\tle joueur ");
-		ft_putstr(d->prog[d->nbrWinner - 1].prog_name); // player number
+		if ((prog = searchProg(d, d->nbrWinner)) == NULL)
+		{
+			writeL("error in drawResultConsole");
+			return ;
+		}
+		ft_putstr(prog->prog_name); // player number
 		ft_putstr(" a gagne\n");
 		ft_putstr("#######################################################\n");
 	}

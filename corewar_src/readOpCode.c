@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 15:20:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 16:26:56 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:26:09 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 ** Read OP Code, convert it into binary (8 chars)
 */
 
-int	readOpCode(t_data *d, int player)
+int	readOpCode(t_data *d, t_header *prog)
 {
 	int	i;
 	t_case *args;
 
-	args = ((d->prog[player].PC) + 1);
-	ft_bzero(d->prog[player].codage, 9);
+	args = ((prog->PC) + 1);
+	ft_bzero(prog->codage, 9);
 	i = 0;
 	while (i < 16)
 	{
@@ -30,7 +30,7 @@ int	readOpCode(t_data *d, int player)
 			&& !(args->hex[0] >= '0' && args->hex[0] <= '9'))
 			return (-1);
 		if (bin_tab[i].hex == args->hex[0])
-			ft_strncpy(d->prog[player].codage, bin_tab[i].bin, 4);
+			ft_strncpy(prog->codage, bin_tab[i].bin, 4);
 		i++;
 	}
 	i = 0;
@@ -40,7 +40,7 @@ int	readOpCode(t_data *d, int player)
 			&& !(args->hex[1] >= '0' && args->hex[1] <= '9'))
 			return (-1);
 		if (bin_tab[i].hex == args->hex[1])
-			ft_strncpy(&d->prog[player].codage[4], bin_tab[i].bin, 4);
+			ft_strncpy(&prog->codage[4], bin_tab[i].bin, 4);
 		i++;
 	}
 	return (0);

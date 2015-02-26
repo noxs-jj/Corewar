@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:13:56 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 15:25:24 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:45:22 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,29 @@ void	checkPC(t_header *h)
 
 int		checkNextOp(t_data *d)
 {
-	int player;
+	t_header *prog;
 
-	player = 0;
-	while (player < d->players)
+	prog = d->prog;
+	while (prog != NULL)
 	{
-		if (d->prog[player].wait <= 0)
+		if (prog->wait <= 0)
 		{
-			d->prog[player].PC->present = d->prog[player].number;
-			checkPC(&(d->prog[player]));
-			writeL(ft_itoa(d->prog[player].nextOp));
-			if (d->prog[player].nextOp != -1)
+			prog->PC->present = prog->number;
+			checkPC(prog);
+			writeL(ft_itoa(prog->nextOp));
+			if (prog->nextOp != -1)
 			{
-				d->prog[player].wait = op_tab[d->prog[player].nextOp].nb_cycles;
-				readOpCode(d, player);
+				prog->wait = op_tab[prog->nextOp].nb_cycles;
+				readOpCode(d, prog);
 				writeL("find next op");
-				writeL(op_tab[d->prog[player].nextOp].name);
+				writeL(op_tab[prog->nextOp].name);
 			}
 			else
-				d->prog[player].wait = -1;
+				prog->wait = -1;
 			// check PC for player d->prog[player]
 			//sleep(1);
 		}
-		player++;
+		prog = prog->next;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 16:57:13 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:38:13 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** T_REG, T_REG, T_REG
 */
 
-int		op_sub(t_data *d, t_header *player, int id)
+int		op_sub(t_data *d, t_header *player)
 {
 	int ret;
 	unsigned int reg;
@@ -25,7 +25,7 @@ int		op_sub(t_data *d, t_header *player, int id)
 	char		str[9];
 	
 	writeL("--- op_sub ---");
-	if ((ret = getOpArgs(d, id)) < 0
+	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[0])) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[1])) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)

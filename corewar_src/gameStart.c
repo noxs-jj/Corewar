@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/20 12:10:16 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:30:39 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	gameStart(t_data *d)
 	d->run = true;
 	// renderDraw(d);
 	if (true == d->graphActiv)
-		renderDraw(d);
+		renderDraw(d); // need to be modified (d->prog)
 	else
-		co_showInitPlayers(d);
+		co_showInitPlayers(d); // need to be modified (d->prog)
 	writeL(ft_itoa("DUMP following"));
 	writeL(ft_itoa(d->dump));
 	while (d->run == true)
@@ -47,23 +47,23 @@ int	gameStart(t_data *d)
 			// writeL(&d->prog[0].opArgs[2][2]);
 			//sleep(1);
 			if (true == d->graphActiv)
-				renderDraw(d); // draw game with ncurses
+				renderDraw(d); // draw game with ncurses // need to be modified (d->prog)
 			else
-				renderShell(d); // draw game on shell
+				renderShell(d); // draw game on shell // need to be modified (d->prog)
 
 			if (d->dump != -1 && d->cycle == d->dump)
 			{
 				if (true == d->graphActiv)
-					renderClose(d);
+					renderClose(d); // need to be modified (d->prog)
 				d->run = false;
-				arg_dump(d);
+				arg_dump(d); // need to be modified (d->prog)
 			}
-			checkCyles(d);
+			checkCyles(d); // need to be modified (d->prog)
 		}
-		keyboard(&d);
+		keyboard(&d); // need to be modified (d->prog)
 		if (true == d->pause)
-			sleep(1); 						// REMOVE
+			usleep(100000); 						// REMOVE
 	}
-	drawResultConsole(d);
+	drawResultConsole(d); // need to be modified (d->prog)
 	return (0);
 }
