@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/29 16:38:06 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/23 13:09:46 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/26 13:44:45 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -27,8 +27,8 @@ SRC 		=	main.c	\
 
 OBJ			=	$(SRC:.c=.o)
 
-INC			=	-I./includes -I./libft/includes
-LINK		=	-Llibft -lft
+INC			=	-I ../includes -I ../libft/includes
+LINK		=	-L../libft -lft
 
 FLAGS		=	$(CFLAGS)
 CFLAGS		=	-Wall -Wextra -Werror -g3
@@ -44,14 +44,14 @@ RM			=	/bin/rm -v
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJ)
-				make -C ./libft
+				make -C ../libft
 				$(CC) $(FLAGS) $(INC) $(LINK) $(OBJ) -o $(NAME)
 clean		:
-				make -C ./libft clean
+				make -C ../libft clean
 				$(RM) $(OBJ)
 
 fclean		:	clean
-				make -C ./libft fclean
+				make -C ../libft fclean
 				$(RM) $(NAME)
 
 re			:	fclean all
