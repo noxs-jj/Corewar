@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 18:24:34 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:45:06 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	init_file(t_file *file)
 	file->name_s = NULL;
 	file->name_cor = NULL;
 	file->nb_line = 0;
+	file->has_name = 0;
 	file->ret = 1;
 	file->fd_s = -1;
 	file->fd_cor = -1;

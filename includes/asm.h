@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 19:06:22 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:45:10 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct				s_file
 	char					*name_s; //malloc
 	char					*name_cor; //malloc
 	size_t					nb_line;
+	size_t					has_name;
 	int						ret;
 	int						fd_s;
 	int						fd_cor;

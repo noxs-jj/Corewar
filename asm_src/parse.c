@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 18:31:26 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:47:22 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	get_line_code_len(t_line *line)
 	fprintf(stderr, "code len = %d\n", (int)line->code_len);
 }
 
-//OK - 23L
+//OK - 24L
 static void	check_name(t_file *file, t_line *line)
 {
 	char	*s;
@@ -70,6 +70,7 @@ static void	check_name(t_file *file, t_line *line)
 	if (ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)) == 0)
 	{
 		//fprintf(stderr, "TEST4b - name detected\n");
+		file->has_name = 1;
 		line->type = T_CMD_NAME;
 		name_begin = ft_strlen(NAME_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
@@ -131,7 +132,7 @@ static int	is_comment(t_line *line)
 	return (false);
 }
 
-//OK - 24L
+//OK - 23L
 int			parse_file(t_file *file)
 {
 	t_list	*tmp;
@@ -159,5 +160,7 @@ int			parse_file(t_file *file)
 		}
 		tmp = tmp->next;
 	}
+	if (!file->has_name)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
