@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/24 17:09:11 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:06:22 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ typedef struct				s_token
 	t_op					*op; //malloc
 	char					*str; //malloc
 	size_t					id;
-	size_t					col;
 	int						value;
 	enum e_token_type		type;
 }							t_token; //malloc !

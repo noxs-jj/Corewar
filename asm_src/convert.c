@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 18:38:08 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:06:15 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void print_token(t_token *token)
 {
     fprintf(stderr, "\n---------------------\ntoken #%d  -  type %d\n", (int)token->id, token->type);
-    fprintf(stderr, "col. %d\n", (int)token->col);
+    //fprintf(stderr, "col. %d\n", (int)token->col);
     if (token->op)
         fprintf(stderr, "str: |%s|  ->  opcode %d\n---------------------\n", token->str, token->op->opcode);
     else
@@ -55,7 +55,7 @@ static void	translate_token_value(int value, char *code, int size, size_t *i)
 }
 
 //OK - 23L
-static void	translate_params(t_file *file, t_line *line, t_op *op)
+static int	translate_params(t_file *file, t_line *line, t_op *op)
 {
 	t_list	*tmp;
 	size_t	i;
@@ -75,7 +75,8 @@ static void	translate_params(t_file *file, t_line *line, t_op *op)
 	while (tmp)
 	{
 		print_token(TOKEN);
-		get_param_value(file->lines, line, TOKEN);
+		if (get_param_value(file->lines, line, TOKEN) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
 		fprintf(stderr, "type=%d val=%d\n", (int)TOKEN->type, (int)TOKEN->value);
 		if (TOKEN->type == T_A_REG)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
@@ -99,7 +100,7 @@ static void	translate_params(t_file *file, t_line *line, t_op *op)
 
 		tmp = tmp->next;
 	}
-	return ;
+	return (EXIT_SUCCESS);
 }
 
 
@@ -153,11 +154,10 @@ static t_op	*get_inst_code(t_line *line)
 }
 
 
-//OK - 24L
+//OK - 18L
 int			convert_file(t_file *file)
 {
 	t_list	*tmp;
-	//t_token	*token;
 	t_op	*op;
 
 	fprintf(stderr, "\n\n-------\nCONVERT:\n--------------------------------------------------------------------------------------------\n--------------------------------------------------------------------------------------------\n\n");
@@ -176,7 +176,8 @@ int			convert_file(t_file *file)
 				return (EXIT_FAILURE);
 			fprintf(stderr, "CONVERT loop 6 - bytecode = %s\n", LINE->bytecode);
 
-			translate_params(file, LINE, op);
+			if (translate_params(file, LINE, op) == EXIT_FAILURE)
+				return (EXIT_FAILURE);
             fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|    --  type: %d\n                 ", (int)LINE->id, LINE->str, LINE->type);
 			int i =0;
 			while (i < (int)LINE->code_len)

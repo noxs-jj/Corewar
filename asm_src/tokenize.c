@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 14:29:14 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:19:47 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void print_token(t_token *token)
 {
 	//return ;
 	fprintf(stderr, "\n---------------------\ntoken #%d  -  type %d\n", (int)token->id, token->type);
-	fprintf(stderr, "col. %d\n", (int)token->col);
+	//fprintf(stderr, "col. %d\n", (int)token->col);
 	if (token->op)
 		fprintf(stderr, "str: |%s|  ->  opcode %d\n---------------------\n", token->str, token->op->opcode);
 	else
@@ -76,14 +76,12 @@ static int	get_token_type(t_token *token, size_t len)
 	return (EXIT_SUCCESS);
 }
 
-//OK - 23L
+//OK - 25L
 static int	add_token(t_line *line, int i, int j, int id)
 {
 	t_token			*token;
 
 	//fprintf(stderr, "add_token() begin.\n");
-//	if (line->has_final_comment == 1) //shouldnt be the case, checked in tokenize
-//		return (EXIT_SUCCESS);
 	if (!(token = (t_token *)malloc(sizeof(t_token))))
 		RET("Malloc() failed.\n", EXIT_FAILURE);
 	if (!(token->str = (char *)malloc(sizeof(char) * (j - i + 1))))
@@ -92,19 +90,19 @@ static int	add_token(t_line *line, int i, int j, int id)
 	token->op = NULL;
 	token->str[j - i] = 0;
 	token->id = id;
-	token->col = i;
+//	token->col = i;
 	token->value = -1;
 	token->type = T_UNKNOWN;
 	if (get_token_type(token, ft_strlen(token->str)) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	if (token->type == T_LABEL && check_label(token->str) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (token->type == T_A_DLAB && check_label(token->str) == EXIT_FAILURE)
+		RET("Wrong chars used in label.\n", EXIT_FAILURE);
 	if (token->type == T_UNKNOWN)
 		RET("No token type found.\n", EXIT_FAILURE);
 	if (token->type == T_INSTRUCTION && get_inst(token) == EXIT_FAILURE)
 		RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
-	if (token->type == T_A_INDLAB && check_label(token->str) == EXIT_FAILURE)
-		RET("Wrong chars used in label.\n", EXIT_FAILURE);
-	//if (token->type == T_F_COMMENT)
-	//	line->has_final_comment = 1;
 	print_token(token); //virer
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
 	free(token);

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 17:14:16 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 18:16:12 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:00:41 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	get_label_value(t_list *tmp, t_line *dir_line, t_line *lab_line)
 }
 
 //OK - 23L
-void		get_param_value(t_list *lines, t_line *srcline, t_token *token)
+int			get_param_value(t_list *lines, t_line *srcline, t_token *token)
 {
 	t_list	*tmp;
 	char	*label;
@@ -76,11 +76,12 @@ void		get_param_value(t_list *lines, t_line *srcline, t_token *token)
 				fprintf(stderr, "label found, getting value...\n");
 				token->value = get_label_value(lines, srcline, LINE);
 				fprintf(stderr, "value found: %d\n", token->value);
-				return ;
+				return (EXIT_SUCCESS);
 			}
 			tmp = tmp->next;
 		}
 		ft_putstr("No matching label found.\n");
+		return (EXIT_FAILURE);
 	}
-	return ;
+	return (EXIT_SUCCESS);
 }
