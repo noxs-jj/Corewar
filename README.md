@@ -1,6 +1,9 @@
 # Corewar @ 42 Born2code
-C, Ncurse
 
+********
+VM part:
+********
+C, Ncurse
 
 	-dump NBR_CYLCLE
 After NBR_CYCLE dump memory on to STDOUT
@@ -12,8 +15,21 @@ Draw action on NCurse
 Set player number
 
 
+
+*********
+asm part:
+*********
+C
+
+	-l:
+Check leaks
+	-v:
+Verbose mode
+
+
+
 ######JAQUIER Vincent @ 42 Born2code
-vin.jacquier@gmail.com 
+vin.jacquier@gmail.com
 
 ######DEAGE Felix @ 42 Born2code
 fdeage@gmail.com

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 17:14:16 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/25 18:35:39 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:00:41 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 static int	get_label_value(t_list *tmp, t_line *dir_line, t_line *lab_line)
 {
 	int		value;
-	//t_list	*tmp;
 
 	value = 0;
-	//tmp = lines;
 	if (dir_line->id > lab_line->id)
 	{
 		//negative value
@@ -54,36 +52,36 @@ static int	get_label_value(t_list *tmp, t_line *dir_line, t_line *lab_line)
 }
 
 //OK - 23L
-void		get_param_value(t_list *lines, t_line *srcline, t_token *token)
+int			get_param_value(t_list *lines, t_line *srcline, t_token *token)
 {
 	t_list	*tmp;
-	//char	*label;
+	char	*label;
 
 	fprintf(stderr, "TEST PARAM VALUE\n");
 	if (token->type == T_A_REG || token->type == T_A_DIR)
 		token->value = ft_atoi(token->str + 1);
 	else if (token->type == T_A_IND)
 		token->value = ft_atoi(token->str);
-	else if (token->type == T_A_DLAB)
+	else if (token->type == T_A_DLAB || token->type == T_A_INDLAB)
 	{
 		fprintf(stderr, "CONVERSION LABEL\n");
-		//label = token->str + 2;
+		label = token->str + (token->type == T_A_DLAB ? 2 : 1);
 		tmp = lines;
 		fprintf(stderr, "CONVERSION LABEL2 - %s\n", LINE->str);
 		while (tmp)
 		{
-			fprintf(stderr, "DATA = %s, data = %s\n", LINE->str, token->str + 2);
-			if (LINE->type == T_LABEL && !ft_strcmp(LINE->str,
-				token->str + 2))
+			fprintf(stderr, "DATA = %s, data = %s\n", LINE->str, label);
+			if (LINE->type == T_LABEL && !ft_strcmp(LINE->str, label))
 			{
 				fprintf(stderr, "label found, getting value...\n");
 				token->value = get_label_value(lines, srcline, LINE);
 				fprintf(stderr, "value found: %d\n", token->value);
-				return ;
+				return (EXIT_SUCCESS);
 			}
 			tmp = tmp->next;
 		}
 		ft_putstr("No matching label found.\n");
+		return (EXIT_FAILURE);
 	}
-	return ;
+	return (EXIT_SUCCESS);
 }

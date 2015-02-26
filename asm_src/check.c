@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/25 19:21:57 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 19:30:29 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 extern t_op	g_op_tab[17];
 
 # include<stdio.h>
+
+/*
+** check_label() makes sure that the initial '%' doesnt block the checking
+** process
+*/
 
 int	check_file_2(t_file *file)
 {
@@ -122,12 +127,17 @@ int	check_label(const char *s)
 	register size_t	i;
 	char			*check;
 
+	fprintf(stderr, "check label... str=%s\n", s);
 	check = LABEL_CHARS;
 	i = 0;
-	while (s[i] && s[i] != LABEL_CHAR)
+	while (s[i])
 	{
-		if (!ft_strchr(check, s[i]))
+		if (!ft_strchr(check, s[i]) && !(i == 0 && s[i] == DIRECT_CHAR)
+			&& !((i == 0 || i == 1) && s[i] == LABEL_CHAR))
+		{
+			fprintf(stderr, "WRONG LABEL CHAR i=%d c = %d\n", (int)i, s[i]); //virer
 			return (EXIT_FAILURE);
+		}
 		++i;
 	}
 	return (EXIT_SUCCESS);
