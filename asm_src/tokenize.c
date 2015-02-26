@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/25 20:14:47 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 14:29:14 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static int	add_token(t_line *line, int i, int j, int id)
 	t_token			*token;
 
 	//fprintf(stderr, "add_token() begin.\n");
-	if (line->has_final_comment == 1) //shouldnt be the case, checked in tokenize
-		return (EXIT_SUCCESS);
+//	if (line->has_final_comment == 1) //shouldnt be the case, checked in tokenize
+//		return (EXIT_SUCCESS);
 	if (!(token = (t_token *)malloc(sizeof(t_token))))
 		RET("Malloc() failed.\n", EXIT_FAILURE);
 	if (!(token->str = (char *)malloc(sizeof(char) * (j - i + 1))))
@@ -124,7 +124,8 @@ int			tokenize_line(t_line *line)
 	token_id = 0;
 	while (token_id < 7)
 	{
-		if (token_id - line->has_final_comment == 6)
+		//if (token_id - line->has_final_comment == 6)
+		if (token_id == 6)
 			RET("Too many tokens in line.\n", EXIT_FAILURE);
 		while (line->str[i] && ft_isspace(line->str[i]))
 			++i;
@@ -142,7 +143,8 @@ int			tokenize_line(t_line *line)
 		}
 		++token_id;
 	}
-	line->nb_params = token_id - line->has_final_comment;
+	//line->nb_params = token_id - line->has_final_comment;
+	line->nb_params = token_id;
 	fprintf(stderr, "tokenize end, nb_params = %d\n", (int)line->nb_params);
 	return (EXIT_SUCCESS);
 }

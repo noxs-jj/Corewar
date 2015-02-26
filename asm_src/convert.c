@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 21:03:33 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 18:38:08 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,12 @@ static void	translate_params(t_file *file, t_line *line, t_op *op)
 	while (tmp)
 	{
 		print_token(TOKEN);
-		//get_param_value(file->lines, TOKEN);
 		get_param_value(file->lines, line, TOKEN);
 		fprintf(stderr, "type=%d val=%d\n", (int)TOKEN->type, (int)TOKEN->value);
 		if (TOKEN->type == T_A_REG)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_REG_LEN, &i);
-		else if (TOKEN->type == T_A_IND)
+		else if (TOKEN->type == T_A_IND || TOKEN->type == T_A_INDLAB)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_IND_LEN, &i);
 		else if (TOKEN->type == T_A_DLAB || (TOKEN->type == T_A_DIR
@@ -123,7 +122,8 @@ static void	get_pcode(t_list *tokens, char *bytecode)
 			pcode2 |= (1 << (7 - i));
 			fprintf(stderr, "c3=%u\n", 1 << (7 - i));
 		}
-		if (TOKEN->type == T_A_REG || TOKEN->type == T_A_IND)
+		if (TOKEN->type == T_A_REG || TOKEN->type == T_A_IND
+			|| TOKEN->type == T_A_INDLAB)
 		{
 			pcode2 |= (1 << (6 - i));
 			fprintf(stderr, "c4=%u\n", 1 << (6 - i));

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/24 12:02:42 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 18:31:26 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	get_line_code_len(t_line *line)
 		else if (TOKEN->type == T_A_DLAB
 			|| (TOKEN->type == T_A_DIR && op->has_idx))
 			line->code_len += T_DLAB_LEN;
-		else if (TOKEN->type == T_A_IND)
+		else if (TOKEN->type == T_A_IND || TOKEN->type == T_A_INDLAB)
 			line->code_len += T_IND_LEN;
 		else if (TOKEN->type == T_A_REG)
 			line->code_len += T_REG_LEN;

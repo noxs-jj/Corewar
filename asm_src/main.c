@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:34:10 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 18:24:34 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ static int	check_file_1(t_file *file, const char *filename)
 	len = ft_strlen(filename);
 	if (len < 3 || filename[len - 2] != '.' || filename[len - 1] != 's')
 		asm_error("The file doesn't end with .s.\n");
-	if (!(file->fd_s = open(filename, O_RDONLY)))
+	fprintf(stderr, "TEST1\n");
+	if ((file->fd_s = open(filename, O_RDONLY)) == -1)
 		asm_error("Couldln't open the .s file\n");
+	fprintf(stderr, "TEST1 fd = %d\n", file->fd_s);
 	if (!(file->name_s = ft_strdup(filename)))
 		asm_error("Strdup() failed.\n");
 	if (!(file->name_cor = (char *)ft_memalloc(sizeof(file->name_s))))

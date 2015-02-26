@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/25 19:20:31 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/26 14:28:44 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,25 @@
 static int	init_line(t_file *file, char *str, size_t i, int line_type)
 {
 	t_line	*line;
+	char	*final_comment;
 
-	//fprintf(stderr, "READINIT0=%s\n", str);
+//	fprintf(stderr, "READINIT0=%s\n", str);
 	if (!(line = (t_line *)malloc(sizeof(t_line))))
 		return (EXIT_FAILURE);
 	line->tokens = NULL;
 	line->id = i;
 	line->code_len = 0;
+	//line->has_final_comment = has_final_comment(str);
+	if ((final_comment = ft_strchr(str, FINAL_COMMENT_CHAR)))
+	{
+		fprintf(stderr, "1: str = %s\n", str);
+		*final_comment = '\0';
+		fprintf(stderr, "2: str = %s\n", str);
+//		(line->str) = ;
+	}
 	line->str = ft_strtrim(str);
 	line->nb_params = 0;
 	line->type = line_type;
-	line->has_final_comment = has_final_comment(line->str);
 	ft_bzero(line->bytecode, 14);
 	line->pcode = -1;
 	ft_lstadd_back(&(file->lines), ft_lstnew((void *)line, sizeof(t_line)));
