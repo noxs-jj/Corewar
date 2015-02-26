@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 16:58:20 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 17:38:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		op_fork(t_data *d, t_header *player)
 		sleep(5);
 		return (-1);
 	}
+	d->players++;
 	prog = lastProg(d);
 	copyProg(d, player, prog);
 	writeL("player nbr");
