@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/23 14:56:03 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 16:22:25 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define ERR_FILE "File doesn't exist"
 # define ERR_READ "Read file error"
 # define ERR_MAP_ALLOC "Malloc map error"
+# define ERR_PROG_ALLOC "Malloc prog error"
 # define INV_FILE "Invalid file"
 
 # define BUFFSIZE 1
@@ -60,10 +61,10 @@
 // #define COMMENT_CMD_STRING		".comment"
 
 
-# define CYCLE_TO_DIE			150	// default 1536 test winner with 50
+# define CYCLE_TO_DIE			5000	// default 1536 test winner with 50
 # define CYCLE_DELTA			50		// default 50
 # define NBR_LIVE				21		// default 21
-# define MAX_CHECKS				2		// default 10 test winner with 2
+# define MAX_CHECKS				10		// default 10 test winner with 2
 
 /*
 **
@@ -143,11 +144,14 @@ typedef struct			s_header
 	char 				reg[REG_NUMBER + 1][REG_SIZE];
 	char 				codage[9]; // octet de codage
 	char 				opArgs[4][T_LAB];
+	struct s_header		*next;
+	struct s_header		*prev;
 }						t_header;
 
 typedef	struct			s_data
 {
-	t_header			prog[MAX_PLAYERS];
+	// t_header			prog[MAX_PLAYERS];
+	t_header			*prog;
 	bool				run; // is run : y = true, n = false
 	t_case				*map;
 	int 				players; // player number
@@ -173,14 +177,14 @@ int				print_error(char *str);
 t_data			*getData(void);
 void			writeL(char *str);
 int				read_files(t_data *d);
-void			init_prog(t_data *d);
+// void			init_prog(t_data *d);
 void			ft_putHexNbr(unsigned char n, char (*str)[]);
 void			ft_putHexBNbr(unsigned int n, char (*str)[]);
 int				init_mem(t_data *d);
 int 			gameStart(t_data *d);
 int				checkNextOp(t_data *d);
 int				execOp(t_data *d);
-int				readOpCode(t_data *d, int player);
+int				readOpCode(t_data *d, t_header *prog);
 unsigned int	ft_hex2Dec(char *str);
 int				ft_hex2intdec(char *str);
 void			pcAdvance(t_data *d, t_header *player, int adv);
@@ -188,30 +192,39 @@ int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
 void			arg_dump(t_data *d);
 void			checkCyles(t_data *d);
+int				getOpArgs(t_data *d, t_header *prog);
+
+void			init_reg(t_header *new);
+t_header		*lastProg(t_data *d);
+t_header		*searchProg(t_data *d, int number);
+t_header		*newProg(int number);
+int				addProg(t_data *d, t_header *new);
+void			delProg(t_data *d, int number);
+void			delAll(t_data *d);
 
 // OP functions
 typedef struct		s_opfunc
 {
 	int				op;
-	void			(*func)(t_data *, t_header *, int);
+	void			(*func)(t_data *, t_header *);
 }					t_opfunc;
 
-int				op_add(t_data *d, t_header *player, int id);
-int				op_aff(t_data *d, t_header *player, int id);
-int				op_and(t_data *d, t_header *player, int id);
-int				op_fork(t_data *d, t_header *player, int id);
-int				op_ld(t_data *d, t_header *player, int id);
-int				op_ldi(t_data *d, t_header *player, int id);
-int				op_lfork(t_data *d, t_header *player, int id);
-int				op_live(t_data *d, t_header *player, int id);
-int				op_lld(t_data *d, t_header *player, int id);
-int				op_lldi(t_data *d, t_header *player, int id);
-int				op_or(t_data *d, t_header *player, int id);
-int				op_st(t_data *d, t_header *player, int id);
-int				op_sti(t_data *d, t_header *player, int id);
-int				op_sub(t_data *d, t_header *player, int id);
-int				op_xor(t_data *d, t_header *player, int id);
-int				op_zjump(t_data *d, t_header *player, int id);
+int				op_add(t_data *d, t_header *player);
+int				op_aff(t_data *d, t_header *player);
+int				op_and(t_data *d, t_header *player);
+int				op_fork(t_data *d, t_header *player);
+int				op_ld(t_data *d, t_header *player);
+int				op_ldi(t_data *d, t_header *player);
+int				op_lfork(t_data *d, t_header *player);
+int				op_live(t_data *d, t_header *player);
+int				op_lld(t_data *d, t_header *player);
+int				op_lldi(t_data *d, t_header *player);
+int				op_or(t_data *d, t_header *player);
+int				op_st(t_data *d, t_header *player);
+int				op_sti(t_data *d, t_header *player);
+int				op_sub(t_data *d, t_header *player);
+int				op_xor(t_data *d, t_header *player);
+int				op_zjump(t_data *d, t_header *player);
 
 static const t_opfunc	g_opfunc[] =
 {
@@ -254,10 +267,10 @@ void			color_champ3(t_data *d, int i);
 void			color_champ4(t_data *d, int i);
 
 // Shell Render
-void			co_infoPlayer1(t_data *d);
-void			co_infoPlayer2(t_data *d);
-void			co_infoPlayer3(t_data *d);
-void			co_infoPlayer4(t_data *d);
+void			co_infoPlayer1(t_data *d, t_header *prog);
+void			co_infoPlayer2(t_data *d, t_header *prog);
+void			co_infoPlayer3(t_data *d, t_header *prog);
+void			co_infoPlayer4(t_data *d, t_header *prog);
 void			co_troll_all(void);
 void			co_troll0(void);
 void			co_troll1(void);

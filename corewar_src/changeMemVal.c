@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 15:28:04 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/23 13:34:56 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:41:49 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 	{
 		d->map[where].hex[i % 2] = '0';
 		d->map[where].recent = 20;
+		d->map[where].champ = id;
 		i++;
 		if (i % 2 == 0)
 			where = (where + 1) % MEM_SIZE;
@@ -52,6 +53,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 		// writeL(d->map[where].hex);
 		d->map[where].hex[i % 2] = str[index];
 		d->map[where].recent = 20;
+		d->map[where].champ = id;
 		// ft_strncpy(d->map[where].hex, &str[i], 2);
 		// writeL("after");
 		// writeL(d->map[where].hex);

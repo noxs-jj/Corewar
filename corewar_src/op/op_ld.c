@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 17:13:54 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:35:42 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 ** has idx (op_tab incorrect)
 */
 
-int		op_ld(t_data *d, t_header *player, int id)
+int		op_ld(t_data *d, t_header *player)
 {
 	int 			ret;
 	unsigned int 	reg;
 	int 			value;
 	
 	writeL("--- op_ld ---");
-	if ((ret = getOpArgs(d, id)) < 0
+	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[1])) < 0)
 		return (ret);
 	reg = ft_hex2Dec(player->opArgs[1]);

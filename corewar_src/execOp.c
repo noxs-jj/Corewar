@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 13:13:40 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:44:56 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,33 @@
 
 int		execOp(t_data *d)
 {
-	int player;
+	// int player;
+	t_header *prog;
 
-	player = d->players - 1;
-	while (player >= 0)
+	// player = d->players - 1;
+	prog = lastProg(d);
+	while (prog != NULL)
 	{
-		// exec d->prog[player].nextOp for player if d->prog[player].wait == 0
+		// exec prog->nextOp for player if prog->wait == 0
 		writeL("-----------");
 		writeL("execOp");
-		writeL(ft_itoa(d->prog[player].nextOp));
+		writeL(ft_itoa(prog->nextOp));
 		writeL("wait");
-		writeL(ft_itoa(d->prog[player].wait));
+		writeL(ft_itoa(prog->wait));
 		writeL("codage");
-		writeL(d->prog[player].codage);
-		if ( d->prog[player].wait == 1)
+		writeL(prog->codage);
+		if (prog->wait == 1)
 		{
 			// exec func
 			writeL("playerNbr");
-			writeL(ft_itoa(player));
+			writeL(ft_itoa(prog->number));
 			usleep(10000);
-			g_opfunc[d->prog[player].nextOp].func(d, &d->prog[player], player);
-			d->prog[player].wait--;
+			g_opfunc[prog->nextOp].func(d, prog);
+			prog->wait--;
 		}
-		else if (d->prog[player].wait > 0)
-			d->prog[player].wait--;
-		player--;
+		else if (prog->wait > 0)
+			prog->wait--;
+		prog = prog->prev;
 	}
 	// sleep(1);
 	d->cycle++;

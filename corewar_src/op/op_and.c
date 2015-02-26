@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 17:09:25 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:35:28 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** change carry
 */
 
-int		op_and(t_data *d, t_header *player, int id)
+int		op_and(t_data *d, t_header *player)
 {
 	int ret;
 	unsigned int reg;
@@ -32,7 +32,7 @@ int		op_and(t_data *d, t_header *player, int id)
 	// writeL(d->prog[id].codage);
 	// sleep(5);
 
-	if ((ret = getOpArgs(d, id)) < 0
+	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
 		return (ret);
 	reg = ft_hex2Dec(player->opArgs[2]);

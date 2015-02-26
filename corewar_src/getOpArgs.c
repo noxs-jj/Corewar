@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/23 13:05:41 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:34:36 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,39 +40,39 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 */
 
 
-int		getOpArgs(t_data *d, int player)
+int		getOpArgs(t_data *d, t_header *prog)
 {
 	int index;
 	int i;
 	t_case *args;
 
 	i = 0;
-	ft_bzero(d->prog[player].opArgs, T_LAB * 4 * sizeof(char));
+	ft_bzero(prog->opArgs, T_LAB * 4 * sizeof(char));
 	index = 0;
 
 	// writeL("getOpArgs");
-	// writeL(op_tab[d->prog[player].nextOp].name);
+	// writeL(op_tab[prog->nextOp].name);
 	// writeL("needed args");
-	// writeL(ft_itoa(op_tab[d->prog[player].nextOp].nb_params));
+	// writeL(ft_itoa(op_tab[prog->nextOp].nb_params));
 	// writeL("codage");
-	writeL(d->prog[player].codage);
+	writeL(prog->codage);
 	//sleep(1);
-	while (i < op_tab[d->prog[player].nextOp].nb_params)
+	while (i < op_tab[prog->nextOp].nb_params)
 	{
-		if (ft_strncmp(&d->prog[player].codage[i * 2], "01", 2) == 0)
-			getValue(&d->prog[player], i, &index, REG);
-		else if (ft_strncmp(&d->prog[player].codage[i * 2], "10", 2) == 0)
-			getValue(&d->prog[player], i, &index, DIR);
-		else if (ft_strncmp(&d->prog[player].codage[i * 2], "11", 2) == 0)
+		if (ft_strncmp(&prog->codage[i * 2], "01", 2) == 0)
+			getValue(prog, i, &index, REG);
+		else if (ft_strncmp(&prog->codage[i * 2], "10", 2) == 0)
+			getValue(prog, i, &index, DIR);
+		else if (ft_strncmp(&prog->codage[i * 2], "11", 2) == 0)
 		{
-			getValue(&d->prog[player], i, &index, IND);
+			getValue(prog, i, &index, IND);
 			writeL("get op arg 11");
 			writeL(ft_itoa(i));
-			writeL(d->prog[player].opArgs[i]);
+			writeL(prog->opArgs[i]);
 		}
-		else if (i + 1 == op_tab[d->prog[player].nextOp].nb_params)
+		else if (i + 1 == op_tab[prog->nextOp].nb_params)
 		{
-			index += op_tab[d->prog[player].nextOp].has_pcode;
+			index += op_tab[prog->nextOp].has_pcode;
 			return (index);
 		}
 		else
@@ -82,7 +82,7 @@ int		getOpArgs(t_data *d, int player)
 	// writeL("get op args return");
 	// sleep(5);
 	// writeL("get op arg");
-	// writeL(d->prog[player].opArgs[0]);
-	index += op_tab[d->prog[player].nextOp].has_pcode;
+	// writeL(prog->opArgs[0]);
+	index += op_tab[prog->nextOp].has_pcode;
 	return (index);
 }

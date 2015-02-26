@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/20 11:21:41 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/26 13:42:11 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRCS =	main.c \
 		exit_free.c \
 		read_files.c \
 		init_prog.c \
+		lst_prog.c \
 		init_mem.c \
 		putHexNbr.c \
 		load_champions.c \

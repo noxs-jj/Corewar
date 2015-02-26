@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 12:56:30 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:35:49 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 ** has idx
 */
 
-int		op_ldi(t_data *d, t_header *player, int id)
+int		op_ldi(t_data *d, t_header *player)
 {
 	int				ret;
 	unsigned int	result;
 	char			str[9];
 
-	if ((ret = getOpArgs(d, id)) < 0
+	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0) // check reg valid registre
 		return (ret);
 	if (ft_strncmp(player->codage, "01", 2) == 0

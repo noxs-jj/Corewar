@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 15:31:26 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:42:46 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** has idx
 */
 
-int		op_sti(t_data *d, t_header *player, int id)
+int		op_sti(t_data *d, t_header *player)
 {
 	int ret;
 	unsigned int reg;
@@ -32,7 +32,7 @@ int		op_sti(t_data *d, t_header *player, int id)
 	// writeL(player->reg[1]);
 	// writeL(ft_itoa(id));
 
-	if ((ret = getOpArgs(d, id)) < 0)
+	if ((ret = getOpArgs(d, player)) < 0)
 	{
 		writeL("error in op_sti arg");
 		// sleep(5);
@@ -68,7 +68,7 @@ int		op_sti(t_data *d, t_header *player, int id)
 	// writeL(ft_itoa(reg));
 	// writeL("in  reg");
 	// writeL(player->reg[reg]);
-	changeMemVal(d, id, player->indexPC + 1 + (((value[0] + value[1]) / 2) % IDX_MOD), player->reg[reg]);
+	changeMemVal(d, player->number, player->indexPC + 1 + (((value[0] + value[1]) / 2) % IDX_MOD), player->reg[reg]);
 	// writeL("after changeMemVal");
 	// writeL("player id:");
 	// writeL(ft_itoa(id));

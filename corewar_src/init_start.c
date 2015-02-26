@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:55:15 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 18:05:33 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:15:52 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,49 @@
 
 static int checkNumber(t_data *d, int n)
 {
-	int i;
+	t_header *tmp;
 
-	i = 0;
-	while (i < d->players)
+	if ((tmp = d->prog) == NULL)
+		return (0);
+
+	while (tmp != NULL)
 	{
-		if (n == d->prog[i].number)
+		if (n == tmp->number)
 			return (-1);
-		i++;
+		tmp = tmp->next;
 	}
 	return (0);
 }
 
 static int	champion_number(t_data *d, int ac, char **av, int i)
 {
+	t_header *prog;
+
 	if (++i >= ac || ft_atoi(av[i]) <= 0
 		|| ft_atoi(av[i]) > MAX_PLAYERS || ++d->players >= MAX_PLAYERS
 		|| checkNumber(d, ft_atoi(av[i])) == -1)
 		return (-1);
-	d->prog[d->players].number = ft_atoi(av[i]);
+	addProg(d, newProg(ft_atoi(av[i])));
+	prog = lastProg(d);
 	if (++i >= ac || ft_strstr(av[i], ".cor") == NULL)
 		return (-1);
-	d->prog[d->players].filename = av[i];
+	prog->filename = av[i];
 	return (i);
 }
+
 static int champion(t_data *d, int ac, char **av, int i)
 {
 	int number;
+	t_header *prog;
 
 	number = 1;
 	if (++d->players >= MAX_PLAYERS)
 		return (-1);
 	while (checkNumber(d, number) == -1 && number <= MAX_PLAYERS)
 		number++;
-	d->prog[d->players].filename = av[i];
-	d->prog[d->players].number = number;
+	addProg(d, newProg(number));
+	prog = lastProg(d);
+	prog->filename = av[i];
 	return (i);
 }
 
@@ -104,6 +112,7 @@ int		init_start(t_data *d, int ac, char **av)
 	d->iMaxCheck = 0;
 	d->nbrWinner = 999;
 	d->graphActiv = false;
-	init_prog(d);
+	// init_prog(d);
+	// writeL("init start before checkparam");
 	return (checkparam(d, ac, av));
 }

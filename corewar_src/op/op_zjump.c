@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/25 15:50:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:38:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** has idx
 */
 
-int		op_zjump(t_data *d, t_header *player, int id)
+int		op_zjump(t_data *d, t_header *player)
 {
 	int		ret;
 	char	tmp[DIR + 1];
@@ -30,7 +30,7 @@ int		op_zjump(t_data *d, t_header *player, int id)
 	ft_strcpy(player->codage, "10000000");
 	// writeL(player->codage);
 	// sleep(10);
-	if ((ret = getOpArgs(d, id)) < 0)
+	if ((ret = getOpArgs(d, player)) < 0)
 		return (ret);
 	if (player->carry == 0)
 	{

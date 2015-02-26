@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:23:20 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/19 18:44:44 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 14:21:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,29 @@
 
 int		load_champions(t_data *d)
 {
-	int player;
-	int start;
+	t_header *prog;
 	int	index;
 	int i;
 
-	player = 0;
-	start = 0;
 	index = 0;
-	while (player < d->players)
+	prog = d->prog;
+	while (prog != NULL)
 	{
 		i = 0;
 		d->map[index].present = true;
-		d->prog[player].indexPC = index;
-		while (i < d->prog[player].prog_size * 2)
+		prog->indexPC = index;
+		while (i < prog->prog_size * 2)
 		{
-			d->map[index].champ = player + 1;
-			d->map[index].hex[0] = d->prog[player].prog[i];
-			d->map[index].hex[1] = d->prog[player].prog[i + 1];
-			if (d->prog[player].PC == NULL)
-				d->prog[player].PC = &d->map[index];
+			d->map[index].champ = prog->number;
+			d->map[index].hex[0] = prog->prog[i];
+			d->map[index].hex[1] = prog->prog[i + 1];
+			if (prog->PC == NULL)
+				prog->PC = &d->map[index];
 			index++;
 			i += 2;
 		}
-		player++;
-		index = (MEM_SIZE / d->players) * player;
+		index = (MEM_SIZE / d->players) * prog->number;
+		prog = prog->next;
 	}
 	return (0);
 }
