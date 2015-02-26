@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 15:44:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 16:22:25 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@
 // #define COMMENT_CMD_STRING		".comment"
 
 
-# define CYCLE_TO_DIE			100	// default 1536 test winner with 50
-# define CYCLE_DELTA			100		// default 50
+# define CYCLE_TO_DIE			5000	// default 1536 test winner with 50
+# define CYCLE_DELTA			50		// default 50
 # define NBR_LIVE				21		// default 21
-# define MAX_CHECKS				2		// default 10 test winner with 2
+# define MAX_CHECKS				10		// default 10 test winner with 2
 
 /*
 **
@@ -198,7 +198,7 @@ void			init_reg(t_header *new);
 t_header		*lastProg(t_data *d);
 t_header		*searchProg(t_data *d, int number);
 t_header		*newProg(int number);
-void			addProg(t_data *d, t_header *new);
+int				addProg(t_data *d, t_header *new);
 void			delProg(t_data *d, int number);
 void			delAll(t_data *d);
 

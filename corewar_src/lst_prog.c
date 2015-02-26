@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 13:08:53 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 15:04:40 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/26 16:34:08 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ void	init_reg(t_header *new)
 		ft_bzero(new->reg[i], REG_SIZE);
 		i++;
 	}
+}
+
+void	copyProg(t_data *d, t_header *src, t_header *cpy)
+{
+	cpy->carry = src->carry;
+	cpy->lastLive = src->lastLive;
+	cpy->liveNbr = src->liveNbr;
+	cpy->PC = src->PC;
+	cpy->indexPC = src->indexPC;
+	ft_strcpy(cpy->prog_name, src->prog_name);
+	cpy->wait = -1;
+	cpy->alive = src->alive;
+	cpy->number = src->number;
+	cpy->nextOp = -1;
+	cpy->filename = src->filename;
+	cpy->prog_size = src->prog_size;
+	ft_strcpy(cpy->prog, src->prog);
+	ft_strcpy(cpy->comment, src->comment);
 }
 
 t_header *lastProg(t_data *d)
@@ -49,7 +67,10 @@ t_header *newProg(int number)
 	t_header 	*new;
 
 	if ((new = (t_header *)malloc(sizeof(t_header))) == NULL)
-		return (print_error(ERR_PROG_ALLOC));
+	{
+		writeL(ERR_PROG_ALLOC);
+		return (NULL);
+	}
 	new->carry = false;
 	new->lastLive = 0;
 	new->liveNbr = 0;
@@ -72,10 +93,12 @@ t_header *newProg(int number)
 	return (new);
 }
 
-void	addProg(t_data *d, t_header *new)
+int		addProg(t_data *d, t_header *new)
 {
 	t_header *tmp;
 
+	if (new == NULL)
+		return (print_error(ERR_PROG_ALLOC));
 	if (d->prog == NULL)
 		d->prog = new;
 	else
@@ -86,6 +109,7 @@ void	addProg(t_data *d, t_header *new)
 		new->prev = tmp;
 		tmp->next = new;
 	}
+	return (0);
 }
 
 void delProg(t_data *d, int number)
