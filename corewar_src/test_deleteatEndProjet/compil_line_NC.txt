@@ -1,9 +1,0 @@
-rm a.out ; clear ; gcc -Wall -Werror -Wextra -lncurses nc_*.c getData.c test_deleteatEndProjet/nc_maintest.c print_error.c writeL.c init_mem.c ../libft/libft.a ; ./a.out
-
-
-./corewar ../../corewar_goinfr/champions/helltrain.cor ../../corewar_goinfr/champions/zork.cor ../../corewar_goinfr/champions/fluttershy.cor ../../corewar_goinfr/champions/turtle.cor
-
-
-
-Print console
-rm a.out ; clear ; gcc -Wall -Werror -Wextra getData.c test_deleteatEndProjet/co_maintest.c print_error.c writeL.c init_mem.c shell/co_*.c ../libft/libft.a ; ./a.out

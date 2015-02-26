@@ -35,7 +35,7 @@ int		op_fork(t_data *d, t_header *player)
 	if ((ret = getOpArgs(d, player)) < 0)
 	{
 		writeL("arg wrong");
-		sleep(5);
+		//sleep(5);
 		return (ret);
 	}
 
@@ -53,7 +53,7 @@ int		op_fork(t_data *d, t_header *player)
 	if (addProg(d, newProg(player->number)) < 0)
 	{
 		writeL("new prog failed");
-		sleep(5);
+		//sleep(5);
 		return (-1);
 	}
 	d->players++;

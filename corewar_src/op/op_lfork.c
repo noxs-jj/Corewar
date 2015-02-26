@@ -22,6 +22,10 @@ int		op_lfork(t_data *d, t_header *player)
 	int				ret;
 	unsigned int	result;
 	t_header		*prog;
+	char	tmp[DIR + 1];
+
+	ft_memset(tmp, 'f', DIR);
+	tmp[DIR] = '\0';
 
 	ft_bzero(player->codage, 9);
 	ft_strcpy(player->codage, "10000000");
@@ -30,7 +34,7 @@ int		op_lfork(t_data *d, t_header *player)
 	if ((ret = getOpArgs(d, player)) < 0)
 	{
 		writeL("arg wrong");
-		sleep(5);
+		//sleep(5);
 		return (ret);
 	}
 
@@ -48,7 +52,7 @@ int		op_lfork(t_data *d, t_header *player)
 	if (addProg(d, newProg(player->number)) < 0)
 	{
 		writeL("new prog failed");
-		sleep(5);
+		//sleep(5);
 		return (-1);
 	}
 	prog = lastProg(d);

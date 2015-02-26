@@ -27,7 +27,7 @@ void	pcAdvance(t_data *d, t_header *player, int adv)
 	// player->indexPC = (player->indexPC + MEM_SIZE + adv + 1) % MEM_SIZE;
 	writeL("hello2");
 	writeL(d->map[player->indexPC].hex);
-	usleep(100000);
+	//usleep(100000);
 	player->PC = &d->map[player->indexPC];
 	writeL("index:");
 	 writeL(ft_itoa(player->indexPC));

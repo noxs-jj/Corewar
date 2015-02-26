@@ -29,6 +29,7 @@ int	gameStart(t_data *d)
 	writeL(ft_itoa(d->dump));
 	while (d->run == true)
 	{
+		usleep(TIME_USLEEP);
 		if (false == d->pause)
 		{
 			// ft_hex2Dec("7de\0");
