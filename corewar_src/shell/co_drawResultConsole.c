@@ -26,7 +26,7 @@ void	drawResultConsole(t_data *d)
 		co_troll_all();
 		ft_putstr("#######################################################\n");
 		ft_putstr("\t\tle joueur ");
-		ft_putstr(d->prog[d->nbrWinner].prog_name); // player number
+		ft_putstr(d->prog[d->nbrWinner - 1].prog_name); // player number
 		ft_putstr(" a gagne\n");
 		ft_putstr("#######################################################\n");
 	}

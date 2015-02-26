@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 17:14:16 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/24 11:20:55 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/25 18:35:39 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	get_label_value(t_list *tmp, t_line *dir_line, t_line *lab_line)
 void		get_param_value(t_list *lines, t_line *srcline, t_token *token)
 {
 	t_list	*tmp;
-	char	*label;
+	//char	*label;
 
 	fprintf(stderr, "TEST PARAM VALUE\n");
 	if (token->type == T_A_REG || token->type == T_A_DIR)
@@ -67,7 +67,7 @@ void		get_param_value(t_list *lines, t_line *srcline, t_token *token)
 	else if (token->type == T_A_DLAB)
 	{
 		fprintf(stderr, "CONVERSION LABEL\n");
-		label = token->str + 2;
+		//label = token->str + 2;
 		tmp = lines;
 		fprintf(stderr, "CONVERSION LABEL2 - %s\n", LINE->str);
 		while (tmp)

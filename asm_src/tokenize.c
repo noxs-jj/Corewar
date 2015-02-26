@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/24 17:24:39 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/25 20:14:47 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	add_token(t_line *line, int i, int j, int id)
 	t_token			*token;
 
 	//fprintf(stderr, "add_token() begin.\n");
-	if (line->has_final_comment == - 1 && has_final_comment(line))
+	if (line->has_final_comment == 1) //shouldnt be the case, checked in tokenize
 		return (EXIT_SUCCESS);
 	if (!(token = (t_token *)malloc(sizeof(t_token))))
 		RET("Malloc() failed.\n", EXIT_FAILURE);
@@ -108,7 +108,7 @@ static int	add_token(t_line *line, int i, int j, int id)
 	print_token(token); //virer
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
 	free(token);
-	return (EXIT_SUCCESS);
+	return (token->type);
 }
 
 //OK - 24L
@@ -117,16 +117,13 @@ int			tokenize_line(t_line *line)
 	register size_t	i;
 	register size_t	j;
 	size_t			token_id;
+	size_t			is_comment;
 
 	//fprintf(stderr, "tokenize begin\n");
 	i = 0;
 	token_id = 0;
-	//while (token_id < 7 && !has_final_comment(line))
-	while (token_id < 7 && !(line->has_final_comment))
+	while (token_id < 7)
 	{
-		//if (token_id - has_final_comment(line) == 6)
-		if (line->has_final_comment == 6)
-
 		if (token_id - line->has_final_comment == 6)
 			RET("Too many tokens in line.\n", EXIT_FAILURE);
 		while (line->str[i] && ft_isspace(line->str[i]))
@@ -135,11 +132,14 @@ int			tokenize_line(t_line *line)
 		while (line->str[j] && !ft_isspace(line->str[j])
 			&& line->str[j] != SEPARATOR_CHAR)
 			++j;
-		if (add_token(line, i, j, token_id) == EXIT_FAILURE)
+		if ((is_comment = add_token(line, i, j, token_id)) == EXIT_FAILURE)
 			RET("Init_token() failed.\n", EXIT_FAILURE);
 		i = j + 1;
-		if (!line->str[i - 1] || line->has_final_comment)
+		if (!line->str[i - 1] || is_comment == T_F_COMMENT)
+		{
+			fprintf(stderr, "break\n");
 			break ;
+		}
 		++token_id;
 	}
 	line->nb_params = token_id - line->has_final_comment;
