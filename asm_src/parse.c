@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 19:47:22 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:15:16 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 ** ease further comparisons with the labels of tokens in the middle
 */
 
-//TODO - 26L
 static void	get_line_code_len(t_line *line)
 {
 	t_list	*tmp;
@@ -33,7 +32,6 @@ static void	get_line_code_len(t_line *line)
 		return ;
 	op = TOKEN->op;
 	line->code_len = 1;
-	fprintf(stderr, "getlinecode2 - type = %d\n", TOKEN->type);
 	if (TOKEN->type == T_CMD_NAME || TOKEN->type == T_CMD_COMMENT
 		|| TOKEN->type == T_COMMENT)
 		return ;
@@ -52,10 +50,8 @@ static void	get_line_code_len(t_line *line)
 			line->code_len += T_REG_LEN;
 		tmp = tmp->next;
 	}
-	fprintf(stderr, "code len = %d\n", (int)line->code_len);
 }
 
-//OK - 24L
 static void	check_name(t_file *file, t_line *line)
 {
 	char	*s;
@@ -69,7 +65,6 @@ static void	check_name(t_file *file, t_line *line)
 	s = line->str + blank;
 	if (ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)) == 0)
 	{
-		//fprintf(stderr, "TEST4b - name detected\n");
 		file->has_name = 1;
 		line->type = T_CMD_NAME;
 		name_begin = ft_strlen(NAME_CMD_STRING);
@@ -79,14 +74,12 @@ static void	check_name(t_file *file, t_line *line)
 		name_end = name_begin;
 		while (s && s[name_end] && s[name_end] != '"')
 			++name_end;
-		//fprintf(stderr, "TEST4ba - beg: %d end: %d\n", name_begin, name_end);
 		ft_strncpy(file->header.prog_name, (const char *)s + name_begin,
 			name_end - name_begin);
 	}
 	return ;
 }
 
-//OK - 24L
 static void	check_comment(t_file *file, t_line *line)
 {
 	char	*s;
@@ -101,7 +94,6 @@ static void	check_comment(t_file *file, t_line *line)
 	if (ft_strncmp(s, COMMENT_CMD_STRING,
 		ft_strlen(COMMENT_CMD_STRING)) == 0)
 	{
-		//fprintf(stderr, "TEST4d - comment detected\n");
 		line->type = T_CMD_COMMENT;
 		name_begin = ft_strlen(COMMENT_CMD_STRING);
 		while (s && s[name_begin] && s[name_begin] != '"')
@@ -110,7 +102,6 @@ static void	check_comment(t_file *file, t_line *line)
 		name_end = name_begin;
 		while (s && s[name_end] && s[name_end] != '"')
 			++name_end;
-		//fprintf(stderr, "TEST4e - beg: %d end: %d\n", name_begin, name_end);
 		ft_strncpy(file->header.comment, (const char *)s + name_begin,
 			name_end - name_begin);
 	}
@@ -132,7 +123,6 @@ static int	is_comment(t_line *line)
 	return (false);
 }
 
-//OK - 23L
 int			parse_file(t_file *file)
 {
 	t_list	*tmp;
@@ -140,7 +130,6 @@ int			parse_file(t_file *file)
 	tmp = file->lines;
 	while (tmp)
 	{
-		//fprintf(stderr, "PARSE s=%s\n", LINE->str);
 		if (!is_comment(LINE))
 		{
 			if (LINE->type != T_LABEL)
@@ -149,18 +138,15 @@ int			parse_file(t_file *file)
 				check_name(file, LINE);
 			if (!(file->header.comment[0]))
 				check_comment(file, LINE);
-			fprintf(stderr, "\n\n--------------------------------------------------------------------------------------------\nLINE #%d -- str: |%s|    --  type: %d\n--------------------------------------------------------------------------------------------\n", (int)LINE->id, LINE->str, LINE->type);
 			if ((LINE->type == T_EXEC) && ((tokenize_line(LINE) == EXIT_FAILURE)
 				|| (!has_right_params(LINE))))
 				return (EXIT_FAILURE);
 			if (LINE->type == T_LABEL)
 				(LINE->str)[ft_strpos(LINE->str, LABEL_CHAR)] = 0;
-			else //?
+			else
 				get_line_code_len(LINE);
 		}
 		tmp = tmp->next;
 	}
-	if (!file->has_name)
-		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
