@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:40:24 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 12:57:20 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 
 # define LINE				((t_line *)(tmp->content))
 # define TOKEN				((t_token *)(tmp->content))
+# define FC(x, y)			ft_putstr_color(x , y );
 
-//# define COL(x)				ft_putstr_color( x )
-
-# define RET(x, y)			{ft_putstr_color("ERR: ",COL_RED);\
-		ft_putstr_color( x ,COL_LIGHT_RED);return( y );}
+# define RET(x, y)	{FC("ERR: ",COL_RED);FC( x ,COL_LIGHT_RED);return( y );}
 
 enum						e_error_type
 {
