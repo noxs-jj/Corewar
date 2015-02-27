@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <sys/types.h>
 
-# define TIME_USLEEP		10000
+# define TIME_USLEEP		5000
 # define LOG				1
 # define PATH_DEBUGG		"../log/corewar.log"
 
@@ -171,6 +171,7 @@ typedef	struct			s_data
 	unsigned int 		iCheckCycles;
 	unsigned int 		iMaxCheck;
 	unsigned int 		nbrWinner;
+	unsigned int 		ncurseSpeed;
 }						t_data;
 
 // Corewar bin
