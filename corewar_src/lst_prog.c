@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 13:08:53 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 16:34:08 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/27 14:37:52 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ void	init_reg(t_header *new)
 	while (i < REG_NUMBER + 1)
 	{
 		ft_bzero(new->reg[i], REG_SIZE);
+		i++;
+	}
+}
+
+void	cpy_reg(t_header *src, t_header *cpy)
+{
+	int i;
+
+	i = 0;
+	while (i <= REG_NUMBER)
+	{
+		ft_strncpy(cpy->reg[i], src->reg[i], REG_SIZE);
 		i++;
 	}
 }
@@ -40,6 +52,7 @@ void	copyProg(t_data *d, t_header *src, t_header *cpy)
 	cpy->prog_size = src->prog_size;
 	ft_strcpy(cpy->prog, src->prog);
 	ft_strcpy(cpy->comment, src->comment);
+	cpy_reg(src, cpy);
 }
 
 t_header *lastProg(t_data *d)
