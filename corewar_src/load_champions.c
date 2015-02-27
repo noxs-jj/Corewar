@@ -14,9 +14,9 @@
 
 int		load_champions(t_data *d)
 {
-	t_header *prog;
-	int	index;
-	int i;
+	t_header 	*prog;
+	int			index;
+	int 		i;
 
 	index = 0;
 	prog = d->prog;

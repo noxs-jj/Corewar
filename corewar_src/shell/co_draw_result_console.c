@@ -12,15 +12,13 @@
 
 #include "../../includes/render.h"
 
-//le joueur x(nom_champion) a gagne
-
-void	drawResultConsole(t_data *d)
+void	draw_result_console(t_data *d)
 {
 	t_header *prog;
 
 	if (true == d->graphActiv)
 	{
-		renderClose(d);
+		render_close(d);
 		sleep(1);
 	}
 	if (999 != d->nbrWinner && -1 == d->dump)
@@ -30,12 +28,11 @@ void	drawResultConsole(t_data *d)
 		ft_putstr("\t\tle joueur ");
 		if ((prog = searchProg(d, d->nbrWinner)) == NULL)
 		{
-			writeL("error in drawResultConsole");
+			writeL("Error in drawResultConsole");
 			return ;
 		}
-		ft_putstr(prog->prog_name); // player number
+		ft_putstr(prog->prog_name);
 		ft_putstr(" a gagne\n");
-		ft_putstr("#######################################################\n");
 	}
 	else if (-1 == d->dump)
 	{

@@ -13,7 +13,7 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-void	renderClose(t_data *d)
+void	render_close(t_data *d)
 {
 	refresh();
 	wrefresh(d->window);

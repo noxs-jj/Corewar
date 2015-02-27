@@ -20,54 +20,40 @@ LIB = ../libft/libft.a
 
 NAME = corewar
 
-SRCS =	main.c \
-		arg_dump.c \
+SRCS =	arg_dump.c \
+		changeMemVal.c \
+		checkNextOp.c \
 		cycle.c \
-		init_start.c \
-		print_error.c \
-		writeL.c \
+		execOp.c \
+		exit_free.c \
+		ft_hex2Dec.c \
+		gameStart.c \
 		getData.c \
-		ncurse/nc_LegendColumn.c \
-		ncurse/nc_LegendInfoValue.c \
-		ncurse/nc_LegendPlayerValue.c \
-		ncurse/nc_LegendSentence.c \
+		getOpArgs.c \
+		init_mem.c \
+		init_prog.c \
+		init_start.c \
+		isValidRegister.c \
+		load_champions.c \
+		lst_prog.c \
+		main.c \
 		ncurse/nc_close_free.c \
-		ncurse/nc_draw_scene.c \
-		ncurse/nc_init.c \
-		ncurse/nc_keyboard.c \
-		ncurse/nc_legendPlayerSentence.c \
-		ncurse/nc_renderLegendPlayerValue1.c \
-		ncurse/nc_renderLegendPlayerValue2.c \
-		ncurse/nc_renderLegendPlayerValue3.c \
-		ncurse/nc_renderLegendPlayerValue4.c \
 		ncurse/nc_color_champ1.c \
 		ncurse/nc_color_champ2.c \
 		ncurse/nc_color_champ3.c \
 		ncurse/nc_color_champ4.c \
-		shell/co_drawResultConsole.c \
-		shell/co_infoPlayer1.c \
-		shell/co_infoPlayer2.c \
-		shell/co_infoPlayer3.c \
-		shell/co_infoPlayer4.c \
-		shell/co_renderShell.c \
-		shell/co_showInitPlayers.c \
-		shell/co_troll.c \
-		exit_free.c \
-		read_files.c \
-		init_prog.c \
-		lst_prog.c \
-		init_mem.c \
-		putHexNbr.c \
-		load_champions.c \
-		changeMemVal.c \
-		gameStart.c \
-		execOp.c \
-		checkNextOp.c \
-		readOpCode.c \
-		getOpArgs.c \
-		ft_hex2Dec.c \
-		pcAdvance.c \
-		isValidRegister.c \
+		ncurse/nc_draw_scene.c \
+		ncurse/nc_init.c \
+		ncurse/nc_keyboard.c \
+		ncurse/nc_legend_column.c \
+		ncurse/nc_legend_info_value.c \
+		ncurse/nc_legend_player_sentence.c \
+		ncurse/nc_legend_player_value.c \
+		ncurse/nc_legend_sentence.c \
+		ncurse/nc_render_legend_player_value1.c \
+		ncurse/nc_render_legend_player_value2.c \
+		ncurse/nc_render_legend_player_value3.c \
+		ncurse/nc_render_legend_player_value4.c \
 		op/op_add.c \
 		op/op_aff.c \
 		op/op_and.c \
@@ -83,7 +69,21 @@ SRCS =	main.c \
 		op/op_sti.c \
 		op/op_sub.c \
 		op/op_xor.c \
-		op/op_zjump.c
+		op/op_zjump.c \
+		pcAdvance.c \
+		print_error.c \
+		putHexNbr.c \
+		read_files.c \
+		readOpCode.c \
+		shell/co_draw_result_console.c \
+		shell/co_info_player1.c \
+		shell/co_info_player2.c \
+		shell/co_info_player3.c \
+		shell/co_info_player4.c \
+		shell/co_render_shell.c \
+		shell/co_show_init_players.c \
+		shell/co_troll.c \
+		writeL.c
 
 OBJS = $(SRCS:.c=.o)
 

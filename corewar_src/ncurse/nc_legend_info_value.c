@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_LegendInfoValue.c                               :+:      :+:    :+:   */
+/*   nc_legend_info_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,15 +13,17 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-/* "value Cycle/second limit : 0"	 */
-/* "value of Cycle: 0" */
-/* "value of processes : 0" */
-/* "CYCLE_TO_DIE : value" */
-/* "CYCLE_DELTA : value" */
-/* "NBR_LIVE : value" */
-/* "MAX_CHECKS : value" */
+/*
+** "value Cycle/second limit : 0"
+** "value of Cycle: 0"
+** "value of processes : 0"
+** "CYCLE_TO_DIE : value"
+** "CYCLE_DELTA : value"
+** "NBR_LIVE : value"
+** "MAX_CHECKS : value"
+*/
 
-void	renderLegendInfoValue(t_data *d)
+void	render_legend_info_value(t_data *d)
 {
 	wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, S_DEFAULT_VALUE);

@@ -28,5 +28,4 @@ void	color_champ4(t_data *d, int i)
 	}
 	else
 		d->caseColor = COLOR_PAIR(4);
-	
 }

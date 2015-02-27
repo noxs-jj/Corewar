@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_LegendColumn.c                                  :+:      :+:    :+:   */
+/*   nc_legend_column.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-void	renderLegendColumn(t_data *d)
+void	render_legend_column(t_data *d)
 {
 	int y;
 

@@ -27,5 +27,5 @@ void	color_champ3(t_data *d, int i)
 		d->map[i].recent--;
 	}
 	else
-		d->caseColor = COLOR_PAIR(3);	
+		d->caseColor = COLOR_PAIR(3);
 }

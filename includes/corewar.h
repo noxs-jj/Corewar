@@ -42,13 +42,13 @@
 # define DIR_CODE				2
 # define IND_CODE				3
 
-# define MAX_PLAYERS				4
-# define MAX_ARGS_NUMBER			(4 + 3 * MAX_PLAYERS)
+# define MAX_PLAYERS			4
+# define MAX_ARGS_NUMBER		(4 + 3 * MAX_PLAYERS)
 # define PLAYER_NBR				4294967295
 
 # define MEM_SIZE				(4 * 1024)
-# define IDX_MOD					(MEM_SIZE / 8)
-// #define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2) // original
+# define IDX_MOD				(MEM_SIZE / 8)
+// #define CHAMP_MAX_SIZE		(MEM_SIZE / MAX_PLAYERS + 2) // original
 # define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
 
 # define COMMENT_CHAR			'#'
@@ -62,10 +62,10 @@
 // #define COMMENT_CMD_STRING		".comment"
 
 
-# define CYCLE_TO_DIE			5000	// default 1536 test winner with 50
+# define CYCLE_TO_DIE			150	// default 1536 test winner with 50
 # define CYCLE_DELTA			50		// default 50
 # define NBR_LIVE				21		// default 21
-# define MAX_CHECKS				10		// default 10 test winner with 2
+# define MAX_CHECKS				2		// default 10 test winner with 2
 
 /*
 **
@@ -250,36 +250,36 @@ static const t_opfunc	g_opfunc[] =
 
 
 // NCurses
-int 			renderInit(t_data *d);
-void			renderClose(t_data *d);
-void			renderDraw(t_data *d);
-void			renderInitPair(void);
-void			renderLegendColumn(t_data *d);
-void			renderLegendInfoValue(t_data *d);
-void			renderLegendPlayerValue(t_data *d);
-void			renderLegendPlayerValue1(t_data *d);
-void			renderLegendPlayerValue2(t_data *d);
-void			renderLegendPlayerValue3(t_data *d);
-void			renderLegendPlayerValue4(t_data *d);
-void			renderLegendSentence(t_data *d);
-void 			renderLegendPlayerSentence(t_data *d);
+int 			render_init(t_data *d);
+void			render_close(t_data *d);
+void			render_draw(t_data *d);
+void			render_init_pair(void);
+void			render_legend_column(t_data *d);
+void			render_legend_info_value(t_data *d);
+void			render_legend_player_value(t_data *d);
+void			render_legend_player_value1(t_data *d);
+void			render_legend_player_value2(t_data *d);
+void			render_legend_player_value3(t_data *d);
+void			render_legend_player_value4(t_data *d);
+void			render_legend_sentence(t_data *d);
+void 			render_legend_player_sentence(t_data *d);
 void			color_champ1(t_data *d, int i);
 void			color_champ2(t_data *d, int i);
 void			color_champ3(t_data *d, int i);
 void			color_champ4(t_data *d, int i);
 
 // Shell Render
-void			co_infoPlayer1(t_data *d, t_header *prog);
-void			co_infoPlayer2(t_data *d, t_header *prog);
-void			co_infoPlayer3(t_data *d, t_header *prog);
-void			co_infoPlayer4(t_data *d, t_header *prog);
+void			co_info_player1(t_data *d, t_header *prog);
+void			co_info_player2(t_data *d, t_header *prog);
+void			co_info_player3(t_data *d, t_header *prog);
+void			co_info_player4(t_data *d, t_header *prog);
 void			co_troll_all(void);
 void			co_troll0(void);
 void			co_troll1(void);
 void			co_troll2(void);
 void			co_troll3(void);
-void			co_showInitPlayers(t_data *d);
-void			drawResultConsole(t_data *d);
-void			renderShell(t_data *d);
+void			co_show_init_players(t_data *d);
+void			draw_result_console(t_data *d);
+void			render_shell(t_data *d);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_renderLegendPlayerValue1.c                      :+:      :+:    :+:   */
+/*   nc_render_Legend_player_value1.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,14 +13,16 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-/* "Player 1 -> champName" */
-/* "Player 1: Last live : value" */
-/* "Player 1: Lives period : value" */
+/*
+** "Player 1 -> champName"
+** "Player 1: Last live : value"
+** "Player 1: Lives period : value"
+*/
 
-void	renderLegendPlayerValue1(t_data *d)
+void	render_legend_player_value1(t_data *d)
 {
 	t_header *prog;
-	
+
 	if ((prog = searchProg(d, 1)) == NULL)
 		return ;
 	wattron(d->window, COLOR_PAIR(1) | A_BOLD);

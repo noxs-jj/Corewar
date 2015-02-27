@@ -47,10 +47,6 @@ unsigned int	ft_hex2Dec(char *str)
 		i++;
 		len--;
 	}
-	// if (result == 2014)
-	// 	writeL("Test success");
-	// else
-	// 	writeL("Test failed");
 	return (result);
 }
 
@@ -74,9 +70,5 @@ int				ft_hex2intdec(char *str)
 		i++;
 		len--;
 	}
-	// if (result == 2014)
-	// 	writeL("Test success");
-	// else
-	// 	writeL("Test failed");
 	return (result);
 }
