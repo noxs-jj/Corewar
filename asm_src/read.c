@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:19:58 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:35:23 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 ** - if the line is of the type 'label: inst', add_line() splits the line
 ** into two lines: 'label:' and 'inst'.
 ** WARNING: if no inst follows the label, then only adds the label!
+** - the final comments are removed in this file;
 */
 
 static int	init_line(t_file *file, char *str, size_t i, int line_type)

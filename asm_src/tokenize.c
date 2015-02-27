@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:23:56 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:38:51 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static int	get_token_type(t_token *token, size_t len)
 		token->type = T_A_REG;
 	else if ((token->str)[0] == LABEL_CHAR)
 		token->type = T_A_INDLAB;
-	else if ((token->str)[0] == FINAL_COMMENT_CHAR)
-		token->type = T_F_COMMENT;
 	else
 		token->type = T_A_IND;
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:12:50 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:34:34 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ extern t_op	g_op_tab[17];
 int	has_name(t_file *file)
 {
 	if (!(file->has_name))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		return (0);
+	return (1);
 }
 
 int	is_only_whitespace(const char *s)
@@ -40,20 +40,6 @@ int	is_only_whitespace(const char *s)
 		++i;
 	}
 	return (1);
-}
-
-int	has_final_comment(const char *str)
-{
-	register size_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == FINAL_COMMENT_CHAR)
-			return (1);
-		++i;
-	}
-	return (0);
 }
 
 int	has_right_params(t_line *line)
