@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 15:02:02 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/24 19:45:31 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 13:44:37 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,9 @@ int			ft_isprint(int c);
 int			ft_isspace(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
+
+int			ft_isnumeric(const char *s);
+int			ft_aredigits(const char *s);
 
 /*
 ** ft_list1.c

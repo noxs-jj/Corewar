@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:05 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:34:16 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 14:24:18 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		has_right_params(t_line *line);
 int		check_label(char *s);
 
 /*
-** int get_label_value(t_list *tokens, t_token *token)
+** int get_param_value(t_list *tokens, t_token *token)
 */
 
 int		get_param_value(t_list *tokens, t_line *line, t_token *token);

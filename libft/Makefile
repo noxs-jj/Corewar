@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 11:55:12 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/24 19:44:30 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/27 13:44:08 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -34,7 +34,8 @@ SRC			=	ft_memset.c ft_memcpy.c	\
 				ft_strpos.c	\
 				ft_strcmp.c	\
 				ft_atoi.c ft_itoa.c	\
-				ft_is.c	ft_to.c\
+				ft_is.c	ft_to.c \
+				ft_isnumeric.c	\
 				ft_memalloc.c	\
 				ft_strnew.c ft_strdel.c ft_strclr.c	\
 				ft_map_iter.c	\

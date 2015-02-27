@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 12:22:04 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 14:07:35 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ static int	get_token_type(t_token *token, size_t len)
 		token->type = T_A_REG;
 	else if ((token->str)[0] == LABEL_CHAR)
 		token->type = T_A_INDLAB;
-	else
+	else if (ft_aredigits(token->str))
 		token->type = T_A_IND;
+	else
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -74,10 +76,9 @@ static int	add_token(t_line *line, int i, int j, int id)
 	token->value = -1;
 	token->type = T_UNKNOWN;
 	if (get_token_type(token, ft_strlen(token->str)) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (token->type == T_LABEL && check_label(token->str) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (token->type == T_A_DLAB && check_label(token->str) == EXIT_FAILURE)
+		RET("Wrong token type.\n", EXIT_FAILURE);
+	if ((token->type == T_LABEL && check_label(token->str) == EXIT_FAILURE)
+		|| (token->type == T_A_DLAB && check_label(token->str) == EXIT_FAILURE))
 		RET("Wrong chars used in label.\n", EXIT_FAILURE);
 	if (token->type == T_UNKNOWN)
 		RET("No token type found.\n", EXIT_FAILURE);

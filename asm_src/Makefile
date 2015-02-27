@@ -6,7 +6,7 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/29 16:38:06 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/26 13:44:45 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/27 14:23:29 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,7 @@ SRC 		=	main.c	\
 				parse.c	\
 				tokenize.c	\
 				convert.c	\
-				get_label_value.c	\
+				get_param_value.c	\
 				error.c	\
 				exit.c	\
 				op.c	\
