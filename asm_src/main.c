@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/26 19:45:06 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:08:24 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ static int	check_file_1(t_file *file, const char *filename)
 	len = ft_strlen(filename);
 	if (len < 3 || filename[len - 2] != '.' || filename[len - 1] != 's')
 		asm_error("The file doesn't end with .s.\n");
-	fprintf(stderr, "TEST1\n");
 	if ((file->fd_s = open(filename, O_RDONLY)) == -1)
 		asm_error("Couldln't open the .s file\n");
-	fprintf(stderr, "TEST1 fd = %d\n", file->fd_s);
 	if (!(file->name_s = ft_strdup(filename)))
 		asm_error("Strdup() failed.\n");
 	if (!(file->name_cor = (char *)ft_memalloc(sizeof(file->name_s))))
@@ -109,45 +107,27 @@ static void	check_asm_params(t_file *file, int ac, char *av[])
 	return ;
 }
 
-//OK - 23L
 int			main(int ac, char **av)
 {
 	t_file	*file;
 
 	if (!(file = (t_file *)malloc(sizeof(t_file))))
 		return (EXIT_FAILURE);
-
-	fprintf(stderr, "\nTEST0 - BEGIN\n");
-
 	init_file(file);
 	check_asm_params(file, ac, av);
-
-	fprintf(stderr, "\nTEST1 - INIT OK\n");
-
 	if (check_file_1(file, av[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-
-	fprintf(stderr, "\nTEST2 - CHECK OK\n");
-
 	if (read_file(file) == EXIT_FAILURE)
 		asm_error("Failed to read the file.\n");
-
-	fprintf(stderr, "\nTEST3 - READ OK\n");
-
 	if (parse_file(file) == EXIT_FAILURE)
 	{
 		print_detailed_error(file, av[1]);
 		exit_asm(file);
 		return (EXIT_FAILURE);
 	}
-
-	fprintf(stderr, "\nTEST4 - TOKENIZE OK\n");
-
 	if (check_file_2(file) && convert_file(file) == EXIT_SUCCESS)
 	{
-		fprintf(stderr, "\nTEST5 - CONVERT OK\n");
 		write_cor(file);
-		fprintf(stderr, "\nTEST6 - WRITE OK\n");
 		print_header(&(file->header), av[1], file->name_cor);
 	}
 	else
