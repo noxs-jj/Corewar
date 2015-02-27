@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 14:21:16 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 14:56:40 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	has_right_params(t_line *line)
 	return (1);
 }
 
-
 int	check_param(t_token *token, const char *s)
 {
 	register size_t	i;
@@ -83,8 +82,9 @@ int	check_param(t_token *token, const char *s)
 	{
 		while (s[i])
 		{
-			if (!ft_strchr(LABEL_CHARS, s[i]) && !(i == 0 && s[i]
-				== DIRECT_CHAR)	&& !((i == 0 || i == 1) && s[i] == LABEL_CHAR))
+			if (!ft_strchr(LABEL_CHARS, s[i])
+				&& !(i == 0 && s[i] == DIRECT_CHAR) && !((i == 0 || i == 1)
+					&& s[i] == LABEL_CHAR))
 				RET("Wrong char used in label.\n", EXIT_FAILURE);
 			++i;
 		}
@@ -94,23 +94,6 @@ int	check_param(t_token *token, const char *s)
 	{
 		if (ft_atoi(token->str + 1) > REG_NUMBER)
 			RET("Register number is too high.\n", EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
-}
-
-int	check_label(const char *s)
-{
-	register size_t	i;
-	char			*check;
-
-	check = LABEL_CHARS;
-	i = 0;
-	while (s[i])
-	{
-		if (!ft_strchr(check, s[i]) && !(i == 0 && s[i] == DIRECT_CHAR)
-			&& !((i == 0 || i == 1) && s[i] == LABEL_CHAR))
-			return (EXIT_FAILURE);
-		++i;
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:30:01 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:05:27 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 14:37:25 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	translate_params(t_file *file, t_line *line, t_op *op)
 	while (tmp)
 	{
 		if (get_param_value(file->lines, line, TOKEN) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
+			RET("Couldn't translate parameters.\n", EXIT_FAILURE);
 		if (TOKEN->type == T_A_REG)
 			translate_token_value(TOKEN->value, &(line->bytecode[1
 				+ op->has_pcode + i]), T_REG_LEN, &i);
@@ -120,9 +120,9 @@ int			convert_file(t_file *file)
 		if (LINE->type == T_EXEC && LINE->tokens)
 		{
 			if (!(op = get_inst_code(LINE)))
-				return (EXIT_FAILURE);
+				RET("No instruction.\n", EXIT_FAILURE);
 			if (!(LINE->tokens->next))
-				return (EXIT_FAILURE);
+				RET("No parameters for the instruction.\n", EXIT_FAILURE);
 			if (translate_params(file, LINE, op) == EXIT_FAILURE)
 				return (EXIT_FAILURE);
 		}

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 13:44:48 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 12:21:50 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 14:42:11 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	init_line(t_file *file, char *str, size_t i, int line_type)
 	char	*final_comment;
 
 	if (!(line = (t_line *)malloc(sizeof(t_line))))
-		return (EXIT_FAILURE);
+		RET("Malloc() failed.\n", EXIT_FAILURE);
 	line->tokens = NULL;
 	line->id = i;
 	line->code_len = 0;
@@ -108,10 +108,10 @@ int			read_file(t_file *file)
 		++i;
 	}
 	if (file->ret == -1)
-		return (EXIT_FAILURE);
+		RET("get_next_line() failed.\n", EXIT_FAILURE);
 	free(str);
 	file->nb_line = i;
 	if (i == 0)
-		return (EXIT_FAILURE);
+		RET("The file doesn't contain instructions.\n", EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:45:32 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 14:39:14 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int			parse_file(t_file *file)
 				check_comment(file, LINE);
 			if ((LINE->type == T_EXEC) && ((tokenize_line(LINE) == EXIT_FAILURE)
 				|| (!has_right_params(LINE))))
-				return (EXIT_FAILURE);
+				RET("Parsing failure.\n", EXIT_FAILURE);
 			if (LINE->type == T_LABEL)
 				(LINE->str)[ft_strpos(LINE->str, LABEL_CHAR)] = 0;
 			else
