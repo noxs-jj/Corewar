@@ -26,7 +26,7 @@
 void	render_legend_info_value(t_data *d)
 {
 	wattron(d->window, COLOR_PAIR(10) | A_BOLD);
-	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, S_DEFAULT_VALUE);
+	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, ft_itoa(d->ncurseSpeed));
 	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, ft_itoa(d->cycle));
 	mvwprintw(d->window, L_Y_PROCES, L_X_PROCES_VALUE, ft_itoa(d->players));
 	mvwprintw(d->window, L_Y_DIE, L_X_DIE_VALUE, ft_itoa(d->cycleDie));

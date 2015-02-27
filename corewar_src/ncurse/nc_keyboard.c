@@ -38,4 +38,20 @@ void	keyboard(void)
 			render_draw(d);
 		}
 	}
+	else if (key_input == 43 && d->ncurseSpeed != 250000) // + == 43
+	{
+		if (d->ncurseSpeed + 5000 < 250000)
+			d->ncurseSpeed += 5000;
+	}
+	else if (key_input == 45 && d->ncurseSpeed != 0) // - == 45
+	{
+		if (d->ncurseSpeed - 5000 >= 0)
+			d->ncurseSpeed -= 5000;
+	}
+	// else
+	// {
+	// 	writeL("Key _ Input");
+	// 	writeL(ft_itoa(key_input));
+	// 	sleep(2);
+	// }
 }

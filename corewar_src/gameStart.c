@@ -28,7 +28,7 @@ int	gameStart(t_data *d)
 	writeL(ft_itoa(d->dump));
 	while (d->run == true)
 	{
-		usleep(TIME_USLEEP);
+		usleep(d->ncurseSpeed);
 		if (false == d->pause)
 		{
 			checkNextOp(d); // check next champion's instruction (ptr by PC)
