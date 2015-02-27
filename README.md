@@ -16,7 +16,7 @@ C, Ncurse
 	-g
 
 #### On Ncurse show:
-	KEYBOARD '+'' to slow game speed
+	KEYBOARD '+' to slow game speed
 	KEYBOARD '-' to speed game speed
 
 
