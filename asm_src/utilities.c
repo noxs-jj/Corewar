@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printhex.c                                         :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/18 22:50:03 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/23 20:48:40 by fdeage           ###   ########.fr       */
+/*   Created: 2015/02/27 11:25:41 by fdeage            #+#    #+#             */
+/*   Updated: 2015/02/27 11:25:45 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include<stdio.h>
 
 char	*get_code(unsigned char n, char tab[2])
 {
@@ -27,6 +25,5 @@ char	*get_code(unsigned char n, char tab[2])
 		tab[1] = d + 87;
 	else
 		tab[1] = d + '0';
-	fprintf(stderr, "PRINTHEX: %c%c\n", tab[0], tab[1]);
 	return (tab);
 }
