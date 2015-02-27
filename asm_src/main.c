@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:08:24 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:17:33 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int			main(int ac, char **av)
 		exit_asm(file);
 		return (EXIT_FAILURE);
 	}
-	if (check_file_2(file) && convert_file(file) == EXIT_SUCCESS)
+	if (has_name(file) && convert_file(file) == EXIT_SUCCESS)
 	{
 		write_cor(file);
 		print_header(&(file->header), av[1], file->name_cor);
