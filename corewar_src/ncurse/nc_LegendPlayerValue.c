@@ -15,12 +15,12 @@
 
 void	renderLegendPlayerValue(t_data *d)
 {
-	if (d->players > 0)
+	if (d->realPlayers > 0)
 		renderLegendPlayerValue1(d);
-	if (d->players > 1)
+	if (d->realPlayers > 1)
 		renderLegendPlayerValue2(d);
-	if (d->players > 2)
+	if (d->realPlayers > 2)
 		renderLegendPlayerValue3(d);
-	if (d->players > 3)
+	if (d->realPlayers > 3)
 		renderLegendPlayerValue4(d);
 }

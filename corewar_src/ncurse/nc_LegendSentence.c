@@ -13,36 +13,34 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
+/* "** RUNNING **" || "** PAUSED **" */
+/* "Cycles/second limit :" */
+/* "Cycle :" */
+/* "Processes :" */
+/* "Live breakdown for current period : " + "[---]" */
+/* "Live breakdown for last period :" + "[---]" */
+/* "CYCLE_TO_DIE :" */
+/* "CYCLE_DELTA :" */
+/* "NBR_LIVE :" */
+/* "MAX_CHECKS :" */
+/* PAUSE */
+/* EXIT */
+
 void	renderLegendSentence(t_data *d)
 {
-	/* "** RUNNING **" || "** PAUSED **" */
 	mvwprintw(d->window, L_Y_STATUS, L_X_WRITE,
 		((d->pause == false) ? S_RUNNING : S_PAUSE));
-	/* "Cycles/second limit :" */
 	mvwprintw(d->window, L_Y_SEC_CLE, L_X_WRITE, S_CYCLE_SECOND);
-	/* "Cycle :" */
 	mvwprintw(d->window, L_Y_CYCLE, L_X_WRITE, S_CYCLE);
-	/* "Processes :" */
 	mvwprintw(d->window, L_Y_PROCES, L_X_WRITE, S_PROCESS);
-	/* "Live breakdown for current period : " + "[---]" */
 	mvwprintw(d->window, L_Y_BR_CURR, L_X_WRITE, S_BREAK_CURR);
 	mvwprintw(d->window, L_Y_BR_CURR_LINE, L_X_WRITE, S_DEFAULT_BAR);
-
-	/* "Live breakdown for last period :" + "[---]" */
 	mvwprintw(d->window, L_Y_BR_LAST, L_X_WRITE, S_BREAK_LAST);
 	mvwprintw(d->window, L_Y_BR_LAST_LINE, L_X_WRITE, S_DEFAULT_BAR);
-
-	/* "CYCLE_TO_DIE :" */
 	mvwprintw(d->window, L_Y_DIE, L_X_WRITE, S_CYCLE_DIE);
-	/* "CYCLE_DELTA :" */
 	mvwprintw(d->window, L_Y_DELTA, L_X_WRITE, S_CYCLE_DELTA);
-	/* "NBR_LIVE :" */
 	mvwprintw(d->window, L_Y_N_LIVE, L_X_WRITE, S_NBR_LIVE);
-	/* "MAX_CHECKS :" */
 	mvwprintw(d->window, L_Y_N_CHECK, L_X_WRITE, S_MAX_CHECKS);
-
-	/* PAUSE */
 	mvwprintw(d->window, L_Y_PAUSE, L_X_WRITE, S_KEY_PAUSE);
-	/* EXIT */
 	mvwprintw(d->window, L_Y_EXIT, L_X_WRITE, S_KEY_EXIT);
 }

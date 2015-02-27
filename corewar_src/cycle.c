@@ -43,7 +43,7 @@ void	checkCyles(t_data *d)
 				prog->alive = false;
 				writeL("player die");
 				writeL(ft_itoa(prog->number));
-				sleep(6);
+				//sleep(6);
 			}
 			if (prog->alive == true)
 				prog->liveNbr = 0;

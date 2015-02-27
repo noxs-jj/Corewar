@@ -34,7 +34,7 @@ int		execOp(t_data *d)
 			// exec func
 			writeL("playerNbr");
 			writeL(ft_itoa(prog->number));
-			usleep(10000);
+			//usleep(10000);
 			g_opfunc[prog->nextOp].func(d, prog);
 			prog->wait--;
 		}

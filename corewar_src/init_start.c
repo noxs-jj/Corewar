@@ -89,10 +89,10 @@ int 	checkparam(t_data *d, int ac, char **av)
 			return (print_error("REG_SIZE invalid"));
 		i++;
 	}
-	// if (d->players < 1)
-		// return (print_error("Min 2 Players"));
+	d->realPlayers = d->players + 1; // copy real number champions without fork for ncurses show 
+	if (d->players < 1)
+		return (print_error("Min 2 Players"));
 }
-
 int		init_start(t_data *d, int ac, char **av)
 {
 	if (ac < 3 || ac > MAX_ARGS_NUMBER)

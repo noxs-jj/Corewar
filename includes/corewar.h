@@ -19,7 +19,8 @@
 # include <unistd.h>
 # include <sys/types.h>
 
-# define LOG				1
+# define TIME_USLEEP		10000
+# define LOG				0
 # define PATH_DEBUGG		"../log/corewar.log"
 
 # define ERR_PARAM "./corewar [-dump nbr_cycles] [[-n number] champion.cor]..."
@@ -50,12 +51,12 @@
 // #define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 2) // original
 # define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
 
-# define COMMENT_CHAR				'#'
+# define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'
-# define DIRECT_CHAR				'%'
+# define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
 
-# define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 
 // #define NAME_CMD_STRING			".name"
 // #define COMMENT_CMD_STRING		".comment"
@@ -72,9 +73,9 @@
 
 // typedef char	t_arg_type;
 
-# define REG 1
-# define DIR 4 // or 2 if has idx
-# define IND 2
+# define REG 					1
+# define DIR 					4 // or 2 if has idx
+# define IND 					2
 
 
 # define T_REG					1 // registre : 01
@@ -155,6 +156,7 @@ typedef	struct			s_data
 	bool				run; // is run : y = true, n = false
 	t_case				*map;
 	int 				players; // player number
+	int 				realPlayers; // player number
 	int 				dump; // dump option activated if dump != -1
 	WINDOW				*window;
 	int					fdDebugg; // file debug fd
