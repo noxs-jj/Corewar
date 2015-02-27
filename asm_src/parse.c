@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:08:19 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:36:04 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:45:32 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	get_line_code_len(t_line *line)
 		return ;
 	if (op && op->has_pcode)
 		(line->code_len)++;
-	while (tmp)
+	while (tmp && op)
 	{
 		if (TOKEN->type == T_A_DIR && !(op->has_idx))
 			line->code_len += T_DIR_LEN;

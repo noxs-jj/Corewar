@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:53:07 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:38:51 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:46:36 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	add_token(t_line *line, int i, int j, int id)
 		RET("No matching opcode for the instruction.\n", EXIT_FAILURE);
 	ft_lstadd_back(&(line->tokens), ft_lstnew((void *)token, sizeof(t_token)));
 	free(token);
-	return (token->type);
+	return (EXIT_SUCCESS);
 }
 
 int			tokenize_line(t_line *line)
