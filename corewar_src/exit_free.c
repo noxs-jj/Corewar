@@ -17,7 +17,7 @@ void	exitFree(void)
 	t_data *d;
 
 	d = getData();
-	renderClose(d);
+	render_close(d);
 	if (LOG == 1)
 	{
 		writeL("Exit Success !!!");

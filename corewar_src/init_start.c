@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-static int checkNumber(t_data *d, int n)
+static int	checkNumber(t_data *d, int n)
 {
 	t_header *tmp;
 
@@ -44,7 +44,7 @@ static int	champion_number(t_data *d, int ac, char **av, int i)
 	return (i);
 }
 
-static int champion(t_data *d, int ac, char **av, int i)
+static int	champion(t_data *d, int ac, char **av, int i)
 {
 	int number;
 	t_header *prog;
@@ -60,7 +60,7 @@ static int champion(t_data *d, int ac, char **av, int i)
 	return (i);
 }
 
-int 	checkparam(t_data *d, int ac, char **av)
+int 		checkparam(t_data *d, int ac, char **av)
 {
 	int i;
 
@@ -93,7 +93,7 @@ int 	checkparam(t_data *d, int ac, char **av)
 	if (d->players < 1)
 		return (print_error("Min 2 Players"));
 }
-int		init_start(t_data *d, int ac, char **av)
+int			init_start(t_data *d, int ac, char **av)
 {
 	if (ac < 3 || ac > MAX_ARGS_NUMBER)
 		return (print_error(ERR_PARAM));

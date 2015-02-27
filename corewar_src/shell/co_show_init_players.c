@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   co_infoPlayer1.c                                   :+:      :+:    :+:   */
+/*   co_show_init_players.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/20 13:57:04 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/26 15:09:15 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/20 13:55:32 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/26 15:07:48 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/render.h"
 
-void	co_infoPlayer1(t_data *d, t_header *prog)
+void	co_show_init_players(t_data *d)
 {
-	ft_putstr("* Player 1, weighing ");
-	ft_putnbr(prog->prog_size);
-	ft_putstr(S_C_BYTES);
-	ft_putchar('"');
-	ft_putstr(prog->prog_name);
-	ft_putchar('"');
-	ft_putstr(" (");
-	ft_putchar('"');
-	ft_putstr(prog->comment);
-	ft_putchar('"');
-	ft_putstr(") !\n");
+	t_header	*prog;
+
+	if (d->players > 0 && (prog = searchProg(d, d->nbrWinner)) != NULL)
+		co_info_player1(d, prog);
+	if (d->players > 1 && (prog = searchProg(d, d->nbrWinner)) != NULL)
+		co_info_player2(d, prog);
+	if (d->players > 2 && (prog = searchProg(d, d->nbrWinner)) != NULL)
+		co_info_player3(d, prog);
+	if (d->players > 3 && (prog = searchProg(d, d->nbrWinner)) != NULL)
+		co_info_player4(d, prog);
 }

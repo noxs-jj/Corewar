@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_legendPlayerSentence.c                          :+:      :+:    :+:   */
+/*   nc_legend_player_sentence.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,9 +13,11 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-/* Player "Last live :" + "Lives in current period :" */
+/*
+** Player "Last live :" + "Lives in current period :"
+*/
 
-void renderLegendPlayerSentence(t_data *d)
+void render_legend_player_sentence(t_data *d)
 {
 	if (d->realPlayers > 0)
 	{

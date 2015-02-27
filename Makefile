@@ -14,7 +14,7 @@ CC =		$(CLANG)
 GCC =		/usr/local/bin/gcc
 CLANG =		/usr/bin/clang
 
-COMPIL =	$(CC) -Wall -Wextra -Werror
+COMPIL =	$(CC) -Wall -Wextra -Werror -pedantic
 
 BIN_ASM =		asm_src/asm
 BIN_COREWAR =	corewar_src/corewar

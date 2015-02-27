@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_LegendSentence.c                                :+:      :+:    :+:   */
+/*   nc_legend_sentence.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,22 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-/* "** RUNNING **" || "** PAUSED **" */
-/* "Cycles/second limit :" */
-/* "Cycle :" */
-/* "Processes :" */
-/* "Live breakdown for current period : " + "[---]" */
-/* "Live breakdown for last period :" + "[---]" */
-/* "CYCLE_TO_DIE :" */
-/* "CYCLE_DELTA :" */
-/* "NBR_LIVE :" */
-/* "MAX_CHECKS :" */
-/* PAUSE */
-/* EXIT */
+/*
+** "** RUNNING **" || "** PAUSED **"
+** "Cycles/second limit :"
+** "Cycle :"
+** "Processes :"
+** "Live breakdown for current period : " + "[---]"
+** "Live breakdown for last period :" + "[---]"
+** "CYCLE_TO_DIE :"
+** "CYCLE_DELTA :"
+** "NBR_LIVE :"
+** "MAX_CHECKS :"
+** PAUSE
+** EXIT
+*/
 
-void	renderLegendSentence(t_data *d)
+void	render_legend_sentence(t_data *d)
 {
 	mvwprintw(d->window, L_Y_STATUS, L_X_WRITE,
 		((d->pause == false) ? S_RUNNING : S_PAUSE));
