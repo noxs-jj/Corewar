@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2015/02/24 12:39:14 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:16:23 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct					s_op
 */
 
 typedef char					t_arg_type;
-
 
 # define T_REG					1
 # define T_DIR					2
