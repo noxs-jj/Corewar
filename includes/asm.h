@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 17:30:15 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:17:07 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:40:24 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,6 @@
 
 # include "libft.h"
 # include "op.h"
-
-//TODO:
-/* virer */
-#include<stdio.h>
-//error_handling: globale t_error ?
-//TODO: Makefile harmonise
-//TODO: libft unique
-//TODO : commentaites en ";" en fin de ligne (pas oblig)
-//TODO: if ref to a label that doesnt exist
-//TODO: check if params type are legit
-
-//TODO ERROR:
-// - reg number > REG_NUMBER
-// - label en dehors du file
-// - type d'arg incorrect
-// - is not number nor label -> lexical error
-// - %:label: is label_chars
-// file that doenst exist: error message
 
 # define LINE				((t_line *)(tmp->content))
 # define TOKEN				((t_token *)(tmp->content))
@@ -51,19 +33,18 @@ enum						e_error_type
 enum						e_token_type
 {
 	T_UNKNOWN = 0,
-	T_CMD_NAME,  //1
-	T_CMD_COMMENT,  //2
-	T_COMMENT,  //3
-	T_F_COMMENT,  //4
-	T_EXEC,  //5
-	T_STRING, //6
-	T_LABEL, //7
-	T_INSTRUCTION, //8
+	T_CMD_NAME,
+	T_CMD_COMMENT,
+	T_COMMENT,
+	T_EXEC,
+	T_STRING,
+	T_LABEL,
+	T_INSTRUCTION,
 	T_A_REG = 9,
 	T_A_DIR = 10,
 	T_A_IND = 12,
-	T_A_DLAB, //13
-	T_A_INDLAB, //14
+	T_A_DLAB,
+	T_A_INDLAB,
 };
 
 # define T_DIR_LEN			4
@@ -73,23 +54,22 @@ enum						e_token_type
 
 typedef struct				s_token
 {
-	t_op					*op; //malloc
-	char					*str; //malloc
+	t_op					*op;
+	char					*str;
 	size_t					id;
 	int						value;
 	enum e_token_type		type;
-}							t_token; //malloc !
+}							t_token;
 
 typedef struct				s_line
 {
 	t_list					*tokens;
 	size_t					id;
 	size_t					code_len;
-	char					*str; //malloc
+	char					*str;
 	size_t					nb_params;
 	enum e_token_type		type;
-	int						has_final_comment; //doubl0on ?
-	char					bytecode[14]; //MAX: 1 + 1 + 4 + 4 + 4, no EOL
+	char					bytecode[14];
 	char					pcode;
 }							t_line;
 
@@ -100,15 +80,14 @@ typedef struct				s_file
 {
 	int						options;
 	t_header				header;
-	t_list					*lines; //malloc
-	char					*name_s; //malloc
-	char					*name_cor; //malloc
+	t_list					*lines;
+	char					*name_s;
+	char					*name_cor;
 	size_t					nb_line;
 	size_t					has_name;
 	int						ret;
 	int						fd_s;
 	int						fd_cor;
-	//int						error; //cf e_error_type
 }							t_file;
 
 #endif
