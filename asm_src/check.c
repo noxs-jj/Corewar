@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 23:34:21 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 11:01:08 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 11:12:50 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ extern t_op	g_op_tab[17];
 ** process
 */
 
-int	check_file_2(t_file *file)
+int	has_name(t_file *file)
 {
-	(void)file;
-	return (1);
+	if (!(file->has_name))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	is_only_whitespace(const char *s)
