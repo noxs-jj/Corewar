@@ -6,14 +6,14 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 17:39:15 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/27 13:56:46 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewarOpTab.h"
 
 /*
-** need test
+** tested OK
 ** T_DIR
 */
 

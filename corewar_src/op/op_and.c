@@ -6,14 +6,14 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 13:48:18 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/27 13:55:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewarOpTab.h"
 
 /*
-** not tested
+** tested OK
 ** T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG
 ** change carry
 */

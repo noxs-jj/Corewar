@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 14:42:46 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/27 13:57:37 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int		op_sti(t_data *d, t_header *player)
 	// writeL("reg");
 	// writeL(ft_itoa(reg));
 	if (ft_strncmp(&player->codage[2], "01", 2) == 0
-		&& isValidRegister(ft_hex2Dec(player->opArgs[1])) < 0)
+		&& isValidRegister(ft_hex2Dec(player->opArgs[1])) >= 0)
 		value[0] = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[1])]);
 	else
 		value[0] = ft_hex2Dec(player->opArgs[1]);
 	if (ft_strncmp(&player->codage[4], "01", 2) == 0
-		&& isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
+		&& isValidRegister(ft_hex2Dec(player->opArgs[2])) >= 0)
 		value[1] = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[2])]);
 	else
 		value[1] = ft_hex2Dec(player->opArgs[1]);
