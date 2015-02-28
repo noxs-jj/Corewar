@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 14:23:56 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 14:57:51 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/28 17:18:56 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			get_param_value(t_list *lines, t_line *srcline, t_token *token)
 			}
 			tmp = tmp->next;
 		}
-		RET("Couldn't find the label.\n", EXIT_FAILURE);
+		RET("Reference to an inexistent label.\n", EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }

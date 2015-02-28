@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:17:22 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/25 18:36:47 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/28 17:19:17 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int			exit_asm(t_file *file)
 	{
 		ft_putstr_color("Leaks mode activated...\n", COL_YELLOW);
 		while (42)
-			usleep(1);
+			usleep(10000);
 	}
 	return (EXIT_SUCCESS);
 }
