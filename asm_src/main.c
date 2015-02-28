@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 11:15:30 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/27 14:50:59 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/27 20:24:27 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,18 @@ static void	print_header(t_header *header, char *file_s, char *file_cor)
 static void	check_asm_params(t_file *file, int ac, char *av[])
 {
 	if (ac == 1)
-		asm_error("No file entered. Use: ./asm filename [-v] [-l].\n");
+		asm_error("No file entered. Use: ./asm filename [-l].\n");
 	else if (ac == 3)
 	{
-		if (!ft_strcmp(av[2], "-v"))
-			file->options |= T_OPTION_VERBOSE;
-		else if (!ft_strcmp(av[2], "-l"))
+		if (!ft_strcmp(av[2], "-l"))
 			file->options |= T_OPTION_LEAKS;
+		else if (!(av[2][0]) == '-')
+			asm_error("Option not recognized. Use: ./asm filename [-l].\n");
 		else
-			asm_error("Too many files. Use: ./asm filename [-v] [-l].\n");
-	}
-	else if (ac == 4)
-	{
-		if (!ft_strcmp(av[2], "-v") || !ft_strcmp(av[3], "-v"))
-			file->options |= T_OPTION_VERBOSE;
-		if (!ft_strcmp(av[2], "-l") || !ft_strcmp(av[3], "-l"))
-			file->options |= T_OPTION_LEAKS;
+			asm_error("Too many files. Use: ./asm filename [-l].\n");
 	}
 	else if (ac != 2)
-		asm_error("Too many files entered. Use: ./asm filename [-v] [-l].\n");
+		asm_error("Too many files entered. Use: ./asm filename [-l].\n");
 	return ;
 }
 
