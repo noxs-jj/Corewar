@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 14:37:37 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/16 16:57:37 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/28 17:16:24 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** 5 will give        5 with all == 0
 */
 
-void	ft_printchar_hex(unsigned char n, int fd, int *print_all)
+void	ft_printchar_hex(uint8_t n, int fd, int *print_all)
 {
 	unsigned int	g;
 	unsigned int	d;
