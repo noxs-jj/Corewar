@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 13:55:03 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 11:18:24 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,8 @@ int		op_and(t_data *d, t_header *player)
 	int ret;
 	unsigned int reg;
 	unsigned int value[2];
-	char		str[9];
+	char		str[REG_SIZE + 1];
 	
-	// writeL("op and");
-	// writeL("codage");
-	// writeL(player->codage);
-	// writeL("codage data");
-	// writeL(d->prog[id].codage);
-	// sleep(5);
 	writeL("--- op_and ---");
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
@@ -46,19 +40,14 @@ int		op_and(t_data *d, t_header *player)
 		value[1] = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[1])]);
 	else
 		value[1] = ft_hex2Dec(player->opArgs[1]);
-	
 	ft_bzero(player->reg[reg], REG_SIZE);
-	ft_bzero(str, 9);
-
+	ft_bzero(str, REG_SIZE + 1);
 	ft_putHexBNbr(value[0] & value[1], str);
 	ft_strcpy(player->reg[reg], str);
 	if (value[0] & value[1])
 		player->carry = true;
 	else
 		player->carry = false;
-	// writeL("adv op and");
-	// writeL(ft_itoa(ret));
-	// sleep(5);
 	pcAdvance(d, player, ret);
 	return (0);
 }

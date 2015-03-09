@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 13:50:41 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/27 19:04:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,8 @@ int				changeMemVal(t_data *d, int id, int where, char *str);
 void			arg_dump(t_data *d);
 void			checkCyles(t_data *d);
 int				getOpArgs(t_data *d, t_header *prog);
-
+int				get_arg_int(char *str);
+int				get_arg_modulo(int n, int modulo);
 void			init_reg(t_header *new);
 t_header		*lastProg(t_data *d);
 t_header		*searchProg(t_data *d, int number);

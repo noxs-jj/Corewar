@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 13:08:53 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 14:37:52 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 12:05:45 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_header *newProg(int number)
 	if ((new = (t_header *)malloc(sizeof(t_header))) == NULL)
 	{
 		writeL(ERR_PROG_ALLOC);
+		sleep(5);														// remove
 		return (NULL);
 	}
 	new->carry = false;
@@ -113,14 +114,21 @@ int		addProg(t_data *d, t_header *new)
 	if (new == NULL)
 		return (print_error(ERR_PROG_ALLOC));
 	if (d->prog == NULL)
+	{
+		// writeL("create lst");
+		// sleep(5);
 		d->prog = new;
+	}
 	else
 	{
-		tmp = d->prog;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
+		tmp = lastProg(d);
+		// tmp = d->prog;
+		// while (tmp->next != NULL)
+		// 	tmp = tmp->next;
 		new->prev = tmp;
 		tmp->next = new;
+		// writeL("add lst");
+		// sleep(5);
 	}
 	return (0);
 }

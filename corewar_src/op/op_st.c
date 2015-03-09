@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 14:52:21 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 14:35:00 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@ int		op_st(t_data *d, t_header *player)
 	unsigned int 	reg;
 	int 			value;
 	char			str[REG_SIZE + 1];
-	char			tmp[DIR + 1];
 
 	writeL("--- op_st ---");
-	ft_memset(tmp, 'f', DIR);
-	tmp[DIR] = '\0';
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[0])) < 0)
 		return (ret);
@@ -38,10 +35,8 @@ int		op_st(t_data *d, t_header *player)
 		&& isValidRegister(ft_hex2Dec(player->opArgs[1])) >= 0)
 	{
 		reg = ft_hex2Dec(player->opArgs[0]);
-		if (player->reg[reg][0] == 'f')
-			value = ((int)(ft_hex2Dec(player->reg[reg]) - ft_hex2Dec(tmp) - 1) % -IDX_MOD);
-		else
-			value = (ft_hex2Dec(player->reg[reg]) % IDX_MOD);
+		value = get_arg_int(player->reg[reg]);
+		value = get_arg_modulo(value, IDX_MOD);
 		reg = ft_hex2Dec(player->opArgs[1]);
 		ft_bzero(str, REG_SIZE + 1);
 		ft_putHexBNbr(value, str);
@@ -50,13 +45,14 @@ int		op_st(t_data *d, t_header *player)
 	}
 	else
 	{
-		if (player->opArgs[1][0] == 'f')
-			value = ((int)(ft_hex2Dec(player->opArgs[1]) - ft_hex2Dec(tmp) - 1) % -IDX_MOD);
-		else
-			value = (ft_hex2Dec(player->opArgs[1]) % IDX_MOD);
+		value = get_arg_int(player->opArgs[1]);
+		value = get_arg_modulo(value, IDX_MOD);
 		reg = ft_hex2Dec(player->opArgs[0]);
-		changeMemVal(d, player->number, player->indexPC + value, player->reg[reg]); // + 1?
+		changeMemVal(d, player->number,
+			(player->indexPC + value + MEM_SIZE) % MEM_SIZE, player->reg[reg]);
 	}
+	player->carry = true;
+	pcAdvance(d, player, ret);
 }
 
 

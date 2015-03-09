@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 14:34:36 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 12:14:40 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 	}
 }
 
+
+static void clear_arg(t_header *prog)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		ft_bzero(prog->opArgs[i], T_LAB);
+		i++;
+	}
+}
+
 /*
 ** read Op args and put them in d->prog[player].opArgs
 ** must correct return (index) value
@@ -47,7 +60,8 @@ int		getOpArgs(t_data *d, t_header *prog)
 	t_case *args;
 
 	i = 0;
-	ft_bzero(prog->opArgs, T_LAB * 4 * sizeof(char));
+	clear_arg(prog);
+	// ft_bzero(prog->opArgs, T_LAB * 4 * sizeof(char));
 	index = 0;
 
 	// writeL("getOpArgs");

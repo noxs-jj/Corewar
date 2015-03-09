@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:13:56 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 14:45:22 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 11:24:22 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		checkNextOp(t_data *d)
 			else
 				prog->wait = -1;
 			// check PC for player d->prog[player]
-			//sleep(1);
+			// sleep(5);
 		}
 		prog = prog->next;
 	}

@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/26 13:42:11 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/02/27 17:20:18 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCS =	arg_dump.c \
 		exit_free.c \
 		ft_hex2Dec.c \
 		gameStart.c \
+		get_arg_int.c \
+		get_arg_modulo.c \
 		getData.c \
 		getOpArgs.c \
 		init_mem.c \

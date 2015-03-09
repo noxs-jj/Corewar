@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 13:56:46 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/02/27 17:51:04 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,14 @@
 int		op_lfork(t_data *d, t_header *player)
 {
 	int				ret;
-	unsigned int	result;
+	int				result;
 	t_header		*prog;
-	char	tmp[DIR + 1];
-
-	ft_memset(tmp, 'f', DIR);
-	tmp[DIR] = '\0';
 
 	ft_bzero(player->codage, 9);
 	ft_strcpy(player->codage, "10000000");
-	if ((ret = getOpArgs(d, player)) < 0) // check reg valid registre
-		return (ret);
 	if ((ret = getOpArgs(d, player)) < 0)
-	{
-		writeL("arg wrong");
-		//sleep(5);
 		return (ret);
-	}
-
-	if (player->opArgs[0][0] == 'f')
-	{
-		writeL("yes");
-		result = (int)(ft_hex2Dec(player->opArgs[0]) - ft_hex2Dec(tmp) - 1);
-	}
-	else
-	{
-		writeL("no");
-		result = ft_hex2Dec(player->opArgs[0]);
-	}
-	writeL("test");
+	result = get_arg_int(player->opArgs[0]);
 	if (addProg(d, newProg(player->number)) < 0)
 	{
 		writeL("new prog failed");
