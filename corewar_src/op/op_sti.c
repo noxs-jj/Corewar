@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 14:43:22 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 14:45:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** change carry ?
 ** has idx
 */
-
+	
 int		op_sti(t_data *d, t_header *player)
 {
 	int ret;
