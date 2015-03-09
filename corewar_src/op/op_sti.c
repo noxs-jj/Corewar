@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 14:35:41 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/09 14:43:22 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 ** change carry ?
 ** has idx
 */
-// 01 10 01 00
-//  04     0190 + 02
 
 int		op_sti(t_data *d, t_header *player)
 {
@@ -49,15 +47,7 @@ int		op_sti(t_data *d, t_header *player)
 	else
 		value += get_arg_int(player->opArgs[2]);
 	value = get_arg_modulo(value - 1, IDX_MOD);
-	// writeL("regNbr");
-	// writeL(ft_itoa(reg));
-	// writeL("reg content");
-	// writeL(player->reg[reg]);
-	// writeL("value");
-	// writeL(ft_itoa(value));
-
-	// sleep(3);
-	changeMemVal(d, player->number, player->indexPC + 1 + value, player->reg[reg]);
+	changeMemVal(d, player->number, (player->indexPC + 1 + value + MEM_SIZE) % MEM_SIZE, player->reg[reg]);
 	pcAdvance(d, player, ret);
 	return (0);
 }
