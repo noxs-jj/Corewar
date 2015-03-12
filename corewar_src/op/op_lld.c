@@ -26,6 +26,7 @@ int		op_lld(t_data *d, t_header *player)
 	int				i;
 	
 	writeL("--- op_lld ---");
+	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[1])) < 0)
 		return (ret);

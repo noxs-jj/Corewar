@@ -26,6 +26,7 @@ int		op_or(t_data *d, t_header *player)
 	char		str[REG_SIZE + 1];
 	
 	writeL("--- op_or ---");
+	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
 		return (ret);
@@ -44,10 +45,7 @@ int		op_or(t_data *d, t_header *player)
 	ft_bzero(str, REG_SIZE + 1);
 	ft_putHexBNbr(value[0] | value[1], str);
 	ft_strcpy(player->reg[reg], str);
-	if (value[0] | value[1])
-		player->carry = true;
-	else
-		player->carry = false;
+	player->carry = true;
 	pcAdvance(d, player, ret);
 	return (0);
 }

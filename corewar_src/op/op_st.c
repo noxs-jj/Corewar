@@ -28,6 +28,7 @@ int		op_st(t_data *d, t_header *player)
 	char			str[REG_SIZE + 1];
 
 	writeL("--- op_st ---");
+	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(ft_hex2Dec(player->opArgs[0])) < 0)
 		return (ret);
