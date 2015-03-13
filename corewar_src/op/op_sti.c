@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 14:45:03 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/12 17:19:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ int		op_sti(t_data *d, t_header *player)
 
 	if (ft_strncmp(&player->codage[2], "01", 2) == 0
 		&& isValidRegister(ft_hex2Dec(player->opArgs[1])) >= 0)
-		value = get_arg_int(player->reg[ft_hex2Dec(player->opArgs[1])]);
+		value = reg_to_int(d, player, ft_hex2Dec(player->opArgs[1]));
+		// value = get_arg_int(player->reg[ft_hex2Dec(player->opArgs[1])]);
 	else
 		value = get_arg_int(player->opArgs[1]);
 
 	if (ft_strncmp(&player->codage[4], "01", 2) == 0
 		&& isValidRegister(ft_hex2Dec(player->opArgs[2])) >= 0)
-		value += get_arg_int(player->reg[ft_hex2Dec(player->opArgs[2])]);
+		value += reg_to_int(d, player, ft_hex2Dec(player->opArgs[2]));
+		// value += get_arg_int(player->reg[ft_hex2Dec(player->opArgs[2])]);
 	else
 		value += get_arg_int(player->opArgs[2]);
 	value = get_arg_modulo(value - 1, IDX_MOD);

@@ -6,7 +6,7 @@
 #    By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/07 13:06:38 by vjacquie          #+#    #+#              #
-#    Updated: 2015/02/27 17:20:18 by vjacquie         ###   ########.fr        #
+#    Updated: 2015/03/12 14:16:03 by vjacquie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ SRCS =	arg_dump.c \
 		shell/co_render_shell.c \
 		shell/co_show_init_players.c \
 		shell/co_troll.c \
-		writeL.c
+		writeL.c \
+		hex_to_reg.c
 
 OBJS = $(SRCS:.c=.o)
 

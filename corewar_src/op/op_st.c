@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 14:35:00 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/12 17:29:53 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int		op_st(t_data *d, t_header *player)
 		&& isValidRegister(ft_hex2Dec(player->opArgs[1])) >= 0)
 	{
 		reg = ft_hex2Dec(player->opArgs[0]);
-		value = get_arg_int(player->reg[reg]);
+		value = reg_to_int(d, player, reg);
+		// value = get_arg_int(player->reg[reg]);
 		value = get_arg_modulo(value, IDX_MOD);
 		reg = ft_hex2Dec(player->opArgs[1]);
 		ft_bzero(str, REG_SIZE + 1);
@@ -47,6 +48,8 @@ int		op_st(t_data *d, t_header *player)
 	else
 	{
 		value = get_arg_int(player->opArgs[1]);
+		// writeL(ft_itoa(value));
+		// sleep(5);
 		value = get_arg_modulo(value, IDX_MOD);
 		reg = ft_hex2Dec(player->opArgs[0]);
 		changeMemVal(d, player->number,

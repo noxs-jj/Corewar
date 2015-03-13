@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 15:28:04 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 14:41:49 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/12 17:42:21 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 /*
 ** not tested
 */
+
+// change fct with reg_to_int etc...
 
 int		changeMemVal(t_data *d, int id, int where, char *str)
 {

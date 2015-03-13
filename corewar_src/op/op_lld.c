@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 14:31:34 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/12 17:36:48 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int		op_lld(t_data *d, t_header *player)
 	ft_bzero(player->reg[reg], REG_SIZE);
 	i = REG_SIZE / 2;
 	value = get_arg_modulo(value, MEM_SIZE);
-	while (i < REG_SIZE)
-	{
-		ft_strncpy(&player->reg[reg][(i - REG_SIZE / 2) * 2],
-			d->map[(player->indexPC + value + (i - REG_SIZE / 2) + MEM_SIZE) % MEM_SIZE].hex, 2);
-		i++;
-	}
+	value = (player->indexPC + value + MEM_SIZE) % MEM_SIZE;
+	map_to_reg(d, player, reg, value);
+	// while (i < REG_SIZE)
+	// {
+	// 	ft_strncpy(&player->reg[reg][(i - REG_SIZE / 2) * 2],
+	// 		d->map[(player->indexPC + value + (i - REG_SIZE / 2) + MEM_SIZE) % MEM_SIZE].hex, 2);
+	// 	i++;
+	// }
 	player->carry = true;
 	pcAdvance(d, player, ret);
 	return (0);
