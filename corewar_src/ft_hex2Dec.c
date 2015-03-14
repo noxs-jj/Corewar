@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 14:33:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 16:28:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 16:58:35 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int ft_pow(int base, int exp)
 	return (result);
 }
 
-unsigned int	ft_hex2Dec(char *str)
+unsigned int	ft_hex2Dec(unsigned char *str)
 {
 	unsigned int	result;
 	unsigned int	len;
@@ -53,7 +53,7 @@ unsigned int	ft_hex2Dec(char *str)
 
 // OK !!
 // convert str to int
-int				ft_hex2intdec(char *str)
+int				ft_hex2intdec(unsigned char *str)
 {
 	int				result;
 	unsigned int	len;

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 16:07:14 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 17:00:58 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,9 @@ typedef struct			s_header
 	unsigned int		prog_size;
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
-	char 				reg[REG_NUMBER + 1][REG_SIZE];
+	unsigned char 		reg[REG_NUMBER + 1][REG_SIZE];
 	char 				codage[9]; // octet de codage
-	char 				opArgs[4][T_LAB];
+	unsigned char		opArgs[4][T_LAB];
 	struct s_header		*next;
 	struct s_header		*prev;
 }						t_header;
@@ -193,15 +193,15 @@ t_data			*getData(void);
 void			writeL(char *str);
 int				read_files(t_data *d);
 // void			init_prog(t_data *d);
-void			ft_putHexNbr(unsigned char n, char (*str)[]);
-void			ft_putHexBNbr(unsigned int n, char (*str)[]);
+void			ft_putHexNbr(unsigned char n, unsigned char (*str)[]);
+void			ft_putHexBNbr(unsigned int n, unsigned char (*str)[]);
 int				init_mem(t_data *d);
 int 			gameStart(t_data *d);
 int				checkNextOp(t_data *d);
 int				execOp(t_data *d);
 int				readOpCode(t_data *d, t_header *prog);
-unsigned int	ft_hex2Dec(char *str);
-int				ft_hex2intdec(char *str);
+unsigned int	ft_hex2Dec(unsigned char *str);
+int				ft_hex2intdec(unsigned char *str);
 void			pcAdvance(t_data *d, t_header *player, int adv);
 int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
@@ -222,8 +222,8 @@ void			delAll(t_data *d);
 int		is_direct(t_header *player, int arg_nbr);
 int		is_indirect(t_header *player, int arg_nbr);
 int		is_register(t_header *player, int arg_nbr);
-void ft_putNbr2hex(int len, char (*src)[], char (*str)[]);
-int		str_hex_len(char *str);
+void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
+int		str_hex_len(unsigned char *str);
 
 // OP functions
 typedef struct		s_opfunc

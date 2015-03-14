@@ -6,13 +6,13 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:26:01 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 15:50:52 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 17:01:20 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_putHexNbr(unsigned char n, char (*str)[])
+void	ft_putHexNbr(unsigned char n, unsigned char (*str)[])
 {
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
@@ -38,7 +38,7 @@ void	ft_putHexNbr(unsigned char n, char (*str)[])
 */
 
 // if str == 0 0 255, len == 3
-void ft_putNbr2hex(int len, char (*src)[], char (*str)[])
+void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 {
 	int i;
 	int index;
@@ -62,7 +62,7 @@ void ft_putNbr2hex(int len, char (*src)[], char (*str)[])
 }
 
 // conv int to hex
-void	ft_putHexBNbr(unsigned int n, char (*str)[])// old, delete
+void	ft_putHexBNbr(unsigned int n, unsigned char (*str)[])// old, delete
 {
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
