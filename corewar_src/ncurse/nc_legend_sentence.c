@@ -43,6 +43,8 @@ void	render_legend_sentence(t_data *d)
 	mvwprintw(d->window, L_Y_DELTA, L_X_WRITE, S_CYCLE_DELTA);
 	mvwprintw(d->window, L_Y_N_LIVE, L_X_WRITE, S_NBR_LIVE);
 	mvwprintw(d->window, L_Y_N_CHECK, L_X_WRITE, S_MAX_CHECKS);
+	mvwprintw(d->window, L_Y_MINUS, L_X_WRITE, S_KEY_MINUS);
+	mvwprintw(d->window, L_Y_PLUS, L_X_WRITE, S_KEY_PLUS);
 	mvwprintw(d->window, L_Y_PAUSE, L_X_WRITE, S_KEY_PAUSE);
 	mvwprintw(d->window, L_Y_EXIT, L_X_WRITE, S_KEY_EXIT);
 }

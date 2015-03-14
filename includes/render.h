@@ -93,6 +93,9 @@
 # define L_Y_N_CHECK 39			/* default 39 "MAX_CHECKS :" */
 # define L_X_N_CHECK_VALUE 212	/* default 212 "MAX_CHECKS : value" */
 
+# define L_Y_MINUS 59			/* default 59 - MOIN */
+# define L_Y_PLUS 61			/* default 61 + PLUS */
+
 # define L_Y_PAUSE 63			/* default 63 Pause */
 # define L_Y_EXIT 65			/* default 65 exit */
 
@@ -116,8 +119,10 @@
 # define S_PLAYER_3			"Player 3 ->"
 # define S_PLAYER_4			"Player 4 ->"
 # define S_DEFAULT_BAR "[--------------------------------------------------]"
-# define S_KEY_PAUSE		"PAUSE: P or SPACE"
-# define S_KEY_EXIT			"EXIT: E, Q or ECHAP"
+# define S_KEY_MINUS		"SLOWER: -"
+# define S_KEY_PLUS			"FASTER: +"
+# define S_KEY_PAUSE		"PAUSE:  P or SPACE"
+# define S_KEY_EXIT			"EXIT:   E, Q or ECHAP"
 
 /* Console drawing */
 # define S_C_BYTES			" bytes, "
