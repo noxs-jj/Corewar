@@ -7,5 +7,6 @@ add r2, r2, r2
 add r2, r2, r2
 add r2, r2, r2
 add r2, r2, r2
+add r2, r2, r2
 sub r1, r2, r3
 sti r1, r3, r1

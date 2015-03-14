@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 19:04:03 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 15:16:04 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,18 @@
 # define PROG_NAME_LENGTH		128	// 128
 # define COMMENT_LENGTH			2048// 2048
 # define COREWAR_EXEC_MAGIC		"00ea83f3"
+
+// typedef struct 			s_vint
+// {
+// 	int 				n1;
+// 	int 				n2;
+// 	int 				n3;
+// 	int 				n4;
+// 	int 				n5;
+// 	int 				n6;
+// 	int 				n7;
+// 	int 				n8;
+// }						t_int;
 
 typedef struct 			s_bin
 {
@@ -205,6 +217,12 @@ t_header		*newProg(int number);
 int				addProg(t_data *d, t_header *new);
 void			delProg(t_data *d, int number);
 void			delAll(t_data *d);
+
+
+int		is_direct(t_header *player, int arg_nbr);
+int		is_indirect(t_header *player, int arg_nbr);
+int		is_register(t_header *player, int arg_nbr);
+void ft_putNbr2hex(int len, char (*src)[], char (*str)[]);
 
 // OP functions
 typedef struct		s_opfunc

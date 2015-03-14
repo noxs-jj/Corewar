@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 13:08:53 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 12:05:45 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/13 10:47:02 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_reg(t_header *new)
 	i = 0;
 	while (i < REG_NUMBER + 1)
 	{
-		ft_bzero(new->reg[i], REG_SIZE);
+		ft_bzero(new->reg[i], REG_SIZE); // init with 0 ?
 		i++;
 	}
 }

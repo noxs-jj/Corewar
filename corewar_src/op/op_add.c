@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/12 17:39:50 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 13:15:37 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		op_add(t_data *d, t_header *player)
 	unsigned int reg;
 	int			value;
 	char		str[REG_SIZE + 1];
+	unsigned int test;
 	
 	writeL("--- op_add ---");
 	player->carry = false;
@@ -36,12 +37,27 @@ int		op_add(t_data *d, t_header *player)
 	reg = ft_hex2Dec(player->opArgs[2]);
 	ft_bzero(player->opArgs[reg], REG_SIZE);
 	value = reg_to_int(d, player, ft_hex2Dec(player->opArgs[0]));
+	writeL("[add] first value =");
+	writeL(ft_itoa(value));
 	value += reg_to_int(d, player, ft_hex2Dec(player->opArgs[1]));
+	writeL("[add] second value =");
+	writeL(ft_itoa(reg_to_int(d, player, ft_hex2Dec(player->opArgs[1]))));
+	writeL("[add] result =");
+	writeL(ft_itoa(value));
+	
 	// value = get_arg_int(player->reg[ft_hex2Dec(player->opArgs[0])]);
 	// value += get_arg_int(player->reg[ft_hex2Dec(player->opArgs[1])]);
 	ft_bzero(str, REG_SIZE + 1);
-	ft_putHexBNbr(value, str); // conversion int to unsigned int
+	test = value;
+	writeL("[add] value");
+	writeL(ft_itoa(value));
+	ft_putHexBNbr(test, str); // conversion int to unsigned int
+	writeL("[add] str");
+	writeL(str);
 	str_to_reg(d, player, reg, str);
+	writeL("[add] verif =");
+	writeL(ft_itoa(reg_to_int(d, player, reg)));
+	sleep(2);
 	// ft_strcpy(player->reg[reg], str);
 	player->carry = true;
 	pcAdvance(d, player, ret);
