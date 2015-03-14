@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 14:33:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 15:54:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 16:28:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ unsigned int	ft_hex2Dec(char *str)
 
 
 // OK !!
-// convert char to int
+// convert str to int
 int				ft_hex2intdec(char *str)
 {
 	int				result;

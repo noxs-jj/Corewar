@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 16:15:14 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 16:40:49 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ** call renderDraw at each execOp ?
 */
 
+// return len of "dec" str (ex 1 1 0 == 3)
 int		hex_strlen(char *str, int size)
 {
 	int i;
@@ -65,7 +66,7 @@ int		int_hex_len(int n)
 }
 
 // OK !!
-// conv unsigned int to "dec" str
+// conv unsigned int to hex str
 // first int to hex str, snd hex str to "dec" str
 void	nbr2hex(unsigned int n, char (*str)[])
 {
@@ -96,22 +97,43 @@ void	nbr2hex(unsigned int n, char (*str)[])
 		i++;
 		j++;
 	}
-	writeL(&(*str)[0]);
-	writeL(&(*str)[1]);
-	writeL(&(*str)[2]);
-	writeL(&(*str)[3]);
-	writeL(&(*str)[4]);
-	writeL(&(*str)[5]);
-	writeL(&(*str)[6]);
-	writeL(&(*str)[7]);
-	writeL(&(*str)[8]);
+}
+
+/*
+**  convert	45	99	5d
+			69	153	93
+** (4561245)
+*/
+
+
+// convert hex str to "dec" str
+void	hex2dec(char (*src)[], char (*str)[])
+{
+	size_t len;
+	int i;
+	char tmp[3];
+	int result;
+
+	len = ft_strlen(*src) / 2;
+	i= 0;
+	while (i < len)
+	{
+		ft_bzero(tmp, 3);
+		ft_strncpy(tmp, &(*src)[i * 2], 2);
+		result = ft_hex2intdec(tmp);
+		(*str)[i] = result; // error here char <- int (conv error)
+		writeL("here");
+		writeL(ft_itoa(result));
+
+		i++;
+	}
 }
 
 /*
 ** conv hex str to int : ft_hex2intdec
 ** conv "dec" str to hex str : ft_putNbr2hex
 ** conv int to "dec" str : ?
-** conv hex to "dec" str : ?
+** conv hex to "dec" str : hex2dec
 **
 */
 
@@ -130,8 +152,20 @@ void ft_check()
 	
 	// ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
 	nbr2hex(4561245, &tab);
-	ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
+	// ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
+	hex2dec(&tab, &result); // convert hex str to "dec" str
+	writeL(ft_itoa(result[0]));
+	writeL(ft_itoa(result[1]));
+	writeL(ft_itoa(result[2]));
+	writeL(ft_itoa(result[3]));
+	writeL(ft_itoa(result[4]));
+	writeL(ft_itoa(result[5]));
+	writeL(ft_itoa(result[6]));
+	writeL(ft_itoa(result[7]));
 	n = ft_hex2intdec(tab); // convert hex str to int
+	// ft_bzero(tab, 9);
+	// ft_putNbr2hex(hex_strlen(tab, 8), &result, &tab);
+
 	writeL("tab");
 	writeL(tab);
 	writeL("result");
