@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:26:01 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 15:20:37 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 15:50:52 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void ft_putNbr2hex(int len, char (*src)[], char (*str)[])
 		i++;
 	}
 }
-
 
 // conv int to hex
 void	ft_putHexBNbr(unsigned int n, char (*str)[])// old, delete

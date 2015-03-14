@@ -6,28 +6,11 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 14:01:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/13 14:58:13 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 16:07:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-int		hex_len(char *str)
-{
-	int value;
-	int len;
-
-	len = 1;
-	value = ft_hex2intdec(str);
-	writeL("value");
-	writeL(ft_itoa(value));
-	while (value > 255)
-	{
-		value /= 255;
-		len++;
-	}
-	return (len);
-}
 
 // copy map in register
 void	map_to_reg(t_data *d, t_header *player, int reg, int index)
@@ -35,7 +18,7 @@ void	map_to_reg(t_data *d, t_header *player, int reg, int index)
 	int i;
 
 	i = 0;
-	// i = REG_SIZE - hex_len(str);
+	// i = REG_SIZE - str_hex_len(str);
 	ft_bzero(player->reg[reg], REG_SIZE);
 	while (i < REG_SIZE)
 	{
@@ -91,7 +74,7 @@ void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 
 	// i = 0;
 	index = 0;
-	i = REG_SIZE - hex_len(str);
+	i = REG_SIZE - str_hex_len(str);
 	writeL("/==== len ====/");
 	writeL(ft_itoa(i));
 	ft_bzero(player->reg[reg], REG_SIZE);

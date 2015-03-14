@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 15:16:04 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/14 16:07:14 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int		is_direct(t_header *player, int arg_nbr);
 int		is_indirect(t_header *player, int arg_nbr);
 int		is_register(t_header *player, int arg_nbr);
 void ft_putNbr2hex(int len, char (*src)[], char (*str)[]);
+int		str_hex_len(char *str);
 
 // OP functions
 typedef struct		s_opfunc
