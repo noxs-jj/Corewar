@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 12:17:34 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:42:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	nbr2hex(unsigned int n, unsigned char (*str)[])
 	int i;
 	int j;
 	// int len;
-
 	i = 8;
 	ft_bzero(tmp, 9);
 	// len = hex_len(n);
@@ -131,6 +130,28 @@ void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 	}
 }
 
+// conv arg dec to int
+int		get_int_from_dec(char *str, int len)
+{
+	char	tmp[T_LAB + 1];
+	int 	i;
+	int		index;
+
+	ft_bzero(tmp, T_LAB + 1);
+	index = len - hex_strlen(str, len);
+	i = 0;
+	len = len - index;
+	while (len > 0)
+	{
+		ft_putHexNbr(str[index], &tmp[i]);
+		index++;
+		len--;
+		i += 2;
+	}
+	return (ft_hex2intdec(tmp));
+}
+
+
 /*
 ** conv hex str to int : ft_hex2intdec				ok
 ** conv "dec" str to hex str : ft_putNbr2hex		ok
@@ -144,6 +165,7 @@ void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 ** conv hex str to dec str (register) : str_to_reg	ok
 ** conv map hex to dec str (register) : map_to_reg	ok
 ** conv dec str (register) to int : reg_to_int		?
+** conv int to dec (register) : get_int_from_dec	ok
 **
 */
 

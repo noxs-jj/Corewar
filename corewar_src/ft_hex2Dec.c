@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 14:33:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 16:58:35 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 12:58:16 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				ft_hex2intdec(unsigned char *str)
 	i = 0;
 	result = 0;
 	len = ft_strlen(str) - 1;
-	writeL(ft_itoa(len));
+	// writeL(ft_itoa(len));
 	while (str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')

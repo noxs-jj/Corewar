@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:36:26 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 12:14:40 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:35:05 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,29 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 {
 	t_case * arg;
 	int i;
+	int tmp;
 
 	i = 0;
 
 	// writeL("----args-----");
 	if (len == DIR && op_tab[player->nextOp].has_idx == 1)
 		len = 2;
+	tmp = T_LAB - len;
 	while (i < len)
 	{
 		arg = ((player->PC) + *index + 1 + op_tab[player->nextOp].has_pcode);
-		ft_strncpy(&player->opArgs[argNbr][i * 2], arg->hex, 2);
+		// ft_strncpy(&player->opArgs[argNbr][i * 2], arg->hex, 2);
+		player->opArgs[argNbr][tmp] = ft_hex2intdec(arg->hex);
+		writeL("[getValue] arg:");
+		writeL(ft_itoa(argNbr));
+		writeL(arg->hex);
+		writeL(ft_itoa(ft_hex2intdec(arg->hex)));
+		writeL(ft_itoa(player->opArgs[argNbr][tmp]));
+		// sleep(1);
 		// writeL(arg->hex);
 		// writeL(&player->opArgs[argNbr][i * 2]);
 		(*index)++;
+		tmp++;
 		i++;
 	}
 }
@@ -80,9 +90,9 @@ int		getOpArgs(t_data *d, t_header *prog)
 		else if (ft_strncmp(&prog->codage[i * 2], "11", 2) == 0)
 		{
 			getValue(prog, i, &index, IND);
-			writeL("get op arg 11");
-			writeL(ft_itoa(i));
-			writeL(prog->opArgs[i]);
+			// writeL("get op arg 11");
+			// writeL(ft_itoa(i));
+			// writeL(prog->opArgs[i]);
 		}
 		else if (i + 1 == op_tab[prog->nextOp].nb_params)
 		{

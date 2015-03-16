@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 17:00:58 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:28:43 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,8 @@ int		is_indirect(t_header *player, int arg_nbr);
 int		is_register(t_header *player, int arg_nbr);
 void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
 int		str_hex_len(unsigned char *str);
+void	int_to_reg(t_data *d, t_header *player, int n, int reg);
+int		get_int_from_dec(char *str, int len);
 
 // OP functions
 typedef struct		s_opfunc

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 14:01:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 11:48:53 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:49:11 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	map_to_reg(t_data *d, t_header *player, int reg, int index)
 	}
 }
 
+// OK
 // convert reg to int (conv dec str to int)
 int		reg_to_int(t_data *d, t_header *player, int reg)
 {
@@ -37,7 +38,7 @@ int		reg_to_int(t_data *d, t_header *player, int reg)
 	int j;
 	unsigned char value;
 
-	writeL("/==== reg_to_int ====/");
+	// writeL("/==== reg_to_int ====/");
 	ft_bzero(str, (REG_SIZE * 2) + 1);
 	i = 0;
 	j = 0;
@@ -84,3 +85,19 @@ void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 		i++;
 	}
 }
+
+void	int_to_reg(t_data *d, t_header *player, int n, int reg)
+{
+	char	str[(REG_SIZE * 2) + 1];
+
+	ft_bzero(str, (REG_SIZE * 2) + 1);
+	// writeL("hello world !");
+	// writeL(ft_itoa(n));
+	nbr2hex(n, &str);
+	writeL("/=====\\");
+	writeL(&str[0]);
+	writeL(&str[2]);
+	str_to_reg(d, player, reg, str);
+}
+
+

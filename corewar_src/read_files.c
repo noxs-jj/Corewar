@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:19:49 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/13 11:06:49 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:17:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 	prog->alive = true;
 	// ft_strcpy(d->prog[number].reg[1], "fffffff");
 	// prog->reg[1][0] = '0' + prog->number;
-	prog->reg[1][0] = prog->number;
+	prog->reg[1][REG_SIZE - 1] = prog->number;
 	// writeL(prog->reg[1]);
 	// sleep(5);
 	// writeL("reg 1 content");

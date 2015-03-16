@@ -6,18 +6,42 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 13:15:37 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:32:31 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewarOpTab.h"
 
 /*
-** need test
+** (tested with nbr > 0)
 ** T_REG, T_REG, T_REG
 ** change carry
 */
 
+int		op_add(t_data *d, t_header *player)
+{
+	int		ret;
+	int		reg;
+	int		value;
+
+	writeL("--- op_add ---");
+	player->carry = false;
+	if ((ret = getOpArgs(d, player)) < 0
+		|| isValidRegister(get_int_from_dec(player->opArgs[0], T_LAB)) < 0
+		|| isValidRegister(get_int_from_dec(player->opArgs[1], T_LAB)) < 0
+		|| isValidRegister(get_int_from_dec(player->opArgs[2], T_LAB)) < 0)
+		return (ret);
+	reg = get_int_from_dec(player->opArgs[2], T_LAB);
+	ft_bzero(player->opArgs[reg], REG_SIZE);
+	value = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
+	value += reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
+	int_to_reg(d, player, value, reg);
+	player->carry = true;
+	pcAdvance(d, player, ret);
+	return (0);
+}
+
+/*
 int		op_add(t_data *d, t_header *player)
 {
 	int ret;
@@ -63,3 +87,4 @@ int		op_add(t_data *d, t_header *player)
 	pcAdvance(d, player, ret);
 	return (0);
 }
+*/
