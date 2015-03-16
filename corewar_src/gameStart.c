@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 17:24:08 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 12:17:34 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int		int_hex_len(int n)
 
 // OK !!
 // conv unsigned int to hex str
-// first int to hex str, snd hex str to "dec" str
 void	nbr2hex(unsigned int n, unsigned char (*str)[])
 {
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -120,6 +119,8 @@ void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 	size = size - len;
 	writeL("value");
 	writeL(ft_itoa(size));
+	writeL("len");
+	writeL(ft_itoa(len));
 	while (i < len)
 	{
 		ft_bzero(tmp, 3);
@@ -133,73 +134,93 @@ void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 /*
 ** conv hex str to int : ft_hex2intdec				ok
 ** conv "dec" str to hex str : ft_putNbr2hex		ok
-** conv int to "dec" str : ?
+** conv int to hex str : nbr2hex 					ok
 ** conv hex to "dec" str : hex2dec 					ok
+**
+*/
+
+/*
+**
+** conv hex str to dec str (register) : str_to_reg	ok
+** conv map hex to dec str (register) : map_to_reg	ok
+** conv dec str (register) to int : reg_to_int		?
 **
 */
 
 // 0 1 2 3 4 5 6 7 8
 // 0 0 0 0 0 0 0 0 0
-void ft_check()
-{
-	unsigned char tab[9];
-	unsigned char result[9];
-	int n;
+// void ft_check(t_data *d)
+// {
+// 	unsigned char tab[9];
+// 	unsigned char result[9];
+// 	int n;
 
-	ft_bzero(tab, 9);
-	ft_bzero(result, 9);
-	tab[5] = 69;
-	tab[6] = 153;
-	tab[7] = 93;
-	writeL("-=-");
-	writeL(ft_itoa(tab[0]));
-	writeL(ft_itoa(tab[1]));
-	writeL(ft_itoa(tab[2]));
-	writeL(ft_itoa(tab[3]));
-	writeL(ft_itoa(tab[4]));
-	writeL(ft_itoa(tab[5]));
-	writeL(ft_itoa(tab[6]));
-	writeL(ft_itoa(tab[7]));
-	writeL(ft_itoa(tab[8]));
-	writeL("-=-");
-	ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
-	writeL(ft_itoa(ft_hex2intdec(result)));
-	ft_bzero(tab, 9);
-	ft_bzero(result, 9);
-	writeL("================");
-	// ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
-	// writeL("first result");
-	// writeL(result);
-	nbr2hex(4561245, &tab); // convert nbr to hex str
-	hex2dec(&tab, &result, 8); // convert hex str to "dec" str
-	writeL("---");
-	writeL(ft_itoa(result[0]));
-	writeL(ft_itoa(result[1]));
-	writeL(ft_itoa(result[2]));
-	writeL(ft_itoa(result[3]));
-	writeL(ft_itoa(result[4]));
-	writeL(ft_itoa(result[5]));
-	writeL(ft_itoa(result[6]));
-	writeL(ft_itoa(result[7]));
-	writeL("---");
-	n = ft_hex2intdec(tab); // convert hex str to int
-	ft_bzero(tab, 9);
-	ft_putNbr2hex(hex_strlen(result, 8), &result, &tab);
-	writeL(ft_itoa(ft_hex2intdec(tab)));
+// 	ft_bzero(tab, 9);
+// 	ft_bzero(result, 9);
+// 	// tab[5] = 69;
+// 	// tab[6] = 153;
+// 	// tab[7] = 93;
+// 	// tab[5] = 99;
+// 	// tab[6] = 228;
+// 	tab[7] = 12;
 
-	writeL("tab");
-	writeL(tab);
-	writeL("result");
-	writeL(result);
-	writeL("number");
-	writeL(ft_itoa(n));
+// 	writeL("-=-");
+// 	writeL(ft_itoa(tab[0]));
+// 	writeL(ft_itoa(tab[1]));
+// 	writeL(ft_itoa(tab[2]));
+// 	writeL(ft_itoa(tab[3]));
+// 	writeL(ft_itoa(tab[4]));
+// 	writeL(ft_itoa(tab[5]));
+// 	writeL(ft_itoa(tab[6]));
+// 	writeL(ft_itoa(tab[7]));
+// 	writeL("-=-");
+// 	ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
+// 	writeL(ft_itoa(ft_hex2intdec(result)));
+// 	ft_bzero(tab, 9);
+// 	ft_bzero(result, 9);
+// 	writeL("================");
+// 	// ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
+// 	// writeL("first result");
+// 	// writeL(result);
+// 	nbr2hex(12, &tab); // convert nbr to hex str
+// 	hex2dec(&tab, &result, 8); // convert hex str to "dec" str
+// 	writeL("---");
+// 	writeL(ft_itoa(result[0]));
+// 	writeL(ft_itoa(result[1]));
+// 	writeL(ft_itoa(result[2]));
+// 	writeL(ft_itoa(result[3]));
+// 	writeL(ft_itoa(result[4]));
+// 	writeL(ft_itoa(result[5]));
+// 	writeL(ft_itoa(result[6]));
+// 	writeL(ft_itoa(result[7]));
+// 	writeL("---");
+// 	n = ft_hex2intdec(tab); // convert hex str to int
+// 	ft_bzero(tab, 9);
+// 	ft_putNbr2hex(hex_strlen(result, 8), &result, &tab);
+// 	writeL(ft_itoa(ft_hex2intdec(tab)));
 
-	sleep(10);
-}
+// 	writeL("tab");
+// 	writeL(tab);
+// 	writeL("result");
+// 	writeL(result);
+// 	writeL("number");
+// 	writeL(ft_itoa(n));
+// 	str_to_reg(d, d->prog, 2, tab);
+// 	ft_bzero(tab, 9);
+// 	ft_putNbr2hex(hex_strlen(d->prog->reg[2], 4), d->prog->reg[2], &tab);
+// 	writeL(tab);
+// 	n = ft_hex2intdec(tab);
+// 	writeL("number 2 ");
+// 	writeL(ft_itoa(n));
+// 		n = reg_to_int(d, d->prog, 2);
+// 	writeL("number 3 ");
+// 	writeL(ft_itoa(n));
+// 	sleep(10);
+// }
 
 int	gameStart(t_data *d)
 {
-	ft_check();
+	// ft_check(d);
 	d->run = true;
 	if (true == d->graphActiv)
 		render_draw(d); // need to be modified (d->prog)

@@ -6,13 +6,13 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 14:01:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 16:07:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 11:48:53 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-// copy map in register
+// conv map hex str to reg dec str
 void	map_to_reg(t_data *d, t_header *player, int reg, int index)
 {
 	int i;
@@ -28,16 +28,19 @@ void	map_to_reg(t_data *d, t_header *player, int reg, int index)
 	}
 }
 
-// convert reg to int
+// convert reg to int (conv dec str to int)
 int		reg_to_int(t_data *d, t_header *player, int reg)
 {
 	char str[(REG_SIZE * 2) + 1];
 	char tmp[3];
 	int i;
+	int j;
 	unsigned char value;
 
+	writeL("/==== reg_to_int ====/");
 	ft_bzero(str, (REG_SIZE * 2) + 1);
 	i = 0;
+	j = 0;
 	while (player->reg[reg][i] == 0)
 		i++;
 	while (i < REG_SIZE)
@@ -45,40 +48,25 @@ int		reg_to_int(t_data *d, t_header *player, int reg)
 		ft_bzero(tmp, 3);
 		value = player->reg[reg][i];
 		ft_putHexNbr(value, &tmp);
-		writeL("reg_to_int");
-		writeL(tmp);
-		ft_strncpy(&str[i * 2], tmp, 2);		
+		ft_strncpy(&str[j * 2], tmp, 2);		
 		i++;
+		j++;
 	}
-	writeL("----");
-	ft_putnbr_fd(player->reg[reg][0], d->fdDebugg);
-	ft_putchar_fd('\n', d->fdDebugg);
-	ft_putnbr_fd(player->reg[reg][1], d->fdDebugg);
-	ft_putchar_fd('\n', d->fdDebugg);
-	ft_putnbr_fd(player->reg[reg][2], d->fdDebugg);
-	ft_putchar_fd('\n', d->fdDebugg);
-	ft_putnbr_fd(player->reg[reg][3], d->fdDebugg);
-	ft_putchar_fd('\n', d->fdDebugg);
-	// writeL("reg_to_int");
-	// writeL(str);
 	return (ft_hex2intdec(str));
 }
 
-// copy str in reg
+// OK
+// copy str in reg (conv hex str to dec str)
 void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 {
 	int i;
 	char tmp[3];
 	int index;	// size_t
-	// int len;
 
-	// i = 0;
 	index = 0;
 	i = REG_SIZE - str_hex_len(str);
-	writeL("/==== len ====/");
-	writeL(ft_itoa(i));
 	ft_bzero(player->reg[reg], REG_SIZE);
-	while (i < REG_SIZE && index < ft_strlen(str))// convert 100(hex) to 256(dec) !
+	while (i < REG_SIZE && index < ft_strlen(str))
 	{
 		ft_bzero(tmp, 3);
 		if (i == 0 && ft_strlen(str) % 2 > 0)
@@ -93,13 +81,6 @@ void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 			index += 2;
 		}
 		player->reg[reg][i] = ft_hex2intdec(tmp);
-		// writeL("str_to_reg");
-		// writeL(tmp);
-		
 		i++;
 	}
-	// writeL(ft_itoa(player->reg[reg][0]));
-	// writeL(ft_itoa(player->reg[reg][1]));
-	// writeL(ft_itoa(player->reg[reg][2]));
-	// writeL(ft_itoa(player->reg[reg][3]));
 }

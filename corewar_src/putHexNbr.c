@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 16:26:01 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/14 17:01:20 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 11:18:55 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putHexNbr(unsigned char n, unsigned char (*str)[])
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
 
-	writeL("HEX");
+	// writeL("HEX");
 	if (n < 16)
 	{
 		(*str)[0] = '0';
@@ -54,7 +54,7 @@ void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 	writeL(ft_itoa(len));
 	while (i < len)
 	{
-		writeL("before ft_putHexNbr call");
+		// writeL("before ft_putHexNbr call");
 		ft_putHexNbr((*src)[i], &(*str)[index * 2]);
 		index++;
 		i++;
@@ -83,8 +83,8 @@ void	ft_putHexBNbr(unsigned int n, unsigned char (*str)[])// old, delete
 	while (i < 9)
 	{
 		(*str)[j] = tmp[i];
-		writeL("//////");
-		writeL(ft_itoa(n));
+		// writeL("//////");
+		// writeL(ft_itoa(n));
 		i++;
 		j++;
 	}
