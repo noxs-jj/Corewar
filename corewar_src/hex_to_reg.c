@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 14:01:27 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 14:49:11 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 15:10:37 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 
 	index = 0;
 	i = REG_SIZE - str_hex_len(str);
+	if (i < 0)
+		i = 0;
+	writeL(ft_itoa(i));
 	ft_bzero(player->reg[reg], REG_SIZE);
 	while (i < REG_SIZE && index < ft_strlen(str))
 	{
@@ -93,10 +96,9 @@ void	int_to_reg(t_data *d, t_header *player, int n, int reg)
 	ft_bzero(str, (REG_SIZE * 2) + 1);
 	// writeL("hello world !");
 	// writeL(ft_itoa(n));
-	nbr2hex(n, &str);
-	writeL("/=====\\");
-	writeL(&str[0]);
-	writeL(&str[2]);
+	nbr2hex((unsigned int)n, &str);
+	// writeL("/=====\\");
+	// writeL(str);
 	str_to_reg(d, player, reg, str);
 }
 

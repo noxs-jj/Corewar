@@ -6,14 +6,14 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 14:36:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 15:11:06 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewarOpTab.h"
 
 /*
-** need test
+** OK
 ** T_REG, T_REG, T_REG
 ** change carry
 */
@@ -34,14 +34,19 @@ int		op_sub(t_data *d, t_header *player)
 	reg = get_int_from_dec(player->opArgs[2], T_LAB);
 	ft_bzero(player->opArgs[reg], REG_SIZE);
 	value = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
-	writeL("first value");
-	writeL(ft_itoa(value));
+	// writeL("first value");
+	// writeL(ft_itoa(value));
 	value -= reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
-	writeL("2nd value");
-	writeL(ft_itoa(reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB))));
-	writeL("result");
-	writeL(ft_itoa(value));
+	// writeL("2nd value");
+	// writeL(ft_itoa(reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB))));
+	// writeL("result");
+	// writeL(ft_itoa(value));
 	int_to_reg(d, player, value, reg);
+	// writeL("register");
+	// writeL(ft_itoa(player->reg[reg][0]));
+	// writeL(ft_itoa(player->reg[reg][1]));
+	// writeL(ft_itoa(player->reg[reg][2]));
+	// writeL(ft_itoa(player->reg[reg][3]));
 	player->carry = true;
 	sleep(5);
 	pcAdvance(d, player, ret);

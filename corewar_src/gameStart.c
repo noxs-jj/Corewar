@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 14:42:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 15:08:42 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		hex_strlen(unsigned char *str, int size)
 
 int		str_hex_len(unsigned char *str)
 {
-	int value;
+	unsigned int value;
 	int len;
 
 	len = 1;
@@ -71,7 +71,7 @@ void	nbr2hex(unsigned int n, unsigned char (*str)[])
 {
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
-	char		tmp[9];
+	char		tmp[9]; // tmp[T_LAB];
 	int i;
 	int j;
 	// int len;

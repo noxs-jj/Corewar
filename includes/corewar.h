@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 14:28:43 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 14:59:03 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ int				checkNextOp(t_data *d);
 int				execOp(t_data *d);
 int				readOpCode(t_data *d, t_header *prog);
 unsigned int	ft_hex2Dec(unsigned char *str);
-int				ft_hex2intdec(unsigned char *str);
+unsigned int	ft_hex2intdec(unsigned char *str);
 void			pcAdvance(t_data *d, t_header *player, int adv);
 int				isValidRegister(unsigned int reg);
 int				changeMemVal(t_data *d, int id, int where, char *str);
