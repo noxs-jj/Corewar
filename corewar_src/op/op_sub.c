@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 15:11:06 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/16 15:13:56 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		op_sub(t_data *d, t_header *player)
 	// writeL(ft_itoa(player->reg[reg][2]));
 	// writeL(ft_itoa(player->reg[reg][3]));
 	player->carry = true;
-	sleep(5);
+	// sleep(5);
 	pcAdvance(d, player, ret);
 	return (0);
 }
