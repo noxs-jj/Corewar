@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 12:28:10 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 17:52:15 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		op_sti(t_data *d, t_header *player)
 	else if (is_direct(player, 1) >= 0)
 		value = get_int_from_dec(player->opArgs[1], T_LAB);
 	else if (is_indirect(player, 1) >= 0)
-		value = get_int_from_dec(player->opArgs[1], T_LAB) % IDX_MOD;
+		value = get_arg_modulo(get_int_from_dec(player->opArgs[1], T_LAB), IDX_MOD);
 	else
 		return (-1);
 	if (is_register(player, 2) >= 0)

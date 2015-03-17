@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 12:48:01 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 17:50:59 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		op_or(t_data *d, t_header *player)
 	else if (is_direct(player, 0) >= 0)
 		value[0] = get_int_from_dec(player->opArgs[0], T_LAB);
 	else if (is_indirect(player, 0) >= 0)
-		value[0] = get_int_from_dec(player->opArgs[0], T_LAB) % IDX_MOD;
+		value[0] = get_arg_modulo(get_int_from_dec(player->opArgs[0], T_LAB), IDX_MOD);
 	else
 		return (-1);
 	if (is_register(player, 1) >= 0)
@@ -44,7 +44,7 @@ int		op_or(t_data *d, t_header *player)
 	else if (is_direct(player, 1) >= 0)
 		value[1] = get_int_from_dec(player->opArgs[1], T_LAB);
 	else if (is_indirect(player, 1) >= 0)
-		value[1] = get_int_from_dec(player->opArgs[1], T_LAB) % IDX_MOD;
+		value[1] = get_arg_modulo(get_int_from_dec(player->opArgs[1], T_LAB), IDX_MOD);
 	else
 		return (-1);
 	ft_bzero(player->reg[reg], REG_SIZE);

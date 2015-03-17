@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/12 17:29:53 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 17:51:59 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,32 @@
 
 
 
+int		op_st(t_data *d, t_header *player)
+{
+	int 			ret;
+	unsigned int 	reg;
+	int 			value;
+	char			str[REG_SIZE + 1];
+
+	writeL("--- op_st ---");
+	player->carry = false;
+	if ((ret = getOpArgs(d, player)) < 0
+		|| isValidRegister(get_int_from_dec(player->opArgs[0], T_LAB)) < 0)
+		return (ret);
+	reg = get_int_from_dec(player->opArgs[0], T_LAB);
+	if (is_register(player, 1) >= 0)
+		value = reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
+	else if (is_indirect(player, 1) >= 0)
+		value = get_arg_modulo(get_int_from_dec(player->opArgs[1], T_LAB), IDX_MOD);
+	else
+		return (-1);
+	changeMemVal(d, player->number, (player->indexPC + 1 + value + MEM_SIZE) % MEM_SIZE, player->reg[reg]);
+	player->carry = true;
+	pcAdvance(d, player, ret);
+}
+
+
+/*
 int		op_st(t_data *d, t_header *player)
 {
 	int 			ret;
@@ -58,6 +84,18 @@ int		op_st(t_data *d, t_header *player)
 	player->carry = true;
 	pcAdvance(d, player, ret);
 }
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 // int		op_st(t_data *d, t_header *player)
