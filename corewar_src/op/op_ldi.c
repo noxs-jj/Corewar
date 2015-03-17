@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/12 17:35:29 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 18:48:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,54 @@
 ** has idx
 */
 
+int		op_ldi(t_data *d, t_header *player)
+{
+	int				ret;
+	int				result;
+	int 			reg;
+	char			str[REG_SIZE + 1];
+
+	if ((ret = getOpArgs(d, player)) < 0
+		|| isValidRegister(get_int_from_dec(player->opArgs[2], T_LAB)) < 0)
+		return (ret);
+	reg = get_int_from_dec(player->opArgs[2], T_LAB);
+	if (is_register(player, 0) >= 0)
+		result = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
+	else if (is_direct(player, 0) >= 0)
+	{
+		result = get_int_from_dec(player->opArgs[0], T_LAB);
+		if (player->opArgs[0][T_LAB - 2] >= 240)
+			result = result - 65536;
+	}
+	else if (is_indirect(player, 0) >= 0)
+	{
+		result = get_int_from_dec(player->opArgs[0], T_LAB);
+		if (player->opArgs[0][T_LAB - 2] >= 240)
+			result = result - 65536;
+		result = get_arg_modulo(result, IDX_MOD);		
+	}
+	else
+		return (-1);
+	if (is_register(player, 1) >= 0)
+		result += reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
+	else if (is_direct(player, 1) >= 0)
+	{
+		result += get_int_from_dec(player->opArgs[1], T_LAB);
+		if (player->opArgs[0][T_LAB - 2] >= 240)
+			result = result - 65536;
+	}
+	else
+		return (-1);
+	result = get_arg_modulo(result, IDX_MOD);
+	result = (player->indexPC + result + MEM_SIZE) % MEM_SIZE;
+	ft_bzero(player->reg[reg], REG_SIZE);
+	map_to_reg(d, player, reg, result);
+	pcAdvance(d, player, ret);
+	return (0);
+}
+
+
+/*
 int		op_ldi(t_data *d, t_header *player)
 {
 	int				ret;
@@ -50,3 +98,4 @@ int		op_ldi(t_data *d, t_header *player)
 	pcAdvance(d, player, ret);
 	return (0);
 }
+*/
