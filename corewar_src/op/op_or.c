@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/12 17:31:31 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 12:48:01 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,28 @@ int		op_or(t_data *d, t_header *player)
 	writeL("--- op_or ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
+		|| isValidRegister(get_int_from_dec(player->opArgs[2], T_LAB)) < 0)
 		return (ret);
-	reg = ft_hex2Dec(player->opArgs[2]);
-	if (ft_strncmp(player->codage, "01", 2) == 0
-		&& isValidRegister(ft_hex2Dec(player->opArgs[0])) >= 0)
-		value[0] = reg_to_int(d, player, ft_hex2Dec(player->opArgs[0]));
-		// value[0] = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[0])]);
+	reg = get_int_from_dec(player->opArgs[2], T_LAB);
+	if (is_register(player, 0) >= 0)
+		value[0] = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
+	else if (is_direct(player, 0) >= 0)
+		value[0] = get_int_from_dec(player->opArgs[0], T_LAB);
+	else if (is_indirect(player, 0) >= 0)
+		value[0] = get_int_from_dec(player->opArgs[0], T_LAB) % IDX_MOD;
 	else
-		value[0] = ft_hex2Dec(player->opArgs[0]);
-	if (ft_strncmp(&player->codage[2], "01", 2) == 0
-		&& isValidRegister(ft_hex2Dec(player->opArgs[1])) >= 0)
-		value[1] = reg_to_int(d, player, ft_hex2Dec(player->opArgs[1]));
-		// value[1] = ft_hex2Dec(player->reg[ft_hex2Dec(player->opArgs[1])]);
+		return (-1);
+	if (is_register(player, 1) >= 0)
+		value[1] = reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
+	else if (is_direct(player, 1) >= 0)
+		value[1] = get_int_from_dec(player->opArgs[1], T_LAB);
+	else if (is_indirect(player, 1) >= 0)
+		value[1] = get_int_from_dec(player->opArgs[1], T_LAB) % IDX_MOD;
 	else
-		value[1] = ft_hex2Dec(player->opArgs[1]);
+		return (-1);
 	ft_bzero(player->reg[reg], REG_SIZE);
 	ft_bzero(str, REG_SIZE + 1);
-	ft_putHexBNbr(value[0] | value[1], str);
-	str_to_reg(d, player, reg, str);
-	// ft_strcpy(player->reg[reg], str);
+	int_to_reg(d, player, value[0] | value[1], reg);
 	player->carry = true;
 	pcAdvance(d, player, ret);
 	return (0);

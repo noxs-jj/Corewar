@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 15:08:42 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 13:04:23 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int		get_int_from_dec(char *str, int len)
 		len--;
 		i += 2;
 	}
-	return (ft_hex2intdec(tmp));
+	return ((int)ft_hex2intdec(tmp));
 }
 
 
