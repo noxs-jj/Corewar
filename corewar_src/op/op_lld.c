@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 18:07:41 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 19:42:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int		op_lld(t_data *d, t_header *player)
 	if (is_direct(player, 0) >= 0)
 	{
 		value = get_int_from_dec(player->opArgs[0], T_LAB);
+		if (player->opArgs[0][T_LAB - 2] >= 240)
+			value = value - 65536;
 		value = get_arg_modulo(value, IDX_MOD);
 		int_to_reg(d, player, value, reg);
 	}

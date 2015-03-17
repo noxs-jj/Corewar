@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 17:51:59 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 19:33:25 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ int		op_st(t_data *d, t_header *player)
 	if (is_register(player, 1) >= 0)
 		value = reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
 	else if (is_indirect(player, 1) >= 0)
-		value = get_arg_modulo(get_int_from_dec(player->opArgs[1], T_LAB), IDX_MOD);
+	{
+		value = get_int_from_dec(player->opArgs[1], T_LAB);
+		if (player->opArgs[0][T_LAB - 2] >= 240)
+			value = value - 65536;
+		value = get_arg_modulo(value, IDX_MOD);
+	}
 	else
 		return (-1);
-	changeMemVal(d, player->number, (player->indexPC + 1 + value + MEM_SIZE) % MEM_SIZE, player->reg[reg]);
+	changeMemVal(d, player->number, (player->indexPC + value + MEM_SIZE) % MEM_SIZE, player->reg[reg]);
 	player->carry = true;
 	pcAdvance(d, player, ret);
 }

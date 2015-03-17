@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 16:31:06 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 19:28:33 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		op_lfork(t_data *d, t_header *player)
 	if ((ret = getOpArgs(d, player)) < 0)
 		return (ret);
 	result = get_int_from_dec(player->opArgs[0], T_LAB) - 1;
+	if (player->opArgs[0][T_LAB - 2] >= 240)
+			result = result - 65536;
 	if (addProg(d, newProg(player->number)) < 0)
 		return (-1);
 	prog = lastProg(d);

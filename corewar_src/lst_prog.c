@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 13:08:53 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/13 10:47:02 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 19:13:16 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	cpy_reg(t_header *src, t_header *cpy)
 	i = 0;
 	while (i <= REG_NUMBER)
 	{
-		ft_strncpy(cpy->reg[i], src->reg[i], REG_SIZE);
+		cpy->reg[i][0] = src->reg[i][0];
+		cpy->reg[i][1] = src->reg[i][1];
+		cpy->reg[i][2] = src->reg[i][2];
+		cpy->reg[i][3] = src->reg[i][3];
 		i++;
 	}
 }
