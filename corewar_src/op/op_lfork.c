@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/27 17:51:04 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 16:31:06 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,9 @@ int		op_lfork(t_data *d, t_header *player)
 	ft_strcpy(player->codage, "10000000");
 	if ((ret = getOpArgs(d, player)) < 0)
 		return (ret);
-	result = get_arg_int(player->opArgs[0]);
+	result = get_int_from_dec(player->opArgs[0], T_LAB) - 1;
 	if (addProg(d, newProg(player->number)) < 0)
-	{
-		writeL("new prog failed");
-		//sleep(5);
 		return (-1);
-	}
 	prog = lastProg(d);
 	d->players++;
 	copyProg(d, player, prog);
