@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 16:15:00 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 13:04:23 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 17:59:04 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int		get_int_from_dec(char *str, int len)
 **
 ** conv hex str to dec str (register) : str_to_reg	ok
 ** conv map hex to dec str (register) : map_to_reg	ok
-** conv dec str (register) to int : reg_to_int		?
+** conv dec str (register) to int : reg_to_int		ok
 ** conv int to dec (register) : get_int_from_dec	ok
 **
 */

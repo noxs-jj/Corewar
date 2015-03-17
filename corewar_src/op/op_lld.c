@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/12 17:36:48 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 18:07:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,46 @@
 ** change carry
 */
 
+
+int		op_lld(t_data *d, t_header *player)
+{
+	int 			ret;
+	unsigned int 	reg;
+	int 			value;
+	int i;
+	
+	writeL("--- op_lld ---");
+	player->carry = false;
+	if ((ret = getOpArgs(d, player)) < 0
+		|| isValidRegister(get_int_from_dec(player->opArgs[1], T_LAB)) < 0)
+		return (ret);		
+	reg = get_int_from_dec(player->opArgs[1], T_LAB);
+	if (is_direct(player, 0) >= 0)
+	{
+		value = get_int_from_dec(player->opArgs[0], T_LAB);
+		value = get_arg_modulo(value, IDX_MOD);
+		int_to_reg(d, player, value, reg);
+	}
+	else if (is_indirect(player, 0) >= 0)
+	{
+		value = get_int_from_dec(player->opArgs[0], T_LAB);
+		if (player->opArgs[0][T_LAB - 2] >= 240)
+			value = value - 65536;
+		value = get_arg_modulo(value, IDX_MOD);
+		value = (player->indexPC + value + MEM_SIZE) % MEM_SIZE;
+		map_to_reg(d, player, reg, value);
+		player->reg[reg][0] = 0;
+		player->reg[reg][1] = 0;
+	}
+	else
+		return (-1);
+	player->carry = true;
+	pcAdvance(d, player, ret);
+	return (0);
+}
+
+
+/*
 int		op_lld(t_data *d, t_header *player)
 {
 	int				ret;
@@ -47,3 +87,5 @@ int		op_lld(t_data *d, t_header *player)
 	pcAdvance(d, player, ret);
 	return (0);
 }
+
+*/
