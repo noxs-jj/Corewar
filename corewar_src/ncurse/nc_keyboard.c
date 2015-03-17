@@ -25,29 +25,11 @@ void	keyboard(void)
 	if (key_input == 113 || key_input == 101 || key_input == 27)
 		exitFree();
 	else if (key_input == 112 || key_input == 32)
-	{
-		if (d->pause == true)
-		{
-			d->pause = false;
-			writeL("keyboard\tRUNNING");
-		}
-		else
-		{
-			d->pause = true;
-			writeL("keyboard\tPAUSE");
-			render_draw(d);
-		}
-	}
+		key_pause(d);
 	else if (key_input == 43 && d->ncurseSpeed != 250000) // + == 43
-	{
-		if (d->ncurseSpeed + 5000 < 250000)
-			d->ncurseSpeed += 5000;
-	}
+		key_plus(d);
 	else if (key_input == 45 && d->ncurseSpeed != 0) // - == 45
-	{
-		if (d->ncurseSpeed - 5000 >= 0)
-			d->ncurseSpeed -= 5000;
-	}
+		key_minux(d);
 	// else
 	// {
 	// 	writeL("Key _ Input");

@@ -46,6 +46,9 @@ SRCS =	arg_dump.c \
 		ncurse/nc_color_champ4.c \
 		ncurse/nc_draw_scene.c \
 		ncurse/nc_init.c \
+		ncurse/nc_key_plus.c \
+		ncurse/nc_key_pause.c \
+		ncurse/nc_key_minus.c \
 		ncurse/nc_keyboard.c \
 		ncurse/nc_legend_column.c \
 		ncurse/nc_legend_info_value.c \
