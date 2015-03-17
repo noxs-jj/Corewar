@@ -29,7 +29,11 @@ int		op_aff(t_data *d, t_header *player)
 	value = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
 	value = value % 256;
 	// ##############################
+	ft_putstr("Player ");
+	ft_putstr(player->prog_name);
+	ft_putstr(" OP>aff: [");
 	ft_putchar(value);	// print this on screen
+	ft_putstr("]\n");
 	// ##############################
 	pcAdvance(d, player, ret);
 	return (0);
