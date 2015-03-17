@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:27:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 12:16:06 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/17 16:24:50 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,31 @@
 ** has idx_mod
 */
 
+int		op_fork(t_data *d, t_header *player)
+{
+	int				ret;
+	int				result;
+	t_header		*prog;
+
+	writeL("--- op_fork ---");
+	ft_bzero(player->codage, 9);
+	ft_strcpy(player->codage, "10000000");
+	if ((ret = getOpArgs(d, player)) < 0)
+		return (ret);
+
+	result = get_int_from_dec(player->opArgs[0], T_LAB);
+	if (addProg(d, newProg(player->number)) < 0) // while
+		return (-1);
+	d->players++;
+	prog = lastProg(d);
+	copyProg(d, player, prog); // add new prog before 1st elem
+	result = get_arg_modulo(result - 1, IDX_MOD);
+	pcAdvance(d, prog, result);
+	pcAdvance(d, player, ret);
+	return (0);
+}
+
+/*
 int		op_fork(t_data *d, t_header *player)
 {
 	int				ret;
@@ -60,3 +85,4 @@ int		op_fork(t_data *d, t_header *player)
 	pcAdvance(d, player, ret);
 	return (0);
 }
+*/
