@@ -40,6 +40,7 @@ int		op_st(t_data *d, t_header *player)
 	}
 	else
 		return (-1);
+	value = get_arg_modulo(value, IDX_MOD);
 	change_mem_val(d, player->number, (player->indexPC + value + MEM_SIZE)
 		% MEM_SIZE, (char *)player->reg[reg]);
 	player->carry = true;
