@@ -14,18 +14,14 @@
 
 void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 {
-	size_t len;
-	int i;
-	char tmp[3];
-	int result;
+	size_t	len;
+	int		i;
+	char	tmp[3];
+	int		result;
 
 	len = ft_strlen((char *)*src) / 2;
 	i = 0;
 	size = size - len;
-	write_l("value");
-	write_l(ft_itoa(size));
-	write_l("len");
-	write_l(ft_itoa(len));
 	while (i < (int)len)
 	{
 		ft_bzero(tmp, 3);

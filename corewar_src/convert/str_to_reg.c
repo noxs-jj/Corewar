@@ -12,28 +12,30 @@
 
 #include "../../includes/corewarOpTab.h"
 
-void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
+static void	str_to_reg_2(t_data *d, char *str, char (*tmp)[], int *index)
+{
+	(void)d;
+	(*tmp)[0] = '0';
+	(*tmp)[1] = str[(*index) * 2];
+	(*index)++;
+}
+
+void		str_to_reg(t_data *d, t_header *player, int reg, char *str)
 {
 	int		i;
 	char	tmp[3];
-	int		index;	// size_t
+	int		index;
 
-	(void)d;
 	index = 0;
 	i = REG_SIZE - str_hex_len((unsigned char *)str);
 	if (i < 0)
 		i = 0;
-	write_l(ft_itoa(i));
 	ft_bzero(player->reg[reg], REG_SIZE);
 	while (i < REG_SIZE && index < (int)ft_strlen(str))
 	{
 		ft_bzero(tmp, 3);
 		if (i == 0 && ft_strlen(str) % 2 > 0)
-		{
-			tmp[0] = '0';
-			tmp[1] = str[index * 2];
-			index++;
-		}
+			str_to_reg_2(d, str, &tmp, &index);
 		else
 		{
 			ft_strncpy(tmp, &str[index], 2);

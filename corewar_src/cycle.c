@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-void	checkCyles2(t_data *d)
+void	check_cyles2(t_data *d)
 {
 	int			moreRecentLive;
 	t_header	*prog;
@@ -35,7 +35,7 @@ void	checkCyles2(t_data *d)
 	}
 }
 
-void	checkCyles(t_data *d)
+void	check_cyles(t_data *d)
 {
 	t_header	*prog;
 
@@ -58,5 +58,5 @@ void	checkCyles(t_data *d)
 		}
 		d->livesCurrent = 0;
 	}
-	checkCyles2(d);
+	check_cyles2(d);
 }

@@ -40,7 +40,7 @@ int		op_st(t_data *d, t_header *player)
 	}
 	else
 		return (-1);
-	changeMemVal(d, player->number, (player->indexPC + value + MEM_SIZE)
+	change_mem_val(d, player->number, (player->indexPC + value + MEM_SIZE)
 		% MEM_SIZE, (char *)player->reg[reg]);
 	player->carry = true;
 	pc_advance(d, player, ret);

@@ -21,7 +21,7 @@ LIB = ../libft/libft.a
 NAME = corewar
 
 SRCS =	arg_dump.c \
-		changeMemVal.c \
+		change_mem_val.c \
 		check_next_op.c \
 		cycle.c \
 		exec_op.c \

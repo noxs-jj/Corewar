@@ -14,9 +14,9 @@
 
 void	int_to_reg(t_data *d, t_header *player, int n, int reg)
 {
-	char	str[(REG_SIZE * 2) + 1];
+	char	str[REG_SIZE_2];
 
-	ft_bzero(str, (REG_SIZE * 2) + 1);
+	ft_bzero(str, REG_SIZE_2);
 	nbr2hex((unsigned int)n, (unsigned char (*)[])&str);
 	str_to_reg(d, player, reg, str);
 }

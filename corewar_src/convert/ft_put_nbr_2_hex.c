@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
+void ft_put_nbr_2_hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 {
 	int i;
 	int index;
@@ -28,7 +28,7 @@ void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 	write_l(ft_itoa(len));
 	while (i < len)
 	{
-		ft_putHexNbr((*src)[i], (unsigned char (*)[])&(*str)[index * 2]);
+		ft_put_hex_nbr((*src)[i], (unsigned char (*)[])&(*str)[index * 2]);
 		index++;
 		i++;
 	}

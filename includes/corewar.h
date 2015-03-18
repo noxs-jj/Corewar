@@ -35,6 +35,8 @@
 
 # define REG_NUMBER				16
 # define REG_SIZE				4
+# define REG_SIZE_2				(REG_SIZE * 2) + 1
+
 
 # define REG_CODE				1
 # define DIR_CODE				2
@@ -171,7 +173,7 @@ typedef	struct			s_data
 /* Corewar bin */
 int				addProg(t_data *d, t_header *new);
 int				arg_to_dec(char (*src)[]);
-int				changeMemVal(t_data *d, int id, int where, char *str);
+int				change_mem_val(t_data *d, int id, int where, char *str);
 int				check_next_op(t_data *d);
 int				exec_op(t_data *d);
 int				get_arg_int(char *str);
@@ -201,14 +203,14 @@ t_header		*searchProg(t_data *d, int number);
 unsigned int	ft_hex_2_dec(unsigned char *str);
 unsigned int	ft_hex2intdec(unsigned char *str);
 void			arg_dump(t_data *d);
-void			checkCyles(t_data *d);
+void			check_cyles(t_data *d);
 void			copyProg(t_data *d, t_header *src, t_header *cpy);
 void			delAll(t_data *d);
 void			delProg(t_data *d, int number);
-void			exitFree(void);
+void			exit_free(void);
 void			cpy_reg(t_header *src, t_header *cpy);
-void			ft_putHexBNbr(unsigned int n, unsigned char (*str)[]);
-void			ft_putHexNbr(unsigned char n, unsigned char (*str)[]);
+void			ft_put_hex_b_nbr(unsigned int n, unsigned char (*str)[]);
+void			ft_put_hex_nbr(unsigned char n, unsigned char (*str)[]);
 void			hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size);
 void			init_reg(t_header *new);
 void			int_to_reg(t_data *d, t_header *player, int n, int reg);
@@ -217,7 +219,7 @@ void			nbr2hex(unsigned int n, unsigned char (*str)[]);
 void			pc_advance(t_data *d, t_header *player, int adv);
 void			str_to_reg(t_data *d, t_header *player, int reg, char *str);
 void			write_l(char *str);
-void 			ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
+void 			ft_put_nbr_2_hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
 
 /* OP functions */
 typedef struct		s_opfunc
@@ -263,6 +265,11 @@ static const t_opfunc	g_opfunc[] =
 	{16, &op_aff}
 };
 
+static const char		g_tab[] =
+{
+	'0', '1', '2', '3', '4', '5', '6', '7',
+	'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
+};
 
 /* NCurses */
 int 			render_init(t_data *d);

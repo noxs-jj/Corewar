@@ -20,17 +20,11 @@ void	render_keyboard(t_data *d)
 	timeout(1);
 	key_input = getch();
 	if (key_input == 113 || key_input == 101 || key_input == 27)
-		exitFree();
+		exit_free();
 	else if (key_input == 112 || key_input == 32)
 		key_pause(d);
-	else if (key_input == 43 && d->ncurseSpeed != 250000) // + == 43
+	else if (key_input == 43 && d->ncurseSpeed != 250000)
 		key_plus(d);
-	else if (key_input == 45 && d->ncurseSpeed != 0) // - == 45
+	else if (key_input == 45 && d->ncurseSpeed != 0)
 		key_minux(d);
-	// else
-	// {
-	// 	write_l("Key _ Input");
-	// 	write_l(ft_itoa(key_input));
-	// 	sleep(2);
-	// }
 }

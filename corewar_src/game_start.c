@@ -27,7 +27,7 @@ static void	game_start_2(t_data *d)
 		d->run = false;
 		arg_dump(d);
 	}
-	checkCyles(d);
+	check_cyles(d);
 }
 
 int	game_start(t_data *d)

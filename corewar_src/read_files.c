@@ -45,10 +45,10 @@ static int	checkMagic(t_data *d, int fd)
 	ft_bzero(cmp, 16);
 	if ((ret = read(fd, buff, 4)) < 0)
 		return (-1);
-	ft_putHexNbr(buff[0], (unsigned char (*)[])cmp);
-	ft_putHexNbr(buff[1], (unsigned char (*)[])&cmp[2]);
-	ft_putHexNbr(buff[2], (unsigned char (*)[])&cmp[4]);
-	ft_putHexNbr(buff[3], (unsigned char (*)[])&cmp[6]);
+	ft_put_hex_nbr(buff[0], (unsigned char (*)[])cmp);
+	ft_put_hex_nbr(buff[1], (unsigned char (*)[])&cmp[2]);
+	ft_put_hex_nbr(buff[2], (unsigned char (*)[])&cmp[4]);
+	ft_put_hex_nbr(buff[3], (unsigned char (*)[])&cmp[6]);
 	if (ft_strcmp(COREWAR_EXEC_MAGIC, (char *)cmp) != 0)
 		return (-1);
 	return (0);
@@ -89,7 +89,7 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 	ft_bzero(str, 3);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0)
 	{
-		ft_putHexNbr(buff[0], (unsigned char (*)[])&str);
+		ft_put_hex_nbr(buff[0], (unsigned char (*)[])&str);
 		ft_strncpy((char *)&prog->prog[index], str, 2);
 		index += 2;
 		prog->prog_size += 2;

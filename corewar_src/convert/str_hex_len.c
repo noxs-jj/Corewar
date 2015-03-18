@@ -14,8 +14,8 @@
 
 int		str_hex_len(unsigned char *str)
 {
-	unsigned int value;
-	int len;
+	unsigned int	value;
+	int				len;
 
 	len = 1;
 	value = ft_hex2intdec(str);

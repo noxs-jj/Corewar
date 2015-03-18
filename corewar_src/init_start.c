@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-static int	checkNumber(t_data *d, int n)
+static int	check_number(t_data *d, int n)
 {
 	t_header *tmp;
 
@@ -33,7 +33,7 @@ static int	champion_number(t_data *d, int ac, char **av, int i)
 
 	if (++i >= ac || ft_atoi(av[i]) <= 0
 		|| ft_atoi(av[i]) > MAX_PLAYERS || ++d->players >= MAX_PLAYERS
-		|| checkNumber(d, ft_atoi(av[i])) == -1)
+		|| check_number(d, ft_atoi(av[i])) == -1)
 		return (-1);
 	addProg(d, newProg(ft_atoi(av[i])));
 	prog = lastProg(d);
@@ -52,7 +52,7 @@ static int	champion(t_data *d, int ac, char **av, int i)
 	number = 1;
 	if (++d->players >= MAX_PLAYERS)
 		return (-1);
-	while (checkNumber(d, number) == -1 && number <= MAX_PLAYERS)
+	while (check_number(d, number) == -1 && number <= MAX_PLAYERS)
 		number++;
 	addProg(d, newProg(number));
 	prog = lastProg(d);

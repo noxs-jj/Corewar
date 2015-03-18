@@ -19,7 +19,7 @@
 int		get_int_from_dec(char *str, int len)
 {
 	char	tmp[T_LAB + 1];
-	int 	i;
+	int		i;
 	int		index;
 
 	ft_bzero(tmp, T_LAB + 1);
@@ -28,7 +28,7 @@ int		get_int_from_dec(char *str, int len)
 	len = len - index;
 	while (len > 0)
 	{
-		ft_putHexNbr(str[index], (unsigned char (*)[])(&tmp[i]));  
+		ft_put_hex_nbr(str[index], (unsigned char (*)[])(&tmp[i]));
 		index++;
 		len--;
 		i += 2;

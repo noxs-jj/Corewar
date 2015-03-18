@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-void	exitFree(void)
+void	exit_free(void)
 {
 	t_data *d;
 

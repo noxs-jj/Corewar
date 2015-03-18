@@ -20,7 +20,8 @@ void	key_plus(t_data *d)
 		d->ncurseSpeed += 5000;
 		wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 		mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, "      ");
-		mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, ft_itoa(d->ncurseSpeed));
+		mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE,
+			ft_itoa(d->ncurseSpeed));
 		wattroff(d->window, COLOR_PAIR(10) | A_BOLD);
 		refresh();
 		wrefresh(d->window);

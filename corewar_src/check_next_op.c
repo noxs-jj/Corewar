@@ -13,7 +13,7 @@
 // #include "../includes/corewar.h"
 #include "../includes/corewarOpTab.h"
 
-void	checkPC(t_header *h)
+void	check_pc(t_header *h)
 {
 	unsigned int 	instruction;
 
@@ -34,7 +34,7 @@ int		check_next_op(t_data *d)
 		if (prog->wait <= 0)
 		{
 			prog->PC->present = prog->number;
-			checkPC(prog);
+			check_pc(prog);
 			write_l(ft_itoa(prog->nextOp));
 			if (prog->nextOp != -1)
 			{

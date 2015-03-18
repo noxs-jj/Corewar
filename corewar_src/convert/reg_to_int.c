@@ -14,14 +14,14 @@
 
 int		reg_to_int(t_data *d, t_header *player, int reg)
 {
-	char 			str[(REG_SIZE * 2) + 1];
-	char 			tmp[3];
-	int 			i;
-	int 			j;
-	unsigned char 	value;
+	char			str[REG_SIZE_2];
+	char			tmp[3];
+	int				i;
+	int				j;
+	unsigned char	value;
 
 	(void)d;
-	ft_bzero(str, (REG_SIZE * 2) + 1);
+	ft_bzero(str, REG_SIZE_2);
 	i = 0;
 	j = 0;
 	while (player->reg[reg][i] == 0)
@@ -30,8 +30,8 @@ int		reg_to_int(t_data *d, t_header *player, int reg)
 	{
 		ft_bzero(tmp, 3);
 		value = player->reg[reg][i];
-		ft_putHexNbr(value, (unsigned char (*)[])&tmp);
-		ft_strncpy(&str[j * 2], tmp, 2);		
+		ft_put_hex_nbr(value, (unsigned char (*)[])&tmp);
+		ft_strncpy(&str[j * 2], tmp, 2);
 		i++;
 		j++;
 	}

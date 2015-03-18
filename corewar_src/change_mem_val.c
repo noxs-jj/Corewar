@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   changeMemVal.c                                     :+:      :+:    :+:   */
+/*   change_mem_val.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-int		changeMemVal(t_data *d, int id, int where, char *str)
+int		change_mem_val(t_data *d, int id, int where, char *str)
 {
 	size_t			i;
 	unsigned char	tmp[3];
@@ -24,7 +24,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 		if (str[i] == 0)
 			ft_strncpy((char *)&tmp, "00", 2);
 		else
-			ft_putHexNbr(str[i], &tmp);
+			ft_put_hex_nbr(str[i], &tmp);
 		d->map[where].hex[0] = tmp[0];
 		d->map[where].hex[1] = tmp[1];
 		d->map[where].recent = 20;
