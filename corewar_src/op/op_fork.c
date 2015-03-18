@@ -30,7 +30,7 @@ int		op_fork(t_data *d, t_header *player)
 	if ((ret = getOpArgs(d, player)) < 0)
 		return (ret);
 
-	result = get_int_from_dec(player->opArgs[0], T_LAB);
+	result = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 	if (player->opArgs[0][T_LAB - 2] >= 240)
 			result = result - 65536;
 	if (addProg(d, newProg(player->number)) < 0) // while

@@ -55,7 +55,7 @@ void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 	while (i < len)
 	{
 		// writeL("before ft_putHexNbr call");
-		ft_putHexNbr((*src)[i], &(*str)[index * 2]);
+		ft_putHexNbr((*src)[i], (unsigned char (*)[])&(*str)[index * 2]);
 		index++;
 		i++;
 	}

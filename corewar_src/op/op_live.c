@@ -29,7 +29,7 @@ int		op_live(t_data *d, t_header *player)
 	ft_strcpy(player->codage, "10000000");
 	if ((ret = getOpArgs(d, player)) < 0)
 		return (ret);
-	value = get_int_from_dec(player->opArgs[0], T_LAB);
+	value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 	if ((prog = searchProg(d, value)) != NULL)
 	{
 		prog->lastLive = d->cycle;

@@ -28,20 +28,20 @@ int		op_or(t_data *d, t_header *player)
 	writeL("--- op_or ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec(player->opArgs[2], T_LAB)) < 0)
+		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
 		return (ret);
-	reg = get_int_from_dec(player->opArgs[2], T_LAB);
+	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
 	if (is_register(player, 0) >= 0)
-		value[0] = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
+		value[0] = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0], T_LAB));
 	else if (is_direct(player, 0) >= 0)
 	{
-		value[0] = get_int_from_dec(player->opArgs[0], T_LAB);
+		value[0] = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value[0] = value[0] - 65536;
 	}
 	else if (is_indirect(player, 0) >= 0)
 	{
-		value[0] = get_int_from_dec(player->opArgs[0], T_LAB);
+		value[0] = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value[0] = value[0] - 65536;
 		value[0] = get_arg_modulo(value[0], IDX_MOD);
@@ -49,16 +49,16 @@ int		op_or(t_data *d, t_header *player)
 	else
 		return (-1);
 	if (is_register(player, 1) >= 0)
-		value[1] = reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
+		value[1] = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[1], T_LAB));
 	else if (is_direct(player, 1) >= 0)
 	{
-		value[1] = get_int_from_dec(player->opArgs[1], T_LAB);
+		value[1] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value[1] = value[1] - 65536;
 	}
 	else if (is_indirect(player, 1) >= 0)
 	{
-		value[1] = get_int_from_dec(player->opArgs[1], T_LAB);
+		value[1] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value[1] = value[1] - 65536;
 		value[1] = get_arg_modulo(value[1], IDX_MOD);

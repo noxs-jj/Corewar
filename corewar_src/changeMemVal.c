@@ -27,7 +27,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 	while (i < REG_SIZE)
 	{
 		if (str[i] == 0)
-			ft_strncpy(tmp, "00", 2);
+			ft_strncpy((char *)&tmp, "00", 2); // CAST
 		else
 			ft_putHexNbr(str[i], &tmp);
 		d->map[where].hex[0] = tmp[0];

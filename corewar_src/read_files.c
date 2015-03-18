@@ -18,6 +18,7 @@ static int	read_prog_comment(t_data *d, int fd, t_header *prog)
 	int		ret;
 	int		index;
 
+	(void)d;
 	index = 0;
 	if (lseek(fd, 135 - ft_strlen(prog->prog_name), SEEK_CUR) < 0)// 140, SEEK_SET
 		return (-1);
@@ -26,7 +27,7 @@ static int	read_prog_comment(t_data *d, int fd, t_header *prog)
 	{
 		if (buff[0] == 0)
 			return (0);
-		strncpy(&prog->comment[index], buff, 1);
+		ft_strncpy(&prog->comment[index], buff, 1);
 		index += 1;
 		ft_bzero(buff, BUFFSIZE);
 	}
@@ -39,15 +40,16 @@ static int	checkMagic(t_data *d, int fd)
 	char cmp[16];
 	int ret;
 
+	(void)d;
 	ft_bzero(buff, 16);
 	ft_bzero(cmp, 16);
 	if ((ret = read(fd, buff, 4)) < 0)
 		return (-1);
-	ft_putHexNbr(buff[0], cmp);
-	ft_putHexNbr(buff[1], &cmp[2]);
-	ft_putHexNbr(buff[2], &cmp[4]);
-	ft_putHexNbr(buff[3], &cmp[6]);
-	if (ft_strcmp(COREWAR_EXEC_MAGIC, cmp) != 0)
+	ft_putHexNbr(buff[0], (unsigned char (*)[])cmp);
+	ft_putHexNbr(buff[1], (unsigned char (*)[])&cmp[2]);
+	ft_putHexNbr(buff[2], (unsigned char (*)[])&cmp[4]);
+	ft_putHexNbr(buff[3], (unsigned char (*)[])&cmp[6]);
+	if (ft_strcmp(COREWAR_EXEC_MAGIC, (char *)cmp) != 0)
 		return (-1);
 	return (0);
 }
@@ -66,7 +68,7 @@ static int	read_prog_name(t_data *d, int fd, t_header *prog)
 	{
 		if (buff[0] == 0)
 			return (read_prog_comment(d, fd, prog));
-		strncpy(&prog->prog_name[index], buff, 1);
+		ft_strncpy(&prog->prog_name[index], buff, 1);
 		index += 1;
 		ft_bzero(buff, BUFFSIZE);
 	}
@@ -87,8 +89,8 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 	ft_bzero(str, 3);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0) // read prog only  && (index + 2) < CHAMP_MAX_SIZE
 	{
-		ft_putHexNbr(buff[0], &str);
-		strncpy(&prog->prog[index], str, 2);
+		ft_putHexNbr(buff[0], (unsigned char (*)[])&str);
+		ft_strncpy((char *)&prog->prog[index], str, 2);
 		index += 2;
 		prog->prog_size += 2;
 		if (prog->prog_size > CHAMP_MAX_SIZE)

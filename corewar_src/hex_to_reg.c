@@ -38,6 +38,7 @@ int		reg_to_int(t_data *d, t_header *player, int reg)
 	int j;
 	unsigned char value;
 
+	(void)d;
 	// writeL("/==== reg_to_int ====/");
 	ft_bzero(str, (REG_SIZE * 2) + 1);
 	i = 0;
@@ -48,12 +49,12 @@ int		reg_to_int(t_data *d, t_header *player, int reg)
 	{
 		ft_bzero(tmp, 3);
 		value = player->reg[reg][i];
-		ft_putHexNbr(value, &tmp);
+		ft_putHexNbr(value, (unsigned char (*)[])&tmp);
 		ft_strncpy(&str[j * 2], tmp, 2);		
 		i++;
 		j++;
 	}
-	return (ft_hex2intdec(str));
+	return (ft_hex2intdec((unsigned char *)str));
 }
 
 // OK
@@ -64,13 +65,14 @@ void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 	char tmp[3];
 	int index;	// size_t
 
+	(void)d;
 	index = 0;
-	i = REG_SIZE - str_hex_len(str);
+	i = REG_SIZE - str_hex_len((unsigned char *)str);
 	if (i < 0)
 		i = 0;
 	writeL(ft_itoa(i));
 	ft_bzero(player->reg[reg], REG_SIZE);
-	while (i < REG_SIZE && index < ft_strlen(str))
+	while (i < REG_SIZE && index < (int)ft_strlen(str))
 	{
 		ft_bzero(tmp, 3);
 		if (i == 0 && ft_strlen(str) % 2 > 0)
@@ -84,7 +86,7 @@ void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 			ft_strncpy(tmp, &str[index], 2);
 			index += 2;
 		}
-		player->reg[reg][i] = ft_hex2intdec(tmp);
+		player->reg[reg][i] = ft_hex2intdec((unsigned char *)tmp);
 		i++;
 	}
 }
@@ -96,7 +98,7 @@ void	int_to_reg(t_data *d, t_header *player, int n, int reg)
 	ft_bzero(str, (REG_SIZE * 2) + 1);
 	// writeL("hello world !");
 	// writeL(ft_itoa(n));
-	nbr2hex((unsigned int)n, &str);
+	nbr2hex((unsigned int)n, (unsigned char (*)[])&str);
 	// writeL("/=====\\");
 	// writeL(str);
 	str_to_reg(d, player, reg, str);

@@ -35,7 +35,7 @@ unsigned int	ft_hex2Dec(unsigned char *str)
 
 	i = 0;
 	result = 0;
-	len = ft_strlen(str) - 1;
+	len = ft_strlen((char *)str) - 1; // CAST
 	while (str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -61,7 +61,7 @@ unsigned int		ft_hex2intdec(unsigned char *str)
 
 	i = 0;
 	result = 0;
-	len = ft_strlen(str) - 1;
+	len = ft_strlen((char *)str) - 1; // CAST
 	// writeL(ft_itoa(len));
 	while (str[i] != '\0')
 	{

@@ -27,18 +27,18 @@ int		op_sub(t_data *d, t_header *player)
 	writeL("--- op_sub ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec(player->opArgs[0], T_LAB)) < 0
-		|| isValidRegister(get_int_from_dec(player->opArgs[1], T_LAB)) < 0
-		|| isValidRegister(get_int_from_dec(player->opArgs[2], T_LAB)) < 0)
+		|| isValidRegister(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0
+		|| isValidRegister(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0
+		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
 		return (ret);
-	reg = get_int_from_dec(player->opArgs[2], T_LAB);
+	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
 	ft_bzero(player->opArgs[reg], REG_SIZE);
-	value = reg_to_int(d, player, get_int_from_dec(player->opArgs[0], T_LAB));
+	value = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0], T_LAB));
 	// writeL("first value");
 	// writeL(ft_itoa(value));
-	value -= reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB));
+	value -= reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[1], T_LAB));
 	// writeL("2nd value");
-	// writeL(ft_itoa(reg_to_int(d, player, get_int_from_dec(player->opArgs[1], T_LAB))));
+	// writeL(ft_itoa(reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[1], T_LAB))));
 	// writeL("result");
 	// writeL(ft_itoa(value));
 	int_to_reg(d, player, value, reg);
@@ -64,17 +64,17 @@ int		op_sub(t_data *d, t_header *player)
 	writeL("--- op_add ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(ft_hex2Dec(player->opArgs[0])) < 0
-		|| isValidRegister(ft_hex2Dec(player->opArgs[1])) < 0
-		|| isValidRegister(ft_hex2Dec(player->opArgs[2])) < 0)
+		|| isValidRegister(ft_hex2Dec((char *)player->opArgs[0])) < 0
+		|| isValidRegister(ft_hex2Dec((char *)player->opArgs[1])) < 0
+		|| isValidRegister(ft_hex2Dec((char *)player->opArgs[2])) < 0)
 		return (ret);
 	value = 0;
-	reg = ft_hex2Dec(player->opArgs[2]);
+	reg = ft_hex2Dec((char *)player->opArgs[2]);
 	ft_bzero(player->opArgs[reg], REG_SIZE);
-	value = reg_to_int(d, player, ft_hex2Dec(player->opArgs[0]));
-	value -= reg_to_int(d, player, ft_hex2Dec(player->opArgs[1]));
-	// value = get_arg_int(player->reg[ft_hex2Dec(player->opArgs[0])]);
-	// value -= get_arg_int(player->reg[ft_hex2Dec(player->opArgs[1])]);
+	value = reg_to_int(d, player, ft_hex2Dec((char *)player->opArgs[0]));
+	value -= reg_to_int(d, player, ft_hex2Dec((char *)player->opArgs[1]));
+	// value = get_arg_int(player->reg[ft_hex2Dec((char *)player->opArgs[0])]);
+	// value -= get_arg_int(player->reg[ft_hex2Dec((char *)player->opArgs[1])]);
 	ft_bzero(str, REG_SIZE + 1);
 	ft_putHexBNbr(value, str); // conversion int to unsigned int
 	str_to_reg(d, player, reg, str);

@@ -24,17 +24,16 @@ int		op_lld(t_data *d, t_header *player)
 	int 			ret;
 	unsigned int 	reg;
 	int 			value;
-	int i;
 	
 	writeL("--- op_lld ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec(player->opArgs[1], T_LAB)) < 0)
+		|| isValidRegister(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0)
 		return (ret);		
-	reg = get_int_from_dec(player->opArgs[1], T_LAB);
+	reg = get_int_from_dec((char *)player->opArgs[1], T_LAB);
 	if (is_direct(player, 0) >= 0)
 	{
-		value = get_int_from_dec(player->opArgs[0], T_LAB);
+		value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value = value - 65536;
 		value = get_arg_modulo(value, IDX_MOD);
@@ -42,7 +41,7 @@ int		op_lld(t_data *d, t_header *player)
 	}
 	else if (is_indirect(player, 0) >= 0)
 	{
-		value = get_int_from_dec(player->opArgs[0], T_LAB);
+		value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value = value - 65536;
 		value = get_arg_modulo(value, IDX_MOD);
@@ -70,9 +69,9 @@ int		op_lld(t_data *d, t_header *player)
 	writeL("--- op_lld ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(ft_hex2Dec(player->opArgs[1])) < 0)
+		|| isValidRegister(ft_hex2Dec((char *)player->opArgs[1])) < 0)
 		return (ret);
-	reg = ft_hex2Dec(player->opArgs[1]);
+	reg = ft_hex2Dec((char *)player->opArgs[1]);
 	value = get_arg_int(player->opArgs[0]);
 	ft_bzero(player->reg[reg], REG_SIZE);
 	i = REG_SIZE / 2;

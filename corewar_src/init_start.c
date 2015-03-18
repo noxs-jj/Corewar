@@ -21,7 +21,7 @@ static int	checkNumber(t_data *d, int n)
 
 	while (tmp != NULL)
 	{
-		if (n == tmp->number)
+		if (n == (int)tmp->number)
 			return (-1);
 		tmp = tmp->next;
 	}
@@ -49,6 +49,7 @@ static int	champion(t_data *d, int ac, char **av, int i)
 	int number;
 	t_header *prog;
 
+	(void)ac;
 	number = 1;
 	if (++d->players >= MAX_PLAYERS)
 		return (-1);
@@ -92,7 +93,9 @@ int 		checkparam(t_data *d, int ac, char **av)
 	d->realPlayers = d->players + 1; // copy real number champions without fork for ncurses show 
 	if (d->players < 1)
 		return (print_error("Min 2 Players"));
+	return (0);
 }
+
 int			init_start(t_data *d, int ac, char **av)
 {
 	if (ac < 3 || ac > MAX_ARGS_NUMBER)
@@ -116,3 +119,4 @@ int			init_start(t_data *d, int ac, char **av)
 	// writeL("init start before checkparam");
 	return (checkparam(d, ac, av));
 }
+

@@ -13,13 +13,10 @@
 #include "../../includes/corewar.h"
 #include "../../includes/render.h"
 
-void	keyboard(void)
+void	render_keyboard(t_data *d)
 {
-	static t_data	*d = NULL;
 	int				key_input;
 
-	if (d == NULL)
-		d = getData();
 	timeout(1);
 	key_input = getch();
 	if (key_input == 113 || key_input == 101 || key_input == 27)

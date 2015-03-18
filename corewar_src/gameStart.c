@@ -113,18 +113,18 @@ void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 	char tmp[3];
 	int result;
 
-	len = ft_strlen(*src) / 2;
+	len = ft_strlen((char *)*src) / 2;// CAST
 	i = 0;
 	size = size - len;
 	writeL("value");
 	writeL(ft_itoa(size));
 	writeL("len");
 	writeL(ft_itoa(len));
-	while (i < len)
+	while (i < (int)len) // CAST
 	{
 		ft_bzero(tmp, 3);
-		ft_strncpy(tmp, &(*src)[i * 2], 2);
-		result = ft_hex2intdec(tmp);
+		ft_strncpy(tmp, (char *)&(*src)[i * 2], 2);// CAST
+		result = ft_hex2intdec((unsigned char *)tmp);// CAST
 		(*str)[size + i] = result;
 		i++;
 	}
@@ -138,17 +138,17 @@ int		get_int_from_dec(char *str, int len)
 	int		index;
 
 	ft_bzero(tmp, T_LAB + 1);
-	index = len - hex_strlen(str, len);
+	index = len - hex_strlen((unsigned char *)str, len);// CAST
 	i = 0;
 	len = len - index;
 	while (len > 0)
 	{
-		ft_putHexNbr(str[index], &tmp[i]);
+		ft_putHexNbr(str[index], (unsigned char (*)[])(&tmp[i]));// CAST // CAST // CAST
 		index++;
 		len--;
 		i += 2;
 	}
-	return ((int)ft_hex2intdec(tmp));
+	return ((int)ft_hex2intdec((unsigned char*)tmp));
 }
 
 
@@ -248,7 +248,7 @@ int	gameStart(t_data *d)
 		render_draw(d); // need to be modified (d->prog)
 	else
 		co_show_init_players(d); // need to be modified (d->prog)
-	writeL(ft_itoa("DUMP following"));
+	writeL("DUMP following");
 	writeL(ft_itoa(d->dump));
 	while (d->run == true)
 	{
@@ -261,7 +261,7 @@ int	gameStart(t_data *d)
 				render_draw(d); // draw game with ncurses // need to be modified (d->prog)
 			else
 				render_shell(d); // draw game on shell // need to be modified (d->prog)
-			if (d->dump != -1 && d->cycle == d->dump)
+			if (d->dump != -1 && (int)d->cycle == d->dump)// CAST
 			{
 				if (true == d->graphActiv)
 					render_close(d); // need to be modified (d->prog)
@@ -270,7 +270,7 @@ int	gameStart(t_data *d)
 			}
 			checkCyles(d); // need to be modified (d->prog)
 		}
-		keyboard(&d); // need to be modified (d->prog)
+		render_keyboard(d); // need to be modified (d->prog)
 		if (true == d->pause)
 			usleep(100000); 						// REMOVE
 	}

@@ -19,7 +19,7 @@ void	arg_dump(t_data *d)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		ft_putstr(d->map[i].hex);
+		ft_putstr((char *)d->map[i].hex); // CAST
 		ft_putchar(' ');
 		i++;
 		if (i % 32 == 0)

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//03 70 02 fe 38 
 #ifndef COREWAR_H
 # define COREWAR_H
 
@@ -49,7 +50,7 @@
 # define MEM_SIZE				(4 * 1024)
 # define IDX_MOD				(MEM_SIZE / 8)
 // #define CHAMP_MAX_SIZE		(MEM_SIZE / MAX_PLAYERS + 2) // original
-# define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS + 1)
+# define CHAMP_MAX_SIZE			9999999
 
 # define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'
@@ -192,6 +193,8 @@ int				print_error(char *str);
 t_data			*getData(void);
 void			writeL(char *str);
 int				read_files(t_data *d);
+void			exitFree(void);
+int				load_champions(t_data *d);
 // void			init_prog(t_data *d);
 void			ft_putHexNbr(unsigned char n, unsigned char (*str)[]);
 void			ft_putHexBNbr(unsigned int n, unsigned char (*str)[]);
@@ -217,12 +220,17 @@ t_header		*newProg(int number);
 int				addProg(t_data *d, t_header *new);
 void			delProg(t_data *d, int number);
 void			delAll(t_data *d);
+int				reg_to_int(t_data *d, t_header *player, int reg);
+void			copyProg(t_data *d, t_header *src, t_header *cpy);
+void			map_to_reg(t_data *d, t_header *player, int reg, int index);
+int				get_int_from_dec(char *str, int len);
+void			nbr2hex(unsigned int n, unsigned char (*str)[]);
 
 
 int		is_direct(t_header *player, int arg_nbr);
 int		is_indirect(t_header *player, int arg_nbr);
 int		is_register(t_header *player, int arg_nbr);
-void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
+void 	ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
 int		str_hex_len(unsigned char *str);
 void	int_to_reg(t_data *d, t_header *player, int n, int reg);
 int		get_int_from_dec(char *str, int len);
@@ -231,7 +239,7 @@ int		get_int_from_dec(char *str, int len);
 typedef struct		s_opfunc
 {
 	int				op;
-	void			(*func)(t_data *, t_header *);
+	int				(*func)(t_data *, t_header *);
 }					t_opfunc;
 
 int				op_add(t_data *d, t_header *player);
@@ -274,6 +282,7 @@ static const t_opfunc	g_opfunc[] =
 
 // NCurses
 int 			render_init(t_data *d);
+void			render_keyboard(t_data *d);
 void			render_close(t_data *d);
 void			render_draw(t_data *d);
 void			render_init_pair(void);
@@ -286,6 +295,9 @@ void			render_legend_player_value3(t_data *d);
 void			render_legend_player_value4(t_data *d);
 void			render_legend_sentence(t_data *d);
 void 			render_legend_player_sentence(t_data *d);
+void			key_minux(t_data *d);
+void			key_plus(t_data *d);
+void			key_pause(t_data *d);
 void			color_champ1(t_data *d, int i);
 void			color_champ2(t_data *d, int i);
 void			color_champ3(t_data *d, int i);

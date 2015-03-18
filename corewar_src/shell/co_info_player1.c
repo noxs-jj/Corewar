@@ -14,6 +14,7 @@
 
 void	co_info_player1(t_data *d, t_header *prog)
 {
+	(void)d;
 	ft_putstr("* Player 1, weighing ");
 	ft_putnbr(prog->prog_size);
 	ft_putstr(S_C_BYTES);

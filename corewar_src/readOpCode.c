@@ -21,6 +21,7 @@ int	readOpCode(t_data *d, t_header *prog)
 	int	i;
 	t_case *args;
 
+	(void)d;
 	args = ((prog->PC) + 1);
 	ft_bzero(prog->codage, 9);
 	i = 0;

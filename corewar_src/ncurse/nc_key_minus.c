@@ -15,7 +15,7 @@
 
 void	key_minux(t_data *d)
 {
-	if (d->ncurseSpeed - 5000 >= 0)
+	if ((int)d->ncurseSpeed - 5000 >= 0) //CAST
 	{
 		d->ncurseSpeed -= 5000;
 		wattron(d->window, COLOR_PAIR(10) | A_BOLD);

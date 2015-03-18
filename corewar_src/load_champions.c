@@ -25,7 +25,7 @@ int		load_champions(t_data *d)
 		i = 0;
 		d->map[index].present = true;
 		prog->indexPC = index;
-		while (i < prog->prog_size * 2)
+		while (i < (int)(prog->prog_size * 2))//CAST
 		{
 			d->map[index].champ = prog->number;
 			d->map[index].hex[0] = prog->prog[i];

@@ -32,7 +32,7 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 		player->opArgs[argNbr][tmp] = ft_hex2intdec(arg->hex);
 		writeL("[getValue] arg:");
 		writeL(ft_itoa(argNbr));
-		writeL(arg->hex);
+		writeL((char *)arg->hex);
 		writeL(ft_itoa(ft_hex2intdec(arg->hex)));
 		writeL(ft_itoa(player->opArgs[argNbr][tmp]));
 		// sleep(1);
@@ -67,8 +67,9 @@ int		getOpArgs(t_data *d, t_header *prog)
 {
 	int index;
 	int i;
-	t_case *args;
+	//t_case *args;
 
+	(void)d;
 	i = 0;
 	clear_arg(prog);
 	// ft_bzero(prog->opArgs, T_LAB * 4 * sizeof(char));

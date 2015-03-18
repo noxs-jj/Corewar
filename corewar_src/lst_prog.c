@@ -41,6 +41,7 @@ void	cpy_reg(t_header *src, t_header *cpy)
 
 void	copyProg(t_data *d, t_header *src, t_header *cpy)
 {
+	(void)d;
 	cpy->carry = src->carry;
 	cpy->lastLive = src->lastLive;
 	cpy->liveNbr = src->liveNbr;
@@ -53,7 +54,7 @@ void	copyProg(t_data *d, t_header *src, t_header *cpy)
 	cpy->nextOp = -1;
 	cpy->filename = src->filename;
 	cpy->prog_size = src->prog_size;
-	ft_strcpy(cpy->prog, src->prog);
+	ft_strcpy((char *)cpy->prog, (char *)src->prog);//CAST
 	ft_strcpy(cpy->comment, src->comment);
 	cpy_reg(src, cpy);
 }
@@ -73,7 +74,7 @@ t_header *searchProg(t_data *d, int number)
 	t_header *prog;
 
 	prog = d->prog;
-	while (prog != NULL && prog->number != number)
+	while (prog != NULL && (int)prog->number != number)
 		prog = prog->next;
 	return (prog);
 }
@@ -144,9 +145,9 @@ void delProg(t_data *d, int number)
 	tmp = d->prog;
 	while (tmp != NULL)
 	{
-		while (tmp != NULL && tmp->number != number)
+		while (tmp != NULL && (int)tmp->number != number)
 			tmp = tmp->next;
-		if (tmp->number == number)
+		if ((int)tmp->number == number)
 		{
 			del = tmp;
 			tmp->prev->next = tmp->next;
