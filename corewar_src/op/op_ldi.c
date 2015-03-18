@@ -50,7 +50,7 @@ int		op_ldi(t_data *d, t_header *player)
 	else if (is_direct(player, 1) >= 0)
 	{
 		result[1] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		if (player->opArgs[1][T_LAB - 2] >= 240)
 			result[1] = result[1] - 65536;
 		result[0] += result[1];
 	}

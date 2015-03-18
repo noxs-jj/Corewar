@@ -21,7 +21,7 @@
 # include <sys/types.h>
 
 # define TIME_USLEEP		5000
-# define LOG				1
+# define LOG				0
 # define PATH_DEBUGG		"../log/corewar.log"
 
 # define ERR_PARAM "./corewar [-dump nbr_cycles] [[-n number] champion.cor]..."

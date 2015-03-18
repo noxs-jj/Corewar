@@ -35,13 +35,13 @@ int		op_sti(t_data *d, t_header *player)
 	else if (is_direct(player, 1) >= 0)
 	{
 		value[0] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		if (player->opArgs[1][T_LAB - 2] >= 240)
 			value[0] = value[0] - 65536;
 	}
 	else if (is_indirect(player, 1) >= 0)
 	{
 		value[0] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		if (player->opArgs[1][T_LAB - 2] >= 240)
 			value[0] = value[0] - 65536;
 		value[0] = get_arg_modulo(value[0], IDX_MOD);
 	}
@@ -52,7 +52,7 @@ int		op_sti(t_data *d, t_header *player)
 	else if (is_direct(player, 2) >= 0)
 	{
 		value[1] = get_int_from_dec((char *)player->opArgs[2], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		if (player->opArgs[2][T_LAB - 2] >= 240)
 			value[1] = value[1] - 65536;
 		value[0] += value[1];
 	}

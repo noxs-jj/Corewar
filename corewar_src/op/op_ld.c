@@ -36,7 +36,6 @@ int		op_ld(t_data *d, t_header *player)
 		value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			value = value - 65536;
-		value = get_arg_modulo(value, IDX_MOD);
 		int_to_reg(d, player, value, reg);
 	}
 	else if (is_indirect(player, 0) >= 0)

@@ -38,8 +38,6 @@ int		op_st(t_data *d, t_header *player)
 	else if (is_indirect(player, 1) >= 0)
 	{
 		value = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		//if (player->opArgs[0][T_LAB - 2] >= 240)
-		//	value = value - 65536;
 		if (player->opArgs[1][T_LAB - 2] >= 240)
 			value = value - 65536;
 		value = get_arg_modulo(value, IDX_MOD);
