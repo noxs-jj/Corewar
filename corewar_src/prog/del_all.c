@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   del_all.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:33:13 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/03/18 16:01:59 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:01:59 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "../../includes/corewarOpTab.h"
 
-int		print_error(char *str)
+void	delAll(t_data *d)
 {
-	ft_putendl_fd(str, 2);
-	write_l(str);
-	return (-1);
+	int i;
+
+	i = 1;
+	while (i <= d->players)
+	{
+		delProg(d, i);
+		i++;
+	}
 }

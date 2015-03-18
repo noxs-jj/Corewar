@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getData.c                                          :+:      :+:    :+:   */
+/*   search_prog.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 15:18:57 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/09 15:18:58 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 16:01:26 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:01:26 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "../../includes/corewarOpTab.h"
 
-t_data	*getData(void)
+t_header *searchProg(t_data *d, int number)
 {
-	static	t_data	*d = NULL;
+	t_header *prog;
 
-	if (d == NULL)
-	{
-		d = (t_data *)malloc(sizeof(t_data));
-		if (d == NULL)
-			return (NULL);
-	}
-	return (d);
+	prog = d->prog;
+	while (prog != NULL && (int)prog->number != number)
+		prog = prog->next;
+	return (prog);
 }

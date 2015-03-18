@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_key_pause.c                                     :+:      :+:    :+:   */
+/*   ft_put_nbr_2_hex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/17 12:42:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/17 12:42:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 16:12:28 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:12:29 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../../includes/corewarOpTab.h"
 
-void	key_pause(t_data *d)
+void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 {
-	if (d->pause == true)
+	int i;
+	int index;
+
+	i = 0;
+	index = 0;
+	write_l("in test");
+	while (i < len && (*src)[i] == 0)
 	{
-		d->pause = false;
-		write_l("keyboard\tRUNNING");
+		len++;
+		i++;
 	}
-	else
+	write_l(ft_itoa(len));
+	while (i < len)
 	{
-		d->pause = true;
-		write_l("keyboard\tPAUSE");
-		render_draw(d);
+		ft_putHexNbr((*src)[i], (unsigned char (*)[])&(*str)[index * 2]);
+		index++;
+		i++;
 	}
 }

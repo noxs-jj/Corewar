@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_key_pause.c                                     :+:      :+:    :+:   */
+/*   arg_to_dec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/17 12:42:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/17 12:42:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 15:27:32 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 15:27:33 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../../includes/corewarOpTab.h"
 
-void	key_pause(t_data *d)
+int		arg_to_dec(char (*src)[])
 {
-	if (d->pause == true)
+	char	str[(T_LAB * 2) + 1];
+	char	tmp[3];
+	int		i;
+
+	ft_bzero(str, (T_LAB * 2) + 1);
+	i = 0;
+	while (str[i] == 0)
+		i++;
+	while (i < T_LAB)
 	{
-		d->pause = false;
-		write_l("keyboard\tRUNNING");
+		ft_bzero(tmp, 3);
+		ft_putHexNbr((unsigned char)(*src)[i], (unsigned char (*)[])&tmp);
+		ft_strncpy(&str[i * 2], tmp, 2);
+		i++;
 	}
-	else
-	{
-		d->pause = true;
-		write_l("keyboard\tPAUSE");
-		render_draw(d);
-	}
+	return (ft_hex2intdec((unsigned char *)str));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getOpArgs.c                                        :+:      :+:    :+:   */
+/*   get_op_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,11 @@
 
 #include "../includes/corewarOpTab.h"
 
+
+/*
+** read Op args and put them in d->prog[player].opArgs
+** must correct return (index) value
+*/
 
 static void getValue(t_header *player, int argNbr, int *index, int len)
 {
@@ -34,11 +39,11 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 	}
 }
 
-
-static void clear_arg(t_header *prog)
+static void clear_arg(t_data *d, t_header *prog)
 {
 	int i;
 
+	(void)d;
 	i = 0;
 	while (i < 4)
 	{
@@ -47,22 +52,14 @@ static void clear_arg(t_header *prog)
 	}
 }
 
-/*
-** read Op args and put them in d->prog[player].opArgs
-** must correct return (index) value
-*/
-
-
-int		getOpArgs(t_data *d, t_header *prog)
+int		get_op_args(t_data *d, t_header *prog)
 {
 	int index;
 	int i;
 
-	(void)d;
 	i = 0;
-	clear_arg(prog);
+	clear_arg(d, prog);
 	index = 0;
-	writeL(prog->codage);
 	while (i < op_tab[prog->nextOp].nb_params)
 	{
 		if (ft_strncmp(&prog->codage[i * 2], "01", 2) == 0)

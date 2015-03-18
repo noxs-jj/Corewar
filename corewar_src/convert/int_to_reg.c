@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_key_pause.c                                     :+:      :+:    :+:   */
+/*   int_to_reg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/17 12:42:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/17 12:42:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 15:54:24 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 15:54:25 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../../includes/corewarOpTab.h"
 
-void	key_pause(t_data *d)
+void	int_to_reg(t_data *d, t_header *player, int n, int reg)
 {
-	if (d->pause == true)
-	{
-		d->pause = false;
-		write_l("keyboard\tRUNNING");
-	}
-	else
-	{
-		d->pause = true;
-		write_l("keyboard\tPAUSE");
-		render_draw(d);
-	}
+	char	str[(REG_SIZE * 2) + 1];
+
+	ft_bzero(str, (REG_SIZE * 2) + 1);
+	nbr2hex((unsigned int)n, (unsigned char (*)[])&str);
+	str_to_reg(d, player, reg, str);
 }

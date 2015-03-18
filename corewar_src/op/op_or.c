@@ -25,10 +25,10 @@ int		op_or(t_data *d, t_header *player)
 	unsigned int value[2];
 	char		str[REG_SIZE + 1];
 	
-	writeL("--- op_or ---");
+	write_l("--- op_or ---");
 	player->carry = false;
-	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
+	if ((ret = get_op_args(d, player)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
 		return (ret);
 	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
 	if (is_register(player, 0) >= 0)
@@ -69,6 +69,6 @@ int		op_or(t_data *d, t_header *player)
 	ft_bzero(str, REG_SIZE + 1);
 	int_to_reg(d, player, value[0] | value[1], reg);
 	player->carry = true;
-	pcAdvance(d, player, ret);
+	pc_advance(d, player, ret);
 	return (0);
 }

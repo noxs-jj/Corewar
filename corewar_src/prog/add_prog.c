@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_key_pause.c                                     :+:      :+:    :+:   */
+/*   add_prog.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/17 12:42:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/17 12:42:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 16:01:45 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:01:46 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../../includes/corewarOpTab.h"
 
-void	key_pause(t_data *d)
+int		addProg(t_data *d, t_header *new)
 {
-	if (d->pause == true)
-	{
-		d->pause = false;
-		write_l("keyboard\tRUNNING");
-	}
+	t_header *tmp;
+
+	if (new == NULL)
+		return (print_error(ERR_PROG_ALLOC));
+	if (d->prog == NULL)
+		d->prog = new;
 	else
 	{
-		d->pause = true;
-		write_l("keyboard\tPAUSE");
-		render_draw(d);
+		tmp = lastProg(d);
+		new->prev = tmp;
+		tmp->next = new;
 	}
+	return (0);
 }

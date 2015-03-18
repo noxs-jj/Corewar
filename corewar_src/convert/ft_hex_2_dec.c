@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hex2Dec.c                                       :+:      :+:    :+:   */
+/*   ft_hex_2_dec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewarOpTab.h"
+#include "../../includes/corewarOpTab.h"
 
 static int ft_pow(int base, int exp)
 {
@@ -27,7 +27,7 @@ static int ft_pow(int base, int exp)
 	return (result);
 }
 
-unsigned int	ft_hex2Dec(unsigned char *str)
+unsigned int	ft_hex_2_dec(unsigned char *str)
 {
 	unsigned int	result;
 	unsigned int	len;

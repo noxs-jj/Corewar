@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   str_hex_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:33:13 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/03/18 14:43:19 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 14:43:20 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "../../includes/corewarOpTab.h"
 
-int		print_error(char *str)
+int		str_hex_len(unsigned char *str)
 {
-	ft_putendl_fd(str, 2);
-	write_l(str);
-	return (-1);
+	unsigned int value;
+	int len;
+
+	len = 1;
+	value = ft_hex2intdec(str);
+	while (value > 255)
+	{
+		value /= 255;
+		len++;
+	}
+	return (len);
 }

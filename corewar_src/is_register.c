@@ -16,7 +16,7 @@ int		is_register(t_header *player, int arg_nbr)
 {
 	if (ft_strncmp(&player->codage[arg_nbr * 2], "01", 2) != 0)
 		return (-1);
-	if (isValidRegister(get_int_from_dec((char *)player->opArgs[arg_nbr],
+	if (is_valid_register(get_int_from_dec((char *)player->opArgs[arg_nbr],
 		T_LAB)) < 0)
 		return (-1);
 	return (0);

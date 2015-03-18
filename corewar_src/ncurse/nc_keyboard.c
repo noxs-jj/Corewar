@@ -29,8 +29,8 @@ void	render_keyboard(t_data *d)
 		key_minux(d);
 	// else
 	// {
-	// 	writeL("Key _ Input");
-	// 	writeL(ft_itoa(key_input));
+	// 	write_l("Key _ Input");
+	// 	write_l(ft_itoa(key_input));
 	// 	sleep(2);
 	// }
 }

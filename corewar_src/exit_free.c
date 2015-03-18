@@ -16,11 +16,11 @@ void	exitFree(void)
 {
 	t_data *d;
 
-	d = getData();
+	d = get_data();
 	render_close(d);
 	if (1 == d->option_log)
 	{
-		writeL("Exit Success !!!");
+		write_l("Exit Success !!!");
 		close(d->fdDebugg);
 	}
 	if (d->map != NULL)

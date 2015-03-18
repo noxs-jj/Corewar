@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   exec_op.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:33:13 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
+/*   Updated: 2015/03/09 12:15:16 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		print_error(char *str)
+int		exec_op(t_data *d)
 {
-	ft_putendl_fd(str, 2);
-	write_l(str);
-	return (-1);
+	t_header *prog;
+
+	prog = lastProg(d);
+	while (prog != NULL)
+	{
+		if (prog->wait == 1)
+		{
+			g_opfunc[prog->nextOp].func(d, prog);
+			prog->wait--;
+		}
+		else if (prog->wait > 0)
+			prog->wait--;
+		prog = prog->prev;
+	}
+	d->cycle++;
+	return (0);
 }

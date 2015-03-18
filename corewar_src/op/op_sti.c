@@ -25,8 +25,8 @@ int		op_sti(t_data *d, t_header *player)
 	unsigned int	reg;
 	int				value[2];
 
-	if ((ret = getOpArgs(d, player)) < 0
-		&& isValidRegister(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0)
+	if ((ret = get_op_args(d, player)) < 0
+		&& is_valid_register(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0)
 		return (ret);
 	reg = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 	if (is_register(player, 1) >= 0)
@@ -59,6 +59,6 @@ int		op_sti(t_data *d, t_header *player)
 		return (-1);
 	value[0] = get_arg_modulo(value[0] - 1, IDX_MOD);
 	changeMemVal(d, player->number, (player->indexPC + 1 + value[0] + MEM_SIZE) % MEM_SIZE, (char *)player->reg[reg]);
-	pcAdvance(d, player, ret);
+	pc_advance(d, player, ret);
 	return (0);
 }

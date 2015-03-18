@@ -22,21 +22,43 @@ NAME = corewar
 
 SRCS =	arg_dump.c \
 		changeMemVal.c \
-		checkNextOp.c \
+		check_next_op.c \
 		cycle.c \
-		execOp.c \
+		exec_op.c \
 		exit_free.c \
-		ft_hex2Dec.c \
-		gameStart.c \
+		convert/arg_to_dec.c \
+		convert/ft_hex_2_dec.c \
+		convert/get_int_from_dec.c \
+		convert/hex_strlen.c \
+		convert/int_hex_len.c \
+		convert/map_to_reg.c \
+		convert/nbr2dec.c \
+		convert/nbr2hex.c \
+		convert/reg_to_int.c \
+		convert/str_hex_len.c \
+		convert/str_to_reg.c \
+		convert/int_to_reg.c \
+		convert/ft_put_nbr_2_hex.c \
+		convert/ft_put_hex_nbr.c \
+		convert/ft_put_hex_b_nbr.c \
+		prog/add_prog.c \
+		prog/del_all.c \
+		prog/copy_prog.c \
+		prog/del_prog.c \
+		prog/new_prog.c \
+		prog/search_prog.c \
+		prog/last_prog.c \
+		game_start.c \
 		get_arg_int.c \
 		get_arg_modulo.c \
-		getData.c \
-		getOpArgs.c \
+		get_data.c \
+		get_op_args.c \
 		init_mem.c \
+		init_reg.c \
+		cpy_reg.c \
 		init_start.c \
-		isValidRegister.c \
+		is_valid_register.c \
 		load_champions.c \
-		lst_prog.c \
 		option_log.c \
 		main.c \
 		ncurse/nc_close_free.c \
@@ -75,11 +97,10 @@ SRCS =	arg_dump.c \
 		op/op_sub.c \
 		op/op_xor.c \
 		op/op_zjump.c \
-		pcAdvance.c \
+		pc_advance.c \
 		print_error.c \
-		putHexNbr.c \
 		read_files.c \
-		readOpCode.c \
+		read_op_code.c \
 		shell/co_draw_result_console.c \
 		shell/co_info_player1.c \
 		shell/co_info_player2.c \
@@ -88,8 +109,7 @@ SRCS =	arg_dump.c \
 		shell/co_render_shell.c \
 		shell/co_show_init_players.c \
 		shell/co_troll.c \
-		writeL.c \
-		hex_to_reg.c \
+		write_l.c \
 		is_register.c \
 		is_indirect.c \
 		is_direct.c

@@ -28,7 +28,7 @@ void	draw_result_console(t_data *d)
 		ft_putstr("\t\tle joueur ");
 		if ((prog = searchProg(d, d->nbrWinner)) == NULL)
 		{
-			writeL("Error in drawResultConsole");
+			write_l("Error in drawResultConsole");
 			return ;
 		}
 		ft_putstr(prog->prog_name);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pcAdvance.c                                        :+:      :+:    :+:   */
+/*   pc_advance.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-void	pcAdvance(t_data *d, t_header *player, int adv)
+void	pc_advance(t_data *d, t_header *player, int adv)
 {
 	player->PC->present = false;
 	player->indexPC = (player->indexPC + MEM_SIZE + adv + 1) % MEM_SIZE;

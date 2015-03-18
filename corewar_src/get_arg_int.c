@@ -23,12 +23,11 @@ int	get_arg_int(char *str)
 
 	ft_memset(tmp, 'f', DIR);
 	tmp[DIR] = '\0';
-
 	value = 0;
 	if (str[0] == 'f')
-		value = (int)(ft_hex2Dec((unsigned char *)str) -
-			ft_hex2Dec((unsigned char *)tmp) - 1);
+		value = (int)(ft_hex_2_dec((unsigned char *)str) -
+			ft_hex_2_dec((unsigned char *)tmp) - 1);
 	else
-		value = ft_hex2Dec((unsigned char *)str);
+		value = ft_hex_2_dec((unsigned char *)str);
 	return (value);
 }

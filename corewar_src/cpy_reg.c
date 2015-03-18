@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execOp.c                                           :+:      :+:    :+:   */
+/*   cpy_reg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/13 17:19:06 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/09 12:15:16 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/03/18 16:00:58 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:00:59 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		execOp(t_data *d)
+void	cpy_reg(t_header *src, t_header *cpy)
 {
-	t_header *prog;
+	int i;
 
-	prog = lastProg(d);
-	while (prog != NULL)
+	i = 0;
+	while (i <= REG_NUMBER)
 	{
-		if (prog->wait == 1)
-		{
-			g_opfunc[prog->nextOp].func(d, prog);
-			prog->wait--;
-		}
-		else if (prog->wait > 0)
-			prog->wait--;
-		prog = prog->prev;
+		cpy->reg[i][0] = src->reg[i][0];
+		cpy->reg[i][1] = src->reg[i][1];
+		cpy->reg[i][2] = src->reg[i][2];
+		cpy->reg[i][3] = src->reg[i][3];
+		i++;
 	}
-	d->cycle++;
-	return (0);
 }

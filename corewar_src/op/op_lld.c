@@ -26,8 +26,8 @@ int		op_lld(t_data *d, t_header *player)
 	int 			value;
 
 	player->carry = false;
-	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0)
+	if ((ret = get_op_args(d, player)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0)
 		return (ret);		
 	reg = get_int_from_dec((char *)player->opArgs[1], T_LAB);
 	if (is_direct(player, 0) >= 0)
@@ -51,6 +51,6 @@ int		op_lld(t_data *d, t_header *player)
 	else
 		return (-1);
 	player->carry = true;
-	pcAdvance(d, player, ret);
+	pc_advance(d, player, ret);
 	return (0);
 }

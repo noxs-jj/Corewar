@@ -25,17 +25,17 @@ int		op_zjump(t_data *d, t_header *player)
 
 	ft_bzero(player->codage, 9);
 	ft_strcpy(player->codage, "10000000");
-	if ((ret = getOpArgs(d, player)) < 0)
+	if ((ret = get_op_args(d, player)) < 0)
 		return (ret);
 	if (player->carry == 0)
-		pcAdvance(d, player, ret);
+		pc_advance(d, player, ret);
 	else
 	{
 		result = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
 			result = result - 65536;
 		result = get_arg_modulo(result - 1, IDX_MOD);
-		pcAdvance(d, player, result);
+		pc_advance(d, player, result);
 	}
 	return (0);
 }

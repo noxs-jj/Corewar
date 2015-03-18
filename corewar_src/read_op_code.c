@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readOpCode.c                                       :+:      :+:    :+:   */
+/*   read_op_code.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,7 +16,7 @@
 ** Read OP Code, convert it into binary (8 chars)
 */
 
-int	readOpCode(t_data *d, t_header *prog)
+int	read_op_code(t_data *d, t_header *prog)
 {
 	int	i;
 	t_case *args;

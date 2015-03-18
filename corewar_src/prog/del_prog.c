@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_key_pause.c                                     :+:      :+:    :+:   */
+/*   del_prog.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/17 12:42:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/17 12:42:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 16:01:51 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:01:52 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../../includes/corewarOpTab.h"
 
-void	key_pause(t_data *d)
+void	delProg(t_data *d, int number)
 {
-	if (d->pause == true)
+	t_header *tmp;
+	t_header *del;
+
+	tmp = d->prog;
+	while (tmp != NULL)
 	{
-		d->pause = false;
-		write_l("keyboard\tRUNNING");
-	}
-	else
-	{
-		d->pause = true;
-		write_l("keyboard\tPAUSE");
-		render_draw(d);
+		while (tmp != NULL && (int)tmp->number != number)
+			tmp = tmp->next;
+		if ((int)tmp->number == number)
+		{
+			del = tmp;
+			tmp->prev->next = tmp->next;
+			tmp->next->prev = tmp->prev;
+			tmp = tmp->next;
+			ft_memdel((void **)&del);
+		}
 	}
 }

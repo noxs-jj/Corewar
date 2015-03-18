@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   init_reg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:33:13 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/03/18 16:00:50 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:00:51 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		print_error(char *str)
+void	init_reg(t_header *new)
 {
-	ft_putendl_fd(str, 2);
-	write_l(str);
-	return (-1);
+	int i;
+	
+	i = 0;
+	while (i < REG_NUMBER + 1)
+	{
+		ft_bzero(new->reg[i], REG_SIZE);
+		i++;
+	}
 }

@@ -23,8 +23,8 @@ int		op_lldi(t_data *d, t_header *player)
 	int				result[2];
 	int 			reg;
 
-	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
+	if ((ret = get_op_args(d, player)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
 		return (ret);
 	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
 	if (is_register(player, 0) >= 0)
@@ -58,6 +58,6 @@ int		op_lldi(t_data *d, t_header *player)
 	result[0] = (player->indexPC + result[0] + MEM_SIZE) % MEM_SIZE;
 	ft_bzero(player->reg[reg], REG_SIZE);
 	map_to_reg(d, player, reg, result[0]);
-	pcAdvance(d, player, ret);
+	pc_advance(d, player, ret);
 	return (0);
 }

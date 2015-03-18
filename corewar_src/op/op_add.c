@@ -24,12 +24,12 @@ int		op_add(t_data *d, t_header *player)
 	int		reg;
 	int		value;
 
-	writeL("--- op_add ---");
+	write_l("--- op_add ---");
 	player->carry = false;
-	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0
-		|| isValidRegister(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0
-		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
+	if ((ret = get_op_args(d, player)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
 		return (ret);
 	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
 	ft_bzero((char *)player->opArgs[reg], REG_SIZE);
@@ -37,6 +37,6 @@ int		op_add(t_data *d, t_header *player)
 	value += reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[1], T_LAB));
 	int_to_reg(d, player, value, reg);
 	player->carry = true;
-	pcAdvance(d, player, ret);
+	pc_advance(d, player, ret);
 	return (0);
 }

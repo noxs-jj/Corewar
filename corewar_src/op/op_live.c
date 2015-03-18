@@ -24,10 +24,10 @@ int		op_live(t_data *d, t_header *player)
 	unsigned int	value;
 	t_header		*prog;
 	
-	writeL("--- op_live ---");
+	write_l("--- op_live ---");
 	ft_bzero(player->codage, 9);
 	ft_strcpy(player->codage, "10000000");
-	if ((ret = getOpArgs(d, player)) < 0)
+	if ((ret = get_op_args(d, player)) < 0)
 		return (ret);
 	value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 	if ((prog = searchProg(d, value)) != NULL)
@@ -37,6 +37,6 @@ int		op_live(t_data *d, t_header *player)
 		d->livesCurrent++;
 	}
 	player->PC->live = 10;
-	pcAdvance(d, player, ret);
+	pc_advance(d, player, ret);
 	return (0);
 }

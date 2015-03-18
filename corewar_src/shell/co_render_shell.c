@@ -21,7 +21,7 @@ void	render_shell(t_data *d)
 	i = 0;
 	x = L_X_MAP_START;
 	y = L_Y_MAP_START;
-	writeL("render_shell Start");
+	write_l("render_shell Start");
 	while (y < L_Y_MAP_END)
 	{
 		x = L_X_MAP_START;

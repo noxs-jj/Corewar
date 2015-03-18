@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   write_l.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:33:13 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/09 17:53:59 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/23 18:11:42 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		print_error(char *str)
+void	write_l(char *str)
 {
-	ft_putendl_fd(str, 2);
-	write_l(str);
-	return (-1);
+	static t_data *d = NULL;
+
+	if (d == NULL)
+		d = get_data();
+	if (1 == d->option_log)
+		ft_putendl_fd(str, d->fdDebugg);
 }

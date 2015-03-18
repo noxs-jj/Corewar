@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_key_pause.c                                     :+:      :+:    :+:   */
+/*   ft_put_hex_b_nbr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/17 12:42:25 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/17 12:42:26 by jmoiroux         ###   ########.fr       */
+/*   Created: 2015/03/18 16:12:42 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 16:12:43 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../includes/render.h"
+#include "../../includes/corewarOpTab.h"
 
-void	key_pause(t_data *d)
+void	ft_putHexBNbr(unsigned int n, unsigned char (*str)[])
 {
-	if (d->pause == true)
+	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+							'a', 'b', 'c', 'd', 'e', 'f'};
+	char		tmp[9];
+	int i;
+	int j;
+
+	i = 8;
+	ft_bzero(tmp, 9);
+	while (n > 0 && i >= 0)
 	{
-		d->pause = false;
-		write_l("keyboard\tRUNNING");
+		tmp[i] = tab[n % 16];
+		n /= 16;
+		i--;
 	}
-	else
+	i++;
+	j = 0;
+	while (i < 9)
 	{
-		d->pause = true;
-		write_l("keyboard\tPAUSE");
-		render_draw(d);
+		(*str)[j] = tmp[i];
+		i++;
+		j++;
 	}
 }

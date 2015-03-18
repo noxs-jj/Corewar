@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isValidRegister.c                                  :+:      :+:    :+:   */
+/*   is_valid_register.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-int		isValidRegister(unsigned int reg)
+int		is_valid_register(unsigned int reg)
 {
 	if (reg <= REG_NUMBER)
 		return (0);

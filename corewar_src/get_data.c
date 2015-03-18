@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 13:55:36 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/13 11:33:13 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/02/09 15:18:57 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/02/09 15:18:58 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		print_error(char *str)
+t_data	*get_data(void)
 {
-	ft_putendl_fd(str, 2);
-	write_l(str);
-	return (-1);
+	static	t_data	*d = NULL;
+
+	if (d == NULL)
+	{
+		d = (t_data *)malloc(sizeof(t_data));
+		if (d == NULL)
+			return (NULL);
+	}
+	return (d);
 }

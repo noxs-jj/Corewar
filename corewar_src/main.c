@@ -16,7 +16,7 @@ int main(int ac, char **av)
 {
 	t_data	*d = NULL;
 
-	d = getData();
+	d = get_data();
 	ft_putstr_fd("SEG 0\n", 2);
 	if (init_start(d, ac, av) < 0)
 		return (-1);
@@ -28,7 +28,7 @@ int main(int ac, char **av)
 		render_init(d);
 	if (load_champions(d) < 0)
 		return(-1);
-	gameStart(d);
-	writeL("Game Done (main.c)");
+	game_start(d);
+	write_l("Game Done (main.c)");
 	return (0);
 }
