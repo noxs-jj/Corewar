@@ -34,10 +34,8 @@
 
 # define BUFFSIZE 1
 
-// #define IND_SIZE				2
 # define REG_NUMBER				16
 # define REG_SIZE				4
-// #define DIR_SIZE				REG_SIZE
 
 # define REG_CODE				1
 # define DIR_CODE				2
@@ -49,8 +47,7 @@
 
 # define MEM_SIZE				(4 * 1024)
 # define IDX_MOD				(MEM_SIZE / 8)
-// #define CHAMP_MAX_SIZE		(MEM_SIZE / MAX_PLAYERS + 2) // original
-# define CHAMP_MAX_SIZE			9999999
+# define CHAMP_MAX_SIZE			MEM_SIZE
 
 # define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'
@@ -59,9 +56,6 @@
 
 # define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-// #define NAME_CMD_STRING			".name"
-// #define COMMENT_CMD_STRING		".comment"
-
 
 # define CYCLE_TO_DIE			1500	// default 1536 test winner with 50
 # define CYCLE_DELTA			50		// default 50
@@ -69,20 +63,21 @@
 # define MAX_CHECKS				10		// default 10 test winner with 2
 
 /*
-**
+** DIR 4 or 2 if has idx
+** T_REG					1 registre : 01
+** T_DIR					2 label ou nombre : 10
+** T_IND					4 nombre : 11
+** T_LAB					8 label
 */
 
-// typedef char	t_arg_type;
-
 # define REG 					1
-# define DIR 					4 // or 2 if has idx
+# define DIR 					4
 # define IND 					2
 
-
-# define T_REG					1 // registre : 01
-# define T_DIR					2 // label ou nombre : 10
-# define T_IND					4 // nombre : 11
-# define T_LAB					8 // label
+# define T_REG					1
+# define T_DIR					2
+# define T_IND					4
+# define T_LAB					8
 
 /*
 ** PROG_NAME_LENGTH 128
@@ -141,7 +136,7 @@ typedef struct			s_header
 	short int			nextOp;
 	char 				*filename;
 	unsigned int		prog_size;
-	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
+	unsigned char		prog[MEM_SIZE];
 	char				comment[COMMENT_LENGTH + 1];
 	unsigned char 		reg[REG_NUMBER + 1][REG_SIZE];
 	char 				codage[9];

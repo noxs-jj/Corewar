@@ -17,7 +17,6 @@ void	ft_putHexNbr(unsigned char n, unsigned char (*str)[])
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
 
-	// writeL("HEX");
 	if (n < 16)
 	{
 		(*str)[0] = '0';
@@ -29,6 +28,7 @@ void	ft_putHexNbr(unsigned char n, unsigned char (*str)[])
 		(*str)[1] = tab[n % 16];
 	}
 }
+
 /*
 **
 ** 10		0a		ok
@@ -37,7 +37,6 @@ void	ft_putHexNbr(unsigned char n, unsigned char (*str)[])
 **
 */
 
-// if str == 0 0 255, len == 3
 void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 {
 	int i;
@@ -54,7 +53,6 @@ void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 	writeL(ft_itoa(len));
 	while (i < len)
 	{
-		// writeL("before ft_putHexNbr call");
 		ft_putHexNbr((*src)[i], (unsigned char (*)[])&(*str)[index * 2]);
 		index++;
 		i++;
@@ -62,7 +60,7 @@ void ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 }
 
 // conv int to hex
-void	ft_putHexBNbr(unsigned int n, unsigned char (*str)[])// old, delete
+void	ft_putHexBNbr(unsigned int n, unsigned char (*str)[])
 {
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
@@ -83,8 +81,6 @@ void	ft_putHexBNbr(unsigned int n, unsigned char (*str)[])// old, delete
 	while (i < 9)
 	{
 		(*str)[j] = tmp[i];
-		// writeL("//////");
-		// writeL(ft_itoa(n));
 		i++;
 		j++;
 	}

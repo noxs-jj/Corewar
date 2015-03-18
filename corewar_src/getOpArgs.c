@@ -28,11 +28,6 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 		arg = ((player->PC) + *index + 1 + op_tab[player->nextOp].has_pcode);
 
 		player->opArgs[argNbr][tmp] = ft_hex2intdec(arg->hex);
-		writeL("[getValue] arg:");
-		writeL(ft_itoa(argNbr));
-		writeL((char *)arg->hex);
-		writeL(ft_itoa(ft_hex2intdec(arg->hex)));
-		writeL(ft_itoa(player->opArgs[argNbr][tmp]));
 		(*index)++;
 		tmp++;
 		i++;

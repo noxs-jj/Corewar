@@ -24,7 +24,6 @@ int		op_st(t_data *d, t_header *player)
 	unsigned int 	reg;
 	int 			value;
 
-	writeL("--- op_st ---");
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0)
@@ -41,7 +40,8 @@ int		op_st(t_data *d, t_header *player)
 	}
 	else
 		return (-1);
-	changeMemVal(d, player->number, (player->indexPC + value + MEM_SIZE) % MEM_SIZE, (char *)player->reg[reg]);
+	changeMemVal(d, player->number, (player->indexPC + value + MEM_SIZE)
+		% MEM_SIZE, (char *)player->reg[reg]);
 	player->carry = true;
 	pcAdvance(d, player, ret);
 	return (0);

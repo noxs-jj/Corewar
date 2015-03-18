@@ -19,7 +19,7 @@ void	init_reg(t_header *new)
 	i = 0;
 	while (i < REG_NUMBER + 1)
 	{
-		ft_bzero(new->reg[i], REG_SIZE); // init with 0 ?
+		ft_bzero(new->reg[i], REG_SIZE);
 		i++;
 	}
 }
@@ -54,7 +54,7 @@ void	copyProg(t_data *d, t_header *src, t_header *cpy)
 	cpy->nextOp = -1;
 	cpy->filename = src->filename;
 	cpy->prog_size = src->prog_size;
-	ft_strcpy((char *)cpy->prog, (char *)src->prog);//CAST
+	ft_strcpy((char *)cpy->prog, (char *)src->prog);
 	ft_strcpy(cpy->comment, src->comment);
 	cpy_reg(src, cpy);
 }
@@ -86,7 +86,7 @@ t_header *newProg(int number)
 	if ((new = (t_header *)malloc(sizeof(t_header))) == NULL)
 	{
 		writeL(ERR_PROG_ALLOC);
-		sleep(5);														// remove
+		sleep(5);
 		return (NULL);
 	}
 	new->carry = false;
@@ -101,7 +101,7 @@ t_header *newProg(int number)
 	new->nextOp = 0;
 	new->filename = NULL;
 	new->prog_size = 0;
-	ft_bzero(new->prog, MEM_SIZE / MAX_PLAYERS + 2);
+	ft_bzero(new->prog, MEM_SIZE);
 	ft_bzero(new->comment, COMMENT_LENGTH + 1);
 	init_reg(new);
 	ft_bzero(new->codage, 9);
@@ -118,21 +118,12 @@ int		addProg(t_data *d, t_header *new)
 	if (new == NULL)
 		return (print_error(ERR_PROG_ALLOC));
 	if (d->prog == NULL)
-	{
-		// writeL("create lst");
-		// sleep(5);
 		d->prog = new;
-	}
 	else
 	{
 		tmp = lastProg(d);
-		// tmp = d->prog;
-		// while (tmp->next != NULL)
-		// 	tmp = tmp->next;
 		new->prev = tmp;
 		tmp->next = new;
-		// writeL("add lst");
-		// sleep(5);
 	}
 	return (0);
 }

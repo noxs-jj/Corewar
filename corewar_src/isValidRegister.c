@@ -14,7 +14,7 @@
 
 int		isValidRegister(unsigned int reg)
 {
-	if (reg <= REG_NUMBER) //reg >= 0 &&
+	if (reg <= REG_NUMBER)
 		return (0);
 	else
 		return (-1);

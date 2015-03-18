@@ -26,7 +26,8 @@ int main(int ac, char **av)
 		return (-1);
 	if (d->graphActiv == true)
 		render_init(d);
-	load_champions(d);
+	if (load_champions(d) < 0)
+		return(-1);
 	gameStart(d);
 	writeL("Game Done (main.c)");
 	return (0);

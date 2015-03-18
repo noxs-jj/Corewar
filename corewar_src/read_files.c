@@ -20,7 +20,7 @@ static int	read_prog_comment(t_data *d, int fd, t_header *prog)
 
 	(void)d;
 	index = 0;
-	if (lseek(fd, 135 - ft_strlen(prog->prog_name), SEEK_CUR) < 0)// 140, SEEK_SET
+	if (lseek(fd, 135 - ft_strlen(prog->prog_name), SEEK_CUR) < 0)
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < COMMENT_LENGTH + 1)
@@ -83,11 +83,11 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 	char	str[3];
 
 	index = 0;
-	if (read_prog_name(d, fd, prog) < 0 || lseek(fd, 2192, SEEK_SET) < 0) // 2192
+	if (read_prog_name(d, fd, prog) < 0 || lseek(fd, 2192, SEEK_SET) < 0)
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
 	ft_bzero(str, 3);
-	while ((ret = read(fd, buff, BUFFSIZE)) > 0) // read prog only  && (index + 2) < CHAMP_MAX_SIZE
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0)
 	{
 		ft_putHexNbr(buff[0], (unsigned char (*)[])&str);
 		ft_strncpy((char *)&prog->prog[index], str, 2);
@@ -98,28 +98,9 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 		ft_bzero(buff, BUFFSIZE);
 		ft_bzero(str, 3);
 	}
-	// writeL("--- ---");
-	// writeL("size");
-	// writeL(ft_itoa(prog->prog_size));
-
 	prog->prog_size /= 2;
-	// writeL("number");
-	// writeL(ft_itoa(prog->number));
-	// writeL("prog content");
-	// writeL(prog->prog);
-	// sleep(5);
 	prog->alive = true;
-	// ft_strcpy(d->prog[number].reg[1], "fffffff");
-	// prog->reg[1][0] = '0' + prog->number;
 	prog->reg[1][REG_SIZE - 1] = prog->number;
-	// writeL(prog->reg[1]);
-	// sleep(5);
-	// writeL("reg 1 content");
-	// writeL(prog->reg[1]);
-	// d->prog[number].reg[1][7] = 'f' - d->prog[number].number;
-	// writeL("=================");
-	// writeL(d->prog[number].reg[0]);
-	// sleep(5);
 	if (ret == -1)
 		return (print_error(ERR_READ));
 	return (ret);

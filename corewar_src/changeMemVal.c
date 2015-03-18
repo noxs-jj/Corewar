@@ -30,7 +30,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 		d->map[where].recent = 20;
 		d->map[where].champ = id;
 		i++;
-		where = where + 1 % (MEM_SIZE - 1);
+		where = (where + 1) % (MEM_SIZE);
 	}
 	return (0);
 }

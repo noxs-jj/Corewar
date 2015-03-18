@@ -17,14 +17,19 @@ int		load_champions(t_data *d)
 	t_header 	*prog;
 	int			index;
 	int 		i;
+	int			sum_champions;
 
 	index = 0;
+	sum_champions = 0;
 	prog = d->prog;
 	while (prog != NULL)
 	{
 		i = 0;
 		d->map[index].present = true;
 		prog->indexPC = index;
+		sum_champions += prog->prog_size;
+		if (sum_champions > MEM_SIZE)
+			return(print_error("Not enough space in Map for all champions"));
 		while (i < (int)(prog->prog_size * 2))//CAST
 		{
 			d->map[index].champ = prog->number;
