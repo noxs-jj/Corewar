@@ -28,37 +28,11 @@ int		op_aff(t_data *d, t_header *player)
 		return (ret);
 	value = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0], T_LAB));
 	value = value % 256;
-	// ##############################
 	ft_putstr("Player ");
 	ft_putstr(player->prog_name);
 	ft_putstr(" OP>aff: [");
-	ft_putchar(value);	// print this on screen
-	ft_putstr("]\n");
-	// ##############################
-	pcAdvance(d, player, ret);
-	return (0);
-}
-
-
-
-
-/*
-int		op_aff(t_data *d, t_header *player)
-{
-	int ret;
-	unsigned int reg;
-	char value;
-	
-	writeL("--- op_aff ---");
-	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(ft_hex2Dec((char *)player->opArgs[0])) < 0)
-		return (ret);
-	reg = ft_hex2Dec((char *)player->opArgs[0]);
-	value = reg_to_int(d, player, reg);
-	// value = ft_hex2Dec(player->reg[reg]);
-	value = value % 256;
 	ft_putchar(value);
+	ft_putstr("]\n");
 	pcAdvance(d, player, ret);
 	return (0);
 }
-*/

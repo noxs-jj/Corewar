@@ -26,8 +26,8 @@ int	get_arg_int(char *str)
 
 	value = 0;
 	if (str[0] == 'f')
-		value = (int)(ft_hex2Dec((unsigned char *)str) - ft_hex2Dec((unsigned char *)tmp) - 1);//CAST
+		value = (int)(ft_hex2Dec((unsigned char *)str) - ft_hex2Dec((unsigned char *)tmp) - 1);
 	else
-		value = ft_hex2Dec((unsigned char *)str);//CAST
+		value = ft_hex2Dec((unsigned char *)str);
 	return (value);
 }

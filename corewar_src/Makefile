@@ -33,7 +33,6 @@ SRCS =	arg_dump.c \
 		getData.c \
 		getOpArgs.c \
 		init_mem.c \
-		init_prog.c \
 		init_start.c \
 		isValidRegister.c \
 		load_champions.c \

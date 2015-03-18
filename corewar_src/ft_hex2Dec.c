@@ -35,7 +35,7 @@ unsigned int	ft_hex2Dec(unsigned char *str)
 
 	i = 0;
 	result = 0;
-	len = ft_strlen((char *)str) - 1; // CAST
+	len = ft_strlen((char *)str) - 1;
 	while (str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -50,9 +50,6 @@ unsigned int	ft_hex2Dec(unsigned char *str)
 	return (result);
 }
 
-
-// OK !!
-// convert str to int
 unsigned int		ft_hex2intdec(unsigned char *str)
 {
 	unsigned int	result;
@@ -61,8 +58,7 @@ unsigned int		ft_hex2intdec(unsigned char *str)
 
 	i = 0;
 	result = 0;
-	len = ft_strlen((char *)str) - 1; // CAST
-	// writeL(ft_itoa(len));
+	len = ft_strlen((char *)str) - 1;
 	while (str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -76,51 +72,3 @@ unsigned int		ft_hex2intdec(unsigned char *str)
 	}
 	return (result);
 }
-
-/*
-unsigned int	ft_hex2Dec(char *str)
-{
-	unsigned int	result;
-	unsigned int	len;
-	int				i;
-
-	i = 0;
-	result = 0;
-	len = ft_strlen(str) - 1;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			result += (str[i] - '0') * ft_pow(16, len);
-		else if (str[i] >= 'a' && str[i] <= 'f')
-			result += (str[i] - 'a' + 10) * ft_pow(16, len);
-		else
-			return (-1);
-		i++;
-		len--;
-	}
-	return (result);
-}
-
-int				ft_hex2intdec(char *str)
-{
-	int				result;
-	unsigned int	len;
-	int				i;
-
-	i = 0;
-	result = 0;
-	len = ft_strlen(str) - 1;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			result += (str[i] - '0') * ft_pow(16, len);
-		else if (str[i] >= 'a' && str[i] <= 'f')
-			result += (str[i] - 'a' + 10) * ft_pow(16, len);
-		else
-			return (-1);
-		i++;
-		len--;
-	}
-	return (result);
-}
-*/

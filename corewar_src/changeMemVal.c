@@ -12,11 +12,6 @@
 
 #include "../includes/corewar.h"
 
-/*
-** Ok
-*/
-
-
 int		changeMemVal(t_data *d, int id, int where, char *str)
 {
 	size_t			i;
@@ -27,7 +22,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 	while (i < REG_SIZE)
 	{
 		if (str[i] == 0)
-			ft_strncpy((char *)&tmp, "00", 2); // CAST
+			ft_strncpy((char *)&tmp, "00", 2);
 		else
 			ft_putHexNbr(str[i], &tmp);
 		d->map[where].hex[0] = tmp[0];
@@ -35,65 +30,7 @@ int		changeMemVal(t_data *d, int id, int where, char *str)
 		d->map[where].recent = 20;
 		d->map[where].champ = id;
 		i++;
-		where = where + 1 % MEM_SIZE;
+		where = where + 1 % (MEM_SIZE - 1);
 	}
 	return (0);
 }
-
-
-
-
-
-/*
-int		changeMemVal(t_data *d, int id, int where, char *str)
-{
-	size_t i;
-	size_t len;
-	int index;
-
-	i = 0;
-	// writeL("changeMemVal");
-	// writeL("where");
-	// writeL(ft_itoa(where));
-	// writeL("str:");
-	// writeL(str);
-	// sleep(2);
-	len = ft_strlen(str);
-	while (i + len <= REG_SIZE * 2 - 1)
-	{
-		d->map[where].hex[i % 2] = '0';
-		d->map[where].recent = 20;
-		d->map[where].champ = id;
-		i++;
-		if (i % 2 == 0)
-			where = (where + 1) % MEM_SIZE;
-		// where == (i % 2 == 0) ? ((where + 1) % MEM_SIZE) : where;
-	}
-	// writeL(ft_itoa(i));
-	// writeL("max:");
-	// writeL(ft_itoa(REG_SIZE * 2));
-	// return (0);
-	// sleep(10);
-	index = 0;
-	// return (0);
-	while (i <= REG_SIZE * 2 - 1)
-	{
-		// writeL("before");
-		// writeL(d->map[where].hex);
-		d->map[where].hex[i % 2] = str[index];
-		d->map[where].recent = 20;
-		d->map[where].champ = id;
-		// ft_strncpy(d->map[where].hex, &str[i], 2);
-		// writeL("after");
-		// writeL(d->map[where].hex);
-		i++;
-		index++;
-		if (i % 2 == 0)
-			where = (where + 1) % MEM_SIZE;
-		// where == (i % 2 == 0) ? ((where + 1) % MEM_SIZE) : where;
-	}
-	// writeL(ft_itoa(REG_SIZE));
-	// sleep(3);
-	return (0);
-}
-*/

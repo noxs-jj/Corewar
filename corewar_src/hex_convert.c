@@ -73,7 +73,7 @@ int		arg_to_dec(char (*src)[])
 	while (i < T_LAB)
 	{
 		ft_bzero(tmp, 3);
-		ft_putHexNbr(src[i], &tmp); // conv char to unsigned char
+		ft_putHexNbr(src[i], &tmp);
 		ft_strncpy(&str[i * 2], tmp, 2);
 		i++;
 	}

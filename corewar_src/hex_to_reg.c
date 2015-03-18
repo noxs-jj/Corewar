@@ -18,7 +18,6 @@ void	map_to_reg(t_data *d, t_header *player, int reg, int index)
 	int i;
 
 	i = 0;
-	// i = REG_SIZE - str_hex_len(str);
 	ft_bzero(player->reg[reg], REG_SIZE);
 	while (i < REG_SIZE)
 	{
@@ -32,14 +31,13 @@ void	map_to_reg(t_data *d, t_header *player, int reg, int index)
 // convert reg to int (conv dec str to int)
 int		reg_to_int(t_data *d, t_header *player, int reg)
 {
-	char str[(REG_SIZE * 2) + 1];
-	char tmp[3];
-	int i;
-	int j;
-	unsigned char value;
+	char 			str[(REG_SIZE * 2) + 1];
+	char 			tmp[3];
+	int 			i;
+	int 			j;
+	unsigned char 	value;
 
 	(void)d;
-	// writeL("/==== reg_to_int ====/");
 	ft_bzero(str, (REG_SIZE * 2) + 1);
 	i = 0;
 	j = 0;
@@ -61,9 +59,9 @@ int		reg_to_int(t_data *d, t_header *player, int reg)
 // copy str in reg (conv hex str to dec str)
 void	str_to_reg(t_data *d, t_header *player, int reg, char *str)
 {
-	int i;
-	char tmp[3];
-	int index;	// size_t
+	int		i;
+	char	tmp[3];
+	int		index;	// size_t
 
 	(void)d;
 	index = 0;
@@ -96,12 +94,6 @@ void	int_to_reg(t_data *d, t_header *player, int n, int reg)
 	char	str[(REG_SIZE * 2) + 1];
 
 	ft_bzero(str, (REG_SIZE * 2) + 1);
-	// writeL("hello world !");
-	// writeL(ft_itoa(n));
 	nbr2hex((unsigned int)n, (unsigned char (*)[])&str);
-	// writeL("/=====\\");
-	// writeL(str);
 	str_to_reg(d, player, reg, str);
 }
-
-

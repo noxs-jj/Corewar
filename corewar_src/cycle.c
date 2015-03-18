@@ -17,12 +17,12 @@ void	checkCyles2(t_data *d)
 	int			moreRecentLive;
 	t_header	*prog;
 
-	if (d->cycleDie <= 0) // Game done
+	if (d->cycleDie <= 0)
 	{
-		d->run = false; // Stop the game
-		d->iCheckCycles = 1; // index i
+		d->run = false;
+		d->iCheckCycles = 1;
 		moreRecentLive = 0;
-		while ((prog = searchProg(d, d->iCheckCycles)) != NULL) // search the winner
+		while ((prog = searchProg(d, d->iCheckCycles)) != NULL)
 		{
 			if (prog->lastLive > moreRecentLive
 				&& prog->alive == true)
@@ -50,7 +50,7 @@ void	checkCyles(t_data *d)
 				prog->liveNbr = 0;
 			d->iCheckCycles++;
 		}
-		d->iMaxCheck++; // incr maxcheck
+		d->iMaxCheck++;
 		if (d->livesCurrent >= NBR_LIVE || d->iMaxCheck >= MAX_CHECKS)
 		{
 			d->cycleDie -= CYCLE_DELTA;

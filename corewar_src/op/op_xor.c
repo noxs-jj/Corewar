@@ -23,8 +23,7 @@ int		op_xor(t_data *d, t_header *player)
 	unsigned int reg;
 	unsigned int value[2];
 	char		str[REG_SIZE + 1];
-	
-	writeL("--- op_xor ---");
+
 	player->carry = false;
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)

@@ -22,7 +22,6 @@ int		op_lldi(t_data *d, t_header *player)
 	int				ret;
 	int				result[2];
 	int 			reg;
-	//char			str[REG_SIZE + 1];
 
 	if ((ret = getOpArgs(d, player)) < 0
 		|| isValidRegister(get_int_from_dec((char *)player->opArgs[2], T_LAB)) < 0)
@@ -62,39 +61,3 @@ int		op_lldi(t_data *d, t_header *player)
 	pcAdvance(d, player, ret);
 	return (0);
 }
-
-/*
-
-int		op_lldi(t_data *d, t_header *player)
-{
-	int				ret;
-	int				result;
-	char			str[REG_SIZE + 1];
-
-	if ((ret = getOpArgs(d, player)) < 0
-		|| isValidRegister(ft_hex2Dec((char *)player->opArgs[2])) < 0) // check reg valid registre
-		return (ret);
-	if (ft_strncmp(player->codage, "01", 2) == 0
-		&& isValidRegister(ft_hex2Dec((char *)player->opArgs[0])) >= 0)
-		result = reg_to_int(d, player, ft_hex2Dec((char *)player->opArgs[0]));
-		// result = get_arg_int(player->reg[ft_hex2Dec((char *)player->opArgs[0])]);
-	else
-		result = get_arg_int(player->opArgs[0]);
-
-	if (ft_strncmp(&player->codage[2], "01", 2) == 0
-		&& isValidRegister(ft_hex2Dec((char *)player->opArgs[1])) >= 0)
-		result += reg_to_int(d, player, ft_hex2Dec((char *)player->opArgs[1]));
-		// result += get_arg_int(player->reg[ft_hex2Dec((char *)player->opArgs[1])]);
-	else
-		result += get_arg_int(player->opArgs[1]);
-	result = get_arg_int(d->map[(player->indexPC + result + MEM_SIZE) % MEM_SIZE].hex);
-	ft_bzero(player->reg[ft_hex2Dec((char *)player->opArgs[2])], REG_SIZE);
-	ft_bzero(str, REG_SIZE + 1);
-	ft_putHexBNbr(result, str);
-	str_to_reg(d, player, ft_hex2Dec((char *)player->opArgs[2]), str);
-	// ft_strcpy(player->reg[ft_hex2Dec((char *)player->opArgs[2])], str);
-	pcAdvance(d, player, ret);
-	return (0);
-}
-
-*/

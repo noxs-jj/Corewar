@@ -14,26 +14,21 @@
 
 static int	checkNumber(t_data *d, int n)
 {
-	ft_putstr_fd("SEG 3.1\n", 2);
 	t_header *tmp;
 
 	if ((tmp = d->prog) == NULL)
 		return (0);
-	ft_putstr_fd("SEG 3.3\n", 2);
 	while (tmp != NULL)
 	{
-		ft_putstr_fd("SEG 3.4\n", 2);
 		if (n == (int)tmp->number)
 			return (-1);
 		tmp = tmp->next;
 	}
-	ft_putstr_fd("SEG 3.2\n", 2);
 	return (0);
 }
 
 static int	champion_number(t_data *d, int ac, char **av, int i)
 {
-	ft_putstr_fd("SEG 2.3\n", 2);
 	t_header *prog;
 
 	if (++i >= ac || ft_atoi(av[i]) <= 0
@@ -45,13 +40,11 @@ static int	champion_number(t_data *d, int ac, char **av, int i)
 	if (++i >= ac || ft_strstr(av[i], ".cor") == NULL)
 		return (-1);
 	prog->filename = av[i];
-	ft_putstr_fd("SEG 2.4\n", 2);
 	return (i);
 }
 
 static int	champion(t_data *d, int ac, char **av, int i)
 {
-	ft_putstr_fd("SEG 2.1\n", 2);
 	int 		number;
 	t_header 	*prog;
 
@@ -59,14 +52,11 @@ static int	champion(t_data *d, int ac, char **av, int i)
 	number = 1;
 	if (++d->players >= MAX_PLAYERS)
 		return (-1);
-	ft_putstr_fd("SEG 2.36\n", 2);
 	while (checkNumber(d, number) == -1 && number <= MAX_PLAYERS)
 		number++;
-	ft_putstr_fd("SEG 2.37\n", 2);
 	addProg(d, newProg(number));
 	prog = lastProg(d);
 	prog->filename = av[i];
-	ft_putstr_fd("SEG 2.2\n", 2);
 	return (i);
 }
 
@@ -99,8 +89,7 @@ int 		checkparam(t_data *d, int ac, char **av)
 			return (print_error("REG_SIZE invalid"));
 		i++;
 	}
-	ft_putstr_fd("SEG 1.3\n", 2);
-	d->realPlayers = d->players + 1; // copy real number champions without fork for ncurses show 
+	d->realPlayers = d->players + 1;
 	if (d->players < 1)
 		return (print_error("Min 2 Players"));
 	return (0);
@@ -110,7 +99,6 @@ int			init_start(t_data *d, int ac, char **av)
 {
 	if (ac < 3 || ac > MAX_ARGS_NUMBER)
 		return (print_error(ERR_PARAM));
-	ft_putstr_fd("SEG 1.1\n", 2);
 	if (LOG == 1)
 	{
 		d->fdDebugg = open(PATH_DEBUGG, O_WRONLY|O_CREAT|O_APPEND, 0644);
@@ -127,9 +115,6 @@ int			init_start(t_data *d, int ac, char **av)
 	d->nbrWinner = 999;
 	d->graphActiv = false;
 	d->prog = NULL;
-	// init_prog(d);
-	// writeL("init start before checkparam");
-	ft_putstr_fd("SEG 1.2\n", 2);
 	return (checkparam(d, ac, av));
 }
 

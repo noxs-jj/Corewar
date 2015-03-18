@@ -12,29 +12,6 @@
 
 #include "../includes/corewar.h"
 
-// static void checkthis(t_data *d) // delete
-// {
-// 	t_header 	*prog;
-
-// 	writeL("============");
-// 	prog = lastProg(d);
-// 	while (prog != NULL)
-// 	{
-// 		writeL("find a prog");
-// 		writeL(ft_itoa(prog->number));
-// 		prog = prog->prev;
-// 	}
-// 	writeL("/////////////////");
-// 	prog = d->prog;
-// 	while (prog != NULL)
-// 	{
-// 		writeL("find a prog");
-// 		writeL(ft_itoa(prog->number));
-// 		prog = prog->next;
-// 	}
-// 	sleep(5);
-// }
-
 int		execOp(t_data *d)
 {
 	t_header *prog;
@@ -42,17 +19,6 @@ int		execOp(t_data *d)
 	prog = lastProg(d);
 	while (prog != NULL)
 	{
-		writeL("-----------");
-		writeL("execOp");
-		writeL(ft_itoa(prog->nextOp));
-		writeL("wait");
-		writeL(ft_itoa(prog->wait));
-		writeL("codage");
-		writeL(prog->codage);
-		writeL("playerNbr");
-		writeL(ft_itoa(prog->number));
-		writeL("wait");
-		writeL(ft_itoa(prog->wait));
 		if (prog->wait == 1)
 		{
 			g_opfunc[prog->nextOp].func(d, prog);
@@ -61,7 +27,6 @@ int		execOp(t_data *d)
 		else if (prog->wait > 0)
 			prog->wait--;
 		prog = prog->prev;
-		// sleep(5);
 	}
 	d->cycle++;
 	return (0);

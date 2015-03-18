@@ -85,24 +85,13 @@
 # define T_LAB					8 // label
 
 /*
-**
+** PROG_NAME_LENGTH 128
+** COMMENT_LENGTH 2048
 */
 
-# define PROG_NAME_LENGTH		128	// 128
-# define COMMENT_LENGTH			2048// 2048
+# define PROG_NAME_LENGTH		128
+# define COMMENT_LENGTH			2048
 # define COREWAR_EXEC_MAGIC		"00ea83f3"
-
-// typedef struct 			s_vint
-// {
-// 	int 				n1;
-// 	int 				n2;
-// 	int 				n3;
-// 	int 				n4;
-// 	int 				n5;
-// 	int 				n6;
-// 	int 				n7;
-// 	int 				n8;
-// }						t_int;
 
 typedef struct 			s_bin
 {
@@ -131,32 +120,31 @@ typedef struct			s_op
 typedef struct			s_case
 {
 	unsigned char		hex[3];
-	short int			champ; // champions's number ( 0 1 2 3 4 )
-	bool				present; //is present ( 0 1 2 3 4 )
-	bool				used; // true : yes, false : no
-	int 				recent;	// if value was modify recently
+	short int			champ;
+	bool				present;
+	bool				used;
+	int 				recent;
 	int 				live;
 }						t_case;
 
 typedef struct			s_header
 {
-	// unsigned int		magic;
-	bool				carry; // true if prev action worked
-	int					lastLive; /* Last live : (the number of cyle where the last live is) */
-	int 				liveNbr; /* Lives in current period : */
-	t_case				*PC; // program counter
+	bool				carry;
+	int					lastLive;
+	int 				liveNbr;
+	t_case				*PC;
 	int					indexPC;
 	char				prog_name[PROG_NAME_LENGTH + 1];
-	int					wait; // turn to wait before exec new instruction
-	bool				alive; // is alive true or false
-	unsigned int		number; // champions's number
+	int					wait;
+	bool				alive;
+	unsigned int		number;
 	short int			nextOp;
-	char 				*filename; // no malloc
+	char 				*filename;
 	unsigned int		prog_size;
 	unsigned char		prog[MEM_SIZE / MAX_PLAYERS + 2];
 	char				comment[COMMENT_LENGTH + 1];
 	unsigned char 		reg[REG_NUMBER + 1][REG_SIZE];
-	char 				codage[9]; // octet de codage
+	char 				codage[9];
 	unsigned char		opArgs[4][T_LAB];
 	struct s_header		*next;
 	struct s_header		*prev;
@@ -164,22 +152,20 @@ typedef struct			s_header
 
 typedef	struct			s_data
 {
-	// t_header			prog[MAX_PLAYERS];
 	t_header			*prog;
-	bool				run; // is run : y = true, n = false
+	bool				run;
 	t_case				*map;
-	int 				players; // player number
-	int 				realPlayers; // player number
-	int 				dump; // dump option activated if dump != -1
+	int 				players;
+	int 				realPlayers;
+	int 				dump;
 	WINDOW				*window;
-	int					fdDebugg; // file debug fd
-	unsigned int		periode; // value between 0 and cycleDie
+	int					fdDebugg;
+	unsigned int		periode;
 	bool 				pause;
 	bool				graphActiv;
 	short int 			caseColor;
-	// checkCycles
-	unsigned int 		cycle; // nbr cycle done
-	int					cycleDie;// = CYCLE_TO_DIE
+	unsigned int 		cycle;
+	int					cycleDie;
 	unsigned int 		livesCurrent;
 	unsigned int 		iCheckCycles;
 	unsigned int 		iMaxCheck;
@@ -187,55 +173,52 @@ typedef	struct			s_data
 	unsigned int 		ncurseSpeed;
 }						t_data;
 
-// Corewar bin
-int				init_start(t_data *d, int ac, char **av);
-int				print_error(char *str);
-t_data			*getData(void);
-void			writeL(char *str);
-int				read_files(t_data *d);
-void			exitFree(void);
-int				load_champions(t_data *d);
-// void			init_prog(t_data *d);
-void			ft_putHexNbr(unsigned char n, unsigned char (*str)[]);
-void			ft_putHexBNbr(unsigned int n, unsigned char (*str)[]);
-int				init_mem(t_data *d);
-int 			gameStart(t_data *d);
+/* Corewar bin */
+int				addProg(t_data *d, t_header *new);
+int				changeMemVal(t_data *d, int id, int where, char *str);
 int				checkNextOp(t_data *d);
 int				execOp(t_data *d);
-int				readOpCode(t_data *d, t_header *prog);
-unsigned int	ft_hex2Dec(unsigned char *str);
-unsigned int	ft_hex2intdec(unsigned char *str);
-void			pcAdvance(t_data *d, t_header *player, int adv);
-int				isValidRegister(unsigned int reg);
-int				changeMemVal(t_data *d, int id, int where, char *str);
-void			arg_dump(t_data *d);
-void			checkCyles(t_data *d);
-int				getOpArgs(t_data *d, t_header *prog);
 int				get_arg_int(char *str);
 int				get_arg_modulo(int n, int modulo);
-void			init_reg(t_header *new);
-t_header		*lastProg(t_data *d);
-t_header		*searchProg(t_data *d, int number);
-t_header		*newProg(int number);
-int				addProg(t_data *d, t_header *new);
-void			delProg(t_data *d, int number);
-void			delAll(t_data *d);
-int				reg_to_int(t_data *d, t_header *player, int reg);
-void			copyProg(t_data *d, t_header *src, t_header *cpy);
-void			map_to_reg(t_data *d, t_header *player, int reg, int index);
 int				get_int_from_dec(char *str, int len);
+int				get_int_from_dec(char *str, int len);
+int				getOpArgs(t_data *d, t_header *prog);
+int				init_mem(t_data *d);
+int				init_start(t_data *d, int ac, char **av);
+int				is_direct(t_header *player, int arg_nbr);
+int				is_indirect(t_header *player, int arg_nbr);
+int				is_register(t_header *player, int arg_nbr);
+int				isValidRegister(unsigned int reg);
+int				load_champions(t_data *d);
+int				print_error(char *str);
+int				read_files(t_data *d);
+int				readOpCode(t_data *d, t_header *prog);
+int				reg_to_int(t_data *d, t_header *player, int reg);
+int				str_hex_len(unsigned char *str);
+int 			gameStart(t_data *d);
+t_data			*getData(void);
+t_header		*lastProg(t_data *d);
+t_header		*newProg(int number);
+t_header		*searchProg(t_data *d, int number);
+unsigned int	ft_hex2Dec(unsigned char *str);
+unsigned int	ft_hex2intdec(unsigned char *str);
+void			arg_dump(t_data *d);
+void			checkCyles(t_data *d);
+void			copyProg(t_data *d, t_header *src, t_header *cpy);
+void			delAll(t_data *d);
+void			delProg(t_data *d, int number);
+void			exitFree(void);
+void			ft_putHexBNbr(unsigned int n, unsigned char (*str)[]);
+void			ft_putHexNbr(unsigned char n, unsigned char (*str)[]);
+void			init_reg(t_header *new);
+void			int_to_reg(t_data *d, t_header *player, int n, int reg);
+void			map_to_reg(t_data *d, t_header *player, int reg, int index);
 void			nbr2hex(unsigned int n, unsigned char (*str)[]);
+void			pcAdvance(t_data *d, t_header *player, int adv);
+void			writeL(char *str);
+void 			ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
 
-
-int		is_direct(t_header *player, int arg_nbr);
-int		is_indirect(t_header *player, int arg_nbr);
-int		is_register(t_header *player, int arg_nbr);
-void 	ft_putNbr2hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
-int		str_hex_len(unsigned char *str);
-void	int_to_reg(t_data *d, t_header *player, int n, int reg);
-int		get_int_from_dec(char *str, int len);
-
-// OP functions
+/* OP functions */
 typedef struct		s_opfunc
 {
 	int				op;
@@ -280,12 +263,19 @@ static const t_opfunc	g_opfunc[] =
 };
 
 
-// NCurses
+/* NCurses */
 int 			render_init(t_data *d);
-void			render_keyboard(t_data *d);
+void			color_champ1(t_data *d, int i);
+void			color_champ2(t_data *d, int i);
+void			color_champ3(t_data *d, int i);
+void			color_champ4(t_data *d, int i);
+void			key_minux(t_data *d);
+void			key_pause(t_data *d);
+void			key_plus(t_data *d);
 void			render_close(t_data *d);
 void			render_draw(t_data *d);
 void			render_init_pair(void);
+void			render_keyboard(t_data *d);
 void			render_legend_column(t_data *d);
 void			render_legend_info_value(t_data *d);
 void			render_legend_player_value(t_data *d);
@@ -295,25 +285,18 @@ void			render_legend_player_value3(t_data *d);
 void			render_legend_player_value4(t_data *d);
 void			render_legend_sentence(t_data *d);
 void 			render_legend_player_sentence(t_data *d);
-void			key_minux(t_data *d);
-void			key_plus(t_data *d);
-void			key_pause(t_data *d);
-void			color_champ1(t_data *d, int i);
-void			color_champ2(t_data *d, int i);
-void			color_champ3(t_data *d, int i);
-void			color_champ4(t_data *d, int i);
 
-// Shell Render
+/* Shell Render */
 void			co_info_player1(t_data *d, t_header *prog);
 void			co_info_player2(t_data *d, t_header *prog);
 void			co_info_player3(t_data *d, t_header *prog);
 void			co_info_player4(t_data *d, t_header *prog);
-void			co_troll_all(void);
+void			co_show_init_players(t_data *d);
 void			co_troll0(void);
 void			co_troll1(void);
 void			co_troll2(void);
 void			co_troll3(void);
-void			co_show_init_players(t_data *d);
+void			co_troll_all(void);
 void			draw_result_console(t_data *d);
 void			render_shell(t_data *d);
 

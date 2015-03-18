@@ -45,8 +45,6 @@ int		checkNextOp(t_data *d)
 			}
 			else
 				prog->wait = -1;
-			// check PC for player d->prog[player]
-			// sleep(5);
 		}
 		prog = prog->next;
 	}

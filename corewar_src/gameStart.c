@@ -17,7 +17,6 @@
 ** call renderDraw at each execOp ?
 */
 
-// return len of "dec" str (ex 1 1 0 == 3)
 int		hex_strlen(unsigned char *str, int size)
 {
 	int i;
@@ -42,8 +41,6 @@ int		str_hex_len(unsigned char *str)
 
 	len = 1;
 	value = ft_hex2intdec(str);
-	// writeL("value");
-	// writeL(ft_itoa(value));
 	while (value > 255)
 	{
 		value /= 255;
@@ -65,19 +62,16 @@ int		int_hex_len(int n)
 	return (len);
 }
 
-// OK !!
-// conv unsigned int to hex str
 void	nbr2hex(unsigned int n, unsigned char (*str)[])
 {
 	static char tab[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 							'a', 'b', 'c', 'd', 'e', 'f'};
-	char		tmp[9]; // tmp[T_LAB];
-	int i;
-	int j;
-	// int len;
+	char		tmp[9];
+	int 		i;
+	int 		j;
+
 	i = 8;
 	ft_bzero(tmp, 9);
-	// len = hex_len(n);
 	while (n > 0 && i >= 0)
 	{
 		tmp[i] = tab[n % 16];
@@ -97,15 +91,6 @@ void	nbr2hex(unsigned int n, unsigned char (*str)[])
 	}
 }
 
-/*
-**  convert	45	99	5d
-			69	153	93
-** (4561245)
-*/
-
-
-// OK!!
-// convert hex str to "dec" str
 void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 {
 	size_t len;
@@ -113,18 +98,18 @@ void	hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size)
 	char tmp[3];
 	int result;
 
-	len = ft_strlen((char *)*src) / 2;// CAST
+	len = ft_strlen((char *)*src) / 2;
 	i = 0;
 	size = size - len;
 	writeL("value");
 	writeL(ft_itoa(size));
 	writeL("len");
 	writeL(ft_itoa(len));
-	while (i < (int)len) // CAST
+	while (i < (int)len)
 	{
 		ft_bzero(tmp, 3);
-		ft_strncpy(tmp, (char *)&(*src)[i * 2], 2);// CAST
-		result = ft_hex2intdec((unsigned char *)tmp);// CAST
+		ft_strncpy(tmp, (char *)&(*src)[i * 2], 2);
+		result = ft_hex2intdec((unsigned char *)tmp);
 		(*str)[size + i] = result;
 		i++;
 	}
@@ -138,12 +123,12 @@ int		get_int_from_dec(char *str, int len)
 	int		index;
 
 	ft_bzero(tmp, T_LAB + 1);
-	index = len - hex_strlen((unsigned char *)str, len);// CAST
+	index = len - hex_strlen((unsigned char *)str, len);
 	i = 0;
 	len = len - index;
 	while (len > 0)
 	{
-		ft_putHexNbr(str[index], (unsigned char (*)[])(&tmp[i]));// CAST // CAST // CAST
+		ft_putHexNbr(str[index], (unsigned char (*)[])(&tmp[i]));  
 		index++;
 		len--;
 		i += 2;
@@ -169,85 +154,13 @@ int		get_int_from_dec(char *str, int len)
 **
 */
 
-// 0 1 2 3 4 5 6 7 8
-// 0 0 0 0 0 0 0 0 0
-// void ft_check(t_data *d)
-// {
-// 	unsigned char tab[9];
-// 	unsigned char result[9];
-// 	int n;
-
-// 	ft_bzero(tab, 9);
-// 	ft_bzero(result, 9);
-// 	// tab[5] = 69;
-// 	// tab[6] = 153;
-// 	// tab[7] = 93;
-// 	// tab[5] = 99;
-// 	// tab[6] = 228;
-// 	tab[7] = 12;
-
-// 	writeL("-=-");
-// 	writeL(ft_itoa(tab[0]));
-// 	writeL(ft_itoa(tab[1]));
-// 	writeL(ft_itoa(tab[2]));
-// 	writeL(ft_itoa(tab[3]));
-// 	writeL(ft_itoa(tab[4]));
-// 	writeL(ft_itoa(tab[5]));
-// 	writeL(ft_itoa(tab[6]));
-// 	writeL(ft_itoa(tab[7]));
-// 	writeL("-=-");
-// 	ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
-// 	writeL(ft_itoa(ft_hex2intdec(result)));
-// 	ft_bzero(tab, 9);
-// 	ft_bzero(result, 9);
-// 	writeL("================");
-// 	// ft_putNbr2hex(hex_strlen(tab, 8), &tab, &result);
-// 	// writeL("first result");
-// 	// writeL(result);
-// 	nbr2hex(12, &tab); // convert nbr to hex str
-// 	hex2dec(&tab, &result, 8); // convert hex str to "dec" str
-// 	writeL("---");
-// 	writeL(ft_itoa(result[0]));
-// 	writeL(ft_itoa(result[1]));
-// 	writeL(ft_itoa(result[2]));
-// 	writeL(ft_itoa(result[3]));
-// 	writeL(ft_itoa(result[4]));
-// 	writeL(ft_itoa(result[5]));
-// 	writeL(ft_itoa(result[6]));
-// 	writeL(ft_itoa(result[7]));
-// 	writeL("---");
-// 	n = ft_hex2intdec(tab); // convert hex str to int
-// 	ft_bzero(tab, 9);
-// 	ft_putNbr2hex(hex_strlen(result, 8), &result, &tab);
-// 	writeL(ft_itoa(ft_hex2intdec(tab)));
-
-// 	writeL("tab");
-// 	writeL(tab);
-// 	writeL("result");
-// 	writeL(result);
-// 	writeL("number");
-// 	writeL(ft_itoa(n));
-// 	str_to_reg(d, d->prog, 2, tab);
-// 	ft_bzero(tab, 9);
-// 	ft_putNbr2hex(hex_strlen(d->prog->reg[2], 4), d->prog->reg[2], &tab);
-// 	writeL(tab);
-// 	n = ft_hex2intdec(tab);
-// 	writeL("number 2 ");
-// 	writeL(ft_itoa(n));
-// 		n = reg_to_int(d, d->prog, 2);
-// 	writeL("number 3 ");
-// 	writeL(ft_itoa(n));
-// 	sleep(10);
-// }
-
 int	gameStart(t_data *d)
 {
-	// ft_check(d);
 	d->run = true;
 	if (true == d->graphActiv)
-		render_draw(d); // need to be modified (d->prog)
+		render_draw(d);
 	else
-		co_show_init_players(d); // need to be modified (d->prog)
+		co_show_init_players(d);
 	writeL("DUMP following");
 	writeL(ft_itoa(d->dump));
 	while (d->run == true)
@@ -255,25 +168,25 @@ int	gameStart(t_data *d)
 		usleep(d->ncurseSpeed);
 		if (false == d->pause)
 		{
-			checkNextOp(d); // check next champion's instruction (ptr by PC)
-			execOp(d); // exec next op defined in d->prog[player].nextOp
+			checkNextOp(d);
+			execOp(d);
 			if (true == d->graphActiv)
-				render_draw(d); // draw game with ncurses // need to be modified (d->prog)
+				render_draw(d);
 			else
-				render_shell(d); // draw game on shell // need to be modified (d->prog)
-			if (d->dump != -1 && (int)d->cycle == d->dump)// CAST
+				render_shell(d);
+			if (d->dump != -1 && (int)d->cycle == d->dump)
 			{
 				if (true == d->graphActiv)
-					render_close(d); // need to be modified (d->prog)
+					render_close(d);
 				d->run = false;
-				arg_dump(d); // need to be modified (d->prog)
+				arg_dump(d);
 			}
-			checkCyles(d); // need to be modified (d->prog)
+			checkCyles(d);
 		}
-		render_keyboard(d); // need to be modified (d->prog)
+		render_keyboard(d);
 		if (true == d->pause)
-			usleep(100000); 						// REMOVE
+			usleep(100000);
 	}
-	draw_result_console(d); // need to be modified (d->prog)
+	draw_result_console(d);
 	return (0);
 }
