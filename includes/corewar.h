@@ -21,7 +21,6 @@
 # include <sys/types.h>
 
 # define TIME_USLEEP		5000
-# define LOG				0
 # define PATH_DEBUGG		"../log/corewar.log"
 
 # define ERR_PARAM "./corewar [-dump nbr_cycles] [[-n number] champion.cor]..."
@@ -147,25 +146,26 @@ typedef struct			s_header
 
 typedef	struct			s_data
 {
-	t_header			*prog;
+	bool				graphActiv;
 	bool				run;
-	t_case				*map;
+	bool 				pause;
+	int					cycleDie;
+	int					fdDebugg;
+	int 				dump;
 	int 				players;
 	int 				realPlayers;
-	int 				dump;
-	WINDOW				*window;
-	int					fdDebugg;
-	unsigned int		periode;
-	bool 				pause;
-	bool				graphActiv;
 	short int 			caseColor;
+	int 				option_log;
+	t_case				*map;
+	t_header			*prog;
+	unsigned int		periode;
 	unsigned int 		cycle;
-	int					cycleDie;
-	unsigned int 		livesCurrent;
 	unsigned int 		iCheckCycles;
 	unsigned int 		iMaxCheck;
+	unsigned int 		livesCurrent;
 	unsigned int 		nbrWinner;
 	unsigned int 		ncurseSpeed;
+	WINDOW				*window;
 }						t_data;
 
 /* Corewar bin */
@@ -191,6 +191,7 @@ int				readOpCode(t_data *d, t_header *prog);
 int				reg_to_int(t_data *d, t_header *player, int reg);
 int				str_hex_len(unsigned char *str);
 int 			gameStart(t_data *d);
+int				set_option_log(t_data *d);
 t_data			*getData(void);
 t_header		*lastProg(t_data *d);
 t_header		*newProg(int number);

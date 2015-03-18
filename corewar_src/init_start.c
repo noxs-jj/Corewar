@@ -76,11 +76,13 @@ int 		checkparam(t_data *d, int ac, char **av)
 			i = champion_number(d, ac, av, i);
 		else if (ft_strstr(av[i], ".cor") != NULL)
 			i = champion(d, ac, av, i);
+		else if (ft_strcmp(av[i], "-log") == 0)
+			set_option_log(d);
 		else if (ft_strcmp(av[i], "-g") == 0)
-			{
-				d->graphActiv = true;
-				d->pause = true;
-			}
+		{
+			d->graphActiv = true;
+			d->pause = true;
+		}
 		else
 			return (print_error(ERR_PARAM));
 		if (i == -1)
@@ -99,12 +101,9 @@ int			init_start(t_data *d, int ac, char **av)
 {
 	if (ac < 3 || ac > MAX_ARGS_NUMBER)
 		return (print_error(ERR_PARAM));
-	if (LOG == 1)
-	{
-		d->fdDebugg = open(PATH_DEBUGG, O_WRONLY|O_CREAT|O_APPEND, 0644);
-		if (d->fdDebugg < 0)
-			return (print_error(ERR_FILE_DEBUGG));
-	}
+	d->fdDebugg = open(PATH_DEBUGG, O_WRONLY|O_CREAT|O_APPEND, 0644);
+	if (d->fdDebugg < 0)
+		return (print_error(ERR_FILE_DEBUGG));
 	d->dump = -1;
 	d->pause = false;
 	d->players = -1;
@@ -115,6 +114,7 @@ int			init_start(t_data *d, int ac, char **av)
 	d->nbrWinner = 999;
 	d->graphActiv = false;
 	d->prog = NULL;
+	d->option_log = 0;
 	return (checkparam(d, ac, av));
 }
 

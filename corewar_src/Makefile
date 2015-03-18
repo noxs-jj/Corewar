@@ -37,6 +37,7 @@ SRCS =	arg_dump.c \
 		isValidRegister.c \
 		load_champions.c \
 		lst_prog.c \
+		option_log.c \
 		main.c \
 		ncurse/nc_close_free.c \
 		ncurse/nc_color_champ1.c \

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writeL.c                                           :+:      :+:    :+:   */
+/*   option_log.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 17:53:59 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/23 18:11:42 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/03/18 14:31:16 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/18 14:31:17 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	writeL(char *str)
+int	set_option_log(t_data *d)
 {
-	static t_data *d = NULL;
-
-	if (d == NULL)
-		d = getData();
-	if (1 == d->option_log)
-		ft_putendl_fd(str, d->fdDebugg);
+	d->option_log = 1;
+	return (1);
 }

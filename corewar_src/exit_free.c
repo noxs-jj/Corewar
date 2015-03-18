@@ -18,7 +18,7 @@ void	exitFree(void)
 
 	d = getData();
 	render_close(d);
-	if (LOG == 1)
+	if (1 == d->option_log)
 	{
 		writeL("Exit Success !!!");
 		close(d->fdDebugg);
