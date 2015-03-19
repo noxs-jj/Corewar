@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//03 70 02 fe 38 
 #ifndef COREWAR_H
 # define COREWAR_H
 
@@ -37,7 +36,6 @@
 # define REG_SIZE				4
 # define REG_SIZE_2				(REG_SIZE * 2) + 1
 
-
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
@@ -57,19 +55,10 @@
 
 # define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-
-# define CYCLE_TO_DIE			1500	// default 1536 test winner with 50
-# define CYCLE_DELTA			50		// default 50
-# define NBR_LIVE				21		// default 21
-# define MAX_CHECKS				10		// default 10 test winner with 2
-
-/*
-** DIR 4 or 2 if has idx
-** T_REG					1 registre : 01
-** T_DIR					2 label ou nombre : 10
-** T_IND					4 nombre : 11
-** T_LAB					8 label
-*/
+# define CYCLE_TO_DIE			1500
+# define CYCLE_DELTA			50
+# define NBR_LIVE				21
+# define MAX_CHECKS				10
 
 # define REG 					1
 # define DIR 					4
@@ -81,35 +70,30 @@
 # define T_LAB					8
 # define T_LAB2					(T_LAB * 2) + 1
 
-/*
-** PROG_NAME_LENGTH 128
-** COMMENT_LENGTH 2048
-*/
-
 # define PROG_NAME_LENGTH		128
 # define COMMENT_LENGTH			2048
 # define COREWAR_EXEC_MAGIC		"00ea83f3"
 
-typedef struct 			s_bin
+typedef struct			s_bin
 {
-	char 				hex;
-	char 				bin[4];
+	char				hex;
+	char				bin[4];
 }						t_bin;
 
-typedef struct 			s_dec
+typedef struct			s_dec
 {
-	char 				hex;
-	unsigned int 		deci;
+	char				hex;
+	unsigned int		deci;
 }						t_dec;
 
 typedef struct			s_op
 {
-	char*				name;
+	char				*name;
 	int					nb_params;
 	int					param_types[4];
 	int					opcode;
 	int					nb_cycles;
-	char*				description;
+	char				*description;
 	int					has_pcode;
 	int					has_idx;
 }						t_op;
@@ -120,28 +104,28 @@ typedef struct			s_case
 	short int			champ;
 	bool				present;
 	bool				used;
-	int 				recent;
-	int 				live;
+	int					recent;
+	int					live;
 }						t_case;
 
 typedef struct			s_header
 {
 	bool				carry;
-	int					lastLive;
-	int 				liveNbr;
-	t_case				*PC;
-	int					indexPC;
+	int					last_live;
+	int					live_nbr;
+	t_case				*pc;
+	int					index_pc;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	int					wait;
 	bool				alive;
 	unsigned int		number;
-	short int			nextOp;
-	char 				*filename;
+	short int			next_op;
+	char				*filename;
 	unsigned int		prog_size;
 	unsigned char		prog[MEM_SIZE];
 	char				comment[COMMENT_LENGTH + 1];
-	unsigned char 		reg[REG_NUMBER + 1][REG_SIZE];
-	char 				codage[9];
+	unsigned char		reg[REG_NUMBER + 1][REG_SIZE];
+	char				codage[9];
 	unsigned char		op_args[4][T_LAB];
 	struct s_header		*next;
 	struct s_header		*prev;
@@ -149,104 +133,109 @@ typedef struct			s_header
 
 typedef	struct			s_data
 {
-	bool				graphActiv;
+	bool				graph_activ;
 	bool				run;
-	bool 				pause;
-	int					cycleDie;
-	int					fdDebugg;
-	int 				dump;
-	int 				players;
-	int 				realPlayers;
-	short int 			caseColor;
-	int 				option_log;
+	bool				pause;
+	int					cycle_die;
+	int					fd_debugg;
+	int					dump;
+	int					players;
+	int					real_players;
+	short int			case_color;
+	int					option_log;
 	t_case				*map;
 	t_header			*prog;
 	unsigned int		periode;
-	unsigned int 		cycle;
-	unsigned int 		iCheckCycles;
-	unsigned int 		iMaxCheck;
-	unsigned int 		livesCurrent;
-	unsigned int 		nbrWinner;
-	unsigned int 		ncurseSpeed;
+	unsigned int		cycle;
+	unsigned int		i_check_cycles;
+	unsigned int		i_max_check;
+	unsigned int		lives_current;
+	unsigned int		nbr_winner;
+	unsigned int		ncurse_speed;
 	WINDOW				*window;
 }						t_data;
 
-/* Corewar bin */
-int				add_prog(t_data *d, t_header *new);
-int				arg_to_dec(char (*src)[]);
-int				change_mem_val(t_data *d, int id, int where, char *str);
-int				check_next_op(t_data *d);
-int				exec_op(t_data *d);
-int				get_arg_int(char *str);
-int				get_arg_modulo(int n, int modulo);
-int				get_int_from_dec(char *str, int len);
-int				get_op_args(t_data *d, t_header *prog);
-int				hex_strlen(unsigned char *str, int size);
-int				init_mem(t_data *d);
-int				init_start(t_data *d, int ac, char **av);
-int				int_hex_len(int n);
-int				is_direct(t_header *player, int arg_nbr);
-int				is_indirect(t_header *player, int arg_nbr);
-int				is_register(t_header *player, int arg_nbr);
-int				is_valid_register(unsigned int reg);
-int				load_champions(t_data *d);
-int				print_error(char *str);
-int				read_files(t_data *d);
-int				read_op_code(t_data *d, t_header *prog);
-int				reg_to_int(t_data *d, t_header *player, int reg);
-int				set_option_log(t_data *d);
-int				str_hex_len(unsigned char *str);
-int 			game_start(t_data *d);
-int				checkparam(t_data *d, int ac, char **av);
-t_data			*get_data(void);
-t_header		*last_prog(t_data *d);
-t_header		*new_prog(int number);
-t_header		*search_prog(t_data *d, int number);
-unsigned int	ft_hex_2_dec(unsigned char *str);
-unsigned int	ft_hex2intdec(unsigned char *str);
-void			arg_dump(t_data *d);
-void			check_cyles(t_data *d);
-void			copy_prog(t_data *d, t_header *src, t_header *cpy);
-void			del_qll(t_data *d);
-void			del_prog(t_data *d, int number);
-void			exit_free(void);
-void			cpy_reg(t_header *src, t_header *cpy);
-void			ft_put_hex_b_nbr(unsigned int n, unsigned char (*str)[]);
-void			ft_put_hex_nbr(unsigned char n, unsigned char (*str)[]);
-void			hex2dec(unsigned char (*src)[], unsigned char (*str)[], int size);
-void			init_reg(t_header *new);
-void			int_to_reg(t_data *d, t_header *player, int n, int reg);
-void			map_to_reg(t_data *d, t_header *player, int reg, int index);
-void			nbr2hex(unsigned int n, unsigned char (*str)[]);
-void			pc_advance(t_data *d, t_header *player, int adv);
-void			str_to_reg(t_data *d, t_header *player, int reg, char *str);
-void			write_l(char *str);
-void 			ft_put_nbr_2_hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
-void			twice_bzero(char (*buff)[], int buff_size, char (*str)[], int str_size);
+int						add_prog(t_data *d, t_header *new);
+int						arg_to_dec(char (*src)[]);
+int						change_mem_val(t_data *d, int id, int where, char *str);
+int						check_next_op(t_data *d);
+int						checkparam(t_data *d, int ac, char **av);
+int						exec_op(t_data *d);
+int						game_start(t_data *d);
+int						get_arg_int(char *str);
+int						get_arg_modulo(int n, int modulo);
+int						get_int_from_dec(char *str, int len);
+int						get_op_args(t_data *d, t_header *prog);
+int						hex_strlen(unsigned char *str, int size);
+int						init_mem(t_data *d);
+int						init_start(t_data *d, int ac, char **av);
+int						int_hex_len(int n);
+int						is_direct(t_header *player, int arg_nbr);
+int						is_indirect(t_header *player, int arg_nbr);
+int						is_register(t_header *player, int arg_nbr);
+int						is_valid_register(unsigned int reg);
+int						load_champions(t_data *d);
+int						print_error(char *str);
+int						read_files(t_data *d);
+int						read_op_code(t_data *d, t_header *prog);
+int						reg_to_int(t_data *d, t_header *player, int reg);
+int						set_option_log(t_data *d);
+int						str_hex_len(unsigned char *str);
+t_data					*get_data(void);
+t_header				*last_prog(t_data *d);
+t_header				*new_prog(int number);
+t_header				*search_prog(t_data *d, int number);
+unsigned int			ft_hex2intdec(unsigned char *str);
+unsigned int			ft_hex_2_dec(unsigned char *str);
+void					arg_dump(t_data *d);
+void					check_cyles(t_data *d);
+void					copy_prog(t_data *d, t_header *src, t_header *cpy);
+void					cpy_reg(t_header *src, t_header *cpy);
+void					del_prog(t_data *d, int number);
+void					del_qll(t_data *d);
+void					exit_free(void);
+void					ft_put_hex_b_nbr(unsigned int n,
+						unsigned char (*str)[]);
+void					ft_put_hex_nbr(unsigned char n,
+						unsigned char (*str)[]);
+void					ft_put_nbr_2_hex(int len, unsigned char (*src)[],
+						unsigned char (*str)[]);
+void					hex2dec(unsigned char (*src)[],
+						unsigned char (*str)[], int size);
+void					init_reg(t_header *new);
+void					int_to_reg(t_data *d, t_header *player, int n, int reg);
+void					map_to_reg(t_data *d, t_header *player,
+						int reg, int index);
+void					nbr2hex(unsigned int n, unsigned char (*str)[]);
+void					pc_advance(t_data *d, t_header *player, int adv);
+void					str_to_reg(t_data *d, t_header *player,
+						int reg, char *str);
+void					twice_bzero(char (*buff)[], int buff_size,
+						char (*str)[], int str_size);
+void					write_l(char *str);
 
-/* OP functions */
-typedef struct		s_opfunc
+typedef struct			s_opfunc
 {
-	int				op;
-	int				(*func)(t_data *, t_header *);
-}					t_opfunc;
+	int					op;
+	int					(*func)(t_data *, t_header *);
+}						t_opfunc;
 
-int				op_add(t_data *d, t_header *player);
-int				op_aff(t_data *d, t_header *player);
-int				op_and(t_data *d, t_header *player);
-int				op_fork(t_data *d, t_header *player);
-int				op_ld(t_data *d, t_header *player);
-int				op_ldi(t_data *d, t_header *player);
-int				op_lfork(t_data *d, t_header *player);
-int				op_live(t_data *d, t_header *player);
-int				op_lld(t_data *d, t_header *player);
-int				op_lldi(t_data *d, t_header *player);
-int				op_or(t_data *d, t_header *player);
-int				op_st(t_data *d, t_header *player);
-int				op_sti(t_data *d, t_header *player);
-int				op_sub(t_data *d, t_header *player);
-int				op_xor(t_data *d, t_header *player);
-int				op_zjump(t_data *d, t_header *player);
+int						op_add(t_data *d, t_header *player);
+int						op_aff(t_data *d, t_header *player);
+int						op_and(t_data *d, t_header *player);
+int						op_fork(t_data *d, t_header *player);
+int						op_ld(t_data *d, t_header *player);
+int						op_ldi(t_data *d, t_header *player);
+int						op_lfork(t_data *d, t_header *player);
+int						op_live(t_data *d, t_header *player);
+int						op_lld(t_data *d, t_header *player);
+int						op_lldi(t_data *d, t_header *player);
+int						op_or(t_data *d, t_header *player);
+int						op_st(t_data *d, t_header *player);
+int						op_sti(t_data *d, t_header *player);
+int						op_sub(t_data *d, t_header *player);
+int						op_xor(t_data *d, t_header *player);
+int						op_zjump(t_data *d, t_header *player);
 
 static const t_opfunc	g_opfunc[] =
 {
@@ -274,41 +263,39 @@ static const char		g_tab[] =
 	'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
 };
 
-/* NCurses */
-int 			render_init(t_data *d);
-void			color_champ1(t_data *d, int i);
-void			color_champ2(t_data *d, int i);
-void			color_champ3(t_data *d, int i);
-void			color_champ4(t_data *d, int i);
-void			key_minux(t_data *d);
-void			key_pause(t_data *d);
-void			key_plus(t_data *d);
-void			render_close(t_data *d);
-void			render_draw(t_data *d);
-void			render_init_pair(void);
-void			render_keyboard(t_data *d);
-void			render_legend_column(t_data *d);
-void			render_legend_info_value(t_data *d);
-void			render_legend_player_value(t_data *d);
-void			render_legend_player_value1(t_data *d);
-void			render_legend_player_value2(t_data *d);
-void			render_legend_player_value3(t_data *d);
-void			render_legend_player_value4(t_data *d);
-void			render_legend_sentence(t_data *d);
-void 			render_legend_player_sentence(t_data *d);
+int						render_init(t_data *d);
+void					color_champ1(t_data *d, int i);
+void					color_champ2(t_data *d, int i);
+void					color_champ3(t_data *d, int i);
+void					color_champ4(t_data *d, int i);
+void					key_minux(t_data *d);
+void					key_pause(t_data *d);
+void					key_plus(t_data *d);
+void					render_close(t_data *d);
+void					render_draw(t_data *d);
+void					render_init_pair(void);
+void					render_keyboard(t_data *d);
+void					render_legend_column(t_data *d);
+void					render_legend_info_value(t_data *d);
+void					render_legend_player_value(t_data *d);
+void					render_legend_player_value1(t_data *d);
+void					render_legend_player_value2(t_data *d);
+void					render_legend_player_value3(t_data *d);
+void					render_legend_player_value4(t_data *d);
+void					render_legend_sentence(t_data *d);
+void					render_legend_player_sentence(t_data *d);
 
-/* Shell Render */
-void			co_info_player1(t_data *d, t_header *prog);
-void			co_info_player2(t_data *d, t_header *prog);
-void			co_info_player3(t_data *d, t_header *prog);
-void			co_info_player4(t_data *d, t_header *prog);
-void			co_show_init_players(t_data *d);
-void			co_troll0(void);
-void			co_troll1(void);
-void			co_troll2(void);
-void			co_troll3(void);
-void			co_troll_all(void);
-void			draw_result_console(t_data *d);
-void			render_shell(t_data *d);
+void					co_info_player1(t_data *d, t_header *prog);
+void					co_info_player2(t_data *d, t_header *prog);
+void					co_info_player3(t_data *d, t_header *prog);
+void					co_info_player4(t_data *d, t_header *prog);
+void					co_show_init_players(t_data *d);
+void					co_troll0(void);
+void					co_troll1(void);
+void					co_troll2(void);
+void					co_troll3(void);
+void					co_troll_all(void);
+void					draw_result_console(t_data *d);
+void					render_shell(t_data *d);
 
 #endif

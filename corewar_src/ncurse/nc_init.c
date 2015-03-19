@@ -76,6 +76,6 @@ int		render_init(t_data *d)
 	nodelay(stdscr, true);
 	curs_set(0);
 	wrefresh(d->window);
-	d->ncurseSpeed = TIME_USLEEP;
+	d->ncurse_speed = TIME_USLEEP;
 	return (0);
 }

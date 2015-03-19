@@ -75,7 +75,7 @@ static int	checkparam_2(t_data *d, int ac, char **av, int *i)
 		set_option_log(d);
 	else if (ft_strcmp(av[(*i)], "-g") == 0)
 	{
-		d->graphActiv = true;
+		d->graph_activ = true;
 		d->pause = true;
 	}
 	else
@@ -98,7 +98,7 @@ int			checkparam(t_data *d, int ac, char **av)
 			return (print_error("REG_SIZE invalid"));
 		i++;
 	}
-	d->realPlayers = d->players + 1;
+	d->real_players = d->players + 1;
 	if (d->players < 1)
 		return (print_error("Min 2 Players"));
 	return (0);

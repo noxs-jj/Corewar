@@ -33,7 +33,7 @@ static int	op_ld_2(t_data *d, t_header *player, int *value, unsigned int *reg)
 		if (player->op_args[0][T_LAB - 2] >= 240)
 			(*value) = (*value) - 65536;
 		(*value) = get_arg_modulo((*value), IDX_MOD);
-		(*value) = (player->indexPC + (*value) + MEM_SIZE) % MEM_SIZE;
+		(*value) = (player->index_pc + (*value) + MEM_SIZE) % MEM_SIZE;
 		map_to_reg(d, player, (*reg), (*value));
 	}
 	else

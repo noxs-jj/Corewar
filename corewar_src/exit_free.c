@@ -21,7 +21,7 @@ void	exit_free(void)
 	if (1 == d->option_log)
 	{
 		write_l("Exit Success !!!");
-		close(d->fdDebugg);
+		close(d->fd_debugg);
 	}
 	if (d->map != NULL)
 		ft_memdel((void **)&d->map);

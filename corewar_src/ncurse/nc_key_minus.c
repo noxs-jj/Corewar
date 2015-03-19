@@ -15,14 +15,14 @@
 
 void	key_minux(t_data *d)
 {
-	if ((int)d->ncurseSpeed - 5000 >= 0)
+	if ((int)d->ncurse_speed - 5000 >= 0)
 	{
 		write_l("KEYBOARD\t\t-");
-		d->ncurseSpeed -= 5000;
+		d->ncurse_speed -= 5000;
 		wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 		mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, "      ");
 		mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE,
-			ft_itoa(d->ncurseSpeed));
+			ft_itoa(d->ncurse_speed));
 		wattroff(d->window, COLOR_PAIR(10) | A_BOLD);
 		refresh();
 		wrefresh(d->window);

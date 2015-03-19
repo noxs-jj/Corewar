@@ -31,8 +31,8 @@ void	render_legend_player_value2(t_data *d)
 	wattroff(d->window, COLOR_PAIR(2) | A_BOLD);
 	wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 	mvwprintw(d->window, L_Y_P2_LAST, L_X_P2_LAST_VALUE,
-				ft_itoa(prog->lastLive));
+				ft_itoa(prog->last_live));
 	mvwprintw(d->window, L_Y_P2_LIVE, L_X_P2_LIVE_VALUE,
-				ft_itoa(prog->liveNbr));
+				ft_itoa(prog->live_nbr));
 	wattroff(d->window, COLOR_PAIR(10) | A_BOLD);
 }

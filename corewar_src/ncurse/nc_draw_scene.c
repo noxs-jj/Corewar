@@ -26,7 +26,7 @@ void	render_draw1(t_data *d)
 void	render_draw2(t_data *d, int i)
 {
 	if (d->map[i].champ == 0)
-		d->caseColor = COLOR_PAIR(0);
+		d->case_color = COLOR_PAIR(0);
 	else if (d->map[i].champ == 1)
 		color_champ1(d, i);
 	else if (d->map[i].champ == 2)
@@ -53,8 +53,8 @@ void	render_draw(t_data *d)
 		while (x < L_X_MAP_END && i < MEM_SIZE)
 		{
 			render_draw2(d, i);
-			mvwaddch(d->window, y, x, d->map[i].hex[0] | d->caseColor);
-			mvwaddch(d->window, y, x + 1, d->map[i].hex[1] | d->caseColor);
+			mvwaddch(d->window, y, x, d->map[i].hex[0] | d->case_color);
+			mvwaddch(d->window, y, x + 1, d->map[i].hex[1] | d->case_color);
 			x += 3;
 			i++;
 		}

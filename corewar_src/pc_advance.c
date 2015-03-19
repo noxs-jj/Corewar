@@ -14,8 +14,8 @@
 
 void	pc_advance(t_data *d, t_header *player, int adv)
 {
-	player->PC->present = false;
-	player->indexPC = (player->indexPC + MEM_SIZE + adv + 1) % MEM_SIZE;
-	player->PC = &d->map[player->indexPC];
-	player->PC->present = true;
+	player->pc->present = false;
+	player->index_pc = (player->index_pc + MEM_SIZE + adv + 1) % MEM_SIZE;
+	player->pc = &d->map[player->index_pc];
+	player->pc->present = true;
 }

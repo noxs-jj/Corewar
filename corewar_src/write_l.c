@@ -19,5 +19,5 @@ void	write_l(char *str)
 	if (d == NULL)
 		d = get_data();
 	if (1 == d->option_log)
-		ft_putendl_fd(str, d->fdDebugg);
+		ft_putendl_fd(str, d->fd_debugg);
 }

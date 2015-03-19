@@ -17,20 +17,20 @@ static void	check_cyles2(t_data *d)
 	int			more_recent_live;
 	t_header	*prog;
 
-	if (d->cycleDie <= 0)
+	if (d->cycle_die <= 0)
 	{
 		d->run = false;
-		d->iCheckCycles = 1;
+		d->i_check_cycles = 1;
 		more_recent_live = 0;
-		while ((prog = search_prog(d, d->iCheckCycles)) != NULL)
+		while ((prog = search_prog(d, d->i_check_cycles)) != NULL)
 		{
-			if (prog->lastLive > more_recent_live
+			if (prog->last_live > more_recent_live
 				&& prog->alive == true)
 			{
-				more_recent_live = prog->lastLive;
-				d->nbrWinner = prog->number;
+				more_recent_live = prog->last_live;
+				d->nbr_winner = prog->number;
 			}
-			d->iCheckCycles++;
+			d->i_check_cycles++;
 		}
 	}
 }
@@ -39,25 +39,25 @@ void		check_cyles(t_data *d)
 {
 	t_header	*prog;
 
-	if (d->cycle % d->cycleDie == 0)
+	if (d->cycle % d->cycle_die == 0)
 	{
 		write_l("enter to check_cyles:: check_cyles");
-		d->iCheckCycles = 1;
-		while ((prog = search_prog(d, d->iCheckCycles)) != NULL)
+		d->i_check_cycles = 1;
+		while ((prog = search_prog(d, d->i_check_cycles)) != NULL)
 		{
-			if (prog->liveNbr == 0)
+			if (prog->live_nbr == 0)
 				prog->alive = false;
 			if (prog->alive == true)
-				prog->liveNbr = 0;
-			d->iCheckCycles++;
+				prog->live_nbr = 0;
+			d->i_check_cycles++;
 		}
-		d->iMaxCheck++;
-		if (d->livesCurrent >= NBR_LIVE || d->iMaxCheck >= MAX_CHECKS)
+		d->i_max_check++;
+		if (d->lives_current >= NBR_LIVE || d->i_max_check >= MAX_CHECKS)
 		{
-			d->cycleDie -= CYCLE_DELTA;
-			d->iMaxCheck = 0;
+			d->cycle_die -= CYCLE_DELTA;
+			d->i_max_check = 0;
 		}
-		d->livesCurrent = 0;
+		d->lives_current = 0;
 	}
 	check_cyles2(d);
 }

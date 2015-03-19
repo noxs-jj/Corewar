@@ -17,8 +17,8 @@ static void	load_champions_2(t_data *d, t_header *prog, int *index, int *i)
 	d->map[(*index)].champ = prog->number;
 	d->map[(*index)].hex[0] = prog->prog[(*i)];
 	d->map[(*index)].hex[1] = prog->prog[(*i) + 1];
-	if (prog->PC == NULL)
-		prog->PC = &d->map[(*index)];
+	if (prog->pc == NULL)
+		prog->pc = &d->map[(*index)];
 	(*index)++;
 	(*i) += 2;
 }
@@ -38,7 +38,7 @@ int			load_champions(t_data *d)
 	{
 		i = 0;
 		d->map[index].present = true;
-		prog->indexPC = index;
+		prog->index_pc = index;
 		sum_champions += prog->prog_size;
 		if (sum_champions > MEM_SIZE)
 			return (print_error("Not enough space in Map for all champions"));

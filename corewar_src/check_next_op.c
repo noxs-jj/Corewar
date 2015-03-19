@@ -16,11 +16,11 @@ void	check_pc(t_header *h)
 {
 	unsigned int	instruction;
 
-	instruction = ft_hex_2_dec(h->PC->hex);
+	instruction = ft_hex_2_dec(h->pc->hex);
 	if (instruction > 0 && instruction < 17)
-		h->nextOp = instruction - 1;
+		h->next_op = instruction - 1;
 	else
-		h->nextOp = -1;
+		h->next_op = -1;
 }
 
 int		check_next_op(t_data *d)
@@ -32,11 +32,11 @@ int		check_next_op(t_data *d)
 	{
 		if (prog->wait <= 0)
 		{
-			prog->PC->present = prog->number;
+			prog->pc->present = prog->number;
 			check_pc(prog);
-			if (prog->nextOp != -1)
+			if (prog->next_op != -1)
 			{
-				prog->wait = op_tab[prog->nextOp].nb_cycles;
+				prog->wait = op_tab[prog->next_op].nb_cycles;
 				read_op_code(d, prog);
 			}
 			else

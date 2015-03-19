@@ -21,7 +21,7 @@ int		exec_op(t_data *d)
 	{
 		if (prog->wait == 1)
 		{
-			g_opfunc[prog->nextOp].func(d, prog);
+			g_opfunc[prog->next_op].func(d, prog);
 			prog->wait--;
 		}
 		else if (prog->wait > 0)

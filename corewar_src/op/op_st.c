@@ -49,7 +49,7 @@ int			op_st(t_data *d, t_header *player)
 	if (op_st_2(d, player, &value) < 0)
 		return (-1);
 	value = get_arg_modulo(value, IDX_MOD);
-	change_mem_val(d, player->number, (player->indexPC + value + MEM_SIZE)
+	change_mem_val(d, player->number, (player->index_pc + value + MEM_SIZE)
 		% MEM_SIZE, (char *)player->reg[reg]);
 	player->carry = true;
 	pc_advance(d, player, ret);

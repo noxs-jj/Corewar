@@ -24,7 +24,7 @@ int main(int ac, char **av)
 		return (-1);
 	if (init_mem(d) < 0)
 		return (-1);
-	if (d->graphActiv == true)
+	if (d->graph_activ == true)
 		render_init(d);
 	if (load_champions(d) < 0)
 		return (-1);

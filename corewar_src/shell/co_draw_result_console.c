@@ -16,17 +16,17 @@ void	draw_result_console(t_data *d)
 {
 	t_header *prog;
 
-	if (true == d->graphActiv)
+	if (true == d->graph_activ)
 	{
 		render_close(d);
 		sleep(1);
 	}
-	if (999 != d->nbrWinner && -1 == d->dump)
+	if (999 != d->nbr_winner && -1 == d->dump)
 	{
 		co_troll_all();
 		ft_putstr("#######################################################\n");
 		ft_putstr("\t\tle joueur ");
-		if ((prog = search_prog(d, d->nbrWinner)) == NULL)
+		if ((prog = search_prog(d, d->nbr_winner)) == NULL)
 		{
 			write_l("Error in drawResultConsole");
 			return ;

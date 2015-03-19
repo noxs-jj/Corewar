@@ -15,17 +15,17 @@
 void	color_champ4(t_data *d, int i)
 {
 	if (d->map[i].present == true)
-		d->caseColor = COLOR_PAIR(14);
+		d->case_color = COLOR_PAIR(14);
 	else if (d->map[i].live > 0)
 	{
-		d->caseColor = COLOR_PAIR(24);
+		d->case_color = COLOR_PAIR(24);
 		d->map[i].live--;
 	}
 	else if (d->map[i].recent > 0)
 	{
-		d->caseColor = COLOR_PAIR(34);
+		d->case_color = COLOR_PAIR(34);
 		d->map[i].recent--;
 	}
 	else
-		d->caseColor = COLOR_PAIR(4);
+		d->case_color = COLOR_PAIR(4);
 }

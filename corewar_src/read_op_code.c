@@ -38,7 +38,7 @@ int			read_op_code(t_data *d, t_header *prog)
 	t_case	*args;
 
 	(void)d;
-	args = ((prog->PC) + 1);
+	args = ((prog->pc) + 1);
 	ft_bzero(prog->codage, 9);
 	i = 0;
 	while (i < 16)

@@ -27,10 +27,10 @@ void	render_legend_info_value(t_data *d)
 {
 	wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE,
-		ft_itoa(d->ncurseSpeed));
+		ft_itoa(d->ncurse_speed));
 	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, ft_itoa(d->cycle));
 	mvwprintw(d->window, L_Y_PROCES, L_X_PROCES_VALUE, ft_itoa(d->players));
-	mvwprintw(d->window, L_Y_DIE, L_X_DIE_VALUE, ft_itoa(d->cycleDie));
+	mvwprintw(d->window, L_Y_DIE, L_X_DIE_VALUE, ft_itoa(d->cycle_die));
 	mvwprintw(d->window, L_Y_DELTA, L_X_DELTA_VALUE, ft_itoa(CYCLE_DELTA));
 	mvwprintw(d->window, L_Y_N_LIVE, L_X_N_LIVE_VALUE, ft_itoa(NBR_LIVE));
 	mvwprintw(d->window, L_Y_N_CHECK, L_X_N_CHECK_VALUE, ft_itoa(MAX_CHECKS));

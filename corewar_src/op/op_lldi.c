@@ -71,7 +71,7 @@ int			op_lldi(t_data *d, t_header *player)
 		return (-1);
 	if (op_lldi_2(d, player, &result) < 0)
 		return (-1);
-	result[0] = (player->indexPC + result[0] + MEM_SIZE) % MEM_SIZE;
+	result[0] = (player->index_pc + result[0] + MEM_SIZE) % MEM_SIZE;
 	ft_bzero(player->reg[reg], REG_SIZE);
 	map_to_reg(d, player, reg, result[0]);
 	pc_advance(d, player, ret);

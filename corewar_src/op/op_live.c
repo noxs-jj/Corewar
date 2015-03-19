@@ -29,11 +29,11 @@ int		op_live(t_data *d, t_header *player)
 	value = get_int_from_dec((char *)player->op_args[0], T_LAB);
 	if ((prog = search_prog(d, value)) != NULL)
 	{
-		prog->lastLive = d->cycle;
-		prog->liveNbr++;
-		d->livesCurrent++;
+		prog->last_live = d->cycle;
+		prog->live_nbr++;
+		d->lives_current++;
 	}
-	player->PC->live = 10;
+	player->pc->live = 10;
 	pc_advance(d, player, ret);
 	return (0);
 }

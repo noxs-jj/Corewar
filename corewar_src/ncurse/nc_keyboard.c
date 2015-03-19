@@ -23,8 +23,8 @@ void	render_keyboard(t_data *d)
 		exit_free();
 	else if (key_input == 112 || key_input == 32)
 		key_pause(d);
-	else if (key_input == 43 && d->ncurseSpeed != 250000)
+	else if (key_input == 43 && d->ncurse_speed != 250000)
 		key_plus(d);
-	else if (key_input == 45 && d->ncurseSpeed != 0)
+	else if (key_input == 45 && d->ncurse_speed != 0)
 		key_minux(d);
 }

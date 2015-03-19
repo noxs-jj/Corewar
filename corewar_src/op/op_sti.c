@@ -74,7 +74,7 @@ int			op_sti(t_data *d, t_header *player)
 	if (op_sti_2(d, player, &value) < 0)
 		return (-1);
 	value[0] = get_arg_modulo(value[0] - 1, IDX_MOD);
-	change_mem_val(d, player->number, (player->indexPC + 1 +
+	change_mem_val(d, player->number, (player->index_pc + 1 +
 		value[0] + MEM_SIZE) % MEM_SIZE, (char *)player->reg[reg]);
 	pc_advance(d, player, ret);
 	return (0);
