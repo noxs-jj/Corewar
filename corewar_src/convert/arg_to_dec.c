@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewarOpTab.h"
+#include "../../includes/corewar_op_tab.h"
 
 int		arg_to_dec(char (*src)[])
 {

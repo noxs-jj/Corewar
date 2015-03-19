@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewarOpTab.h"
+#include "../../includes/corewar_op_tab.h"
 
 void	nbr2hex(unsigned int n, unsigned char (*str)[])
 {

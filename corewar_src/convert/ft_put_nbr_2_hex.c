@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewarOpTab.h"
+#include "../../includes/corewar_op_tab.h"
 
 void ft_put_nbr_2_hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 {

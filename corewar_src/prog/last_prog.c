@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewarOpTab.h"
+#include "../../includes/corewar_op_tab.h"
 
 t_header *last_prog(t_data *d)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewarOpTab.h"
+#include "../includes/corewar_op_tab.h"
 
 void	check_pc(t_header *h)
 {
@@ -36,7 +36,7 @@ int		check_next_op(t_data *d)
 			check_pc(prog);
 			if (prog->next_op != -1)
 			{
-				prog->wait = op_tab[prog->next_op].nb_cycles;
+				prog->wait = g_op_tab[prog->next_op].nb_cycles;
 				read_op_code(d, prog);
 			}
 			else

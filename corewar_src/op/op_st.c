@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewarOpTab.h"
+#include "../../includes/corewar_op_tab.h"
 
 /*
 ** tested OK
 ** T_REG, T_IND | T_REG
-** has idx (op_tab incorrect)
+** has idx (g_op_tab incorrect)
 */
 static int	op_st_2(t_data *d, t_header *player, int *value)
 {

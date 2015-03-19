@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewarOpTab.h"
+#include "../includes/corewar_op_tab.h"
 
 /*
 ** Read OP Code, convert it into binary (8 chars)
@@ -25,8 +25,8 @@ static int	read_op_code_2(t_header *prog, t_case *args)
 		if (!(args->hex[1] >= 'a' && args->hex[1] <= 'f')
 			&& !(args->hex[1] >= '0' && args->hex[1] <= '9'))
 			return (-1);
-		if (bin_tab[i].hex == args->hex[1])
-			ft_strncpy(&prog->codage[4], bin_tab[i].bin, 4);
+		if (g_bin_tab[i].hex == args->hex[1])
+			ft_strncpy(&prog->codage[4], g_bin_tab[i].bin, 4);
 		i++;
 	}
 	return (0);
@@ -46,8 +46,8 @@ int			read_op_code(t_data *d, t_header *prog)
 		if (!(args->hex[0] >= 'a' && args->hex[0] <= 'f')
 			&& !(args->hex[0] >= '0' && args->hex[0] <= '9'))
 			return (-1);
-		if (bin_tab[i].hex == args->hex[0])
-			ft_strncpy(prog->codage, bin_tab[i].bin, 4);
+		if (g_bin_tab[i].hex == args->hex[0])
+			ft_strncpy(prog->codage, g_bin_tab[i].bin, 4);
 		i++;
 	}
 	if (read_op_code_2(prog, args) < 0)

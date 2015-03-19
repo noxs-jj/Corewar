@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewarOpTab.h"
+#include "../../includes/corewar_op_tab.h"
 
 static void	str_to_reg_2(t_data *d, char *str, char (*tmp)[], int *index)
 {

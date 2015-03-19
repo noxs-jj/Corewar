@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewarOpTab.h                                     :+:      :+:    :+:   */
+/*   corewar_op_tab.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAROPTAB_H
-#define COREWAROPTAB_H
+#ifndef COREWAR_OP_TAB_H
+# define COREWAR_OP_TAB_H
 
-#include "corewar.h"
+# include "corewar.h"
 
-static const t_op    op_tab[17] =
+static const t_op	g_op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
@@ -33,7 +33,7 @@ static const t_op    op_tab[17] =
 		"load index", 1, 1},
 	{"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
 		"store index", 1, 1},
-	{"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1}, // cycle = 800
+	{"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
 	{"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
 	{"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
 		"long load index", 1, 1},
@@ -42,7 +42,7 @@ static const t_op    op_tab[17] =
 	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
-static const t_bin		bin_tab[16] =
+static const t_bin	g_bin_tab[16] =
 {
 	{'0', "0000"},
 	{'1', "0001"},
