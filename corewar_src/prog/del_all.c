@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_all.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/18 16:01:59 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/18 16:01:59 by jmoiroux         ###   ########.fr       */
+/*   Updated: 2015/03/19 15:50:46 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	del_all(t_data *d)
 {
-	int i;
+	t_header	*del;
+	t_header	*tmp;
 
-	i = 1;
-	while (i <= d->players)
+	tmp = d->prog;
+	while (tmp != NULL)
 	{
-		del_prog(d, i);
-		i++;
+		del = tmp;
+		tmp = tmp->next;
+		ft_memdel((void **)&del);
 	}
 }

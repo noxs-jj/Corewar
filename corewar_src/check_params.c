@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/19 12:30:38 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/03/19 12:30:39 by jmoiroux         ###   ########.fr       */
+/*   Updated: 2015/03/19 15:26:42 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int			checkparam(t_data *d, int ac, char **av)
 		i++;
 	}
 	d->real_players = d->players + 1;
+	d->alive_players = d->real_players;
 	if (d->players < 1)
 		return (print_error("Min 2 Players"));
 	return (0);

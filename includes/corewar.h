@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/19 14:52:39 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/19 15:39:46 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ typedef	struct			s_data
 	int					dump;
 	int					players;
 	int					real_players;
+	int					alive_players;
 	short int			case_color;
 	int					option_log;
 	t_case				*map;
@@ -192,7 +193,7 @@ void					check_cyles(t_data *d);
 void					copy_prog(t_data *d, t_header *src, t_header *cpy);
 void					cpy_reg(t_header *src, t_header *cpy);
 void					del_prog(t_data *d, int number);
-void					del_qll(t_data *d);
+void					del_all(t_data *d);
 void					exit_free(void);
 void					ft_put_hex_b_nbr(unsigned int n,
 						unsigned char (*str)[]);

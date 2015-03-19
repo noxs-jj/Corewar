@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 13:20:33 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/02/26 14:54:32 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/19 15:38:57 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int main(int ac, char **av)
 		return (-1);
 	game_start(d);
 	write_l("Game Done (main.c)");
+	exit_free();
 	return (0);
 }

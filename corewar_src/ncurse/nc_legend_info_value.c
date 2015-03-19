@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_legend_info_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 11:46:21 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/11 11:46:22 by jmoiroux         ###   ########.fr       */
+/*   Updated: 2015/03/19 16:10:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 void	render_legend_info_value(t_data *d)
 {
 	wattron(d->window, COLOR_PAIR(10) | A_BOLD);
-	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE,
-		ft_itoa(d->ncurse_speed));
-	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, ft_itoa(d->cycle));
-	mvwprintw(d->window, L_Y_PROCES, L_X_PROCES_VALUE, ft_itoa(d->players));
-	mvwprintw(d->window, L_Y_DIE, L_X_DIE_VALUE, ft_itoa(d->cycle_die));
-	mvwprintw(d->window, L_Y_DELTA, L_X_DELTA_VALUE, ft_itoa(CYCLE_DELTA));
-	mvwprintw(d->window, L_Y_N_LIVE, L_X_N_LIVE_VALUE, ft_itoa(NBR_LIVE));
-	mvwprintw(d->window, L_Y_N_CHECK, L_X_N_CHECK_VALUE, ft_itoa(MAX_CHECKS));
+	mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, "%d",
+		d->ncurse_speed);
+	mvwprintw(d->window, L_Y_CYCLE, L_X_CYCLE_VALUE, "%d", d->cycle);
+	mvwprintw(d->window, L_Y_PROCES, L_X_PROCES_VALUE, "%d", d->players);
+	mvwprintw(d->window, L_Y_DIE, L_X_DIE_VALUE, "%d", d->cycle_die);
+	mvwprintw(d->window, L_Y_DELTA, L_X_DELTA_VALUE, "%d", CYCLE_DELTA);
+	mvwprintw(d->window, L_Y_N_LIVE, L_X_N_LIVE_VALUE, "%d", NBR_LIVE);
+	mvwprintw(d->window, L_Y_N_CHECK, L_X_N_CHECK_VALUE, "%d", MAX_CHECKS);
 	wattroff(d->window, COLOR_PAIR(10) | A_BOLD);
 }

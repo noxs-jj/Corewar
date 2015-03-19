@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 11:47:09 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/27 21:43:27 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/19 15:32:41 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@
 # define S_PLAYER_3			"Player 3 ->"
 # define S_PLAYER_4			"Player 4 ->"
 # define S_DEFAULT_BAR "[--------------------------------------------------]"
-# define S_KEY_MINUS		"SLOWER: -"
-# define S_KEY_PLUS			"FASTER: +"
+# define S_KEY_PLUS			"SLOWER: +"
+# define S_KEY_MINUS		"FASTER: -"
 # define S_KEY_PAUSE		"PAUSE:  P or SPACE"
 # define S_KEY_EXIT			"EXIT:   E, Q or ECHAP"
 

@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/23 15:51:02 by jmoiroux          #+#    #+#             */
-/*   Updated: 2015/02/26 15:46:38 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/19 15:30:12 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	check_cyles2(t_data *d)
 	int			more_recent_live;
 	t_header	*prog;
 
-	if (d->cycle_die <= 0)
+	if (d->cycle_die <= 0 || d->alive_players <= 1)
 	{
 		d->run = false;
 		d->i_check_cycles = 1;
@@ -35,6 +35,19 @@ static void	check_cyles2(t_data *d)
 	}
 }
 
+static void	kill_them_all(t_data *d)
+{
+	t_header	*prog;
+
+	prog = d->prog;
+	while (prog != NULL)
+	{
+		if (prog->number == d->i_check_cycles)
+			prog->alive = false;
+		prog = prog->next;
+	}
+}
+
 void		check_cyles(t_data *d)
 {
 	t_header	*prog;
@@ -42,13 +55,15 @@ void		check_cyles(t_data *d)
 	if (d->cycle % d->cycle_die == 0)
 	{
 		write_l("enter to check_cyles:: check_cyles");
+		d->alive_players = 0;
 		d->i_check_cycles = 1;
 		while ((prog = search_prog(d, d->i_check_cycles)) != NULL)
 		{
-			if (prog->live_nbr == 0)
-				prog->alive = false;
-			if (prog->alive == true)
-				prog->live_nbr = 0;
+			if (prog->live_nbr == 0 && prog->alive == true)
+				kill_them_all(d);
+			else if (prog->alive == true)
+				d->alive_players++;
+			prog->live_nbr = 0;
 			d->i_check_cycles++;
 		}
 		d->i_max_check++;
