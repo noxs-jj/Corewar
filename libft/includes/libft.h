@@ -196,7 +196,8 @@ char		*ft_itoatab(int nbr, char *tab);
 void		ft_qsort(int tab[], int beg, int end);
 void		ft_swap(void **p1, void **p2);
 
-int		ft_printf(const char *src, ...);
-void	ft_print_no_param(const char (*tmp), size_t *i, size_t *strlen_display);
+int			ft_printf(const char *src, ...);
+void		ft_print_no_param(const char (*tmp), size_t *i,
+			size_t *strlen_display);
 
 #endif
