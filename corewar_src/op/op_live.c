@@ -16,15 +16,12 @@
 ** OK
 ** T_DIR
 */
-
-
 int		op_live(t_data *d, t_header *player)
 {
 	int				ret;
 	unsigned int	value;
 	t_header		*prog;
-	
-	write_l("--- op_live ---");
+
 	ft_bzero(player->codage, 9);
 	ft_strcpy(player->codage, "10000000");
 	if ((ret = get_op_args(d, player)) < 0)

@@ -17,16 +17,18 @@
 ** T_REG
 */
 
-int		op_aff(t_data *d, t_header *player)
+int	op_aff(t_data *d, t_header *player)
 {
-	int ret;
-	char value;
-	
+	int		ret;
+	char	value;
+
 	write_l("--- op_aff ---");
 	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[0], T_LAB)) < 0)
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[0],
+			T_LAB)) < 0)
 		return (ret);
-	value = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0], T_LAB));
+	value = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0],
+		T_LAB));
 	value = value % 256;
 	ft_putstr("Player ");
 	ft_putstr(player->prog_name);

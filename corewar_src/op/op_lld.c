@@ -17,38 +17,45 @@
 ** T_DIR | T_IND, T_REG
 ** change carry
 */
-
-
-int		op_lld(t_data *d, t_header *player)
+static int	op_lld_2(t_data *d, t_header *player,
+	int *value, unsigned int *reg)
 {
-	int 			ret;
-	unsigned int 	reg;
-	int 			value;
-
-	player->carry = false;
-	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[1], T_LAB)) < 0)
-		return (ret);		
-	reg = get_int_from_dec((char *)player->opArgs[1], T_LAB);
 	if (is_direct(player, 0) >= 0)
 	{
-		value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
+		(*value) = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
-			value = value - 65536;
-		int_to_reg(d, player, value, reg);
+			(*value) = (*value) - 65536;
+		int_to_reg(d, player, (*value), (*reg));
 	}
 	else if (is_indirect(player, 0) >= 0)
 	{
-		value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
+		(*value) = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 		if (player->opArgs[0][T_LAB - 2] >= 240)
-			value = value - 65536;
-		value = get_arg_modulo(value, IDX_MOD);
-		value = (player->indexPC + value + MEM_SIZE) % MEM_SIZE;
-		map_to_reg(d, player, reg, value);
-		player->reg[reg][0] = 0;
-		player->reg[reg][1] = 0;
+			(*value) = (*value) - 65536;
+		(*value) = get_arg_modulo((*value), IDX_MOD);
+		(*value) = (player->indexPC + (*value) + MEM_SIZE) % MEM_SIZE;
+		map_to_reg(d, player, (*reg), (*value));
+		player->reg[(*reg)][0] = 0;
+		player->reg[(*reg)][1] = 0;
 	}
 	else
+		return (-1);
+	return (0);
+}
+
+int			op_lld(t_data *d, t_header *player)
+{
+	int				ret;
+	unsigned int	reg;
+	int				value;
+
+	player->carry = false;
+	if ((ret = get_op_args(d, player)) < 0
+		|| is_valid_register(get_int_from_dec((char *)player->opArgs[1],
+			T_LAB)) < 0)
+		return (ret);
+	reg = get_int_from_dec((char *)player->opArgs[1], T_LAB);
+	if (op_lld_2(d, player, &value, &reg) < 0)
 		return (-1);
 	player->carry = true;
 	pc_advance(d, player, ret);

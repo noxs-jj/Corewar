@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-static void	new_prog_2(t_header *new)
+static void	new_prog_2(t_header *new, int number)
 {
 	ft_bzero(new->prog_name, PROG_NAME_LENGTH + 1);
 	new->wait = 0;
@@ -45,6 +45,6 @@ t_header	*new_prog(int number)
 	new->liveNbr = 0;
 	new->PC = NULL;
 	new->indexPC = 0;
-	new_prog_2(new);
+	new_prog_2(new, number);
 	return (new);
 }
