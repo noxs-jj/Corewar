@@ -16,6 +16,7 @@ int		init_mem(t_data *d)
 {
 	int		i;
 
+	write_l("enter to init_mem");
 	i = 0;
 	if (MEM_SIZE > 4096 || MEM_SIZE < 1024)
 		return (print_error(ERR_MAP_ALLOC));

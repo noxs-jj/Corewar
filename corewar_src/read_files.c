@@ -14,7 +14,7 @@
 
 static int	read_prog_comment(t_data *d, int fd, t_header *prog)
 {
-	char buff[BUFFSIZE];
+	char	buff[BUFFSIZE];
 	int		ret;
 	int		index;
 
@@ -23,7 +23,8 @@ static int	read_prog_comment(t_data *d, int fd, t_header *prog)
 	if (lseek(fd, 135 - ft_strlen(prog->prog_name), SEEK_CUR) < 0)
 		return (-1);
 	ft_bzero(buff, BUFFSIZE);
-	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < COMMENT_LENGTH + 1)
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0
+		&& index + 1 < COMMENT_LENGTH + 1)
 	{
 		if (buff[0] == 0)
 			return (0);
@@ -34,11 +35,11 @@ static int	read_prog_comment(t_data *d, int fd, t_header *prog)
 	return (ret);
 }
 
-static int	checkMagic(t_data *d, int fd)
+static int	check_magic(t_data *d, int fd)
 {
-	char buff[16];
-	char cmp[16];
-	int ret;
+	char	buff[16];
+	char	cmp[16];
+	int		ret;
 
 	(void)d;
 	ft_bzero(buff, 16);
@@ -56,15 +57,16 @@ static int	checkMagic(t_data *d, int fd)
 
 static int	read_prog_name(t_data *d, int fd, t_header *prog)
 {
-	char buff[BUFFSIZE];
+	char	buff[BUFFSIZE];
 	int		ret;
 	int		index;
 
 	index = 0;
-	if (checkMagic(d, fd) < 0)
+	if (check_magic(d, fd) < 0)
 		return (print_error(INV_FILE));
 	ft_bzero(buff, BUFFSIZE);
-	while ((ret = read(fd, buff, BUFFSIZE)) > 0 && index + 1 < PROG_NAME_LENGTH + 1)
+	while ((ret = read(fd, buff, BUFFSIZE)) > 0
+		&& index + 1 < PROG_NAME_LENGTH + 1)
 	{
 		if (buff[0] == 0)
 			return (read_prog_comment(d, fd, prog));
@@ -79,14 +81,13 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 {
 	char	buff[BUFFSIZE];
 	int		ret;
-	int 	index;
+	int		index;
 	char	str[3];
 
 	index = 0;
 	if (read_prog_name(d, fd, prog) < 0 || lseek(fd, 2192, SEEK_SET) < 0)
 		return (-1);
-	ft_bzero(buff, BUFFSIZE);
-	ft_bzero(str, 3);
+	twice_bzero(&buff, BUFFSIZE, &str, 3);
 	while ((ret = read(fd, buff, BUFFSIZE)) > 0)
 	{
 		ft_put_hex_nbr(buff[0], (unsigned char (*)[])&str);
@@ -95,8 +96,7 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 		prog->prog_size += 2;
 		if (prog->prog_size > CHAMP_MAX_SIZE)
 			return (print_error("Champions too big"));
-		ft_bzero(buff, BUFFSIZE);
-		ft_bzero(str, 3);
+		twice_bzero(&buff, BUFFSIZE, &str, 3);
 	}
 	prog->prog_size /= 2;
 	prog->alive = true;
@@ -106,11 +106,12 @@ static int	read_file(t_data *d, int fd, t_header *prog)
 	return (ret);
 }
 
-int		read_files(t_data *d)
+int			read_files(t_data *d)
 {
-	t_header *tmp;
-	int		fd;
+	t_header	*tmp;
+	int			fd;
 
+	write_l("enter to read_files");
 	tmp = d->prog;
 	while (tmp != NULL)
 	{

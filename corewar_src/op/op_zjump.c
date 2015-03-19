@@ -31,8 +31,8 @@ int		op_zjump(t_data *d, t_header *player)
 		pc_advance(d, player, ret);
 	else
 	{
-		result = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		result = get_int_from_dec((char *)player->op_args[0], T_LAB);
+		if (player->op_args[0][T_LAB - 2] >= 240)
 			result = result - 65536;
 		result = get_arg_modulo(result - 1, IDX_MOD);
 		pc_advance(d, player, result);

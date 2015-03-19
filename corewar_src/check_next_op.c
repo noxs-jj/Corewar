@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_next_op.c                                      :+:      :+:    :+:   */
+/*   check_next_op.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../includes/corewar.h"
 #include "../includes/corewarOpTab.h"
 
 void	check_pc(t_header *h)
 {
-	unsigned int 	instruction;
+	unsigned int	instruction;
 
 	instruction = ft_hex_2_dec(h->PC->hex);
 	if (instruction > 0 && instruction < 17)

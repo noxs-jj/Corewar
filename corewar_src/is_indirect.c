@@ -18,4 +18,3 @@ int		is_indirect(t_header *player, int arg_nbr)
 		return (-1);
 	return (0);
 }
-

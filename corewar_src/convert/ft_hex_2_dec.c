@@ -50,7 +50,7 @@ unsigned int	ft_hex_2_dec(unsigned char *str)
 	return (result);
 }
 
-unsigned int		ft_hex2intdec(unsigned char *str)
+unsigned int	ft_hex2intdec(unsigned char *str)
 {
 	unsigned int	result;
 	unsigned int	len;

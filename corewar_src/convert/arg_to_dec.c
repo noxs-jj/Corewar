@@ -14,11 +14,11 @@
 
 int		arg_to_dec(char (*src)[])
 {
-	char	str[(T_LAB * 2) + 1];
+	char	str[T_LAB2];
 	char	tmp[3];
 	int		i;
 
-	ft_bzero(str, (T_LAB * 2) + 1);
+	ft_bzero(str, T_LAB2);
 	i = 0;
 	while (str[i] == 0)
 		i++;

@@ -21,11 +21,11 @@ static int	op_st_2(t_data *d, t_header *player, int *value)
 {
 	if (is_register(player, 1) >= 0)
 		(*value) = reg_to_int(d, player,
-			get_int_from_dec((char *)player->opArgs[1], T_LAB));
+			get_int_from_dec((char *)player->op_args[1], T_LAB));
 	else if (is_indirect(player, 1) >= 0)
 	{
-		(*value) = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		if (player->opArgs[1][T_LAB - 2] >= 240)
+		(*value) = get_int_from_dec((char *)player->op_args[1], T_LAB);
+		if (player->op_args[1][T_LAB - 2] >= 240)
 			(*value) = (*value) - 65536;
 		(*value) = get_arg_modulo((*value), IDX_MOD);
 	}
@@ -42,10 +42,10 @@ int			op_st(t_data *d, t_header *player)
 
 	player->carry = false;
 	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[0],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[0],
 			T_LAB)) < 0)
 		return (ret);
-	reg = get_int_from_dec((char *)player->opArgs[0], T_LAB);
+	reg = get_int_from_dec((char *)player->op_args[0], T_LAB);
 	if (op_st_2(d, player, &value) < 0)
 		return (-1);
 	value = get_arg_modulo(value, IDX_MOD);

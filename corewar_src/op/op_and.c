@@ -22,17 +22,17 @@ static int	op_and_3(t_data *d, t_header *player, unsigned int (*value)[])
 {
 	if (is_register(player, 0) >= 0)
 		(*value)[0] = reg_to_int(d, player,
-			get_int_from_dec((char *)player->opArgs[0], T_LAB));
+			get_int_from_dec((char *)player->op_args[0], T_LAB));
 	else if (is_direct(player, 0) >= 0)
 	{
-		(*value)[0] = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		(*value)[0] = get_int_from_dec((char *)player->op_args[0], T_LAB);
+		if (player->op_args[0][T_LAB - 2] >= 240)
 			(*value)[0] = (*value)[0] - 65536;
 	}
 	else if (is_indirect(player, 0) >= 0)
 	{
-		(*value)[0] = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		(*value)[0] = get_int_from_dec((char *)player->op_args[0], T_LAB);
+		if (player->op_args[0][T_LAB - 2] >= 240)
 			(*value)[0] = (*value)[0] - 65536;
 		(*value)[0] = get_arg_modulo((*value)[0], IDX_MOD);
 	}
@@ -45,17 +45,17 @@ static int	op_and_2(t_data *d, t_header *player, unsigned int (*value)[])
 {
 	if (is_register(player, 1) >= 0)
 		(*value)[1] = reg_to_int(d, player,
-			get_int_from_dec((char *)player->opArgs[1], T_LAB));
+			get_int_from_dec((char *)player->op_args[1], T_LAB));
 	else if (is_direct(player, 1) >= 0)
 	{
-		(*value)[1] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		if (player->opArgs[1][T_LAB - 2] >= 240)
+		(*value)[1] = get_int_from_dec((char *)player->op_args[1], T_LAB);
+		if (player->op_args[1][T_LAB - 2] >= 240)
 			(*value)[1] = (*value)[1] - 65536;
 	}
 	else if (is_indirect(player, 1) >= 0)
 	{
-		(*value)[1] = get_int_from_dec((char *)player->opArgs[1], T_LAB);
-		if (player->opArgs[1][T_LAB - 2] >= 240)
+		(*value)[1] = get_int_from_dec((char *)player->op_args[1], T_LAB);
+		if (player->op_args[1][T_LAB - 2] >= 240)
 			(*value)[1] = (*value)[1] - 65536;
 		(*value)[1] = get_arg_modulo((*value)[1], IDX_MOD);
 	}
@@ -64,7 +64,7 @@ static int	op_and_2(t_data *d, t_header *player, unsigned int (*value)[])
 	return (0);
 }
 
-int		op_and(t_data *d, t_header *player)
+int			op_and(t_data *d, t_header *player)
 {
 	int				ret;
 	unsigned int	reg;
@@ -74,10 +74,10 @@ int		op_and(t_data *d, t_header *player)
 	write_l("--- op_and ---");
 	player->carry = false;
 	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[2],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[2],
 			T_LAB)) < 0)
 		return (ret);
-	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
+	reg = get_int_from_dec((char *)player->op_args[2], T_LAB);
 	if (op_and_3(d, player, &value) < 0)
 		return (-1);
 	if (op_and_2(d, player, &value) < 0)

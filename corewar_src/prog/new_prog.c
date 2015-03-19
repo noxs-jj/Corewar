@@ -25,7 +25,7 @@ static void	new_prog_2(t_header *new, int number)
 	ft_bzero(new->comment, COMMENT_LENGTH + 1);
 	init_reg(new);
 	ft_bzero(new->codage, 9);
-	ft_bzero(new->opArgs, 4 * T_LAB);
+	ft_bzero(new->op_args, 4 * T_LAB);
 	new->next = NULL;
 	new->prev = NULL;
 }

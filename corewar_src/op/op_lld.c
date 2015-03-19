@@ -22,15 +22,15 @@ static int	op_lld_2(t_data *d, t_header *player,
 {
 	if (is_direct(player, 0) >= 0)
 	{
-		(*value) = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		(*value) = get_int_from_dec((char *)player->op_args[0], T_LAB);
+		if (player->op_args[0][T_LAB - 2] >= 240)
 			(*value) = (*value) - 65536;
 		int_to_reg(d, player, (*value), (*reg));
 	}
 	else if (is_indirect(player, 0) >= 0)
 	{
-		(*value) = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-		if (player->opArgs[0][T_LAB - 2] >= 240)
+		(*value) = get_int_from_dec((char *)player->op_args[0], T_LAB);
+		if (player->op_args[0][T_LAB - 2] >= 240)
 			(*value) = (*value) - 65536;
 		(*value) = get_arg_modulo((*value), IDX_MOD);
 		(*value) = (player->indexPC + (*value) + MEM_SIZE) % MEM_SIZE;
@@ -51,10 +51,10 @@ int			op_lld(t_data *d, t_header *player)
 
 	player->carry = false;
 	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[1],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[1],
 			T_LAB)) < 0)
 		return (ret);
-	reg = get_int_from_dec((char *)player->opArgs[1], T_LAB);
+	reg = get_int_from_dec((char *)player->op_args[1], T_LAB);
 	if (op_lld_2(d, player, &value, &reg) < 0)
 		return (-1);
 	player->carry = true;

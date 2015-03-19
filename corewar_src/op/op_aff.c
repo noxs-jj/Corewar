@@ -24,10 +24,10 @@ int	op_aff(t_data *d, t_header *player)
 
 	write_l("--- op_aff ---");
 	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[0],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[0],
 			T_LAB)) < 0)
 		return (ret);
-	value = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0],
+	value = reg_to_int(d, player, get_int_from_dec((char *)player->op_args[0],
 		T_LAB));
 	value = value % 256;
 	ft_putstr("Player ");

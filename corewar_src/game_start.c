@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_start.c                                        :+:      :+:    :+:   */
+/*   game_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -30,8 +30,9 @@ static void	game_start_2(t_data *d)
 	check_cyles(d);
 }
 
-int	game_start(t_data *d)
+int			game_start(t_data *d)
 {
+	write_l("enter to game_start");
 	d->run = true;
 	if (true == d->graphActiv)
 		render_draw(d);

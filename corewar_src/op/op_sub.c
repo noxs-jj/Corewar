@@ -26,18 +26,18 @@ int		op_sub(t_data *d, t_header *player)
 
 	player->carry = false;
 	if ((ret = get_op_args(d, player)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[0],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[0],
 			T_LAB)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[1],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[1],
 			T_LAB)) < 0
-		|| is_valid_register(get_int_from_dec((char *)player->opArgs[2],
+		|| is_valid_register(get_int_from_dec((char *)player->op_args[2],
 			T_LAB)) < 0)
 		return (ret);
-	reg = get_int_from_dec((char *)player->opArgs[2], T_LAB);
-	ft_bzero(player->opArgs[reg], REG_SIZE);
-	value = reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[0],
+	reg = get_int_from_dec((char *)player->op_args[2], T_LAB);
+	ft_bzero(player->op_args[reg], REG_SIZE);
+	value = reg_to_int(d, player, get_int_from_dec((char *)player->op_args[0],
 		T_LAB));
-	value -= reg_to_int(d, player, get_int_from_dec((char *)player->opArgs[1],
+	value -= reg_to_int(d, player, get_int_from_dec((char *)player->op_args[1],
 		T_LAB));
 	int_to_reg(d, player, value, reg);
 	player->carry = true;

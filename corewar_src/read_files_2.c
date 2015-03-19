@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_register.c                                      :+:      :+:    :+:   */
+/*   read_files_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoiroux <jmoiroux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/14 12:23:55 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/17 11:35:21 by vjacquie         ###   ########.fr       */
+/*   Created: 2015/03/19 12:09:54 by jmoiroux          #+#    #+#             */
+/*   Updated: 2015/03/19 12:09:55 by jmoiroux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		is_register(t_header *player, int arg_nbr)
+void	twice_bzero(char (*buff)[], int buff_size, char (*str)[], int str_size)
 {
-	if (ft_strncmp(&player->codage[arg_nbr * 2], "01", 2) != 0)
-		return (-1);
-	if (is_valid_register(get_int_from_dec((char *)player->op_args[arg_nbr],
-		T_LAB)) < 0)
-		return (-1);
-	return (0);
+	ft_bzero(buff, buff_size);
+	ft_bzero(str, str_size);
 }

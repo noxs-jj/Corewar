@@ -79,6 +79,7 @@
 # define T_DIR					2
 # define T_IND					4
 # define T_LAB					8
+# define T_LAB2					(T_LAB * 2) + 1
 
 /*
 ** PROG_NAME_LENGTH 128
@@ -141,7 +142,7 @@ typedef struct			s_header
 	char				comment[COMMENT_LENGTH + 1];
 	unsigned char 		reg[REG_NUMBER + 1][REG_SIZE];
 	char 				codage[9];
-	unsigned char		opArgs[4][T_LAB];
+	unsigned char		op_args[4][T_LAB];
 	struct s_header		*next;
 	struct s_header		*prev;
 }						t_header;
@@ -196,6 +197,7 @@ int				reg_to_int(t_data *d, t_header *player, int reg);
 int				set_option_log(t_data *d);
 int				str_hex_len(unsigned char *str);
 int 			game_start(t_data *d);
+int				checkparam(t_data *d, int ac, char **av);
 t_data			*get_data(void);
 t_header		*last_prog(t_data *d);
 t_header		*new_prog(int number);
@@ -220,6 +222,7 @@ void			pc_advance(t_data *d, t_header *player, int adv);
 void			str_to_reg(t_data *d, t_header *player, int reg, char *str);
 void			write_l(char *str);
 void 			ft_put_nbr_2_hex(int len, unsigned char (*src)[], unsigned char (*str)[]);
+void			twice_bzero(char (*buff)[], int buff_size, char (*str)[], int str_size);
 
 /* OP functions */
 typedef struct		s_opfunc

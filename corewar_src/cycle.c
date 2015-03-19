@@ -12,22 +12,22 @@
 
 #include "../includes/corewar.h"
 
-void	check_cyles2(t_data *d)
+static void	check_cyles2(t_data *d)
 {
-	int			moreRecentLive;
+	int			more_recent_live;
 	t_header	*prog;
 
 	if (d->cycleDie <= 0)
 	{
 		d->run = false;
 		d->iCheckCycles = 1;
-		moreRecentLive = 0;
+		more_recent_live = 0;
 		while ((prog = search_prog(d, d->iCheckCycles)) != NULL)
 		{
-			if (prog->lastLive > moreRecentLive
+			if (prog->lastLive > more_recent_live
 				&& prog->alive == true)
 			{
-				moreRecentLive = prog->lastLive;
+				more_recent_live = prog->lastLive;
 				d->nbrWinner = prog->number;
 			}
 			d->iCheckCycles++;
@@ -35,12 +35,13 @@ void	check_cyles2(t_data *d)
 	}
 }
 
-void	check_cyles(t_data *d)
+void		check_cyles(t_data *d)
 {
 	t_header	*prog;
 
 	if (d->cycle % d->cycleDie == 0)
 	{
+		write_l("enter to check_cyles:: check_cyles");
 		d->iCheckCycles = 1;
 		while ((prog = search_prog(d, d->iCheckCycles)) != NULL)
 		{

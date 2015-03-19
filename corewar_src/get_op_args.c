@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_op_args.c                                        :+:      :+:    :+:   */
+/*   get_op_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,15 @@
 
 #include "../includes/corewarOpTab.h"
 
-
 /*
-** read Op args and put them in d->prog[player].opArgs
+** read Op args and put them in d->prog[player].op_args
 ** must correct return (index) value
 */
-
-static void getValue(t_header *player, int argNbr, int *index, int len)
+static void	get_value(t_header *player, int arg_nbr, int *index, int len)
 {
-	t_case * arg;
-	int i;
-	int tmp;
+	t_case		*arg;
+	int			i;
+	int			tmp;
 
 	i = 0;
 	if (len == DIR && op_tab[player->nextOp].has_idx == 1)
@@ -31,15 +29,14 @@ static void getValue(t_header *player, int argNbr, int *index, int len)
 	while (i < len)
 	{
 		arg = ((player->PC) + *index + 1 + op_tab[player->nextOp].has_pcode);
-
-		player->opArgs[argNbr][tmp] = ft_hex2intdec(arg->hex);
+		player->op_args[arg_nbr][tmp] = ft_hex2intdec(arg->hex);
 		(*index)++;
 		tmp++;
 		i++;
 	}
 }
 
-static void clear_arg(t_data *d, t_header *prog)
+static void	clear_arg(t_data *d, t_header *prog)
 {
 	int i;
 
@@ -47,12 +44,12 @@ static void clear_arg(t_data *d, t_header *prog)
 	i = 0;
 	while (i < 4)
 	{
-		ft_bzero(prog->opArgs[i], T_LAB);
+		ft_bzero(prog->op_args[i], T_LAB);
 		i++;
 	}
 }
 
-int		get_op_args(t_data *d, t_header *prog)
+int			get_op_args(t_data *d, t_header *prog)
 {
 	int index;
 	int i;
@@ -63,11 +60,11 @@ int		get_op_args(t_data *d, t_header *prog)
 	while (i < op_tab[prog->nextOp].nb_params)
 	{
 		if (ft_strncmp(&prog->codage[i * 2], "01", 2) == 0)
-			getValue(prog, i, &index, REG);
+			get_value(prog, i, &index, REG);
 		else if (ft_strncmp(&prog->codage[i * 2], "10", 2) == 0)
-			getValue(prog, i, &index, DIR);
+			get_value(prog, i, &index, DIR);
 		else if (ft_strncmp(&prog->codage[i * 2], "11", 2) == 0)
-			getValue(prog, i, &index, IND);
+			get_value(prog, i, &index, IND);
 		else if (i + 1 == op_tab[prog->nextOp].nb_params)
 		{
 			index += op_tab[prog->nextOp].has_pcode;

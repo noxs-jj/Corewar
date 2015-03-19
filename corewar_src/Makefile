@@ -23,6 +23,7 @@ NAME = corewar
 SRCS =	arg_dump.c \
 		change_mem_val.c \
 		check_next_op.c \
+		check_params.c \
 		cycle.c \
 		exec_op.c \
 		exit_free.c \
@@ -100,6 +101,7 @@ SRCS =	arg_dump.c \
 		pc_advance.c \
 		print_error.c \
 		read_files.c \
+		read_files_2.c \
 		read_op_code.c \
 		shell/co_draw_result_console.c \
 		shell/co_info_player1.c \

@@ -28,8 +28,8 @@ int		op_fork(t_data *d, t_header *player)
 	ft_strcpy(player->codage, "10000000");
 	if ((ret = get_op_args(d, player)) < 0)
 		return (ret);
-	result = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-	if (player->opArgs[0][T_LAB - 2] >= 240)
+	result = get_int_from_dec((char *)player->op_args[0], T_LAB);
+	if (player->op_args[0][T_LAB - 2] >= 240)
 		result = result - 65536;
 	if (add_prog(d, new_prog(player->number)) < 0)
 		return (-1);

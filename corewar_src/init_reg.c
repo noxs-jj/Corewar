@@ -15,7 +15,8 @@
 void	init_reg(t_header *new)
 {
 	int i;
-	
+
+	write_l("enter to init_reg");
 	i = 0;
 	while (i < REG_NUMBER + 1)
 	{
