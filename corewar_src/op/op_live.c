@@ -30,7 +30,7 @@ int		op_live(t_data *d, t_header *player)
 	if ((ret = get_op_args(d, player)) < 0)
 		return (ret);
 	value = get_int_from_dec((char *)player->opArgs[0], T_LAB);
-	if ((prog = searchProg(d, value)) != NULL)
+	if ((prog = search_prog(d, value)) != NULL)
 	{
 		prog->lastLive = d->cycle;
 		prog->liveNbr++;

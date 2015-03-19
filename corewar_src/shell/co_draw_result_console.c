@@ -26,7 +26,7 @@ void	draw_result_console(t_data *d)
 		co_troll_all();
 		ft_putstr("#######################################################\n");
 		ft_putstr("\t\tle joueur ");
-		if ((prog = searchProg(d, d->nbrWinner)) == NULL)
+		if ((prog = search_prog(d, d->nbrWinner)) == NULL)
 		{
 			write_l("Error in drawResultConsole");
 			return ;

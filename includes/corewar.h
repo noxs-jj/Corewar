@@ -171,7 +171,7 @@ typedef	struct			s_data
 }						t_data;
 
 /* Corewar bin */
-int				addProg(t_data *d, t_header *new);
+int				add_prog(t_data *d, t_header *new);
 int				arg_to_dec(char (*src)[]);
 int				change_mem_val(t_data *d, int id, int where, char *str);
 int				check_next_op(t_data *d);
@@ -197,16 +197,16 @@ int				set_option_log(t_data *d);
 int				str_hex_len(unsigned char *str);
 int 			game_start(t_data *d);
 t_data			*get_data(void);
-t_header		*lastProg(t_data *d);
-t_header		*newProg(int number);
-t_header		*searchProg(t_data *d, int number);
+t_header		*last_prog(t_data *d);
+t_header		*new_prog(int number);
+t_header		*search_prog(t_data *d, int number);
 unsigned int	ft_hex_2_dec(unsigned char *str);
 unsigned int	ft_hex2intdec(unsigned char *str);
 void			arg_dump(t_data *d);
 void			check_cyles(t_data *d);
-void			copyProg(t_data *d, t_header *src, t_header *cpy);
-void			delAll(t_data *d);
-void			delProg(t_data *d, int number);
+void			copy_prog(t_data *d, t_header *src, t_header *cpy);
+void			del_qll(t_data *d);
+void			del_prog(t_data *d, int number);
 void			exit_free(void);
 void			cpy_reg(t_header *src, t_header *cpy);
 void			ft_put_hex_b_nbr(unsigned int n, unsigned char (*str)[]);

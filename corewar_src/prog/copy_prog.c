@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-void	copyProg(t_data *d, t_header *src, t_header *cpy)
+void	copy_prog(t_data *d, t_header *src, t_header *cpy)
 {
 	(void)d;
 	cpy->carry = src->carry;

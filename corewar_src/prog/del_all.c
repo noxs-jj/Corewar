@@ -12,14 +12,14 @@
 
 #include "../../includes/corewarOpTab.h"
 
-void	delAll(t_data *d)
+void	del_all(t_data *d)
 {
 	int i;
 
 	i = 1;
 	while (i <= d->players)
 	{
-		delProg(d, i);
+		del_prog(d, i);
 		i++;
 	}
 }

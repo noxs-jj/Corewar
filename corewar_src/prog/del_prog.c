@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-void	delProg(t_data *d, int number)
+void	del_prog(t_data *d, int number)
 {
 	t_header *tmp;
 	t_header *del;

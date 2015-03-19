@@ -31,11 +31,11 @@ int		op_fork(t_data *d, t_header *player)
 	result = get_int_from_dec((char *)player->opArgs[0], T_LAB);
 	if (player->opArgs[0][T_LAB - 2] >= 240)
 			result = result - 65536;
-	if (addProg(d, newProg(player->number)) < 0)
+	if (add_prog(d, new_prog(player->number)) < 0)
 		return (-1);
 	d->players++;
-	prog = lastProg(d);
-	copyProg(d, player, prog);
+	prog = last_prog(d);
+	copy_prog(d, player, prog);
 	result = get_arg_modulo(result - 1, IDX_MOD);
 	pc_advance(d, prog, result);
 	pc_advance(d, player, ret);

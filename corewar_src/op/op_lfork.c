@@ -30,11 +30,11 @@ int		op_lfork(t_data *d, t_header *player)
 	result = get_int_from_dec((char *)player->opArgs[0], T_LAB) - 1;
 	if (player->opArgs[0][T_LAB - 2] >= 240)
 			result = result - 65536;
-	if (addProg(d, newProg(player->number)) < 0)
+	if (add_prog(d, new_prog(player->number)) < 0)
 		return (-1);
-	prog = lastProg(d);
+	prog = last_prog(d);
 	d->players++;
-	copyProg(d, player, prog);
+	copy_prog(d, player, prog);
 	pc_advance(d, prog, result);
 	pc_advance(d, player, ret);
 	return (0);

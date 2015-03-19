@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-t_header *lastProg(t_data *d)
+t_header *last_prog(t_data *d)
 {
 	t_header *tmp;
 

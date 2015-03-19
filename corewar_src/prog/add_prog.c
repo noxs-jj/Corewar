@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-int		addProg(t_data *d, t_header *new)
+int		add_prog(t_data *d, t_header *new)
 {
 	t_header *tmp;
 
@@ -22,7 +22,7 @@ int		addProg(t_data *d, t_header *new)
 		d->prog = new;
 	else
 	{
-		tmp = lastProg(d);
+		tmp = last_prog(d);
 		new->prev = tmp;
 		tmp->next = new;
 	}

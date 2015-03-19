@@ -12,21 +12,8 @@
 
 #include "../../includes/corewarOpTab.h"
 
-t_header *newProg(int number)
+static void	new_prog_2(t_header *new)
 {
-	t_header 	*new;
-
-	if ((new = (t_header *)malloc(sizeof(t_header))) == NULL)
-	{
-		write_l(ERR_PROG_ALLOC);
-		sleep(5);
-		return (NULL);
-	}
-	new->carry = false;
-	new->lastLive = 0;
-	new->liveNbr = 0;
-	new->PC = NULL;
-	new->indexPC = 0;
 	ft_bzero(new->prog_name, PROG_NAME_LENGTH + 1);
 	new->wait = 0;
 	new->alive = true;
@@ -41,5 +28,23 @@ t_header *newProg(int number)
 	ft_bzero(new->opArgs, 4 * T_LAB);
 	new->next = NULL;
 	new->prev = NULL;
+}
+
+t_header	*new_prog(int number)
+{
+	t_header	*new;
+
+	if ((new = (t_header *)malloc(sizeof(t_header))) == NULL)
+	{
+		write_l(ERR_PROG_ALLOC);
+		sleep(5);
+		return (NULL);
+	}
+	new->carry = false;
+	new->lastLive = 0;
+	new->liveNbr = 0;
+	new->PC = NULL;
+	new->indexPC = 0;
+	new_prog_2(new);
 	return (new);
 }

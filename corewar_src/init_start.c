@@ -35,8 +35,8 @@ static int	champion_number(t_data *d, int ac, char **av, int i)
 		|| ft_atoi(av[i]) > MAX_PLAYERS || ++d->players >= MAX_PLAYERS
 		|| check_number(d, ft_atoi(av[i])) == -1)
 		return (-1);
-	addProg(d, newProg(ft_atoi(av[i])));
-	prog = lastProg(d);
+	add_prog(d, new_prog(ft_atoi(av[i])));
+	prog = last_prog(d);
 	if (++i >= ac || ft_strstr(av[i], ".cor") == NULL)
 		return (-1);
 	prog->filename = av[i];
@@ -54,8 +54,8 @@ static int	champion(t_data *d, int ac, char **av, int i)
 		return (-1);
 	while (check_number(d, number) == -1 && number <= MAX_PLAYERS)
 		number++;
-	addProg(d, newProg(number));
-	prog = lastProg(d);
+	add_prog(d, new_prog(number));
+	prog = last_prog(d);
 	prog->filename = av[i];
 	return (i);
 }

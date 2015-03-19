@@ -22,7 +22,7 @@ void	check_cyles2(t_data *d)
 		d->run = false;
 		d->iCheckCycles = 1;
 		moreRecentLive = 0;
-		while ((prog = searchProg(d, d->iCheckCycles)) != NULL)
+		while ((prog = search_prog(d, d->iCheckCycles)) != NULL)
 		{
 			if (prog->lastLive > moreRecentLive
 				&& prog->alive == true)
@@ -42,7 +42,7 @@ void	check_cyles(t_data *d)
 	if (d->cycle % d->cycleDie == 0)
 	{
 		d->iCheckCycles = 1;
-		while ((prog = searchProg(d, d->iCheckCycles)) != NULL)
+		while ((prog = search_prog(d, d->iCheckCycles)) != NULL)
 		{
 			if (prog->liveNbr == 0)
 				prog->alive = false;

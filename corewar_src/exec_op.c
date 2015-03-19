@@ -16,7 +16,7 @@ int		exec_op(t_data *d)
 {
 	t_header *prog;
 
-	prog = lastProg(d);
+	prog = last_prog(d);
 	while (prog != NULL)
 	{
 		if (prog->wait == 1)

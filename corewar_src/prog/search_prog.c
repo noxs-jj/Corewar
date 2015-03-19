@@ -12,7 +12,7 @@
 
 #include "../../includes/corewarOpTab.h"
 
-t_header *searchProg(t_data *d, int number)
+t_header *search_prog(t_data *d, int number)
 {
 	t_header *prog;
 

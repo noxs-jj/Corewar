@@ -23,7 +23,7 @@ void	render_legend_player_value3(t_data *d)
 {
 	t_header *prog;
 
-	if ((prog = searchProg(d, 3)) == NULL)
+	if ((prog = search_prog(d, 3)) == NULL)
 		return ;
 	wattron(d->window, COLOR_PAIR(3) | A_BOLD);
 	mvwprintw(d->window, L_Y_PLAY_3, L_X_PLAY3_VALUE,
