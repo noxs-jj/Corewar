@@ -65,6 +65,7 @@ void	render_init_pair(void)
 
 int		render_init(t_data *d)
 {
+	write_l("enter to render_init");
 	initscr();
 	start_color();
 	render_init_pair();

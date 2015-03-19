@@ -17,6 +17,7 @@ void	key_plus(t_data *d)
 {
 	if (d->ncurseSpeed + 5000 < 250000)
 	{
+		write_l("KEYBOARD\t\t+");
 		d->ncurseSpeed += 5000;
 		wattron(d->window, COLOR_PAIR(10) | A_BOLD);
 		mvwprintw(d->window, L_Y_SEC_CLE, L_X_SEC_CLE_VALUE, "      ");

@@ -15,15 +15,16 @@
 
 void	key_pause(t_data *d)
 {
+	write_l("KEYBOARD\t\tPause");
 	if (d->pause == true)
 	{
 		d->pause = false;
-		write_l("keyboard\tRUNNING");
+		write_l("ARENA\t\tRUNNING");
 	}
 	else
 	{
 		d->pause = true;
-		write_l("keyboard\tPAUSE");
+		write_l("ARENA\t\tPAUSE");
 		render_draw(d);
 	}
 }

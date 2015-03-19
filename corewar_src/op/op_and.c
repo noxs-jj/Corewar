@@ -71,7 +71,6 @@ int			op_and(t_data *d, t_header *player)
 	unsigned int	value[2];
 	char			str[REG_SIZE + 1];
 
-	write_l("--- op_and ---");
 	player->carry = false;
 	if ((ret = get_op_args(d, player)) < 0
 		|| is_valid_register(get_int_from_dec((char *)player->op_args[2],

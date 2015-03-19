@@ -24,7 +24,6 @@ int		op_add(t_data *d, t_header *player)
 	int		reg;
 	int		value;
 
-	write_l("--- op_add ---");
 	player->carry = false;
 	if ((ret = get_op_args(d, player)) < 0
 		|| is_valid_register(get_int_from_dec(

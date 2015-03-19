@@ -32,6 +32,6 @@ int			init_start(t_data *d, int ac, char **av)
 	d->option_log = 0;
 	if (checkparam(d, ac, av) < 0)
 		return (-1);
-	write_l("enter to init_start:: done");
+	write_l("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nenter to init_start:: done");
 	return (0);
 }

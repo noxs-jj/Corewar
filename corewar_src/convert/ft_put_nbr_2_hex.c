@@ -19,7 +19,6 @@ void ft_put_nbr_2_hex(int len, unsigned char (*src)[], unsigned char (*str)[])
 
 	i = 0;
 	index = 0;
-	write_l("in test");
 	while (i < len && (*src)[i] == 0)
 	{
 		len++;

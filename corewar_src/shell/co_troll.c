@@ -121,6 +121,7 @@ void	co_troll3(void)
 
 void	co_troll_all(void)
 {
+	write_l("enter to co_troll_all");
 	ft_putstr("\n\n\n");
 	co_troll0();
 	co_troll1();

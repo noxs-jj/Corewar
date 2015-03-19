@@ -18,7 +18,6 @@ int main(int ac, char **av)
 
 	d = NULL;
 	d = get_data();
-	ft_putstr_fd("SEG 0\n", 2);
 	if (init_start(d, ac, av) < 0)
 		return (-1);
 	if (read_files(d) < 0)

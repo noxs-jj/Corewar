@@ -22,7 +22,6 @@ int	op_aff(t_data *d, t_header *player)
 	int		ret;
 	char	value;
 
-	write_l("--- op_aff ---");
 	if ((ret = get_op_args(d, player)) < 0
 		|| is_valid_register(get_int_from_dec((char *)player->op_args[0],
 			T_LAB)) < 0)

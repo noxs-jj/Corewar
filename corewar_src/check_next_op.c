@@ -34,13 +34,10 @@ int		check_next_op(t_data *d)
 		{
 			prog->PC->present = prog->number;
 			check_pc(prog);
-			write_l(ft_itoa(prog->nextOp));
 			if (prog->nextOp != -1)
 			{
 				prog->wait = op_tab[prog->nextOp].nb_cycles;
 				read_op_code(d, prog);
-				write_l("find next op");
-				write_l(op_tab[prog->nextOp].name);
 			}
 			else
 				prog->wait = -1;
