@@ -17,6 +17,7 @@ libft/*.o
 libft/*~
 libft/#*
 libft/libft.a
-corewar_src/op_champ_test/*.cor
+asm_champions_test/*.cor
+corewar_op_champions_test/*.cor
 champion/*.cor
-op_champ_test/*.cor
+champion_staff/*.cor

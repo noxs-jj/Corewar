@@ -6,7 +6,7 @@
 /*   By: vjacquie <vjacquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 12:56:32 by vjacquie          #+#    #+#             */
-/*   Updated: 2015/03/16 14:59:03 by vjacquie         ###   ########.fr       */
+/*   Updated: 2015/03/19 14:52:39 by vjacquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/types.h>
 
 # define TIME_USLEEP		5000
-# define PATH_DEBUGG		"../log/corewar.log"
+# define PATH_DEBUGG		"log/corewar.log"
 
 # define ERR_PARAM "./corewar [-dump nbr_cycles] [[-n number] champion.cor]..."
 # define ERR_FILE_DEBUGG "core corewar.log open error."
