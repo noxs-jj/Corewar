@@ -52,3 +52,8 @@ stefan.circiu@gmail.com
 [WebSite](http://www.noxs.net/)
 
 jjmoiroux@gmail.com
+
+
+<a href="http://www.dailymotion.com/video/x2k5x16_death-on-core-war-project-42-born2code-c-ncurses_school" target="_blank">
+<img src="http://s1.dmcdn.net/JghH9/280x157-I2M.jpg" 
+alt="Video render on Dailymotion" border="10" /></a>
