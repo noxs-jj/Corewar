@@ -23,19 +23,17 @@ static void	write_magic(int fd)
 	magic = ((magic >> 24) & 0xff) | ((magic << 8) & 0xff0000) |
 		((magic >> 8) & 0xff00) | ((magic << 24) & 0xff000000);
 	write(fd, (char *)&magic, 4);
-	return ;
 }
 
 static void	write_name_comment(int fd, t_header header)
 {
-	char	buf[12];
+	char	buf[8];
 
 	ft_bzero(buf, 8);
 	write(fd, header.prog_name, PROG_NAME_LENGTH);
 	write(fd, buf, 8);
 	write(fd, header.comment, COMMENT_LENGTH);
 	write(fd, buf, 4);
-	return ;
 }
 
 static void	write_text_section(t_file *file)
