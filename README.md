@@ -46,7 +46,7 @@ fdeage@gmail.com
 stefan.circiu@gmail.com
 
 
-######MOIROUX Jean-Jacques @ 42 Born2code
+######J-Jacques M @ 42 Born2code
 [Twitter](https://twitter.com/jjmoiroux)
 
 [WebSite](http://www.noxs.net/)
